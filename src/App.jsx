@@ -1,34 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+"use client"
+
+import { useState, useEffect } from "react"
+import { BrowserRouter as Router } from "react-router-dom"
+import { AuthProvider } from "./contexts/AuthContext"
+import { ThemeProvider } from "./contexts/ThemeContext"
+
+// Components
+import Header from "./components/common/Header"
+import Sidebar from "./components/common/Sidebar"
+import Footer from "./components/common/Footer"
+import SplashScreen from "./components/common/SplashScreen"
+import ChatbotWidget from "./components/common/ChatbotWidget"
+import MatrixBackground from "./components/common/MatrixBackground"
+
+// Routes
+import AppRoutes from "./routes"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [chatbotOpen, setChatbotOpen] = useState(false)
+
+  useEffect(() => {
+    // Simulate loading time for splash screen
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
+  const toggleChatbot = () => {
+    setChatbotOpen(!chatbotOpen)
+  }
+
+  if (loading) {
+    return <SplashScreen />
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <AuthProvider>
+      <ThemeProvider>
+        <Router>
+          <div className="app">
+            <MatrixBackground />
+            <Header toggleSidebar={toggleSidebar} />
+            <div className="main-content">
+              <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+              <main className={`content ${sidebarOpen ? "sidebar-active" : ""}`}>
+                <AppRoutes />
+                <Footer />
+              </main>
+            </div>
+            {chatbotOpen && <ChatbotWidget closeChatbot={() => setChatbotOpen(false)} />}
+            <button className="chatbot-toggle-btn" onClick={toggleChatbot}>
+              {chatbotOpen ? "Close Assistant" : "Cyber Assistant"}
+            </button>
+          </div>
+        </Router>
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
 
