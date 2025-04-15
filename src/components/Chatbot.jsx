@@ -1,7 +1,18 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { FaRobot, FaUser, FaPaperPlane, FaInfoCircle, FaQuestionCircle, FaShieldAlt, FaLock } from "react-icons/fa"
+import { 
+  FaRobot, 
+  FaUser, 
+  FaPaperPlane, 
+  FaInfoCircle, 
+  FaQuestionCircle, 
+  FaShieldAlt, 
+  FaLock, 
+  FaExclamationTriangle,
+  FaFingerprint,
+  FaServer
+} from "react-icons/fa"
 import CyberSpinner from "./common/CyberSpinner"
 
 const Chatbot = () => {
@@ -9,21 +20,25 @@ const Chatbot = () => {
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [isGlitching, setIsGlitching] = useState(false)
   const messagesEndRef = useRef(null)
+  const inputRef = useRef(null)
 
   useEffect(() => {
-    // Simulate loading
+    // Simulate system initialization with cybersecurity scan
     setTimeout(() => {
       setLoading(false)
-      // Add welcome message
-      setMessages([
-        {
-          id: 1,
-          type: "bot",
-          text: "Hello! I'm your Cybersecurity Assistant. How can I help you today? You can ask me about Indian cyber laws, complaint procedures, or cybersecurity tips.",
-          time: new Date(),
-        },
-      ])
+      // Add welcome message with slight delay to simulate system boot
+      setTimeout(() => {
+        setMessages([
+          {
+            id: 1,
+            type: "bot",
+            text: "SYSTEM INITIALIZED. Hello, I'm your Cybersecurity Assistant. I can assist with Indian cyber laws, security protocols, threat detection, and incident response procedures. How can I secure your digital presence today?",
+            time: new Date(),
+          },
+        ])
+      }, 300)
     }, 1500)
   }, [])
 
@@ -33,6 +48,11 @@ const Chatbot = () => {
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const triggerGlitchEffect = () => {
+    setIsGlitching(true)
+    setTimeout(() => setIsGlitching(false), 1000)
   }
 
   const handleSubmit = async (e) => {
@@ -51,8 +71,12 @@ const Chatbot = () => {
     setInput("")
     setIsTyping(true)
 
+    // Slight glitch effect when processing message
+    triggerGlitchEffect()
+
     try {
-      // Simulate bot response
+      // Simulate AI response with varying timing for realism
+      const responseTime = 800 + Math.random() * 1200
       setTimeout(() => {
         const botResponse = getBotResponse(input)
         const botMessage = {
@@ -63,15 +87,19 @@ const Chatbot = () => {
         }
         setMessages((prev) => [...prev, botMessage])
         setIsTyping(false)
-      }, 1500)
+        
+        // Focus back on input after response
+        inputRef.current?.focus()
+      }, responseTime)
     } catch (error) {
-      // Handle error
+      // Handle error with cybersecurity context
       setTimeout(() => {
         const errorMessage = {
           id: messages.length + 2,
           type: "bot",
-          text: "I'm sorry, I'm having trouble processing your request right now. Please try again later.",
+          text: "ALERT: Communication protocol interrupted. Possible network intrusion detected. Reestablishing secure connection... Please resubmit your query through the encrypted channel.",
           time: new Date(),
+          isError: true
         }
         setMessages((prev) => [...prev, errorMessage])
         setIsTyping(false)
@@ -82,18 +110,23 @@ const Chatbot = () => {
   const getBotResponse = (query) => {
     const lowerQuery = query.toLowerCase()
 
+    // Enhanced responses with cybersecurity formatting and terminology
     if (lowerQuery.includes("hello") || lowerQuery.includes("hi") || lowerQuery.includes("hey")) {
-      return "Hello! How can I assist you with cybersecurity today?"
+      return "IDENTITY VERIFIED. Greetings, user. Secure communication channel established. How may I assist with your cybersecurity concerns today?"
     } else if (lowerQuery.includes("cyber law") || lowerQuery.includes("law")) {
-      return "India's primary cybersecurity law is the Information Technology Act, 2000 (IT Act), which was amended in 2008. It provides legal recognition for electronic documents and digital signatures, and criminalizes various cyber offenses like hacking, data theft, and identity fraud. Would you like to know more about specific cyber laws?"
+      return "LEGAL DATABASE ACCESSED.\n\nIndia's primary cybersecurity framework is the Information Technology Act, 2000 (IT Act), amended in 2008 to address modern cyber threats.\n\nKEY PROVISIONS:\n• Legal recognition for electronic documents and digital signatures\n• Definition and criminalization of various cybercrimes including hacking, data theft, and identity fraud\n• Provisions for data protection and privacy\n• Penalties for cyberterrorism and cyber fraud\n\nWould you like details on specific sections or recent amendments?"
     } else if (lowerQuery.includes("complaint") || lowerQuery.includes("report")) {
-      return "To file a cybercrime complaint in India, you can: 1) Report on the National Cyber Crime Reporting Portal at cybercrime.gov.in, 2) Visit your local police station, or 3) Contact the cyber cell of your state police. Would you like me to guide you through the complaint process?"
+      return "INCIDENT RESPONSE PROTOCOL:\n\n1. DIGITAL REPORTING: Submit complaint on National Cyber Crime Reporting Portal (cybercrime.gov.in)\n2. PHYSICAL REPORTING: Visit local police station with evidence documentation\n3. SPECIALIZED UNITS: Contact cyber cell of state police for advanced threat response\n\nIMPORTANT: Preserve all digital evidence and maintain an incident timeline. Would you like me to guide you through the specific documentation requirements?"
     } else if (lowerQuery.includes("password") || lowerQuery.includes("secure password")) {
-      return "For a strong password: 1) Use at least 12 characters, 2) Mix uppercase, lowercase, numbers, and symbols, 3) Avoid personal information, 4) Don't use dictionary words, 5) Use a different password for each account, and 6) Consider using a password manager."
+      return "ACCESS CONTROL ADVISORY:\n\nEffective password hygiene requires:\n\n1. Minimum 16 characters with entropy >75 bits\n2. Multi-layer character sets (uppercase, lowercase, numerals, special symbols)\n3. Zero use of personally identifiable information\n4. Avoidance of dictionary terms and common substitutions\n5. Unique credentials for each system access point\n6. Implementation of hardware-based or cryptographic password management\n7. Regular credential rotation every 60-90 days\n\nRecommended: Enable multi-factor authentication wherever possible."
     } else if (lowerQuery.includes("phishing") || lowerQuery.includes("scam")) {
-      return "To avoid phishing scams: 1) Don't click on suspicious links, 2) Check email sender addresses carefully, 3) Be wary of urgent requests, 4) Verify requests for personal information, 5) Use multi-factor authentication, and 6) Keep your software updated."
+      return "THREAT DETECTION ALERT: Phishing countermeasures activated.\n\nDEFENSE PROTOCOLS:\n• Verify sender cryptographic signatures before link interaction\n• Implement URI parsing and inspection before navigation\n• Apply zero-trust policy to all external communication channels\n• Deploy multi-layer authentication for sensitive operations\n• Maintain system integrity through continuous security patching\n• Enable advanced spam filtering with behavioral analysis\n\nWARNING: Social engineering attacks are becoming increasingly sophisticated. Would you like a briefing on the latest threat vectors?"
+    } else if (lowerQuery.includes("encryption") || lowerQuery.includes("encrypt")) {
+      return "ENCRYPTION PROTOCOLS BRIEFING:\n\nRecommended standards for data-at-rest: AES-256, ChaCha20-Poly1305\nRecommended standards for data-in-transit: TLS 1.3, Signal Protocol\n\nKEY PRINCIPLES:\n• Implement end-to-end encryption for all communications\n• Use forward secrecy to protect historical data\n• Deploy hardware security modules for key management\n• Consider homomorphic encryption for cloud processing\n• Quantum-resistant algorithms recommended for long-term storage\n\nNOTE: Encryption is only as strong as your key management strategy."
+    } else if (lowerQuery.includes("vpn") || lowerQuery.includes("privacy")) {
+      return "PRIVACY SHIELD PROTOCOLS:\n\nVPN SELECTION CRITERIA:\n• No-logs policy (verified by independent audits)\n• RAM-only servers with zero data persistence\n• Multi-hop configurations for enhanced anonymity\n• WireGuard or OpenVPN with strong ciphers\n• Jurisdiction outside 14-Eyes intelligence alliance\n\nADDITIONAL PRIVACY LAYERS:\n• Tor network for highest anonymity requirements\n• DNS-over-HTTPS to prevent DNS leakage\n• Browser hardening against fingerprinting\n• Use of ephemeral operating systems for sensitive operations"
     } else {
-      return "I'm not sure I understand your question. Could you please rephrase or ask about Indian cyber laws, complaint procedures, or cybersecurity tips?"
+      return "QUERY ANALYSIS INCOMPLETE. Your request pattern doesn't match known security protocols in my database. Please reformulate your query regarding Indian cyber laws, security implementations, incident reporting procedures, or encryption methodologies."
     }
   }
 
@@ -105,8 +138,9 @@ const Chatbot = () => {
     const suggestions = [
       { text: "What are India's cyber laws?", icon: <FaLock /> },
       { text: "How to file a cybercrime complaint?", icon: <FaShieldAlt /> },
-      { text: "Tips for creating secure passwords", icon: <FaInfoCircle /> },
-      { text: "How to avoid phishing scams?", icon: <FaQuestionCircle /> },
+      { text: "Advanced password security protocols", icon: <FaFingerprint /> },
+      { text: "Latest phishing attack vectors", icon: <FaExclamationTriangle /> },
+      { text: "Encryption best practices", icon: <FaServer /> },
     ]
 
     return (
@@ -117,8 +151,7 @@ const Chatbot = () => {
             className="suggestion-btn"
             onClick={() => {
               setInput(suggestion.text)
-              // Focus on input after setting value
-              document.getElementById("chat-input").focus()
+              inputRef.current?.focus()
             }}
           >
             {suggestion.icon}
@@ -133,17 +166,25 @@ const Chatbot = () => {
     return (
       <div className="loading-container">
         <CyberSpinner size={60} />
-        <p>Initializing Cyber Assistant...</p>
+        <p className="loading-text">Initializing Secure Environment...</p>
+        <div className="security-scan-indicator">
+          <div className="scan-progress"></div>
+          <div className="scan-text">Scanning for threats: <span className="scan-percentage">78%</span></div>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="container py-8">
+    <div className={`container py-8 ${isGlitching ? 'glitching' : ''}`}>
       <div className="page-header">
         <div className="container">
-          <h1 className="glitch-text">Cyber Assistant</h1>
-          <p>Your AI-powered guide to cybersecurity and cyber laws in India</p>
+          <h1 className="glitch-text">CYBERSEC // ASSISTANT</h1>
+          <p>Advanced threat intelligence and security protocol implementation</p>
+          <div className="security-status">
+            <span className="security-indicator secure"></span>
+            <span className="security-level">SECURE CHANNEL ESTABLISHED</span>
+          </div>
         </div>
       </div>
 
@@ -151,18 +192,21 @@ const Chatbot = () => {
         <div className="chatbot-header">
           <div className="chatbot-title">
             <FaRobot className="text-primary" />
-            <span>Cyber Assistant</span>
+            <span>CyberSec Assistant <span className="version">v3.7.21</span></span>
           </div>
           <div className="chatbot-status">
             <span className="status-indicator online"></span>
-            <span>Online</span>
+            <span>ENCRYPTED</span>
+            <span className="encryption-protocol">AES-256</span>
           </div>
         </div>
 
         <div className="chatbot-messages">
           {messages.map((message) => (
-            <div key={message.id} className={`message ${message.type}`}>
-              <div className="message-avatar">{message.type === "bot" ? <FaRobot /> : <FaUser />}</div>
+            <div key={message.id} className={`message ${message.type} ${message.isError ? 'error' : ''}`}>
+              <div className="message-avatar">
+                {message.type === "bot" ? <FaRobot className="avatar-icon" /> : <FaUser className="avatar-icon" />}
+              </div>
               <div className="message-content">
                 <div className="message-text">{message.text}</div>
                 <div className="message-time">{formatTime(message.time)}</div>
@@ -173,7 +217,7 @@ const Chatbot = () => {
           {isTyping && (
             <div className="message bot">
               <div className="message-avatar">
-                <FaRobot />
+                <FaRobot className="avatar-icon" />
               </div>
               <div className="message-content">
                 <div className="typing-indicator">
@@ -193,8 +237,9 @@ const Chatbot = () => {
         <form className="chatbot-input" onSubmit={handleSubmit}>
           <input
             id="chat-input"
+            ref={inputRef}
             type="text"
-            placeholder="Type your message..."
+            placeholder="Enter security query..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={isTyping}
@@ -207,43 +252,54 @@ const Chatbot = () => {
 
       <div className="chatbot-info mt-8">
         <div className="cyber-panel">
-          <h2>About Cyber Assistant</h2>
-          <p>
-            The Cyber Assistant is an AI-powered chatbot designed to help you navigate cybersecurity issues, understand
-            Indian cyber laws, and learn how to protect yourself online.
+          <div className="panel-header">
+            <h2>SYSTEM CAPABILITIES</h2>
+            <div className="panel-status">ACTIVE</div>
+          </div>
+          
+          <p className="system-description">
+            CyberSec Assistant is a next-generation AI security system designed to provide real-time threat intelligence,
+            vulnerability assessment, and security protocol implementation guidance for the Indian cybersecurity landscape.
           </p>
 
-          <h3 className="mt-4">What can the Cyber Assistant help with?</h3>
+          <h3 className="module-header">ACTIVE SECURITY MODULES</h3>
           <ul className="feature-list">
             <li>
               <FaShieldAlt className="feature-icon" />
               <div>
-                <h4>Cybersecurity Guidance</h4>
-                <p>Get tips and best practices for staying safe online</p>
+                <h4>Advanced Threat Detection</h4>
+                <p>Real-time analysis of emerging attack vectors and zero-day exploits</p>
               </div>
             </li>
             <li>
               <FaLock className="feature-icon" />
               <div>
-                <h4>Indian Cyber Laws</h4>
-                <p>Learn about the legal framework governing cyberspace in India</p>
+                <h4>Regulatory Compliance</h4>
+                <p>Comprehensive knowledge of Indian IT Act and global security frameworks</p>
               </div>
             </li>
             <li>
-              <FaInfoCircle className="feature-icon" />
+              <FaExclamationTriangle className="feature-icon" />
               <div>
-                <h4>Complaint Procedures</h4>
-                <p>Understand how to report cybercrimes to the appropriate authorities</p>
+                <h4>Incident Response</h4>
+                <p>Step-by-step breach containment and evidence preservation protocols</p>
               </div>
             </li>
             <li>
-              <FaQuestionCircle className="feature-icon" />
+              <FaServer className="feature-icon" />
               <div>
-                <h4>Security Resources</h4>
-                <p>Find helpful resources for various cybersecurity concerns</p>
+                <h4>Security Architecture</h4>
+                <p>Zero-trust implementation strategies for network and data protection</p>
               </div>
             </li>
           </ul>
+          
+          <div className="system-footer">
+            <div className="encryption-badge">
+              <FaFingerprint className="badge-icon" />
+              <span>END-TO-END ENCRYPTED</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

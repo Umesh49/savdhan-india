@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { BrowserRouter as Router } from "react-router-dom"
+import { useState } from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { AuthProvider } from "./contexts/AuthContext"
 import { ThemeProvider } from "./contexts/ThemeContext"
 
@@ -17,18 +17,9 @@ import MatrixBackground from "./components/common/MatrixBackground"
 import AppRoutes from "./routes"
 
 function App() {
-  const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [chatbotOpen, setChatbotOpen] = useState(false)
-
-  useEffect(() => {
-    // Simulate loading time for splash screen
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2500)
-
-    return () => clearTimeout(timer)
-  }, [])
+  const [showMainApp, setShowMainApp] = useState(false)
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen)
@@ -38,29 +29,33 @@ function App() {
     setChatbotOpen(!chatbotOpen)
   }
 
-  if (loading) {
-    return <SplashScreen />
+  const enterMainApp = () => {
+    setShowMainApp(true)
   }
 
   return (
     <AuthProvider>
       <ThemeProvider>
         <Router>
-          <div className="app">
-            <MatrixBackground />
-            <Header toggleSidebar={toggleSidebar} />
-            <div className="main-content">
-              <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-              <main className={`content ${sidebarOpen ? "sidebar-active" : ""}`}>
-                <AppRoutes />
-                <Footer />
-              </main>
+          {!showMainApp ? (
+            <SplashScreen onEnter={enterMainApp} />
+          ) : (
+            <div className="app">
+              <MatrixBackground />
+              <Header toggleSidebar={toggleSidebar} />
+              <div className="main-content">
+                <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+                <main className={`content ${sidebarOpen ? "sidebar-active" : ""}`}>
+                  <AppRoutes />
+                  <Footer />
+                </main>
+              </div>
+              {chatbotOpen && <ChatbotWidget closeChatbot={() => setChatbotOpen(false)} />}
+              <button className="chatbot-toggle-btn" onClick={toggleChatbot}>
+                {chatbotOpen ? "Close Assistant" : "Cyber Assistant"}
+              </button>
             </div>
-            {chatbotOpen && <ChatbotWidget closeChatbot={() => setChatbotOpen(false)} />}
-            <button className="chatbot-toggle-btn" onClick={toggleChatbot}>
-              {chatbotOpen ? "Close Assistant" : "Cyber Assistant"}
-            </button>
-          </div>
+          )}
         </Router>
       </ThemeProvider>
     </AuthProvider>

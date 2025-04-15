@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Link, useLocation } from "react-router-dom"
 import {
   FaHome,
@@ -19,13 +19,31 @@ import {
   FaTerminal,
   FaLock,
   FaBug,
-  FaExclamationTriangle
+  FaExclamationTriangle,
+  FaChevronRight
 } from "react-icons/fa"
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const location = useLocation()
   const [typewriterText, setTypewriterText] = useState("")
   const terminalText = "// SYSTEM: SAVDHAAN INDIA TERMINAL v1.3.37"
+  const sidebarRef = useRef(null)
+  
+  // Handle click outside to close sidebar on mobile
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target) && window.innerWidth < 768) {
+        toggleSidebar();
+      }
+    }
+    
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, toggleSidebar]);
 
   // Close sidebar when route changes on mobile
   useEffect(() => {
@@ -49,7 +67,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
       } else {
         clearInterval(timer);
       }
-    }, 50);
+    }, 40);
     
     return () => clearInterval(timer);
   }, [isOpen]);
@@ -75,18 +93,20 @@ function Sidebar({ isOpen, toggleSidebar }) {
       {/* Backdrop for mobile */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-70 z-40 backdrop-blur-sm md:hidden transition-opacity duration-300"
           onClick={toggleSidebar}
+          aria-hidden="true"
         />
       )}
     
       <aside 
-        className={`fixed top-0 left-0 z-50 h-full w-72 max-w-[80vw] bg-black border-r border-green-500/30 shadow-lg transform transition-transform duration-300 overflow-hidden ${
+        ref={sidebarRef}
+        className={`fixed top-0 left-0 z-50 h-full w-72 max-w-[85vw] bg-black border-r border-green-500/30 shadow-lg shadow-green-500/10 transform transition-all duration-300 ease-in-out overflow-hidden ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Terminal-style header */}
-        <div className="p-4 border-b border-green-500/30 bg-black">
+        <div className="p-4 border-b border-green-500/30 bg-black/90">
           <div className="flex items-center justify-between">
             <div className="flex gap-2">
               <span className="h-3 w-3 rounded-full bg-red-500"></span>
@@ -94,7 +114,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
               <span className="h-3 w-3 rounded-full bg-green-500"></span>
             </div>
             <button 
-              className="text-green-500 hover:text-green-400 transition-colors"
+              className="text-green-500 hover:text-green-400 transition-colors p-1.5 rounded-full hover:bg-green-500/10"
               onClick={toggleSidebar}
               aria-label="Close sidebar"
             >
@@ -103,47 +123,54 @@ function Sidebar({ isOpen, toggleSidebar }) {
           </div>
           
           <div className="mt-4 font-mono text-green-500 h-6 flex items-center">
-            <span className="blink-cursor">{typewriterText}</span>
+            <span className="inline-block">{typewriterText}</span>
+            <span className="ml-1 w-2 h-4 bg-green-500 animate-blink-cursor"></span>
           </div>
         </div>
         
         {/* Navigation */}
-        <nav className="h-[calc(100%-12rem)] overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-black scrollbar-thumb-rounded">
+        <nav className="h-[calc(100%-12rem)] overflow-y-auto py-4">
           <ul className="space-y-1 px-2">
-            {navItems.map((item) => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  onClick={(e) => {
-                    if (item.path === location.pathname) {
-                      e.preventDefault()
-                    }
-                  }}
-                  className={`flex items-center gap-3 px-4 py-2.5 rounded-md transition-all group ${
-                    location.pathname === item.path
-                      ? "bg-green-500/20 text-green-400 border-l-2 border-green-500"
-                      : "text-gray-400 hover:bg-green-500/10 hover:text-green-500"
-                  }`}
-                >
-                  <span className="text-lg">{item.icon}</span>
-                  <span>{item.label}</span>
-                  {location.pathname === item.path && (
-                    <span className="ml-auto text-xs font-mono text-green-500">//active</span>
-                  )}
-                </Link>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    onClick={(e) => {
+                      if (item.path === location.pathname) {
+                        e.preventDefault()
+                      }
+                    }}
+                    className={`flex items-center gap-3 px-4 py-2.5 rounded-md transition-all group relative ${
+                      isActive
+                        ? "bg-green-500/20 text-green-400 border-l-2 border-green-500"
+                        : "text-gray-400 hover:bg-green-500/10 hover:text-green-500 hover:border-l hover:border-green-500/50"
+                    }`}
+                  >
+                    <span className={`text-lg ${isActive ? 'text-green-500' : 'text-green-500/70'}`}>{item.icon}</span>
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <span className="ml-auto text-xs font-mono text-green-500 opacity-80">//active</span>
+                    )}
+                    {!isActive && (
+                      <FaChevronRight className="ml-auto text-xs opacity-0 group-hover:opacity-50 transition-opacity" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
         
         {/* Footer with emergency contact */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-green-500/30 bg-black/80 backdrop-blur-sm">
-          <div className="bg-black/80 border border-green-500/30 rounded-md p-3">
+          <div className="bg-black/90 border border-red-500/50 rounded-md p-3 shadow-sm shadow-red-500/20">
             <div className="flex items-center gap-2 mb-2 text-red-500">
-              <FaExclamationTriangle />
-              <h3 className="font-mono text-sm font-bold animate-pulse">EMERGENCY ACCESS</h3>
+              <FaExclamationTriangle className="animate-pulse" />
+              <h3 className="font-mono text-sm font-bold">EMERGENCY ACCESS</h3>
             </div>
-            <div className="space-y-1">
+            <div className="space-y-2">
               <p className="flex items-center justify-between text-xs text-white">
                 <span className="flex items-center gap-1">
                   <FaTerminal className="text-green-500" />
