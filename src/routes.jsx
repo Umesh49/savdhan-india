@@ -18,7 +18,7 @@ const SecurityChecklist = lazy(() =>
 );
 const FAQ = lazy(() => import("./components/FAQ"));
 const Contact = lazy(() => import("./components/Contact"));
-const AboutUs = lazy(() => import("./components/common/AboutUs"));
+const AboutUs = lazy(() => import("./components/About/AboutUs"));
 const Login = lazy(() => import("./components/auth/Login"));
 const Register = lazy(() => import("./components/auth/Register"));
 const Dashboard = lazy(() => import("./components/Dashboard"));
