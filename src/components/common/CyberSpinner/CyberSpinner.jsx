@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect, useMemo } from "react"
 import { FaShieldAlt, FaLock, FaExclamationTriangle, FaFingerprint, FaKey, FaUserShield } from "react-icons/fa"
+import './CyberSpinner.css'
 
 function CyberSpinner({
   size = "medium",

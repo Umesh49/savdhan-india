@@ -17,7 +17,7 @@ import {
   FaAngleLeft,
   FaAngleRight,
 } from "react-icons/fa"
-import CyberSpinner from "../common/CyberSpinner"
+import CyberSpinner from "../common/CyberSpinner/CyberSpinner.jsx"
 import "./faq.css"
 import faqs from "./FAQ_Data.js"
 
