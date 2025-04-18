@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
-import { FaSearch, FaChevronDown, FaChevronRight, FaQuestionCircle, FaFilter } from "react-icons/fa"
+import { FaSearch, FaChevronDown, FaChevronRight, FaQuestionCircle, FaShieldAlt, FaFileAlt, FaLock, FaUserSecret, FaHeadset } from "react-icons/fa"
 import CyberSpinner from "./common/CyberSpinner"
+import "./styles/FAQStyles.css"
 
 function FAQ() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -14,7 +15,6 @@ function FAQ() {
   const faqListRef = useRef(null)
 
   useEffect(() => {
-    // Simulate loading
     const timer = setTimeout(() => {
       setIsLoading(false)
     }, 1000)
@@ -23,12 +23,9 @@ function FAQ() {
   }, [])
 
   useEffect(() => {
-    // Reset animated items when category or search changes
     setAnimatedItems([])
-
-    // Animate items in sequence
     if (!isLoading && faqListRef.current) {
-      const items = Array.from(faqListRef.current.querySelectorAll(".faq-item"))
+      const items = Array.from(faqListRef.current.querySelectorAll(".safeguard-faq-item"))
       let delay = 0
 
       const animationInterval = setInterval(() => {
@@ -46,7 +43,6 @@ function FAQ() {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    // Filter FAQs based on search query is handled in the filteredFaqs variable
   }
 
   const handleCategoryClick = (category) => {
@@ -60,11 +56,11 @@ function FAQ() {
 
   const categories = [
     { id: "general", name: "General", icon: <FaQuestionCircle /> },
-    { id: "laws", name: "Indian Laws", icon: <FaFilter /> },
-    { id: "complaints", name: "Filing Complaints", icon: <FaFilter /> },
-    { id: "security", name: "Cybersecurity", icon: <FaFilter /> },
-    { id: "privacy", name: "Privacy & Data Protection", icon: <FaFilter /> },
-    { id: "contact", name: "Contact & Support", icon: <FaFilter /> },
+    { id: "laws", name: "Indian Laws", icon: <FaFileAlt /> },
+    { id: "complaints", name: "Filing Complaints", icon: <FaShieldAlt /> },
+    { id: "security", name: "Cybersecurity", icon: <FaLock /> },
+    { id: "privacy", name: "Privacy & Data Protection", icon: <FaUserSecret /> },
+    { id: "contact", name: "Contact & Support", icon: <FaHeadset /> },
   ]
 
   // Mock FAQ data
@@ -238,7 +234,6 @@ function FAQ() {
     ],
   }
 
-  // Filter FAQs based on search query
   const filteredFaqs =
     searchQuery.trim() !== ""
       ? Object.values(faqs)
@@ -251,85 +246,102 @@ function FAQ() {
       : faqs[activeCategory]
 
   return (
-    <div className="faq-page">
-      <section className="page-header">
-        <div className="container">
-          <h1>Frequently Asked Questions</h1>
-          <p>Find answers to common questions about cybersecurity, Indian laws, and complaint procedures.</p>
+    <div className="safeguard-faq-page">
+      <section className="safeguard-page-header">
+        <div className="safeguard-container">
+          <h1 className="safeguard-header-title">Frequently Asked Questions</h1>
+          <p className="safeguard-header-subtitle">Find answers to common questions about cybersecurity, Indian laws, and complaint procedures.</p>
+          <div className="safeguard-terminal-line">
+            <span className="safeguard-prompt">~/safeguard/faq $</span>
+            <span className="safeguard-blink">_</span>
+          </div>
         </div>
       </section>
 
-      <section className="faq-search cyber-grid-bg">
-        <div className="container">
-          <form className="search-form cyber-panel" onSubmit={handleSearch}>
-            <div className="search-input">
-              <FaSearch />
+      <section className="safeguard-faq-search">
+        <div className="safeguard-container">
+          <form className="safeguard-search-form" onSubmit={handleSearch}>
+            <div className="safeguard-search-input">
+              <FaSearch className="safeguard-search-icon" />
               <input
                 type="text"
-                placeholder="Search FAQs..."
+                placeholder="access * from database where question like '%search%'"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                className="safeguard-input"
               />
             </div>
-            <button type="submit" className="btn-primary">
-              Search
+            <button type="submit" className="safeguard-btn-primary">
+              EXECUTE
             </button>
           </form>
         </div>
       </section>
 
-      <section className="faq-content">
-        <div className="container">
+      <section className="safeguard-faq-content">
+        <div className="safeguard-container">
           {isLoading ? (
-            <div className="loading-container" style={{ padding: "4rem 0", textAlign: "center" }}>
-              <CyberSpinner size="large" text="Loading FAQ data..." />
+            <div className="safeguard-loading-container">
+              <CyberSpinner size="large" text="Initializing FAQ system..." />
             </div>
           ) : (
-            <div className="faq-layout">
+            <div className="safeguard-faq-layout">
               {searchQuery.trim() === "" && (
-                <div className="faq-categories cyber-panel">
-                  <h2>Categories</h2>
-                  <ul>
+                <div className="safeguard-faq-categories">
+                  <h2 className="safeguard-categories-title">System Modules</h2>
+                  <ul className="safeguard-categories-list">
                     {categories.map((category) => (
                       <li
                         key={category.id}
-                        className={`category-item ${activeCategory === category.id ? "active" : ""}`}
+                        className={`safeguard-category-item ${activeCategory === category.id ? "active" : ""}`}
                         onClick={() => handleCategoryClick(category.id)}
                       >
-                        <span className="category-icon">{category.icon}</span>
-                        <span className="category-name">{category.name}</span>
+                        <span className="safeguard-category-icon">{category.icon}</span>
+                        <span className="safeguard-category-name">{category.name}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
 
-              <div className="faq-list cyber-panel">
-                {searchQuery.trim() !== "" && <h2>Search Results ({filteredFaqs.length})</h2>}
+              <div className="safeguard-faq-list">
+                {searchQuery.trim() !== "" && (
+                  <h2 className="safeguard-list-title">
+                    Search Results 
+                    <span className="safeguard-result-count">[{filteredFaqs.length}]</span>
+                  </h2>
+                )}
 
-                {searchQuery.trim() === "" && <h2>{categories.find((c) => c.id === activeCategory)?.name} FAQs</h2>}
+                {searchQuery.trim() === "" && (
+                  <h2 className="safeguard-list-title">
+                    <span className="safeguard-module-name">{categories.find((c) => c.id === activeCategory)?.name}</span> Module
+                  </h2>
+                )}
 
                 {filteredFaqs.length === 0 ? (
-                  <div className="no-results">
-                    <p>No FAQs found matching your search. Please try different keywords or browse by category.</p>
+                  <div className="safeguard-no-results">
+                    <div className="safeguard-error-code">404_NOT_FOUND</div>
+                    <p>No matching entries in database. Try different search parameters or browse available modules.</p>
                   </div>
                 ) : (
-                  <div className="faq-container" ref={faqListRef}>
+                  <div className="safeguard-faq-container" ref={faqListRef}>
                     {filteredFaqs.map((faq, index) => (
                       <div
                         key={index}
-                        className={`faq-item ${activeFaq === index ? "active" : ""} ${animatedItems.includes(index.toString()) ? "animated" : ""}`}
+                        className={`safeguard-faq-item ${activeFaq === index ? "active" : ""} ${
+                          animatedItems.includes(index.toString()) ? "animated" : ""
+                        }`}
                         data-index={index}
                       >
-                        <div className="faq-question" onClick={() => handleFaqClick(index)}>
-                          <h3>{faq.question}</h3>
-                          <div className="faq-toggle">
+                        <div className="safeguard-faq-question" onClick={() => handleFaqClick(index)}>
+                          <h3 className="safeguard-question-text">{faq.question}</h3>
+                          <div className="safeguard-faq-toggle">
                             {activeFaq === index ? <FaChevronDown /> : <FaChevronRight />}
                           </div>
                         </div>
 
                         {activeFaq === index && (
-                          <div className="faq-answer">
+                          <div className="safeguard-faq-answer">
                             <p>{faq.answer}</p>
                           </div>
                         )}
@@ -343,224 +355,35 @@ function FAQ() {
         </div>
       </section>
 
-      <section className="faq-more-help">
-        <div className="container">
-          <h2>Need More Help?</h2>
-          <p>Can't find what you're looking for? We're here to help.</p>
-          <div className="help-options">
-            <div className="help-option cyber-panel">
-              <h3>Ask Our Chatbot</h3>
-              <p>Get instant answers to your questions from our AI assistant.</p>
-              <Link to="/chatbot" className="btn-primary">
-                Chat Now
+      <section className="safeguard-faq-more-help">
+        <div className="safeguard-container">
+          <h2 className="safeguard-more-help-title">Need More Assistance?</h2>
+          <p className="safeguard-more-help-subtitle">Additional system modules available for your security needs.</p>
+          <div className="safeguard-help-options">
+            <div className="safeguard-help-option">
+              <h3 className="safeguard-option-title">Activate AI Assistant</h3>
+              <p>Deploy AI-powered neural network for real-time security analysis and guidance.</p>
+              <Link to="/chatbot" className="safeguard-btn-terminal">
+                ./initialize_ai.sh
               </Link>
             </div>
-            <div className="help-option cyber-panel">
-              <h3>Contact Support</h3>
-              <p>Reach out to our support team for personalized assistance.</p>
-              <Link to="/contact" className="btn-secondary">
-                Contact Us
+            <div className="safeguard-help-option">
+              <h3 className="safeguard-option-title">Contact Security Team</h3>
+              <p>Establish secure connection with our cybersecurity specialists.</p>
+              <Link to="/contact" className="safeguard-btn-terminal">
+                ssh secure@support.safeguard.in
               </Link>
             </div>
-            <div className="help-option cyber-panel">
-              <h3>File a Complaint</h3>
-              <p>Ready to report a cybercrime? Use our guided complaint form.</p>
-              <Link to="/complaint-form" className="btn-outline">
-                File Complaint
+            <div className="safeguard-help-option">
+              <h3 className="safeguard-option-title">Submit Incident Report</h3>
+              <p>Document and track security breach or vulnerability using our guided reporting system.</p>
+              <Link to="/complaint-form" className="safeguard-btn-terminal">
+                ./report_incident --guided
               </Link>
             </div>
           </div>
         </div>
       </section>
-
-      <style jsx>{`
-        .faq-page {
-          padding-bottom: 4rem;
-        }
-        
-        .faq-search {
-          padding: 2rem 0;
-          position: relative;
-        }
-        
-        .search-form {
-          display: flex;
-          gap: 1rem;
-          max-width: 800px;
-          margin: 0 auto;
-        }
-        
-        .search-input {
-          flex: 1;
-          position: relative;
-        }
-        
-        .search-input input {
-          width: 100%;
-          padding: 1rem 1rem 1rem 3rem;
-          border: 1px solid var(--primary-color);
-          background-color: rgba(0, 0, 0, 0.2);
-          color: var(--text-color);
-          border-radius: 0;
-        }
-        
-        .search-input svg {
-          position: absolute;
-          top: 50%;
-          left: 1rem;
-          transform: translateY(-50%);
-          color: var(--primary-color);
-        }
-        
-        .faq-layout {
-          display: grid;
-          grid-template-columns: 300px 1fr;
-          gap: 2rem;
-        }
-        
-        @media (max-width: 768px) {
-          .faq-layout {
-            grid-template-columns: 1fr;
-          }
-        }
-        
-        .faq-categories {
-          height: fit-content;
-        }
-        
-        .faq-categories h2 {
-          margin-bottom: 1.5rem;
-          padding-bottom: 0.5rem;
-          border-bottom: 1px solid var(--border-color);
-        }
-        
-        .category-item {
-          display: flex;
-          align-items: center;
-          padding: 0.75rem 1rem;
-          margin-bottom: 0.5rem;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          border-left: 3px solid transparent;
-        }
-        
-        .category-item:hover {
-          background-color: rgba(0, 255, 65, 0.1);
-        }
-        
-        .category-item.active {
-          background-color: rgba(0, 255, 65, 0.15);
-          border-left-color: var(--primary-color);
-        }
-        
-        .category-icon {
-          margin-right: 0.75rem;
-          color: var(--primary-color);
-        }
-        
-        .faq-list h2 {
-          margin-bottom: 1.5rem;
-          padding-bottom: 0.5rem;
-          border-bottom: 1px solid var(--border-color);
-        }
-        
-        .faq-item {
-          margin-bottom: 1rem;
-          border: 1px solid var(--border-color);
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        
-        .faq-item.animated {
-          animation: fadeInUp 0.5s forwards;
-        }
-        
-        .faq-question {
-          padding: 1rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-        
-        .faq-question:hover {
-          background-color: rgba(0, 255, 65, 0.05);
-        }
-        
-        .faq-question h3 {
-          margin: 0;
-          font-size: 1.1rem;
-          flex: 1;
-        }
-        
-        .faq-toggle {
-          color: var(--primary-color);
-          transition: transform 0.3s ease;
-        }
-        
-        .faq-item.active .faq-toggle {
-          transform: rotate(90deg);
-        }
-        
-        .faq-answer {
-          padding: 0 1rem 1rem;
-          border-top: 1px solid var(--border-color);
-          animation: fadeIn 0.5s ease;
-        }
-        
-        .no-results {
-          padding: 2rem;
-          text-align: center;
-          background-color: rgba(255, 0, 0, 0.1);
-          border: 1px solid rgba(255, 0, 0, 0.3);
-        }
-        
-        .help-options {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 2rem;
-        }
-        
-        .help-option {
-          padding: 2rem;
-          text-align: center;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .help-option:hover {
-          transform: translateY(-10px);
-        }
-        
-        .help-option h3 {
-          margin-bottom: 1rem;
-        }
-        
-        .help-option p {
-          margin-bottom: 1.5rem;
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-      `}</style>
     </div>
   )
 }

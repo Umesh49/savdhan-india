@@ -1,0 +1,208 @@
+.cyber-spin-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.cyber-spin-spinner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cyber-spin-spinner-icon {
+  color: var(--color-main, #00ff41);
+  z-index: 2;
+  animation: cyber-spin-pulse 2s infinite;
+  filter: drop-shadow(0 0 5px var(--color-glow, rgba(0, 255, 65, 0.7)));
+}
+
+.cyber-spin-spinner-ring {
+  position: absolute;
+  border-radius: 50%;
+  animation: cyber-spin-rotate 2s linear infinite;
+}
+
+.cyber-spin-spinner-ring--inner {
+  border: 2px solid transparent;
+  border-top-color: var(--color-main, #00ff41);
+  border-right-color: rgba(0, 255, 65, 0.4);
+}
+
+.cyber-spin-spinner-ring--outer {
+  border: 1px solid transparent;
+  border-bottom-color: var(--color-secondary, rgba(0, 200, 50, 0.8));
+  border-left-color: rgba(0, 200, 50, 0.4);
+  animation: cyber-spin-rotate 3s linear infinite reverse;
+}
+
+.cyber-spin-spinner-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3), 0 0 30px rgba(0, 255, 65, 0.2);
+  animation: cyber-spin-pulse 2s infinite alternate;
+}
+
+.cyber-spin-spinner-scanline {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(0, 255, 65, 0.5);
+  animation: cyber-spin-scanline 2s linear infinite;
+  opacity: 0.7;
+}
+
+.cyber-spin-spinner-text {
+  margin-top: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--color-main, #00ff41);
+  font-size: 0.9rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: cyber-spin-flicker 4s linear infinite;
+  position: relative;
+}
+
+.cyber-spin-spinner-text::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  width: 8px;
+  height: 2px;
+  background-color: var(--color-main, #00ff41);
+  animation: cyber-spin-blink 1s infinite;
+}
+
+.cyber-spin-spinner-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  width: 8px;
+  height: 2px;
+  background-color: var(--color-main, #00ff41);
+  animation: cyber-spin-blink 1s infinite reverse;
+}
+
+.cyber-spin-spinner-binary {
+  margin-top: 0.5rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--color-secondary, rgba(0, 200, 50, 0.8));
+  letter-spacing: 2px;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.cyber-spin-spinner-binary--highlight {
+  color: var(--color-main, #00ff41);
+  text-shadow: 0 0 5px var(--color-glow, rgba(0, 255, 65, 0.7));
+}
+
+@keyframes cyber-spin-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes cyber-spin-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cyber-spin-scanline {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(150%);
+    opacity: 0.5;
+  }
+}
+
+@keyframes cyber-spin-flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  22%,
+  24%,
+  55% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes cyber-spin-blink {
+  0%,
+  49% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.cyber-spin-spinner--green {
+  --color-main: #00ff41;
+  --color-glow: rgba(0, 255, 65, 0.7);
+  --color-secondary: rgba(0, 200, 50, 0.8);
+}
+
+.cyber-spin-spinner--blue {
+  --color-main: #0cebff;
+  --color-glow: rgba(12, 235, 255, 0.7);
+  --color-secondary: rgba(0, 119, 255, 0.8);
+}
+
+.cyber-spin-spinner--purple {
+  --color-main: #ff00ff;
+  --color-glow: rgba(255, 0, 255, 0.7);
+  --color-secondary: rgba(200, 0, 200, 0.8);
+}
+
+.cyber-spin-spinner--red {
+  --color-main: #ff0055;
+  --color-glow: rgba(255, 0, 85, 0.7);
+  --color-secondary: rgba(200, 0, 50, 0.8);
+}
+
+@media (max-width: 640px) {
+  .cyber-spin-spinner-binary {
+    max-width: 90vw;
+    font-size: 0.6rem;
+  }
+}

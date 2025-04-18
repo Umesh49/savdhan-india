@@ -1,9 +1,8 @@
-// src/routes.jsx
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoadingSpinner from "./components/common/LoadingSpinner";
 
-// Lazy‐loaded pages
+// Lazy-loaded pages
 const Home = lazy(() => import("./components/Home"));
 const IndianLaws = lazy(() => import("./components/IndianLaws"));
 const ComplaintGuide = lazy(() => import("./components/ComplaintGuide"));
@@ -33,14 +32,13 @@ const TermsOfService = lazy(() =>
 const NotFound = lazy(() => import("./components/common/NotFound"));
 
 const ProtectedRoute = ({ children }) => {
-  // TODO: add real auth‐check here
-  return children;
+ return children;
 };
 
 export default function AppRoutes() {
   return (
     <Suspense fallback={<LoadingSpinner />}>
-      <Routes>
+      <Routes>        
         {/* Public */}
         <Route path="/home" element={<Home />} />
         <Route path="/indian-laws" element={<IndianLaws />} />
@@ -71,11 +69,11 @@ export default function AppRoutes() {
           path="/terms-of-service"
           element={<TermsOfService />}
         />
-
+        
         {/* Unauthenticated */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+        
         {/* Protected */}
         <Route
           path="/dashboard"
@@ -85,7 +83,7 @@ export default function AppRoutes() {
             </ProtectedRoute>
           }
         />
-
+        
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
