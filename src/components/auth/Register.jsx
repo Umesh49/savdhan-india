@@ -1,9 +1,23 @@
-"use client"
-
+// Register.jsx
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { FaUser, FaEnvelope, FaLock, FaPhone, FaUserPlus, FaExclamationCircle } from "react-icons/fa"
-import { register } from "../../utils/api"
+import { FaUser, FaEnvelope, FaLock, FaPhone, FaExclamationCircle, FaUserShield } from "react-icons/fa"
+import { IoShieldHalfSharp } from "react-icons/io5"
+import { BiSolidLockAlt } from "react-icons/bi"
+import './Auth.css';
+
+// Mock API function (replace with your actual API call)
+const register = async (userData) => {
+  // Simulate API call
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      // Mock response
+      resolve({
+        success: true,
+        message: "Registration successful"
+      });
+    }, 1000);
+  });
+};
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -18,8 +32,6 @@ function Register() {
   const [isLoading, setIsLoading] = useState(false)
   const [registerError, setRegisterError] = useState(null)
   const [registerSuccess, setRegisterSuccess] = useState(null)
-
-  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -85,17 +97,17 @@ function Register() {
         const response = await register(userData)
 
         if (response.success) {
-          setRegisterSuccess("Registration successful! Please check your email to verify your account.")
+          setRegisterSuccess("Security profile created! Please verify your email to activate full protection.")
 
           // Redirect to login page after a delay
           setTimeout(() => {
-            navigate("/login")
+            window.location.href = "/login"
           }, 3000)
         } else {
-          setRegisterError(response.message || "Registration failed. Please try again.")
+          setRegisterError(response.message || "Security registration failed. Please try again.")
         }
       } catch (error) {
-        setRegisterError(error.message || "Registration failed. Please try again.")
+        setRegisterError(error.message || "Security registration failed. Please try again.")
       } finally {
         setIsLoading(false)
       }
@@ -103,33 +115,41 @@ function Register() {
   }
 
   return (
-    <div className="auth-page">
-      <div className="auth-container">
-        <div className="auth-card">
-          <div className="auth-header">
+    <div className="savdhaan-auth-page">
+      <div className="savdhaan-auth-container">
+        <div className="savdhaan-logo">
+          <h1>Savdhaan India</h1>
+          <p>Cyber Security Awareness Portal</p>
+        </div>
+        
+        <div className="savdhaan-auth-card">
+          <IoShieldHalfSharp className="savdhaan-security-icon shield" />
+          <BiSolidLockAlt className="savdhaan-security-icon lock" />
+          
+          <div className="savdhaan-auth-header">
             <h2>
-              <FaUserPlus /> Register
+              <FaUserShield /> Create Secure Profile
             </h2>
-            <p>Create your account</p>
+            <p>Join our protected network</p>
           </div>
 
           {registerError && (
-            <div className="auth-error">
+            <div className="savdhaan-auth-error">
               <FaExclamationCircle />
               <span>{registerError}</span>
             </div>
           )}
 
           {registerSuccess && (
-            <div className="auth-success">
+            <div className="savdhaan-auth-success">
               <span>{registerSuccess}</span>
             </div>
           )}
 
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+          <form className="savdhaan-auth-form" onSubmit={handleSubmit}>
+            <div className="savdhaan-form-group">
               <label htmlFor="name">
-                <FaUser /> Full Name
+                <FaUser /> Identity Name
               </label>
               <input
                 type="text"
@@ -140,12 +160,12 @@ function Register() {
                 className={errors.name ? "error" : ""}
                 placeholder="Enter your full name"
               />
-              {errors.name && <span className="error-message">{errors.name}</span>}
+              {errors.name && <span className="savdhaan-error-message">{errors.name}</span>}
             </div>
 
-            <div className="form-group">
+            <div className="savdhaan-form-group">
               <label htmlFor="email">
-                <FaEnvelope /> Email Address
+                <FaEnvelope /> Secure Email
               </label>
               <input
                 type="email"
@@ -154,14 +174,14 @@ function Register() {
                 value={formData.email}
                 onChange={handleChange}
                 className={errors.email ? "error" : ""}
-                placeholder="Enter your email"
+                placeholder="Enter your verification email"
               />
-              {errors.email && <span className="error-message">{errors.email}</span>}
+              {errors.email && <span className="savdhaan-error-message">{errors.email}</span>}
             </div>
 
-            <div className="form-group">
+            <div className="savdhaan-form-group">
               <label htmlFor="phone">
-                <FaPhone /> Phone Number
+                <FaPhone /> Recovery Contact
               </label>
               <input
                 type="tel"
@@ -170,14 +190,14 @@ function Register() {
                 value={formData.phone}
                 onChange={handleChange}
                 className={errors.phone ? "error" : ""}
-                placeholder="Enter your 10-digit phone number"
+                placeholder="Enter your 10-digit recovery number"
               />
-              {errors.phone && <span className="error-message">{errors.phone}</span>}
+              {errors.phone && <span className="savdhaan-error-message">{errors.phone}</span>}
             </div>
 
-            <div className="form-group">
+            <div className="savdhaan-form-group">
               <label htmlFor="password">
-                <FaLock /> Password
+                <FaLock /> Encryption Key
               </label>
               <input
                 type="password"
@@ -186,14 +206,14 @@ function Register() {
                 value={formData.password}
                 onChange={handleChange}
                 className={errors.password ? "error" : ""}
-                placeholder="Create a password"
+                placeholder="Create a strong password"
               />
-              {errors.password && <span className="error-message">{errors.password}</span>}
+              {errors.password && <span className="savdhaan-error-message">{errors.password}</span>}
             </div>
 
-            <div className="form-group">
+            <div className="savdhaan-form-group">
               <label htmlFor="confirmPassword">
-                <FaLock /> Confirm Password
+                <FaLock /> Verify Encryption Key
               </label>
               <input
                 type="password"
@@ -204,17 +224,17 @@ function Register() {
                 className={errors.confirmPassword ? "error" : ""}
                 placeholder="Confirm your password"
               />
-              {errors.confirmPassword && <span className="error-message">{errors.confirmPassword}</span>}
+              {errors.confirmPassword && <span className="savdhaan-error-message">{errors.confirmPassword}</span>}
             </div>
 
-            <button type="submit" className="btn-primary btn-block" disabled={isLoading}>
-              {isLoading ? "Registering..." : "Register"}
+            <button type="submit" className="savdhaan-btn-primary" disabled={isLoading}>
+              {isLoading ? "Securing Profile..." : "Create Protected Account"}
             </button>
           </form>
 
-          <div className="auth-footer">
+          <div className="savdhaan-auth-footer">
             <p>
-              Already have an account? <Link to="/login">Login</Link>
+              Already have security clearance? <a href="/login">Secure Login</a>
             </p>
           </div>
         </div>

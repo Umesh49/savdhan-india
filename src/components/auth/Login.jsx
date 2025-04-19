@@ -1,12 +1,26 @@
-"use client"
-
+// Login.jsx
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { FaEnvelope, FaLock, FaSignInAlt, FaExclamationCircle } from "react-icons/fa"
-import { login } from "../../utils/api"
-import { useAuth } from "../../contexts/AuthContext"
+import { FaEnvelope, FaLock, FaExclamationCircle, FaUserShield } from "react-icons/fa"
+import { BiSolidLockAlt } from "react-icons/bi"
+import { IoShieldCheckmarkSharp } from "react-icons/io5"
+import './Auth.css';
 
-function Login() {
+// Mock API function (replace with your actual API call)
+const login = async (userData) => {
+  // Simulate API call
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      // Mock response
+      resolve({
+        success: true,
+        token: "mock-token-12345",
+        user: { id: 1, name: "User", email: userData.email }
+      });
+    }, 1000);
+  });
+};
+
+function Login({ setUser }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,9 +30,6 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false)
   const [loginError, setLoginError] = useState(null)
 
-  const navigate = useNavigate()
-  const { setUser } = useAuth()
-
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({
@@ -26,7 +37,6 @@ function Login() {
       [name]: value,
     })
 
-    // Clear error when field is edited
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -67,10 +77,12 @@ function Login() {
           localStorage.setItem("token", response.token)
 
           // Update auth context
-          setUser(response.user)
+          if (setUser) {
+            setUser(response.user)
+          }
 
-          // Redirect to dashboard or home page
-          navigate("/dashboard")
+          // Redirect to dashboard using window.location
+          window.location.href = "/dashboard"
         } else {
           setLoginError(response.message || "Login failed. Please try again.")
         }
@@ -83,27 +95,35 @@ function Login() {
   }
 
   return (
-    <div className="auth-page">
-      <div className="auth-container">
-        <div className="auth-card">
-          <div className="auth-header">
+    <div className="savdhaan-auth-page">
+      <div className="savdhaan-auth-container">
+        <div className="savdhaan-logo">
+          <h1>Savdhaan India</h1>
+          <p>Stay Secure, Stay Protected</p>
+        </div>
+        
+        <div className="savdhaan-auth-card">
+          <IoShieldCheckmarkSharp className="savdhaan-security-icon shield" />
+          <BiSolidLockAlt className="savdhaan-security-icon lock" />
+          
+          <div className="savdhaan-auth-header">
             <h2>
-              <FaSignInAlt /> Login
+              <FaUserShield /> Secure Login
             </h2>
-            <p>Sign in to access your account</p>
+            <p>Access your protected dashboard</p>
           </div>
 
           {loginError && (
-            <div className="auth-error">
+            <div className="savdhaan-auth-error">
               <FaExclamationCircle />
               <span>{loginError}</span>
             </div>
           )}
 
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+          <form className="savdhaan-auth-form" onSubmit={handleSubmit}>
+            <div className="savdhaan-form-group">
               <label htmlFor="email">
-                <FaEnvelope /> Email Address
+                <FaEnvelope /> Authorized Email
               </label>
               <input
                 type="email"
@@ -112,14 +132,14 @@ function Login() {
                 value={formData.email}
                 onChange={handleChange}
                 className={errors.email ? "error" : ""}
-                placeholder="Enter your email"
+                placeholder="Enter your registered email"
               />
-              {errors.email && <span className="error-message">{errors.email}</span>}
+              {errors.email && <span className="savdhaan-error-message">{errors.email}</span>}
             </div>
 
-            <div className="form-group">
+            <div className="savdhaan-form-group">
               <label htmlFor="password">
-                <FaLock /> Password
+                <FaLock /> Security Passkey
               </label>
               <input
                 type="password"
@@ -128,23 +148,23 @@ function Login() {
                 value={formData.password}
                 onChange={handleChange}
                 className={errors.password ? "error" : ""}
-                placeholder="Enter your password"
+                placeholder="Enter your secure password"
               />
-              {errors.password && <span className="error-message">{errors.password}</span>}
+              {errors.password && <span className="savdhaan-error-message">{errors.password}</span>}
             </div>
 
-            <div className="form-group forgot-password">
-              <Link to="/forgot-password">Forgot Password?</Link>
+            <div className="savdhaan-form-group savdhaan-forgot-password">
+              <a href="/forgot-password">Reset Security Credentials</a>
             </div>
 
-            <button type="submit" className="btn-primary btn-block" disabled={isLoading}>
-              {isLoading ? "Signing in..." : "Sign In"}
+            <button type="submit" className="savdhaan-btn-primary" disabled={isLoading}>
+              {isLoading ? "Verifying..." : "Access Secured Zone"}
             </button>
           </form>
 
-          <div className="auth-footer">
+          <div className="savdhaan-auth-footer">
             <p>
-              Don't have an account? <Link to="/register">Register</Link>
+              Need secure access? <a href="/register">Create Protected Account</a>
             </p>
           </div>
         </div>
