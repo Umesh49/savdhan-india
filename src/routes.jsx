@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import LoadingSpinner from "./components/common/LoadingSpinner";
+import LoadingSpinner from "./components/common/LoadingSpinner/LoadingSpinner";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./components/Home"));
@@ -8,15 +8,15 @@ const IndianLaws = lazy(() => import("./components/IndianLaws"));
 const ComplaintGuide = lazy(() => import("./components/ComplaintGuide"));
 const ComplaintForm = lazy(() => import("./components/ComplaintForm"));
 const Resources = lazy(() => import("./components/Resources"));
-const SecurityTools = lazy(() => import("./components/SecurityTools"));
+const SecurityTools = lazy(() => import("./components/SecurityTools/SecurityTools"));
 const CyberAwarenessQuiz = lazy(() =>
-  import("./components/CyberAwarenessQuiz")
+  import("./components/Quiz/CyberAwarenessQuiz")
 );
 const ThreatMap = lazy(() => import("./components/ThreatMap"));
 const SecurityChecklist = lazy(() =>
   import("./components/SecurityChecklist")
 );
-const FAQ = lazy(() => import("./components/FAQ"));
+const FAQ = lazy(() => import("./components/FAQs/FAQ"));
 const Contact = lazy(() => import("./components/Contact"));
 const AboutUs = lazy(() => import("./components/About/AboutUs"));
 const Login = lazy(() => import("./components/auth/Login"));
@@ -29,7 +29,7 @@ const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
 const TermsOfService = lazy(() =>
   import("./components/TermsOfService")
 );
-const NotFound = lazy(() => import("./components/common/NotFound"));
+const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 const ProtectedRoute = ({ children }) => {
  return children;
