@@ -5,6 +5,7 @@ import {
   FaExclamationTriangle, FaUserShield, FaTerminal 
 } from "react-icons/fa";
 import './Header.css';
+import Sidebar from './Sidebar';
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -230,23 +231,8 @@ const Header = () => {
         </div>
       </div>
       
-      {/* Simulated Sidebar for the example (implementation would be separate) */}
-      {isSidebarOpen && (
-        <div className="head-sidebar-overlay" onClick={toggleSidebar}>
-          <div className="head-sidebar" onClick={e => e.stopPropagation()}>
-            <div className="head-sidebar-header">
-              <h2 className="head-sidebar-title">Navigation</h2>
-              <button className="head-sidebar-close" onClick={toggleSidebar}>
-                <FaTimes />
-              </button>
-            </div>
-            <div className="head-sidebar-content">
-              {/* Sidebar content would go here */}
-              <p className="head-sidebar-text">Menu items would go here</p>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Integrated Sidebar component */}
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
       {/* Binary stream decoration at bottom */}
       <div className="head-binary-stream head-binary-bottom">
