@@ -16,7 +16,6 @@ const Header = () => {
   const [showAlert, setShowAlert] = useState(false);
   const profileMenuRef = useRef(null);
   
-  // Mock authentication state for demo
   const isAuthenticated = false;
   const user = { name: "Agent", email: "user@example.com" };
 
@@ -171,14 +170,6 @@ const Header = () => {
             
             {/* Right side: auth buttons or profile */}
             <div className="head-right">
-              <button 
-                onClick={toggleDarkMode}
-                className="head-theme-btn"
-                aria-label="Toggle theme"
-              >
-                {darkMode ? <FaSun /> : <FaMoon />}
-              </button>
-              
               {isAuthenticated ? (
                 <div className="head-profile" ref={profileMenuRef}>
                   <button 

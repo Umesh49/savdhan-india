@@ -21,7 +21,7 @@ import {
 } from "react-icons/fa";
 import { BiLockAlt } from "react-icons/bi";
 import { GiFirewall, GiCyberEye, GiRadarSweep } from "react-icons/gi";
-import Logo from "../../../svg/logo.svg";
+import Logo from "../../svg/logo.svg";
 import "./Footer.css";
 
 const Footer = () => {
@@ -138,54 +138,7 @@ const Footer = () => {
       <div className="footer-circuit-pattern"></div>
 
       <div className="footer-content">
-        {/* Security terminal display - interactive element */}
-        <div className="footer-terminal">
-          <div className="footer-terminal-header">
-            <div className="footer-terminal-title">
-              <FaTerminal className="footer-terminal-icon" />
-              <span>Security Terminal</span>
-            </div>
-            <div className="footer-terminal-buttons">
-              <div className="footer-terminal-button footer-terminal-button-red"></div>
-              <div className="footer-terminal-button footer-terminal-button-yellow"></div>
-              <div className="footer-terminal-button footer-terminal-button-green"></div>
-            </div>
-          </div>
-          
-          <div className="footer-terminal-content">
-            {terminalLines.map((line, idx) => (
-              <div key={idx} className="footer-terminal-line">
-                <span className="footer-terminal-prefix">&gt;</span>
-                <span className="footer-terminal-command">{line}</span>
-              </div>
-            ))}
-          </div>
-          
-          {/* Interactive security scan button */}
-          <div className="footer-terminal-controls">
-            <button 
-              onClick={simulateSecurityScan}
-              disabled={hackingStatus.active}
-              className={`footer-scan-button ${hackingStatus.active ? 'footer-scan-button-active' : ''}`}
-            >
-              <FaShieldAlt className="footer-scan-icon" />
-              {hackingStatus.active ? "SCANNING..." : "SCAN SYSTEM"}
-            </button>
-            
-            {hackingStatus.active && (
-              <div className="footer-scan-progress-container">
-                <div className="footer-scan-message">{hackingStatus.message}</div>
-                <div className="footer-scan-progress-bar">
-                  <div 
-                    className="footer-scan-progress-fill"
-                    style={{ width: `${hackingStatus.progress}%` }}
-                  ></div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
+       
         <div className="footer-grid">
           {/* About Section */}
           <div className="footer-section">
@@ -311,11 +264,11 @@ const Footer = () => {
             <ul className="footer-contact-list">
               <li className="footer-contact-item">
                 <FaMapMarkerAlt className="footer-contact-icon" />
-                <span>123 Cyber Security Bhawan,<br />New Delhi, India - 110001</span>
+                <span>Mumbai, India</span>
               </li>
               <li className="footer-contact-item">
                 <FaPhone className="footer-contact-icon" />
-                <span>+91 1800-XXX-XXXX (Toll Free)</span>
+                <span>+91 XXXX-XXXX-XX </span>
               </li>
               <li className="footer-contact-item">
                 <FaEnvelope className="footer-contact-icon" />
@@ -325,64 +278,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Threat Intelligence Section */}
-        <div className="footer-threat-section">
-          <h3 className="footer-threat-title">
-            <GiRadarSweep className="footer-section-icon" /> Cyber Threat Intelligence<span className="footer-cursor-blink">|</span>
-          </h3>
-          <div className="footer-threat-grid">
-            <div className="footer-threat-card">
-              <FaBug className="footer-threat-icon" />
-              <h4 className="footer-threat-card-title">Vulnerability Database</h4>
-              <p className="footer-threat-card-text">Access the latest known CVEs and security patches</p>
-            </div>
-            <div className="footer-threat-card">
-              <GiFirewall className="footer-threat-icon" />
-              <h4 className="footer-threat-card-title">Firewall Configuration</h4>
-              <p className="footer-threat-card-text">Best practices for securing your network perimeter</p>
-            </div>
-            <div className="footer-threat-card">
-              <FaDatabase className="footer-threat-icon" />
-              <h4 className="footer-threat-card-title">Data Protection</h4>
-              <p className="footer-threat-card-text">Guidelines for securing sensitive information</p>
-            </div>
-            <div className="footer-threat-card">
-              <GiCyberEye className="footer-threat-icon" />
-              <h4 className="footer-threat-card-title">Threat Intelligence</h4>
-              <p className="footer-threat-card-text">Real-time monitoring of emerging cyber threats</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Security badge section */}
-        <div className="footer-badge-section">
-          <div className="footer-badge-container">
-            <div className="footer-badge">
-              <FaShieldAlt className="footer-badge-icon" /> 
-              <span>Protected by Cybersecurity Standards</span>
-            </div>
-            <div className="footer-badge">
-              <FaLock className="footer-badge-icon" /> 
-              <span>SSL Encrypted</span>
-            </div>
-            <div className="footer-badge">
-              <FaUserShield className="footer-badge-icon" /> 
-              <span>Privacy Focused</span>
-            </div>
-          </div>
-        </div>
-
         {/* Emergency Contact Section */}
         <div className="footer-emergency-section">
-          <div className="footer-emergency-header">
-            <div className="footer-emergency-icon-container">
-              <FaVirus className="footer-emergency-icon" />
-              <div className="footer-emergency-icon-pulse"></div>
-            </div>
-            <h4 className="footer-emergency-title" data-text="EMERGENCY CYBER HELPLINES">
-              EMERGENCY_CYBER_HELPLINES
-            </h4>
-          </div>
           <div className="footer-emergency-grid">
             <div className="footer-emergency-item">
               <FaPhone className="footer-emergency-item-icon" />
