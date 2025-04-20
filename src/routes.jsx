@@ -8,9 +8,9 @@ const IndianLaws = lazy(() => import("./components/IndianLaws"));
 const ComplaintGuide = lazy(() => import("./components/ComplaintGuide"));
 const ComplaintForm = lazy(() => import("./components/ComplaintForm"));
 const Resources = lazy(() => import("./components/Resources"));
-const SecurityTools = lazy(() =>
-  import("./components/SecurityTools/SecurityTools")
-);
+// const SecurityTools = lazy(() =>
+//   import("./components/SecurityTools/SecurityTools")
+// );
 const CyberAwarenessQuiz = lazy(() =>
   import("./components/Quiz/CyberAwarenessQuiz")
 );
@@ -48,7 +48,7 @@ export default function AppRoutes() {
         <Route path="/complaint-guide" element={<ComplaintGuide />} />
         <Route path="/complaint-form" element={<ComplaintForm />} />
         <Route path="/resources" element={<Resources />} />
-        <Route path="/security-tools" element={<SecurityTools />} />
+        {/* <Route path="/security-tools" element={<SecurityTools />} /> */}
         <Route path="/cyber-awareness-quiz" element={<CyberAwarenessQuiz />} />
         <Route path="/threat-map" element={<ThreatMap />} />
         <Route path="/security-checklist" element={<SecurityChecklist />} />
