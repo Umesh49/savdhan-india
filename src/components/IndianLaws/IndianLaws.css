@@ -1,0 +1,1071 @@
+/* Base Container */
+.indian-laws-cyber-container {
+  background-color: #000;
+  color: #b3ffb3;
+  font-family: "Courier New", monospace;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+body{
+  margin: 0;
+}
+
+/* Terminal Header */
+.indian-laws-terminal-header {
+  background-color: #222;
+  padding: 8px 15px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.indian-laws-terminal-controls {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.indian-laws-terminal-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.indian-laws-terminal-red {
+  background-color: #ff3333;
+}
+.indian-laws-terminal-yellow {
+  background-color: #ffcc00;
+}
+.indian-laws-terminal-green {
+  background-color: #0f0;
+}
+
+.indian-laws-terminal-title {
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* Terminal Body */
+.indian-laws-terminal-body {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  min-height: 700px;
+  border: 1px solid #003300;
+  border-top: none;
+  position: relative;
+}
+
+/* Cyberpunk Header */
+.indian-laws-cyber-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding: 20px;
+  border: 1px solid #0f0;
+  background-color: rgba(0, 15, 0, 0.8);
+  box-shadow: 0 0 15px #00ff0050;
+}
+
+.indian-laws-cyber-header h1 {
+  color: #0f0;
+  font-size: 36px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00ff0050;
+  animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 5px #00ff0050;
+  }
+  100% {
+    text-shadow: 0 0 15px #00ff0050, 0 0 20px #00ff0050;
+  }
+}
+
+.indian-laws-cyber-header p {
+  font-size: 16px;
+  margin: 0;
+  color: #b3ffb3;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Matrix Animation */
+.indian-laws-matrix-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 255, 0, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+  animation: matrix 3s infinite linear;
+  z-index: 0;
+}
+
+@keyframes matrix {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Blinking Cursor */
+.indian-laws-blink {
+  animation: blink 1s infinite step-end;
+  color: #0f0;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Search and Filter Section */
+.indian-laws-search-filter-section {
+  margin-bottom: 30px;
+}
+
+.indian-laws-search-panel {
+  padding: 15px;
+}
+
+.indian-laws-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.indian-laws-search-input-container {
+  position: relative;
+  flex: 1;
+}
+
+.indian-laws-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0f0;
+}
+
+.indian-laws-search-input {
+  width: 100%;
+  background-color: #111;
+  border: 1px solid #0f0;
+  color: #0f0;
+  padding: 10px 15px 10px 35px;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  box-shadow: 0 0 5px #00ff0050;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-search-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px #0f0;
+  border-color: #0f0;
+}
+
+.indian-laws-clear-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #0f0;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.indian-laws-clear-search:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Filter Toggle Controls */
+.indian-laws-filter-toggle-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.indian-laws-filter-toggle {
+  padding: 8px 12px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+/* View Toggle */
+.indian-laws-view-toggle {
+  display: flex;
+  border: 1px solid #0f0;
+  overflow: hidden;
+}
+
+.indian-laws-view-button {
+  background-color: #111;
+  color: #b3ffb3;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: "Courier New", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-view-button.indian-laws-active {
+  background-color: #0f0;
+  color: #000;
+  animation: buttonPulse 2s infinite alternate;
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.indian-laws-view-button:not(.indian-laws-active):hover {
+  background-color: #222;
+}
+
+/* Advanced Filters */
+.indian-laws-advanced-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #003300;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.indian-laws-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.indian-laws-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #00cc00;
+  font-size: 14px;
+}
+
+.indian-laws-cyber-select {
+  background-color: #111;
+  border: 1px solid #0f0;
+  color: #b3ffb3;
+  padding: 8px 10px;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 0 5px #00ff0050;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-cyber-select:focus {
+  outline: none;
+  box-shadow: 0 0 15px #0f0;
+}
+
+.indian-laws-cyber-select option {
+  background-color: #111;
+  color: #b3ffb3;
+}
+
+.indian-laws-reset-filters {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Results Summary */
+.indian-laws-results-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #003300;
+  animation: fadeIn 0.5s ease;
+}
+
+.indian-laws-results-count {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.indian-laws-results-count-value {
+  color: #0f0;
+  font-weight: bold;
+  font-size: 16px;
+  animation: countPulse 2s infinite alternate;
+}
+
+@keyframes countPulse {
+  0% {
+    text-shadow: 0 0 2px #00ff0050;
+  }
+  100% {
+    text-shadow: 0 0 8px #00ff0050;
+  }
+}
+
+.indian-laws-filters-applied {
+  color: #ffcc00;
+}
+
+/* Cyber Panel Common Styles */
+.indian-laws-cyber-panel {
+  background-color: rgba(0, 15, 0, 0.8);
+  border: 1px solid #0f0;
+  box-shadow: 0 0 10px #00ff0050;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Laws Container */
+.indian-laws-container {
+  display: grid;
+  gap: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+.indian-laws-grid-view {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.indian-laws-list-view {
+  grid-template-columns: 1fr;
+}
+
+/* Law Card */
+.indian-laws-law-card {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.indian-laws-law-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #0f0, transparent);
+  animation: scanline 3s infinite linear;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.indian-laws-law-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+}
+
+.indian-laws-law-card.indian-laws-expanded {
+  box-shadow: 0 0 20px #00ff0050;
+}
+
+.indian-laws-law-header {
+  padding: 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #003300;
+  transition: background-color 0.3s ease;
+}
+
+.indian-laws-law-header:hover {
+  background-color: rgba(0, 30, 0, 0.5);
+}
+
+.indian-laws-law-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.indian-laws-law-title-wrapper {
+  flex: 1;
+}
+
+.indian-laws-law-expander {
+  color: #0f0;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.indian-laws-law-card.indian-laws-expanded .indian-laws-law-expander {
+  transform: rotate(180deg);
+}
+
+.indian-laws-law-card h2 {
+  color: #0f0;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  text-shadow: 0 0 5px #00ff0050;
+  font-family: "Courier New", monospace;
+  transition: text-shadow 0.3s ease;
+}
+
+.indian-laws-law-card:hover h2 {
+  text-shadow: 0 0 10px #0f0;
+}
+
+.indian-laws-law-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 14px;
+}
+
+.indian-laws-law-id,
+.indian-laws-law-year {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #888;
+}
+
+.indian-laws-law-category {
+  color: #0f0;
+  padding: 2px 8px;
+  border: 1px solid #0f0;
+  background-color: #001800;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-law-card:hover .indian-laws-law-category {
+  background-color: #003300;
+  box-shadow: 0 0 5px #00ff0050;
+}
+
+.indian-laws-law-preview {
+  margin-top: 10px;
+  color: #aaa;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* Severity Badges */
+.indian-laws-severity-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-severity-high {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #ff6666;
+  border: 1px solid #ff3333;
+}
+
+.indian-laws-severity-medium {
+  background-color: rgba(255, 204, 0, 0.2);
+  color: #ffcc66;
+  border: 1px solid #ffcc00;
+}
+
+.indian-laws-severity-low {
+  background-color: rgba(0, 153, 255, 0.2);
+  color: #66ccff;
+  border: 1px solid #3399ff;
+}
+
+.indian-laws-law-card:hover .indian-laws-severity-badge {
+  transform: scale(1.05);
+}
+
+/* Law Content */
+.indian-laws-law-content {
+  padding: 20px;
+  border-top: 1px solid #003300;
+  animation: contentFadeIn 0.5s ease;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 2000px;
+  }
+}
+
+/* Law Summary */
+.indian-laws-law-summary {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 20, 0, 0.3);
+  border-left: 3px solid #0f0;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.indian-laws-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.indian-laws-summary-header h3 {
+  color: #0f0;
+  margin: 0;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.indian-laws-law-summary p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Quick Info Panel */
+.indian-laws-quick-info-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: rgba(0, 25, 0, 0.4);
+  border: 1px solid #003300;
+  animation: fadeIn 0.7s ease;
+}
+
+.indian-laws-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-info-item:hover {
+  transform: translateY(-2px);
+}
+
+.indian-laws-info-label {
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.indian-laws-info-value {
+  color: #b3ffb3;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Law Sections */
+.indian-laws-law-sections-header {
+  margin-bottom: 20px;
+  animation: fadeIn 0.8s ease;
+}
+
+.indian-laws-law-sections-header h3 {
+  color: #0f0;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.indian-laws-section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #0f0, transparent);
+  margin: 10px 0;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.indian-laws-law-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: staggeredFadeIn 1s ease;
+}
+
+@keyframes staggeredFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.indian-laws-law-section {
+  padding: 15px;
+  border-left: 2px solid #0f0;
+  background-color: rgba(0, 20, 0, 0.4);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-law-section:hover {
+  background-color: rgba(0, 30, 0, 0.5);
+  transform: translateX(5px);
+}
+
+.indian-laws-law-section h4 {
+  color: #00cc00;
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.indian-laws-section-marker {
+  color: #0f0;
+}
+
+.indian-laws-section-penalty {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: 3px solid #ff0033;
+  transition: all 0.3s ease;
+}
+
+.indian-laws-section-penalty:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.indian-laws-penalty-label {
+  font-weight: bold;
+  color: #ff0033;
+}
+
+/* Key Takeaways Section */
+.indian-laws-key-takeaways {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  animation: fadeIn 1.2s ease;
+}
+
+.indian-laws-takeaways-header h3 {
+  color: #0f0;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.indian-laws-takeaways-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 15px 0 0 0;
+}
+
+.indian-laws-takeaway-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  background-color: rgba(0, 30, 0, 0.3);
+  padding: 12px;
+  border-left: 2px solid #0099ff;
+  transition: all 0.3s ease;
+  animation: slideInRight 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.indian-laws-takeaway-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.indian-laws-takeaway-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.indian-laws-takeaway-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.indian-laws-takeaway-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.indian-laws-takeaway-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.indian-laws-takeaway-item:hover {
+  background-color: rgba(0, 40, 0, 0.4);
+  transform: translateX(5px);
+}
+
+.indian-laws-takeaway-bullet {
+  color: #0f0;
+  font-weight: bold;
+}
+
+.indian-laws-takeaway-content {
+  flex: 1;
+  line-height: 1.4;
+}
+
+/* Law Actions */
+.indian-laws-law-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  animation: fadeIn 1.3s ease;
+}
+
+/* Cyber Button */
+.indian-laws-cyber-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #001800;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 10px 15px;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  box-shadow: 0 0 5px #00ff0050;
+}
+
+.indian-laws-cyber-button:hover {
+  background-color: #0f0;
+  color: #000;
+  box-shadow: 0 0 15px #0f0;
+  transform: translateY(-2px);
+}
+
+.indian-laws-cyber-button.indian-laws-secondary {
+  background-color: transparent;
+  color: #b3ffb3;
+  border: 1px solid #b3ffb3;
+  box-shadow: none;
+}
+
+.indian-laws-cyber-button.indian-laws-secondary:hover {
+  background-color: #b3ffb3;
+  color: #000;
+  box-shadow: 0 0 10px #b3ffb3;
+}
+
+/* Loading Panel */
+.indian-laws-loading-panel {
+  padding: 30px;
+  text-align: left;
+}
+
+.indian-laws-terminal-output {
+  font-family: "Courier New", monospace;
+  color: #0f0;
+  line-height: 1.6;
+}
+
+.indian-laws-terminal-output p {
+  margin: 10px 0;
+  animation: typingEffect 1s steps(40, end);
+}
+
+@keyframes typingEffect {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.indian-laws-loading-line {
+  height: 20px;
+  width: 100%;
+  background-color: #111;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.indian-laws-loading-progress {
+  height: 100%;
+  width: 30%;
+  background-color: #0f0;
+  position: absolute;
+  animation: loading 2s infinite;
+  box-shadow: 0 0 10px #0f0;
+}
+
+@keyframes loading {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Empty Panel */
+.indian-laws-empty-panel {
+  padding: 30px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.indian-laws-terminal-text {
+  font-family: "Courier New", monospace;
+  color: #ff0033;
+  margin: 10px 0;
+  animation: blinkError 2s infinite alternate;
+}
+
+@keyframes blinkError {
+  0% {
+    text-shadow: 0 0 2px rgba(255, 0, 0, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+  }
+}
+
+/* Results Footer */
+.indian-laws-results-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #003300;
+  animation: fadeIn 1.5s ease;
+}
+
+.indian-laws-result-stats {
+  color: #888;
+  font-size: 14px;
+}
+
+.indian-laws-scroll-top {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border: 1px solid #0f0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* Pulse Effect for Important Elements */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px #00ff0050;
+  }
+  50% {
+    box-shadow: 0 0 15px #00ff0050;
+  }
+  100% {
+    box-shadow: 0 0 5px #00ff0050;
+  }
+}
+
+.indian-laws-law-card.indian-laws-expanded::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #0f0;
+  pointer-events: none;
+  animation: pulse 2s infinite;
+}
+
+/* Accessibility Improvements */
+.indian-laws-cyber-button:focus,
+.indian-laws-search-input:focus,
+.indian-laws-cyber-select:focus,
+.indian-laws-view-button:focus {
+  outline: 2px solid #0f0;
+  outline-offset: 2px;
+}
+
+/* Focus styles should not be visible when using mouse */
+.using-mouse :focus {
+  outline: none;
+}
+
+/* Additional Responsive Adjustments */
+@media (max-width: 768px) {
+  .indian-laws-grid-view {
+    grid-template-columns: 1fr;
+  }
+
+  .indian-laws-search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .indian-laws-filter-options {
+    flex-direction: column;
+  }
+
+  .indian-laws-law-actions {
+    flex-direction: column;
+  }
+
+  .indian-laws-cyber-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .indian-laws-advanced-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .indian-laws-quick-info-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .indian-laws-results-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .indian-laws-scroll-top {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Tooltip Styles */
+[title] {
+  position: relative;
+  cursor: help;
+}
+
+[title]:hover::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: #111;
+  color: #b3ffb3;
+  border: 1px solid #0f0;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 0 5px #00ff0050;
+  animation: fadeIn 0.3s ease;
+}

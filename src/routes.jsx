@@ -4,7 +4,7 @@ import LoadingSpinner from "./components/common/LoadingSpinner/LoadingSpinner";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./components/Home/Home"));
-const IndianLaws = lazy(() => import("./components/IndianLaws"));
+const IndianLaws = lazy(() => import("./components/IndianLaws/IndianLaws"));
 const ComplaintGuide = lazy(() => import("./components/ComplaintGuide"));
 const ComplaintForm = lazy(() => import("./components/ComplaintForm"));
 const Resources = lazy(() => import("./components/Resources"));
