@@ -13,7 +13,7 @@ import {
   FaFingerprint,
   FaServer
 } from "react-icons/fa"
-import CyberSpinner from "./common/CyberSpinner"
+import CyberSpinner from "./common/CyberSpinner/CyberSpinner"
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([])

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { FaLock, FaShieldAlt, FaCode, FaUserSecret, FaServer, FaLaptopCode, FaPlay } from "react-icons/fa"
-import CyberSpinner from "./common/CyberSpinner"
+import CyberSpinner from "./common/CyberSpinner/CyberSpinner"
 
 const Tutorials = () => {
   const [loading, setLoading] = useState(true)

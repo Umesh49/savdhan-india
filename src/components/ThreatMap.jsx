@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { FaExclamationTriangle, FaShieldAlt, FaLock, FaUserSecret } from "react-icons/fa"
 import { BiAnalyse } from "react-icons/bi"
 import { MdSecurity } from "react-icons/md"
-import CyberSpinner from "./common/CyberSpinner"
+import CyberSpinner from "./common/CyberSpinner/CyberSpinner"
 import { useTheme } from "../contexts/ThemeContext"
 import { FaInfoCircle, FaUnlock } from "react-icons/fa"
 

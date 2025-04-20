@@ -44,19 +44,19 @@ export default function AppRoutes() {
         {/* Public */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/indian-laws" element={<IndianLaws />} />
+        {/* <Route path="/indian-laws" element={<IndianLaws />} />
         <Route path="/complaint-guide" element={<ComplaintGuide />} />
         <Route path="/complaint-form" element={<ComplaintForm />} />
-        <Route path="/resources" element={<Resources />} />
+        <Route path="/resources" element={<Resources />} /> */}
         {/* <Route path="/security-tools" element={<SecurityTools />} /> */}
-        <Route path="/cyber-awareness-quiz" element={<CyberAwarenessQuiz />} />
-        <Route path="/threat-map" element={<ThreatMap />} />
-        <Route path="/security-checklist" element={<SecurityChecklist />} />
+        {/* <Route path="/cyber-awareness-quiz" element={<CyberAwarenessQuiz />} /> */}
+        {/* <Route path="/threat-map" element={<ThreatMap />} />
+        <Route path="/security-checklist" element={<SecurityChecklist />} /> */}
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/tutorials" element={<Tutorials />} />
-        <Route path="/updates" element={<Updates />} />
+        {/* <Route path="/tutorials" element={<Tutorials />} />
+        <Route path="/updates" element={<Updates />} /> */}
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />

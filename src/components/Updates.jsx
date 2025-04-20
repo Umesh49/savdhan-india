@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { FaExclamationTriangle, FaShieldAlt, FaBell, FaCalendarAlt, FaTag, FaSearch } from "react-icons/fa"
-import CyberSpinner from "./common/CyberSpinner"
+import CyberSpinner from "./common/CyberSpinner/CyberSpinner"
 
 const Updates = () => {
   const [loading, setLoading] = useState(true)

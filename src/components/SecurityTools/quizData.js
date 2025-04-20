@@ -1,6 +1,5 @@
 // Mock data for Savdhaan India
 
-// Mock latest updates
 export const latestUpdates = [
   {
     id: 1,
@@ -81,7 +80,6 @@ export const chatbotResponses = {
   ]
 }
 
-// Mock resources
 export const resources = [
   {
     id: 1,
@@ -109,7 +107,6 @@ export const resources = [
   }
 ]
 
-// Mock quiz questions
 export const quizQuestions = [
   {
     id: 1,
