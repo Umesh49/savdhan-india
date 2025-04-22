@@ -14,16 +14,15 @@ const Resources = lazy(() => import("./components/Resources"));
 const CyberAwarenessQuiz = lazy(() =>
   import("./components/Quiz/CyberAwarenessQuiz")
 );
-const ThreatMap = lazy(() => import("./components/ThreatMap"));
-const SecurityChecklist = lazy(() => import("./components/SecurityChecklist"));
+const ThreatMap = lazy(() => import("./components/ThreatMap/ThreatMap"));
+const SecurityChecklist = lazy(() => import("./components/SecurityChecklist/SecurityChecklist"));
 const FAQ = lazy(() => import("./components/FAQs/FAQ"));
-const Contact = lazy(() => import("./components/Contact"));
+const Contact = lazy(() => import("./components/Contact/Contact"));
 const AboutUs = lazy(() => import("./components/About/AboutUs"));
 const Login = lazy(() => import("./components/auth/Login"));
 const Register = lazy(() => import("./components/auth/Register"));
-const Dashboard = lazy(() => import("./components/Dashboard"));
-const Tutorials = lazy(() => import("./components/Tutorials"));
-const Updates = lazy(() => import("./components/Updates"));
+const Dashboard = lazy(() => import("./components/Dashboard/Dashboard"));
+const Tutorials = lazy(() => import("./components/Tutorials/Tutorials"));
 const Chatbot = lazy(() => import("./components/Chatbot"));
 const PrivacyPolicy = lazy(() =>
   import("./components/StaticPages/PrivacyPolicy")
@@ -44,14 +43,15 @@ export default function AppRoutes() {
         {/* Public */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/security-checklist" element={<SecurityChecklist />} />
+
         {/* <Route path="/indian-laws" element={<IndianLaws />} />
         <Route path="/complaint-guide" element={<ComplaintGuide />} />
         <Route path="/complaint-form" element={<ComplaintForm />} />
         <Route path="/resources" element={<Resources />} /> */}
         {/* <Route path="/security-tools" element={<SecurityTools />} /> */}
         {/* <Route path="/cyber-awareness-quiz" element={<CyberAwarenessQuiz />} /> */}
-        {/* <Route path="/threat-map" element={<ThreatMap />} />
-        <Route path="/security-checklist" element={<SecurityChecklist />} /> */}
+        <Route path="/threat-map" element={<ThreatMap />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about-us" element={<AboutUs />} />

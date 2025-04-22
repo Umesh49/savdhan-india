@@ -1,0 +1,511 @@
+/* Cybersecurity Dashboard Theme with Neon, Black and Green */
+
+/* Base styles */
+.dash-page {
+  background-color: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  min-height: 100vh;
+}
+
+.dash-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Typography */
+h1, h2, h3 {
+  color: #0f0;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+a {
+  color: #0f0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.9);
+}
+
+/* Header Section */
+.dash-header {
+  padding: 2rem 0;
+  border-bottom: 1px solid #0f0;
+  background-color: rgba(0, 20, 0, 0.8);
+}
+
+.dash-header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dash-terminal-icon {
+  font-size: 2.5rem;
+  color: #0f0;
+  animation: blink 1.5s infinite alternate;
+}
+
+.dash-user-highlight {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 1);
+}
+
+.dash-subtitle {
+  color: #0a0;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Main Content */
+.dash-content {
+  padding: 2rem 0;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .dash-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Cards */
+.dash-card {
+  background-color: rgba(0, 20, 0, 0.7);
+  border: 1px solid #0f0;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.dash-card:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.dash-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(0, 50, 0, 0.5);
+  border-bottom: 1px solid #0f0;
+}
+
+.dash-card-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Buttons */
+.dash-btn-primary {
+  background-color: rgba(0, 80, 0, 0.8);
+  color: #fff;
+  border: 1px solid #0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s ease;
+}
+
+.dash-btn-primary:hover {
+  background-color: rgba(0, 100, 0, 1);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+.dash-btn-outline {
+  background-color: transparent;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s ease;
+}
+
+.dash-btn-outline:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.dash-btn-link {
+  color: #0f0;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-family: 'Courier New', monospace;
+}
+
+.dash-btn-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 1);
+}
+
+.dash-btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.dash-btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Loading State */
+.dash-loading-container {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.dash-loading-terminal {
+  background-color: rgba(0, 20, 0, 0.8);
+  border: 1px solid #0f0;
+  border-radius: 4px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.dash-scanning-text p {
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-right: 2px solid #0f0;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation-fill-mode: both;
+}
+
+.dash-scanning-text p:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dash-scanning-text p:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.dash-scanning-text p:nth-child(3) {
+  animation-delay: 2s;
+}
+
+.dash-scanning-text p:nth-child(4) {
+  animation-delay: 3s;
+}
+
+/* Error State */
+.dash-error-container {
+  background-color: rgba(50, 0, 0, 0.8);
+  border: 1px solid #f00;
+  border-radius: 4px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  color: #f00;
+}
+
+.dash-error-icon {
+  font-size: 2.5rem;
+  color: #f00;
+  margin-bottom: 1rem;
+}
+
+.dash-error-message {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Complaints List */
+.dash-complaints-list {
+  padding: 1rem;
+}
+
+.dash-complaint-item {
+  background-color: rgba(0, 30, 0, 0.5);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.dash-complaint-item:hover {
+  transform: translateX(5px);
+  border-color: #0f0;
+}
+
+.dash-complaint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.dash-complaint-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.dash-complaint-status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.dash-status-submitted {
+  background-color: rgba(0, 0, 100, 0.5);
+  color: #66f;
+  border: 1px solid #66f;
+}
+
+.dash-status-review {
+  background-color: rgba(100, 50, 0, 0.5);
+  color: #fa0;
+  border: 1px solid #fa0;
+}
+
+.dash-status-progress {
+  background-color: rgba(0, 50, 100, 0.5);
+  color: #0af;
+  border: 1px solid #0af;
+}
+
+.dash-status-resolved {
+  background-color: rgba(0, 100, 0, 0.5);
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+
+.dash-status-closed {
+  background-color: rgba(50, 50, 50, 0.5);
+  color: #aaa;
+  border: 1px solid #aaa;
+}
+
+.dash-status-rejected {
+  background-color: rgba(100, 0, 0, 0.5);
+  color: #f66;
+  border: 1px solid #f66;
+}
+
+.dash-complaint-details {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.dash-complaint-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Updates List */
+.dash-updates-list {
+  padding: 1rem;
+}
+
+.dash-update-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.dash-update-item:last-child {
+  border-bottom: none;
+}
+
+.dash-update-date {
+  font-size: 0.75rem;
+  color: #0a0;
+  margin-bottom: 0.5rem;
+}
+
+.dash-update-item h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.dash-update-item p {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  color: rgba(0, 255, 0, 0.8);
+}
+
+.dash-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #0f0;
+  padding: 0.25rem 0;
+}
+
+.dash-read-more:hover {
+  color: #fff;
+}
+
+/* Empty State */
+.dash-empty-state {
+  padding: 2rem;
+  text-align: center;
+}
+
+.dash-terminal-text {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.dash-terminal-text p {
+  margin: 0.5rem 0;
+  opacity: 0.9;
+}
+
+/* User Profile */
+.dash-user-profile {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.dash-user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(0, 50, 0, 0.8);
+  border: 2px solid #0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 2rem;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.dash-user-info {
+  margin-bottom: 1rem;
+}
+
+/* Quick Links */
+.dash-quick-links {
+  padding: 1rem;
+}
+
+.dash-quick-links h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #0a0;
+}
+
+.dash-quick-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dash-quick-links li {
+  margin-bottom: 0.5rem;
+}
+
+.dash-quick-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.dash-quick-links a:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+  transform: translateX(5px);
+}
+
+/* Emergency Contact */
+.dash-emergency-contact {
+  padding: 1rem;
+  text-align: center;
+}
+
+.dash-emergency-contact h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #0a0;
+}
+
+.dash-emergency-number {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #f00;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.dash-emergency-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 80, 0, 0.5);
+  border: 1px solid #0f0;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.dash-emergency-link:hover {
+  background-color: rgba(0, 100, 0, 0.7);
+}
+
+/* Animations */
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #0f0;
+  }
+}

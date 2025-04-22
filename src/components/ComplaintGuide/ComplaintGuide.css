@@ -1,0 +1,842 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* Base Styles */
+.complaint-guide-page {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: #000;
+  color: #a4ffe6;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.03) 0%, transparent 70%),
+    linear-gradient(to bottom, #000 0%, #000 100%);
+}
+
+.complaint-guide-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff41, transparent);
+  animation: scanline 8s linear infinite;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.complaint-guide-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+/* Header Styles */
+.complaint-guide-header {
+  background-color: #000;
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #00ff41;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+.complaint-guide-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 65, 0.03) 3px, rgba(0, 255, 65, 0.03) 3px),
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.1) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.complaint-guide-header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.6), 0 0 20px rgba(0, 255, 65, 0.6);
+  position: relative;
+  z-index: 1;
+}
+
+.complaint-guide-glitch {
+  position: relative;
+  display: inline-block;
+  color: #00ff41;
+}
+
+.complaint-guide-glitch::before,
+.complaint-guide-glitch::after {
+  content: "Cyber Crime";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.complaint-guide-glitch::before {
+  color: #00ffff;
+  animation: glitch 3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -2px);
+}
+
+.complaint-guide-glitch::after {
+  color: #ff00ff;
+  animation: glitch 2s infinite reverse;
+  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+  transform: translate(2px, 2px);
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-3px, 3px);
+  }
+  40% {
+    transform: translate(-3px, -3px);
+  }
+  60% {
+    transform: translate(3px, 3px);
+  }
+  80% {
+    transform: translate(3px, -3px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.complaint-guide-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #7ca689;
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+/* Emergency Banner */
+.complaint-guide-emergency-banner {
+  background-color: rgba(255, 0, 85, 0.15);
+  border-left: 4px solid #ff0055;
+  margin: 2rem 0;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+  animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 0, 85, 0.5);
+  }
+}
+
+.complaint-guide-emergency-content {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.complaint-guide-emergency-icon {
+  font-size: 3rem;
+  color: #ff0055;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.complaint-guide-emergency-text {
+  flex: 1;
+}
+
+.complaint-guide-emergency-text h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ff0055;
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.complaint-guide-emergency-text p {
+  margin: 0.5rem 0;
+  color: #ffffff;
+}
+
+.complaint-guide-emergency-number {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.3rem 1rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  background-color: rgba(255, 0, 85, 0.2);
+  border: 1px solid #ff0055;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.complaint-guide-emergency-number:hover {
+  background-color: rgba(255, 0, 85, 0.4);
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+}
+
+.complaint-guide-emergency-link {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px dashed #00ffff;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.complaint-guide-emergency-link:hover {
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+}
+
+/* Tabs Styles */
+.complaint-guide-tabs-container {
+  margin: 2rem 0;
+  background-color: #091114;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+  border: 1px solid #0a3325;
+  overflow: hidden;
+}
+
+.complaint-guide-tabs-header {
+  display: flex;
+  background-color: #050a0a;
+  border-bottom: 1px solid #00ff41;
+  position: relative;
+  overflow-x: auto;
+}
+
+.complaint-guide-tab-button {
+  padding: 1rem 1.5rem;
+  background-color: transparent;
+  color: #7ca689;
+  border: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.complaint-guide-tab-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #00ff41;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.complaint-guide-tab-button:hover {
+  color: #a4ffe6;
+  background-color: rgba(0, 255, 65, 0.05);
+}
+
+.complaint-guide-tab-button:hover::after {
+  transform: scaleX(0.5);
+}
+
+.complaint-guide-tab-button.active {
+  color: #00ff41;
+  background-color: rgba(0, 255, 65, 0.1);
+  border-bottom: 2px solid #00ff41;
+}
+
+.complaint-guide-tab-button.active::after {
+  transform: scaleX(1);
+}
+
+.complaint-guide-tab-icon {
+  font-size: 1.1rem;
+}
+
+.complaint-guide-tab-content {
+  padding: 2rem;
+}
+
+/* Cyber Panel */
+.complaint-guide-cyber-panel {
+  background-color: #050a0a;
+  border: 1px solid #0a3325;
+  border-radius: 6px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.complaint-guide-cyber-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.complaint-guide-section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  color: #00ff41;
+  margin: 0 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+  position: relative;
+}
+
+.complaint-guide-section-icon {
+  font-size: 1.5rem;
+}
+
+/* Process Content */
+.complaint-guide-steps-container {
+  margin: 2rem 0;
+}
+
+.complaint-guide-step-card {
+  display: flex;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.5s ease-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.complaint-guide-step-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #00ff41;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 1.5rem;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+}
+
+.complaint-guide-step-number::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 1px solid #00ff41;
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.complaint-guide-step-content {
+  flex: 1;
+}
+
+.complaint-guide-step-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Evidence Content */
+.complaint-guide-evidence-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.complaint-guide-evidence-card {
+  padding: 1.5rem;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.complaint-guide-evidence-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 2px 0 0 2px;
+}
+
+.complaint-guide-evidence-card.primary {
+  background-color: rgba(0, 255, 65, 0.05);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.complaint-guide-evidence-card.primary::before {
+  background-color: #00ff41;
+}
+
+.complaint-guide-evidence-card.primary h3 {
+  color: #00ff41;
+}
+
+.complaint-guide-evidence-card.secondary {
+  background-color: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.complaint-guide-evidence-card.secondary::before {
+  background-color: #00ffff;
+}
+
+.complaint-guide-evidence-card.secondary h3 {
+  color: #00ffff;
+}
+
+.complaint-guide-evidence-card.accent {
+  background-color: rgba(255, 0, 255, 0.05);
+  border: 1px solid rgba(255, 0, 255, 0.2);
+}
+
+.complaint-guide-evidence-card.accent::before {
+  background-color: #ff00ff;
+}
+
+.complaint-guide-evidence-card.accent h3 {
+  color: #ff00ff;
+}
+
+.complaint-guide-evidence-card.warning {
+  background-color: rgba(255, 204, 0, 0.05);
+  border: 1px solid rgba(255, 204, 0, 0.2);
+}
+
+.complaint-guide-evidence-card.warning::before {
+  background-color: #ffcc00;
+}
+
+.complaint-guide-evidence-card.warning h3 {
+  color: #ffcc00;
+}
+
+.complaint-guide-evidence-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+}
+
+.complaint-guide-evidence-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.complaint-guide-evidence-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.complaint-guide-evidence-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'Share Tech Mono', monospace;
+  color: #00ff41;
+}
+
+.complaint-guide-evidence-warning {
+  background-color: rgba(255, 0, 85, 0.1);
+  padding: 1.5rem;
+  border-left: 4px solid #ff0055;
+  margin-top: 2rem;
+  border-radius: 4px;
+}
+
+.complaint-guide-evidence-warning h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ff0055;
+  margin: 0 0 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Authorities Content */
+.complaint-guide-authorities-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.complaint-guide-authority-card {
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.complaint-guide-authority-card:hover {
+  transform: translateY(-5px);
+}
+
+.complaint-guide-authority-card.primary {
+  background-color: rgba(0, 255, 65, 0.05);
+  border: 1px solid #00ff41;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+}
+
+.complaint-guide-authority-card.primary h3 {
+  color: #00ff41;
+}
+
+.complaint-guide-authority-card.secondary {
+  background-color: rgba(0, 255, 255, 0.05);
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+.complaint-guide-authority-card.secondary h3 {
+  color: #00ffff;
+}
+
+.complaint-guide-authority-card.accent {
+  background-color: rgba(255, 0, 255, 0.05);
+  border: 1px solid #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+}
+
+.complaint-guide-authority-card.accent h3 {
+  color: #ff00ff;
+}
+
+.complaint-guide-authority-card.warning {
+  background-color: rgba(255, 204, 0, 0.05);
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+}
+
+.complaint-guide-authority-card.warning h3 {
+  color: #ffcc00;
+}
+
+.complaint-guide-authority-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.complaint-guide-authority-info {
+  margin-bottom: 0.5rem;
+}
+
+.complaint-guide-authority-info a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.complaint-guide-authority-info a:hover {
+  color: #00ff41;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+}
+
+/* FAQ Content */
+.complaint-guide-faq-list {
+  margin: 2rem 0;
+}
+
+.complaint-guide-faq-item {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #0a3325;
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.complaint-guide-faq-item:last-child {
+  border-bottom: none;
+}
+
+.complaint-guide-faq-item h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Additional Resources */
+.complaint-guide-additional-resources {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.complaint-guide-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.complaint-guide-resource-card {
+  background-color: #050a0a;
+  border: 1px solid #0a3325;
+  border-radius: 6px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.complaint-guide-resource-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 255, 65, 0.03) 30%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.complaint-guide-resource-card:hover::before {
+  opacity: 1;
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+.complaint-guide-resource-icon {
+  font-size: 2.5rem;
+  color: #00ff41;
+  margin-bottom: 1rem;
+}
+
+.complaint-guide-resource-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  margin: 0 0 1rem;
+}
+
+/* Buttons */
+.complaint-guide-action-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.complaint-guide-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(0, 255, 65, 0.2);
+  color: #00ff41;
+  border: 1px solid #00ff41;
+  padding: 0.8rem 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.complaint-guide-btn-primary:hover {
+  background-color: rgba(0, 255, 65, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+  transform: translateY(-2px);
+}
+
+.complaint-guide-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(0, 255, 255, 0.1);
+  color: #00ffff;
+  border: 1px solid #00ffff;
+  padding: 0.8rem 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.complaint-guide-btn-secondary:hover {
+  background-color: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.complaint-guide-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #00ffff;
+  border: 1px solid #00ffff;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.complaint-guide-btn-outline:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.icon-rotate {
+  transform: rotate(180deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .complaint-guide-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .complaint-guide-emergency-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .complaint-guide-tabs-header {
+    flex-wrap: wrap;
+  }
+  
+  .complaint-guide-tab-button {
+    flex: 1;
+    min-width: 50%;
+  }
+  
+  .complaint-guide-evidence-types,
+  .complaint-guide-authorities-list,
+  .complaint-guide-resources-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .complaint-guide-action-buttons {
+    flex-direction: column;
+  }
+  
+  .complaint-guide-btn-primary,
+  .complaint-guide-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

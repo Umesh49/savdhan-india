@@ -1,0 +1,609 @@
+/* security-checklist-styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* Base Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #00ff41;
+  line-height: 1.6;
+}
+
+/* Container */
+.security-checklist-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Cyber Header */
+.security-checklist-header {
+  background-color: #111;
+  border: 1px solid #00ff41;
+  border-bottom: 2px solid #00ff41;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+  overflow: hidden;
+}
+
+.security-checklist-header:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(45deg, transparent 48%, #00ff41 49%, #00ff41 51%, transparent 52%) repeat,
+    linear-gradient(-45deg, transparent 48%, #00ff41 49%, #00ff41 51%, transparent 52%) repeat;
+  background-size: 6px 6px;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.security-checklist-header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.security-checklist-terminal-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.security-checklist-command-prompt {
+  color: #0f0;
+}
+
+.security-checklist-command-text {
+  color: #fff;
+}
+
+.security-checklist-header h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+}
+
+.security-checklist-header p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  color: #0f0;
+}
+
+.security-checklist-blink {
+  animation: security-checklist-blink 1s step-end infinite;
+}
+
+@keyframes security-checklist-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Cyber Dashboard */
+.security-checklist-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Cyber Panel */
+.security-checklist-panel {
+  background-color: #111;
+  border: 1px solid #00ff41;
+  border-left: 3px solid #00ff41;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.security-checklist-panel h2 {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  color: #0f0;
+  text-transform: uppercase;
+  border-bottom: 1px solid #00ff4133;
+  padding-bottom: 0.75rem;
+}
+
+.security-checklist-icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+/* Panel Header */
+.security-checklist-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Progress Bar */
+.security-checklist-progress-tracker {
+  margin-bottom: 1.5rem;
+}
+
+.security-checklist-progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.security-checklist-progress-percentage {
+  color: #0f0;
+  font-weight: bold;
+}
+
+.security-checklist-progress-bar {
+  height: 10px;
+  background-color: #151515;
+  border: 1px solid #333;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.security-checklist-progress-bar:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, transparent 50%, rgba(0, 255, 65, 0.1) 50%) repeat-x;
+  background-size: 10px 10px;
+  animation: security-checklist-progress-animation 20s linear infinite;
+}
+
+@keyframes security-checklist-progress-animation {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 0; }
+}
+
+.security-checklist-progress-fill {
+  height: 100%;
+  background-color: #00ff41;
+  background-image: linear-gradient(90deg, #00ff41, #0f0, #00ff41);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+  transition: width 0.5s ease;
+}
+
+/* Security Metrics */
+.security-checklist-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.security-checklist-metric-card {
+  background-color: #0a0a0a;
+  border: 1px solid #00ff4155;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.security-checklist-metric-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #0f0, transparent);
+  animation: security-checklist-scan-line 2s linear infinite;
+}
+
+@keyframes security-checklist-scan-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.security-checklist-metric-icon {
+  font-size: 2rem;
+  color: #0f0;
+  margin-bottom: 0.75rem;
+}
+
+.security-checklist-metric-card h3 {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  color: #ccc;
+}
+
+.security-checklist-metric-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0f0;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.7);
+}
+
+/* Category Progress */
+.security-checklist-category-progress {
+  margin-bottom: 1.5rem;
+}
+
+/* Task List */
+.security-checklist-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.security-checklist-task-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-bottom: 1px solid #222;
+  transition: background-color 0.2s ease;
+}
+
+.security-checklist-task-item:hover {
+  background-color: #1a1a1a;
+}
+
+.security-checklist-task-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #00ff41;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.security-checklist-task-checkbox.checked {
+  background-color: #00ff41;
+}
+
+.security-checklist-task-checkbox.checked svg {
+  color: #000;
+}
+
+/* Alert Panel */
+.security-checklist-alert-panel {
+  grid-column: 1 / -1;
+  background-color: #0a0a0a;
+  border: 1px solid #00ff41;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.security-checklist-alert-panel:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.security-checklist-alert-icon {
+  font-size: 2.5rem;
+  color: #0f0;
+  position: relative;
+  z-index: 1;
+}
+
+.security-checklist-alert-panel div {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.security-checklist-alert-panel h3 {
+  color: #0f0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.security-checklist-alert-panel p {
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.security-checklist-alert-input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* CTA Section */
+.security-checklist-cta {
+  background-color: #0a0a0a;
+  border: 1px solid #00ff41;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.security-checklist-cta:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(0deg, #000 25%, transparent 25%) 0 0 / 4px 4px,
+    linear-gradient(0deg, #000 50%, transparent 50%) 2px 0 / 4px 4px;
+  opacity: 0.1;
+}
+
+.security-checklist-cta-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.security-checklist-cta-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #0f0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+}
+
+.security-checklist-cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ccc;
+}
+
+.security-checklist-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Buttons */
+.security-checklist-button {
+  background-color: transparent;
+  color: #0f0;
+  border: 1px solid #00ff41;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.security-checklist-button:hover {
+  background-color: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.security-checklist-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.security-checklist-button:hover:before {
+  left: 100%;
+}
+
+.security-checklist-button-primary, .security-checklist-button-secondary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.security-checklist-button-primary {
+  background-color: #00ff41;
+  color: #000;
+  border: none;
+}
+
+.security-checklist-button-primary:hover {
+  background-color: #0f0;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.7);
+}
+
+.security-checklist-button-secondary {
+  background-color: transparent;
+  color: #0f0;
+  border: 1px solid #00ff41;
+}
+
+.security-checklist-button-secondary:hover {
+  background-color: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.security-checklist-button-primary:before, .security-checklist-button-secondary:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.security-checklist-button-primary:hover:before, .security-checklist-button-secondary:hover:before {
+  left: 100%;
+}
+
+/* Input */
+.security-checklist-input {
+  background-color: #0a0a0a;
+  border: 1px solid #00ff41;
+  color: #0f0;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  flex: 1;
+  outline: none;
+}
+
+.security-checklist-input:focus {
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.security-checklist-input::placeholder {
+  color: #00ff4155;
+}
+
+/* Footer */
+.security-checklist-footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.security-checklist-footer p {
+  margin-bottom: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .security-checklist-dashboard {
+    grid-template-columns: 1fr;
+  }
+  
+  .security-checklist-header h1 {
+    font-size: 2rem;
+  }
+  
+  .security-checklist-alert-panel {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .security-checklist-alert-input-group {
+    flex-direction: column;
+  }
+  
+  .security-checklist-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .security-checklist-button-primary, .security-checklist-button-secondary {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .security-checklist-container {
+    max-width: 100%;
+  }
+  
+  .security-checklist-header, 
+  .security-checklist-panel,
+  .security-checklist-alert-panel,
+  .security-checklist-cta {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    color: black;
+  }
+  
+  .security-checklist-header h1,
+  .security-checklist-panel h2,
+  .security-checklist-alert-panel h3,
+  .security-checklist-cta-content h2 {
+    color: black;
+    text-shadow: none;
+  }
+  
+  .security-checklist-progress-fill {
+    background-color: #333;
+    background-image: none;
+    box-shadow: none;
+  }
+  
+  .security-checklist-metric-value {
+    color: black;
+    text-shadow: none;
+  }
+  
+  .security-checklist-button, 
+  .security-checklist-button-primary, 
+  .security-checklist-button-secondary {
+    display: none;
+  }
+  
+  .security-checklist-alert-input-group {
+    display: none;
+  }
+  
+  .security-checklist-task-checkbox {
+    border: 1px solid #333;
+    color: black;
+  }
+  
+  .security-checklist-task-checkbox.checked {
+    background-color: #333;
+  }
+  
+  .security-checklist-cta {
+    display: none;
+  }
+}

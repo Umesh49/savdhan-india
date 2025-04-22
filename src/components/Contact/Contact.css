@@ -1,0 +1,887 @@
+:root {
+  --neon-green: #00ff41;
+  --dark-green: #007726;
+  --acid-green: #a9ff2e;
+  --dark-bg: #0a0e12;
+  --darker-bg: #050708;
+  --terminal-bg: #0c0c0c;
+  --neon-blue: #1e90ff;
+  --neon-red: #ff073a;
+  --terminal-text: #cccccc;
+  --grid-lines: rgba(0, 255, 65, 0.1);
+  --card-bg: rgba(10, 14, 18, 0.9);
+  --card-border: 1px solid var(--neon-green);
+  --card-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+  --section-padding: 70px 0;
+  --border-radius: 5px;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--terminal-text);
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Styles */
+.savdhaan-contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+/* Header */
+.savdhaan-contact-cyber-header {
+  background-color: var(--darker-bg);
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: 80px 0;
+  text-align: center;
+  border-bottom: 1px solid var(--neon-green);
+  box-shadow: 0 5px 25px rgba(0, 255, 65, 0.15);
+  position: relative;
+}
+
+.savdhaan-contact-cyber-header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(5, 7, 8, 0.7), rgba(5, 7, 8, 0.9));
+}
+
+.savdhaan-contact-cyber-header h1 {
+  color: var(--neon-green);
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 15px rgba(0, 255, 65, 0.7);
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.savdhaan-contact-cyber-header p {
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--terminal-text);
+  position: relative;
+}
+
+/* Sections */
+section {
+  padding: var(--section-padding);
+  border-bottom: 1px solid rgba(0, 255, 65, 0.15);
+  position: relative;
+}
+
+section:nth-child(odd) {
+  background-color: var(--dark-bg);
+}
+
+section:nth-child(even) {
+  background-color: var(--darker-bg);
+}
+
+h2 {
+  color: var(--neon-green);
+  font-size: 2.2rem;
+  margin-bottom: 35px;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+  display: inline-block;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+h2:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--neon-green), transparent);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+h3 {
+  color: var(--acid-green);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.savdhaan-contact-section-description {
+  font-size: 1.1rem;
+  max-width: 900px;
+  margin: -20px 0 40px;
+  color: var(--terminal-text);
+  opacity: 0.9;
+}
+
+/* Emergency Cards */
+.savdhaan-contact-emergency-response-grid {
+  background-color: var(--darker-bg);
+  position: relative;
+}
+
+.savdhaan-contact-emergency-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.savdhaan-contact-emergency-card {
+  background-color: var(--card-bg);
+  border: var(--card-border);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.savdhaan-contact-emergency-card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background-color: var(--neon-green);
+  transition: height 0.3s ease;
+}
+
+.savdhaan-contact-emergency-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
+}
+
+.savdhaan-contact-emergency-card:hover:before {
+  height: 100%;
+}
+
+.savdhaan-contact-card-icon {
+  font-size: 2.8rem;
+  color: var(--neon-green);
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+}
+
+.savdhaan-contact-emergency-card p {
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+.savdhaan-contact-emergency-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--neon-green);
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 15px 0;
+  text-decoration: none;
+  border: 1px solid var(--neon-green);
+  padding: 8px 18px;
+  border-radius: 3px;
+  background-color: rgba(0, 255, 65, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.savdhaan-contact-emergency-phone:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: rgba(0, 255, 65, 0.15);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.5s ease-out;
+}
+
+.savdhaan-contact-emergency-phone:hover {
+  background-color: rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+  transform: translateY(-3px);
+}
+
+.savdhaan-contact-emergency-phone:hover:after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.savdhaan-contact-official-portal {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-left: 4px solid var(--neon-blue);
+  padding: 25px 30px;
+  margin-top: 40px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.savdhaan-contact-official-portal h3 {
+  color: var(--neon-blue);
+  margin-bottom: 12px;
+}
+
+.savdhaan-contact-portal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 1px solid var(--neon-blue);
+  border-radius: 3px;
+  margin-top: 15px;
+  background-color: rgba(30, 144, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.savdhaan-contact-portal-link:hover {
+  background-color: rgba(30, 144, 255, 0.2);
+  box-shadow: 0 0 15px rgba(30, 144, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+.savdhaan-contact-blink-text {
+  animation: blink 1.8s infinite;
+  color: var(--neon-red);
+  font-size: 0.8em;
+  border: 1px solid var(--neon-red);
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-left: 12px;
+  vertical-align: middle;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(255, 7, 58, 0.5);
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 3px rgba(255, 7, 58, 0.3);
+  }
+}
+
+/* Contact Form */
+.savdhaan-contact-contact-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 50px;
+}
+
+.savdhaan-contact-contact-form-container {
+  background-color: var(--terminal-bg);
+  padding: 35px;
+  border: 1px solid var(--neon-green);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  z-index: 1;
+}
+
+.savdhaan-contact-contact-form-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 50%, rgba(0, 255, 65, 0.03) 50%),
+    linear-gradient(rgba(0, 255, 65, 0.03) 50%, transparent 50%);
+  background-size: 50px 50px;
+  z-index: -1;
+  opacity: 0.5;
+  border-radius: var(--border-radius);
+}
+
+.savdhaan-contact-form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--acid-green);
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.savdhaan-contact-required {
+  color: var(--neon-red);
+  margin-left: 5px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 14px 18px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--dark-green);
+  color: var(--terminal-text);
+  border-radius: var(--border-radius);
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(204, 204, 204, 0.5);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--neon-green);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+input.savdhaan-contact-error,
+textarea.savdhaan-contact-error,
+select.savdhaan-contact-error {
+  border-color: var(--neon-red);
+  box-shadow: 0 0 10px rgba(255, 7, 58, 0.3);
+}
+
+.savdhaan-contact-error-message {
+  color: var(--neon-red);
+  font-size: 0.9rem;
+  margin-top: 8px;
+  display: block;
+  padding-left: 5px;
+  border-left: 2px solid var(--neon-red);
+}
+
+.savdhaan-contact-btn-primary {
+  background-color: var(--dark-green);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  border: 1px solid var(--neon-green);
+  font-family: "Courier New", monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.savdhaan-contact-btn-primary:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.savdhaan-contact-btn-primary:hover {
+  background-color: rgba(0, 119, 38, 0.9);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  transform: translateY(-3px);
+}
+
+.savdhaan-contact-btn-primary:hover:before {
+  left: 100%;
+}
+
+.savdhaan-contact-btn-primary:active {
+  transform: translateY(1px);
+}
+
+.savdhaan-contact-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.savdhaan-contact-submit-status {
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.savdhaan-contact-submit-status.savdhaan-contact-success {
+  background-color: rgba(0, 255, 65, 0.1);
+  border: 1px solid var(--neon-green);
+  color: var(--neon-green);
+}
+
+.savdhaan-contact-submit-status.savdhaan-contact-error {
+  background-color: rgba(255, 7, 58, 0.1);
+  border: 1px solid var(--neon-red);
+  color: var(--neon-red);
+}
+
+/* Contact Info */
+.savdhaan-contact-contact-info {
+  background-color: var(--terminal-bg);
+  padding: 35px;
+  border: 1px solid var(--neon-green);
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+.savdhaan-contact-contact-info:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, var(--neon-green), transparent);
+}
+
+.savdhaan-contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  gap: 18px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.savdhaan-contact-info-item:not(:last-child):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--neon-green), transparent);
+  opacity: 0.3;
+}
+
+.savdhaan-contact-info-icon {
+  font-size: 1.7rem;
+  color: var(--neon-green);
+  margin-top: 5px;
+}
+
+.savdhaan-contact-info-item p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.savdhaan-contact-info-item a {
+  color: var(--acid-green);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.savdhaan-contact-info-item a:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--neon-green);
+  transition: width 0.3s ease;
+}
+
+.savdhaan-contact-info-item a:hover {
+  color: var(--neon-green);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.7);
+}
+
+.savdhaan-contact-info-item a:hover:after {
+  width: 100%;
+}
+
+.savdhaan-contact-secure-note {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-left: 4px solid var(--acid-green);
+  padding: 20px 25px;
+  margin-top: 25px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+/* Cyber Teams */
+.savdhaan-contact-cyber-teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.savdhaan-contact-cyber-team-card {
+  background-color: var(--terminal-bg);
+  border: 1px solid var(--neon-green);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.savdhaan-contact-cyber-team-card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-style: solid;
+  border-width: 0 35px 35px 0;
+  border-color: transparent var(--neon-green) transparent transparent;
+  transition: all 0.3s ease;
+}
+
+.savdhaan-contact-cyber-team-card:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+  transform: translateY(-5px);
+}
+
+.savdhaan-contact-cyber-team-card:hover:before {
+  border-width: 0 50px 50px 0;
+}
+
+.savdhaan-contact-team-specialty {
+  margin: 15px 0 20px;
+  padding: 8px 15px;
+  background-color: rgba(0, 255, 65, 0.08);
+  border-left: 3px solid var(--neon-green);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.savdhaan-contact-team-specialty span {
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+.savdhaan-contact-team-info {
+  margin-top: 20px;
+}
+
+.savdhaan-contact-team-info p {
+  margin: 10px 0;
+}
+
+.savdhaan-contact-team-info strong {
+  color: var(--acid-green);
+  margin-right: 5px;
+}
+
+.savdhaan-contact-team-info a {
+  color: var(--terminal-text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px dashed rgba(0, 255, 65, 0.3);
+}
+
+.savdhaan-contact-team-info a:hover {
+  color: var(--neon-green);
+  border-bottom-style: solid;
+}
+
+/* Threat Intel */
+.savdhaan-contact-threat-intel {
+  background-color: var(--darker-bg);
+  position: relative;
+}
+
+.savdhaan-contact-intel-resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.savdhaan-contact-intel-resource-item {
+  background-color: rgba(10, 14, 18, 0.8);
+  border: 1px solid var(--neon-blue);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.savdhaan-contact-intel-resource-item:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.savdhaan-contact-intel-resource-item:hover {
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.savdhaan-contact-intel-resource-item:hover:after {
+  transform: scaleX(1);
+}
+
+.savdhaan-contact-intel-resource-item a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neon-blue);
+  margin-top: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  padding: 5px 0;
+}
+
+.savdhaan-contact-intel-resource-item a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--neon-blue);
+  transition: width 0.3s ease;
+}
+
+.savdhaan-contact-intel-resource-item a:hover {
+  text-shadow: 0 0 8px rgba(30, 144, 255, 0.7);
+}
+
+.savdhaan-contact-intel-resource-item a:hover:after {
+  width: 100%;
+}
+
+/* FAQ Section */
+.savdhaan-contact-security-faq {
+  background-color: var(--terminal-bg);
+}
+
+.savdhaan-contact-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 30px;
+}
+
+.savdhaan-contact-faq-item {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid var(--acid-green);
+  padding: 25px;
+  transition: all 0.3s ease;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  position: relative;
+}
+
+.savdhaan-contact-faq-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(169, 255, 46, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.savdhaan-contact-faq-item:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateX(5px);
+}
+
+.savdhaan-contact-faq-item:hover:before {
+  opacity: 1;
+}
+
+.savdhaan-contact-faq-item h3 {
+  color: var(--acid-green);
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.savdhaan-contact-faq-item p {
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Terminal/Code-like effects */
+::selection {
+  background-color: var(--neon-green);
+  color: black;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-green);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  :root {
+    --section-padding: 60px 0;
+  }
+  
+  .savdhaan-contact-cyber-header {
+    padding: 70px 0;
+  }
+  
+  .savdhaan-contact-cyber-header h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --section-padding: 50px 0;
+  }
+  
+  .savdhaan-contact-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .savdhaan-contact-contact-info {
+    order: -1;
+  }
+
+  .savdhaan-contact-cyber-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .savdhaan-contact-cyber-header p {
+    font-size: 1.1rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 40px 0;
+  }
+  
+  .savdhaan-contact-faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .savdhaan-contact-cyber-teams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .savdhaan-contact-cyber-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .savdhaan-contact-cyber-header {
+    padding: 60px 0;
+  }
+  
+  .savdhaan-contact-contact-form-container,
+  .savdhaan-contact-contact-info {
+    padding: 25px;
+  }
+  
+  .savdhaan-contact-emergency-card,
+  .savdhaan-contact-cyber-team-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .savdhaan-contact-emergency-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .savdhaan-contact-intel-resources {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 35px 0;
+  }
+  
+  .savdhaan-contact-cyber-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .savdhaan-contact-cyber-header p {
+    font-size: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 25px;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+  
+  .savdhaan-contact-emergency-phone {
+    font-size: 1.1rem;
+    padding: 7px 14px;
+  }
+  
+  .savdhaan-contact-btn-primary {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .savdhaan-contact-container {
+    padding: 0 15px;
+  }
+}
