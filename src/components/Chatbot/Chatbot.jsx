@@ -5,7 +5,6 @@ import {
   FaRobot, 
   FaUser, 
   FaPaperPlane, 
-  FaInfoCircle, 
   FaShieldAlt, 
   FaLock, 
   FaExclamationTriangle,
@@ -18,10 +17,16 @@ import {
   FaMicrochip,
   FaGlobe,
   FaKey,
-  FaShieldVirus,
-  FaSatelliteDish
+  FaSatelliteDish,
+  FaNetworkWired as FaNetworkIcon,
 } from "react-icons/fa"
-import { RiShieldKeyholeFill, RiRadarFill, RiVpnFill, RiFileCodeFill } from "react-icons/ri"
+import { 
+  RiShieldKeyholeFill, 
+  RiRadarLine, 
+  RiFileCodeLine,
+  RiShieldLine,
+  RiRadarFill
+} from "react-icons/ri"
 import { SiWebassembly, SiMatrix } from "react-icons/si"
 import CyberSpinner from "../common/CyberSpinner/CyberSpinner"
 import "./Chatbot.css"
@@ -675,7 +680,7 @@ const Chatbot = () => {
                 </div>
               </li>
               <li className="chatbot-feature-item">
-                <RiVpnFill className="chatbot-feature-icon" />
+                <FaNetworkWired className="chatbot-feature-icon" />
                 <div>
                   <h4>Zero-Trust Architecture</h4>
                   <p>Continuous verification of every digital transaction and entity</p>
@@ -774,7 +779,7 @@ const Chatbot = () => {
         
         <div className="chatbot-hud-element chatbot-hud-bottom-right">
           <span>CERT-IN PROTOCOL COMPLIANT</span>
-          <RiFileCodeFill className="chatbot-hud-icon" />
+          <RiFileCodeLine className="chatbot-hud-icon" />
         </div>
       </div>
     </div>
