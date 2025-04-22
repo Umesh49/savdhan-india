@@ -152,57 +152,27 @@
   }
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
+@keyframes particle {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.7;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-20px);
+  100% {
+    transform: translate(50px, 50px);
     opacity: 0;
   }
 }
 
-@keyframes zoomIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
+@keyframes float {
+  0% {
+    transform: translateY(-10px);
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
+  50% {
+    transform: translateY(10px);
   }
-}
-
-@keyframes zoomOut {
-  from {
-    transform: scale(1);
-    opacity: 1;
+  100% {
+    transform: translateY(-10px);
   }
-  to {
-    transform: scale(1.05);
-    opacity: 0;
-  }
-}
-
-.splash-screen-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
 }
 
 .splashscreen-auth-section {
@@ -245,25 +215,21 @@
   height: 60px;
   background-color: rgba(0, 255, 65, 0.03);
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  animation: pulse 5s infinite;
+  animation: float 6s ease-in-out infinite;
   z-index: 1;
+  opacity: 1;
 }
 
-.splashscreen-scan-line {
+.splashscreen-particle {
   position: absolute;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #00ff41,
-    #39ff14,
-    transparent
-  );
-  box-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
-  opacity: 0.5;
+  width: 6px;
+  height: 6px;
+  background-color: #00ff41;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00ff41;
+  opacity: 0.7;
   z-index: 3;
-  animation: scan 3s linear infinite;
+  animation: particle 4s linear infinite;
 }
 
 .splashscreen-auth-container,
@@ -282,12 +248,8 @@
   align-items: center;
 }
 
-.splashscreen-fade-in {
-  animation: zoomIn 0.5s forwards;
-}
-
-.splashscreen-fade-out {
-  animation: zoomOut 0.5s forwards;
+.splashscreen-splash-container {
+  max-width: 600px;
 }
 
 .splashscreen-exiting {
@@ -457,10 +419,6 @@
   cursor: not-allowed;
 }
 
-.splashscreen-auth-button.splashscreen-authenticating {
-  position: relative;
-}
-
 .splashscreen-auth-button.splashscreen-authenticating::before {
   content: "";
   position: absolute;
@@ -501,19 +459,19 @@
 }
 
 .splashscreen-binary-stream {
-  position: fixed;
-  bottom: 30px;
-  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
   display: flex;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: #00ff41;
-  text-align: center;
+  justify-content: flex-start;
+  gap: 3px;
+  font-family: monospace;
+  color: rgba(0, 255, 65, 0.7);
 }
 
 .splashscreen-binary-stream span {
-  margin: 0 2px;
-  animation: blink 0.5s infinite alternate;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
 }
 
 .splashscreen-hud-corner {
@@ -530,27 +488,26 @@
   border-bottom: none;
   border-right: none;
 }
+
 .splashscreen-top-right {
   top: 20px;
   right: 20px;
   border-bottom: none;
   border-left: none;
 }
+
 .splashscreen-bottom-left {
   bottom: 20px;
   left: 20px;
   border-top: none;
   border-right: none;
 }
+
 .splashscreen-bottom-right {
   bottom: 20px;
   right: 20px;
   border-top: none;
   border-left: none;
-}
-
-.splashscreen-splash-container {
-  max-width: 600px;
 }
 
 .splashscreen-load .splashscreen-auth-container,
@@ -567,13 +524,6 @@
   width: 100%;
   margin-bottom: 2em;
   justify-content: center;
-}
-
-.splashscreen-status-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
 }
 
 .splashscreen-status-row {
@@ -635,13 +585,6 @@
   animation: fadeIn 0.5s forwards;
   animation-delay: 0.5s;
   opacity: 0;
-}
-
-.splashscreen-progress-wrapper {
-  padding: 1px;
-  background: linear-gradient(90deg, #004000, #00ff41, #004000);
-  border-radius: 8px;
-  margin-bottom: 15px;
 }
 
 .splashscreen-progress-bar-container {
@@ -763,22 +706,6 @@
   animation: fadeInSlide 0.5s forwards;
 }
 
-.splashscreen-binary-stream {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: flex;
-  justify-content: flex-start;
-  gap: 3px;
-  font-family: monospace;
-  color: rgba(0, 255, 65, 0.7);
-}
-
-.splashscreen-binary-stream span {
-  opacity: 0;
-  animation: fadeIn 0.3s forwards;
-}
-
 @media (max-width: 1024px) {
   .splashscreen-auth-container,
   .splashscreen-splash-container {
@@ -870,7 +797,6 @@
     margin-bottom: 1em;
   }
   .splashscreen-key-icon,
-  .splashscreen-check-icon,
   .splashscreen-status-icon {
     font-size: 1em;
   }

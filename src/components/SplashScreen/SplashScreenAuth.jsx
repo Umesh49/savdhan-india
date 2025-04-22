@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import { FaKey, FaLock, FaTerminal } from "react-icons/fa";
 import { IoWarning } from "react-icons/io5";
@@ -12,20 +12,24 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
   const matrixRef = useRef(null);
   const correctPassword = "savdhaan";
 
-  const handlePasswordSubmit = (e) => {
-    e.preventDefault();
-    setPasswordError("");
-    setIsAuthenticating(true);
+  const handlePasswordSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      setPasswordError("");
+      setIsAuthenticating(true);
 
-    setTimeout(() => {
-      if (password === correctPassword) {
-        onAuthSuccess();
-      } else {
-        setPasswordError("Access denied. Invalid credentials.");
-        setIsAuthenticating(false);
-      }
-    }, 1500);
-  };
+      setTimeout(() => {
+        if (password === correctPassword) {
+          sessionStorage.setItem("authenticated", "true");
+          onAuthSuccess();
+        } else {
+          setPasswordError("Access denied. Invalid credentials.");
+          setIsAuthenticating(false);
+        }
+      }, 1500);
+    },
+    [password, onAuthSuccess]
+  );
 
   useEffect(() => {
     const canvas = matrixRef.current;
@@ -61,7 +65,7 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
       });
     };
 
-    const intervalId = setInterval(draw, 50);
+    const intervalId = setInterval(draw, 60);
     return () => {
       clearInterval(intervalId);
       window.removeEventListener("resize", resize);
@@ -73,7 +77,7 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
       <canvas ref={matrixRef} className="splashscreen-matrix-background" />
 
       <div className="splashscreen-cyber-background-grid">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
             className="splashscreen-hex-cell"
@@ -84,19 +88,37 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
             }}
           />
         ))}
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className="splashscreen-particle"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+            }}
+          />
+        ))}
       </div>
-
-      <div className="splashscreen-scan-line" />
 
       <div className="splashscreen-auth-container">
         <div className="splashscreen-logo-wrapper">
-          <img src={logoUrl} alt="Savdhaan India logo" className="splashscreen-cyber-logo" />
+          <img
+            src={logoUrl}
+            alt="Savdhaan India logo"
+            className="splashscreen-cyber-logo"
+          />
         </div>
 
         <h1 className="splashscreen-cyber-title">SAVDHAAN INDIA</h1>
-        <p className="splashscreen-tagline">ADVANCED CYBER SECURITY INITIATIVE</p>
+        <p className="splashscreen-tagline">
+          ADVANCED CYBER SECURITY INITIATIVE
+        </p>
 
-        <form onSubmit={handlePasswordSubmit} className="splashscreen-password-form">
+        <form
+          onSubmit={handlePasswordSubmit}
+          className="splashscreen-password-form"
+        >
           <div className="splashscreen-form-header">
             <FaKey className="splashscreen-key-icon" />
             <span>AUTHENTICATION REQUIRED</span>
@@ -128,7 +150,8 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
           >
             {isAuthenticating ? (
               <>
-                AUTHENTICATING <span className="splashscreen-auth-dots">...</span>
+                AUTHENTICATING{" "}
+                <span className="splashscreen-auth-dots">...</span>
               </>
             ) : (
               <>
@@ -140,7 +163,7 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
       </div>
 
       <div className="splashscreen-binary-stream">
-        {Array.from({ length: 40 }).map((_, i) => (
+        {Array.from({ length: 20 }).map((_, i) => (
           <span key={i} style={{ animationDelay: `${i * 0.1}s` }}>
             {Math.random() > 0.5 ? "1" : "0"}
           </span>
@@ -152,7 +175,7 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
       <div className="splashscreen-hud-corner splashscreen-bottom-left" />
       <div className="splashscreen-hud-corner splashscreen-bottom-right" />
     </div>
-);
+  );
 }
 
 SplashScreenAuth.propTypes = {

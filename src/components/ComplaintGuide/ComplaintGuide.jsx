@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { a } from "react-router-dom"
 import { FaClipboardList, FaExclamationTriangle, FaFileAlt, FaArrowRight, FaCheck, FaInfoCircle, FaShieldAlt, FaLock, FaServer } from "react-icons/fa"
 import "./ComplaintGuide.css"
 
