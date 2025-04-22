@@ -214,8 +214,7 @@ const Footer = () => {
                 { path: "/", label: "Command_Home", icon: FaTerminal },
                 { path: "/indian-laws", label: "Cyber_Laws", icon: FaShieldAlt },
                 { path: "/complaint-guide", label: "Complaint_Guide", icon: FaExclamationTriangle },
-                { path: "/threat-map", label: "Threat_Map", icon: GiRadarSweep },
-                { path: "/resources", label: "Resources", icon: FaUserShield }
+                { path: "/tutorials", label: "Tutorials", icon: FaUserShield }
               ].map((link, index) => (
                 <li key={index} className="footer-link-item">
                   <a

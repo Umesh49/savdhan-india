@@ -22,7 +22,12 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true, 
+        v7_relativeSplatPath: true
+      }}
+    >
       <div className="app">
         <MatrixBackground />
         
@@ -35,9 +40,7 @@ function App() {
           />
           
           <main
-            className={`content ${
-              sidebarOpen ? "sidebar-active" : ""
-            }`}
+            className={`content ${sidebarOpen ? "sidebar-active" : ""}`}
           >
             <AppRoutes />
             <Footer />

@@ -1,79 +1,49 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoadingSpinner from "./components/common/LoadingSpinner/LoadingSpinner";
-
-// Lazy-loaded pages
-const Home = lazy(() => import("./components/Home/Home"));
-const IndianLaws = lazy(() => import("./components/IndianLaws/IndianLaws"));
-const ComplaintGuide = lazy(() => import("./components/ComplaintGuide"));
-const ComplaintForm = lazy(() => import("./components/ComplaintForm"));
-const Resources = lazy(() => import("./components/Resources"));
-// const SecurityTools = lazy(() =>
-//   import("./components/SecurityTools/SecurityTools")
-// );
-const CyberAwarenessQuiz = lazy(() =>
-  import("./components/Quiz/CyberAwarenessQuiz")
-);
-const ThreatMap = lazy(() => import("./components/ThreatMap/ThreatMap"));
-const SecurityChecklist = lazy(() => import("./components/SecurityChecklist/SecurityChecklist"));
-const FAQ = lazy(() => import("./components/FAQs/FAQ"));
-const Contact = lazy(() => import("./components/Contact/Contact"));
-const AboutUs = lazy(() => import("./components/About/AboutUs"));
-const Login = lazy(() => import("./components/auth/Login"));
-const Register = lazy(() => import("./components/auth/Register"));
-const Dashboard = lazy(() => import("./components/Dashboard/Dashboard"));
-const Tutorials = lazy(() => import("./components/Tutorials/Tutorials"));
-const Chatbot = lazy(() => import("./components/Chatbot"));
-const PrivacyPolicy = lazy(() =>
-  import("./components/StaticPages/PrivacyPolicy")
-);
-const TermsOfService = lazy(() =>
-  import("./components/StaticPages/TermsOfService")
-);
-const NotFound = lazy(() => import("./components/NotFound/NotFound"));
-
-const ProtectedRoute = ({ children }) => {
-  return children;
-};
+import Home from "./components/Home/Home";
+import IndianLaws from "./components/IndianLaws/IndianLaws";
+import ComplaintGuide from "./components/ComplaintGuide/ComplaintGuide.jsx";
+import ComplaintForm from "./components/ComplaintForm/ComplaintForm.jsx";
+import SecurityTools from "./components/SecurityTools/SecurityTools";
+import CyberAwarenessQuiz from "./components/Quiz/CyberAwarenessQuiz";
+import QuizCategorySelector from "./components/Quiz/QuizCategorySelector";
+import SecurityChecklist from "./components/SecurityChecklist/SecurityChecklist";
+import FAQ from "./components/FAQs/FAQ";
+import Contact from "./components/Contact/Contact";
+import AboutUs from "./components/About/AboutUs";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import Tutorials from "./components/Tutorials/Tutorials";
+import Chatbot from "./components/Chatbot/Chatbot.jsx";
+import PrivacyPolicy from "./components/StaticPages/PrivacyPolicy";
+import TermsOfService from "./components/StaticPages/TermsOfService";
+import NotFound from "./components/NotFound/NotFound";
 
 export default function AppRoutes() {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
-        {/* Public */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/security-checklist" element={<SecurityChecklist />} />
-
-        {/* <Route path="/indian-laws" element={<IndianLaws />} />
+        <Route path="/indian-laws" element={<IndianLaws />} />
         <Route path="/complaint-guide" element={<ComplaintGuide />} />
         <Route path="/complaint-form" element={<ComplaintForm />} />
-        <Route path="/resources" element={<Resources />} /> */}
-        {/* <Route path="/security-tools" element={<SecurityTools />} /> */}
-        {/* <Route path="/cyber-awareness-quiz" element={<CyberAwarenessQuiz />} /> */}
-        <Route path="/threat-map" element={<ThreatMap />} />
+        <Route path="/security-tools" element={<SecurityTools />} />
+        <Route path="/quiz" element={<QuizCategorySelector />} />
+        <Route path="/quiz/:categoryId" element={<CyberAwarenessQuiz />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about-us" element={<AboutUs />} />
-        {/* <Route path="/tutorials" element={<Tutorials />} />
-        <Route path="/updates" element={<Updates />} /> */}
+        <Route path="/tutorials" element={<Tutorials />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
-
-        {/* Unauthenticated */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        {/* Protected */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

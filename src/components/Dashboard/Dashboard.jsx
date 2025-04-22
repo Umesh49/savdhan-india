@@ -156,9 +156,6 @@ function Dashboard() {
                     <h2>
                       <FaNewspaper /> THREAT_INTEL
                     </h2>
-                    <a to="/updates" className="dash-btn-link">
-                      VIEW_ALL
-                    </a>
                   </div>
 
                   <div className="dash-updates-list">
@@ -167,9 +164,6 @@ function Dashboard() {
                         <div className="dash-update-date">{new Date(update.publishedAt).toLocaleDateString()}</div>
                         <h3>{update.title}</h3>
                         <p>{update.summary}</p>
-                        <a to={`/updates/${update._id}`} className="dash-read-more">
-                          <span>ACCESS_FULL_DATA</span> <FaTerminal />
-                        </a>
                       </div>
                     ))}
                   </div>

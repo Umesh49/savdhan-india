@@ -186,11 +186,6 @@ function SecurityTools() {
                   </li>
                 </ul>
               </div>
-              <div className="tool-actions">
-                <a href="/threat-map" className="btn-primary">
-                  View Threat Map
-                </a>
-              </div>
             </div>
           </div>
 

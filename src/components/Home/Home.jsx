@@ -163,14 +163,6 @@ const Home = () => {
     },
     {
       id: 3,
-      title: "Threat Map",
-      description: "Real-time threat visualization across global networks",
-      icon: <FaMapMarkedAlt className="feature-icon" />,
-      link: "/threat-map",
-      color: "purple",
-    },
-    {
-      id: 4,
       title: "Security Toolkit",
       description: "Open-source tools for vulnerability assessment",
       icon: <FaTools className="feature-icon" />,
@@ -178,7 +170,7 @@ const Home = () => {
       color: "green",
     },
     {
-      id: 5,
+      id: 4,
       title: "Vulnerability DB",
       description: "Searchable repository of known CVEs and exploits",
       icon: <GiBiohazard className="feature-icon" />,
@@ -186,7 +178,7 @@ const Home = () => {
       color: "orange",
     },
     {
-      id: 6,
+      id: 5,
       title: "Penetration Testing",
       description: "Ethical hacking methodologies and best practices",
       icon: <RiCodeSSlashLine className="feature-icon" />,
@@ -194,7 +186,7 @@ const Home = () => {
       color: "cyan",
     },
     {
-      id: 7,
+      id: 6,
       title: "Encryption Tools",
       description: "Guides to implement strong cryptographic solutions",
       icon: <FaLock className="feature-icon" />,
@@ -202,7 +194,7 @@ const Home = () => {
       color: "yellow",
     },
     {
-      id: 8,
+      id: 7,
       title: "SOC Training",
       description: "Security Operations Center analyst training materials",
       icon: <FaNetworkWired className="feature-icon" />,

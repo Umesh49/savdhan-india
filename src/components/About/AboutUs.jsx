@@ -252,9 +252,6 @@ export default function AboutUs() {
               <a href="/contact" className="about-btn-terminal">
                 <span className="about-btn-prompt">&gt;</span>Contact Us
               </a>
-              <a href="/resources" className="about-btn-secondary">
-                <span className="about-btn-prompt">&gt;</span>Explore
-              </a>
             </div>
           </div>
         </div>
