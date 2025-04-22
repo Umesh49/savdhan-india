@@ -14,7 +14,7 @@ import {
   FaRegCopyright,
   FaGlobeAsia
 } from "react-icons/fa";
-import './TOS_PP.css';
+import './Tos_PP.css';
 
 const TermsOfService = () => {
   return (

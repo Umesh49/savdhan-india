@@ -1,5 +1,5 @@
 import { FaShieldAlt, FaUserShield, FaDatabase, FaExchangeAlt, FaLock, FaUserSecret, FaChild, FaCookieBite } from "react-icons/fa";
-import './TOS_PP.css';
+import './Tos_PP.css';
 
 const PrivacyPolicy = () => {
   return (
