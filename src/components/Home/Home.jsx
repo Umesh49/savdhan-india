@@ -26,7 +26,7 @@ import MatrixBackground from "../common/MatrixBackground.jsx";
 import CyberSpinner from "../common/CyberSpinner/CyberSpinner.jsx";
 import "./Home.css";
 
-const Home = () => {
+export default function HomePage () {
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState(null);
   const [threatLevel, setThreatLevel] = useState("Elevated");
@@ -520,5 +520,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;

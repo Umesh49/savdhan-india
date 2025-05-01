@@ -1,633 +1,473 @@
-"use client"
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import {
+  FaLock,
+  FaShieldAlt,
+  FaCode,
+  FaUserSecret,
+  FaServer,
+  FaLaptopCode,
+  FaPlay,
+  FaSearch,
+  FaTimes,
+  FaFilter,
+  FaAngleDown,
+  FaSortAmountDown,
+  FaEye,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
+import { tutorialData } from "./youtube.js";
+import CyberSpinner from "../common/CyberSpinner/CyberSpinner";
+import "./Tutorials.css";
 
-import { useState, useEffect, useRef } from "react"
-import { FaLock, FaShieldAlt, FaCode, FaUserSecret, FaServer, FaLaptopCode, FaPlay, FaSearch, FaTimes } from "react-icons/fa"
-import CyberSpinner from "../common/CyberSpinner/CyberSpinner"
-import { tutorialData } from "./youtube.js"
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const pages = useMemo(() => {
+    const nums = [];
+    const maxShow = 5;
+
+    if (totalPages <= maxShow) {
+      // If total pages is small, show all pages
+      for (let i = 1; i <= totalPages; i++) nums.push(i);
+    } else {
+      // Always add first page
+      nums.push(1);
+
+      // Calculate the range of middle pages to show
+      let start = Math.max(2, currentPage - 1);
+      let end = Math.min(totalPages - 1, currentPage + 1);
+
+      // Special handling for when current page is near the beginning
+      if (currentPage <= 3) {
+        start = 2;
+        end = Math.min(4, totalPages - 1);
+      }
+
+      // Special handling for when current page is near the end
+      if (currentPage >= totalPages - 2) {
+        start = Math.max(2, totalPages - 3);
+        end = totalPages - 1;
+      }
+
+      // Add ellipsis if there's a gap after page 1
+      if (start > 2) nums.push("...");
+
+      // Add middle page numbers without duplicates
+      for (let i = start; i <= end; i++) nums.push(i);
+
+      // Add ellipsis if there's a gap before the last page
+      if (end < totalPages - 1) nums.push("...");
+
+      // Always add last page if not already included
+      if (totalPages > 1) nums.push(totalPages);
+    }
+
+    return nums;
+  }, [currentPage, totalPages]);
+
+  return (
+    <div className="tutorial-pagination">
+      <button
+        className="tutorial-pagination-btn"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        aria-label="Previous page"
+      >
+        <FaChevronLeft />
+      </button>
+
+      {pages.map((p, i) =>
+        p === "..." ? (
+          <span key={i} className="tutorial-pagination-ellipsis">
+            …
+          </span>
+        ) : (
+          <button
+            key={i} // Changed from key={p} to key={i} to avoid duplicate keys
+            className={`tutorial-pagination-btn ${
+              currentPage === p ? "active" : ""
+            }`}
+            onClick={() => onPageChange(p)}
+            aria-current={currentPage === p ? "page" : undefined}
+          >
+            {p}
+          </button>
+        )
+      )}
+
+      <button
+        className="tutorial-pagination-btn"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        aria-label="Next page"
+      >
+        <FaChevronRight />
+      </button>
+
+      <span className="tutorial-pagination-info">
+        Page {currentPage} of {totalPages}
+      </span>
+    </div>
+  );
+};
 
 const Tutorials = () => {
-  const [loading, setLoading] = useState(true)
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [tutorials, setTutorials] = useState([])
-  const [activeVideo, setActiveVideo] = useState(null)
-  const videoModalRef = useRef(null)
-
-  useEffect(() => {
-    // Simulate loading for a more realistic UX
-    const timer = setTimeout(() => {
-      setTutorials(tutorialData)
-      setLoading(false)
-    }, 1000)
-    
-    return () => clearTimeout(timer)
-  }, [])
-  
-  
-  useEffect(() => {
-    // Close modal when clicking outside
-    const handleClickOutside = (event) => {
-      if (videoModalRef.current && !videoModalRef.current.contains(event.target)) {
-        closeVideoModal()
-      }
-    }
-    
-    if (activeVideo) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-    
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [activeVideo])
-
-  const filteredTutorials = tutorials.filter((tutorial) => {
-    const matchesCategory = selectedCategory === "all" || tutorial.category === selectedCategory
-    const matchesSearch =
-      tutorial.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tutorial.description.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesSearch
-  })
-
-  const getCategoryIcon = (category) => {
-    switch (category) {
+  const getCategoryIcon = useCallback((cat) => {
+    switch (cat) {
       case "security":
-        return <FaShieldAlt className="tutorial-icon-neon" />
+        return <FaShieldAlt className="tutorial-icon-neon" />;
       case "privacy":
-        return <FaUserSecret className="tutorial-icon-neon" />
+        return <FaUserSecret className="tutorial-icon-neon" />;
       case "coding":
-        return <FaCode className="tutorial-icon-neon" />
+        return <FaCode className="tutorial-icon-neon" />;
       case "network":
-        return <FaServer className="tutorial-icon-neon" />
+        return <FaServer className="tutorial-icon-neon" />;
       case "hacking":
-        return <FaLaptopCode className="tutorial-icon-neon" />
+        return <FaLaptopCode className="tutorial-icon-neon" />;
       default:
-        return <FaLock className="tutorial-icon-neon" />
+        return <FaLock className="tutorial-icon-neon" />;
     }
-  }
+  }, []);
 
-  const categories = [
-    { id: "all", name: "All Tutorials" },
-    { id: "security", name: "Security Basics" },
-    { id: "privacy", name: "Privacy Protection" },
-    { id: "coding", name: "Secure Coding" },
-    { id: "network", name: "Network Security" },
-    { id: "hacking", name: "Ethical Hacking" },
-  ]
-  
-  const openVideoModal = (tutorial) => {
-    setActiveVideo(tutorial)
-    document.body.style.overflow = 'hidden' // Prevent scrolling when modal is open
-  }
-  
-  const closeVideoModal = () => {
-    setActiveVideo(null)
-    document.body.style.overflow = 'auto' // Re-enable scrolling
-  }
+  const parseDuration = useCallback((str) => {
+    if (!str) return 0;
+    const parts = str.split(":").map(Number);
+    return parts.length === 2 ? parts[0] * 60 + parts[1] : parts[0] || 0;
+  }, []);
 
-  if (loading) {
-    return (
-      <div className="tutorial-loading-container">
-        <div className="tutorial-cyber-terminal">
-          <CyberSpinner size={60} />
-          <p className="tutorial-loading-text">Initializing security protocols...</p>
-        </div>
-      </div>
-    )
-  }
+  const sortTutorials = useCallback(
+    (list, opt) => {
+      const arr = [...list];
+      switch (opt) {
+        case "newest":
+          return arr.sort((a, b) => (b.dateAdded || 0) - (a.dateAdded || 0));
+        case "oldest":
+          return arr.sort((a, b) => (a.dateAdded || 0) - (b.dateAdded || 0));
+        case "shortest":
+          return arr.sort(
+            (a, b) => parseDuration(a.duration) - parseDuration(b.duration)
+          );
+        case "longest":
+          return arr.sort(
+            (a, b) => parseDuration(b.duration) - parseDuration(a.duration)
+          );
+        case "alphabetical":
+          return arr.sort((a, b) => a.title.localeCompare(b.title));
+        default:
+          return arr;
+      }
+    },
+    [parseDuration]
+  );
+
+  const [loading, setLoading] = useState(true);
+  const [tutorials, setTutorials] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortOption, setSortOption] = useState("newest");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(12);
+  const filterPanelRef = useRef(null);
+
+  useEffect(() => {
+    const processed = tutorialData.map((t, i) => ({
+      ...t,
+      dateAdded: t.dateAdded || Date.now() - i * 86400000,
+    }));
+    setTutorials(sortTutorials(processed, sortOption));
+    setLoading(false);
+  }, [sortTutorials, sortOption]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedCategory, sortOption]);
+
+  useEffect(() => {
+    if (!isFilterOpen) return;
+
+    const onClick = (e) => {
+      if (
+        filterPanelRef.current &&
+        !filterPanelRef.current.contains(e.target) &&
+        !e.target.closest(".tutorial-filter-button")
+      ) {
+        setIsFilterOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [isFilterOpen]);
+
+  const availableCategories = useMemo(() => {
+    const setCats = new Set();
+    tutorialData.forEach((t) => {
+      if (t.category && t.categoryName) {
+        setCats.add(JSON.stringify({ id: t.category, name: t.categoryName }));
+      }
+    });
+
+    return [
+      { id: "all", name: "All Tutorials" },
+      ...Array.from(setCats)
+        .map((s) => JSON.parse(s))
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    ];
+  }, []);
+
+  const filteredTutorials = useMemo(() => {
+    return tutorials.filter((t) => {
+      const byCat =
+        selectedCategory === "all" || t.category === selectedCategory;
+      const bySearch =
+        searchQuery === "" ||
+        t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return byCat && bySearch;
+    });
+  }, [tutorials, selectedCategory, searchQuery]);
+
+  const totalPages = Math.ceil(filteredTutorials.length / itemsPerPage);
+  const startIdx = (currentPage - 1) * itemsPerPage;
+  const currentTutorials = filteredTutorials.slice(
+    startIdx,
+    startIdx + itemsPerPage
+  );
+
+  const handlePageChange = useCallback(
+    (n) => {
+      if (n < 1 || n > totalPages) return;
+      setCurrentPage(n);
+      window.scrollTo({
+        top: document.querySelector(".tutorial-grid")?.offsetTop - 100 || 0,
+        behavior: "smooth",
+      });
+    },
+    [totalPages]
+  );
+
+  const openYouTubeLink = useCallback((url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  }, []);
+
+  if (loading) return <CyberSpinner />;
 
   return (
     <div className="tutorial-container">
-      <div className="tutorial-page-header">
-        <div className="tutorial-header-content">
-          <h1 className="tutorial-title">
-            <span className="tutorial-title-prefix">&gt;_</span> Security Tutorials
-          </h1>
-          <p className="tutorial-subtitle">
-            Master the art of cybersecurity with our comprehensive training modules
-          </p>
+      <header className="tutorial-page-header">
+        <h1 className="tutorial-page-title">
+          <span className="tutorial-title-prefix">&gt;_</span> Security
+          Tutorials
+        </h1>
+        <p className="tutorial-page-subtitle">
+          Master cybersecurity with our comprehensive training modules
+        </p>
+      </header>
+
+      <div className="tutorial-cyber-panel">
+        <div className="tutorial-search-filter-container">
+          <div className="tutorial-search-group">
+            <FaSearch className="tutorial-search-icon" />
+            <input
+              type="text"
+              placeholder="Search tutorials..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="tutorial-search-input"
+              aria-label="Search tutorials"
+            />
+            {searchQuery && (
+              <button
+                className="tutorial-search-clear"
+                onClick={() => setSearchQuery("")}
+                aria-label="Clear search"
+              >
+                <FaTimes />
+              </button>
+            )}
+          </div>
+
+          <div className="tutorial-filter-group">
+            <button
+              className="tutorial-filter-button"
+              onClick={() => setIsFilterOpen((o) => !o)}
+              aria-expanded={isFilterOpen}
+              aria-label="Filter tutorials"
+            >
+              <FaFilter /> <span>Filter</span>
+              <FaAngleDown
+                className={`tutorial-filter-arrow ${
+                  isFilterOpen ? "open" : ""
+                }`}
+              />
+            </button>
+
+            <div className="tutorial-sort-dropdown">
+              <FaSortAmountDown className="tutorial-sort-icon" />
+              <select
+                className="tutorial-sort-select"
+                value={sortOption}
+                onChange={(e) => {
+                  setSortOption(e.target.value);
+                  setTutorials(sortTutorials(tutorials, e.target.value));
+                }}
+                aria-label="Sort tutorials"
+              >
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="shortest">Shortest</option>
+                <option value="longest">Longest</option>
+                <option value="alphabetical">A-Z</option>
+              </select>
+            </div>
+          </div>
+
+          {isFilterOpen && (
+            <div className="tutorial-filter-panel" ref={filterPanelRef}>
+              <h4 className="tutorial-filter-title">Categories</h4>
+              <div className="tutorial-category-grid">
+                {availableCategories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    className={`tutorial-category-pill ${
+                      selectedCategory === cat.id ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      setSelectedCategory(cat.id);
+                      setIsFilterOpen(false);
+                    }}
+                    aria-pressed={selectedCategory === cat.id}
+                  >
+                    {cat.id !== "all" && getCategoryIcon(cat.id)}
+                    <span>{cat.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="tutorial-cyber-panel">
-        <div className="tutorial-search-filter">
-          <FaSearch className="tutorial-search-icon" />
-          <input
-            type="text"
-            placeholder="Search secure protocols..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="tutorial-search-input"
-          />
+      <div className="tutorial-results-summary">
+        <div className="tutorial-results-count">
+          <FaEye className="tutorial-results-icon" />
+          <span>
+            Showing {filteredTutorials.length}{" "}
+            {filteredTutorials.length === 1 ? "result" : "results"}
+            {selectedCategory !== "all" &&
+              ` in ${
+                availableCategories.find((c) => c.id === selectedCategory)?.name
+              }`}
+            {searchQuery && ` for "${searchQuery}"`}
+          </span>
         </div>
-
-        <div className="tutorial-category-filter">
-          <div className="tutorial-category-tabs">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                className={`tutorial-category-tab ${
-                  selectedCategory === category.id ? "tutorial-category-active" : ""
-                }`}
-                onClick={() => setSelectedCategory(category.id)}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
+        <div className="tutorial-per-page">
+          <label htmlFor="tutorial-items-per-page">Show:</label>
+          <select
+            id="tutorial-items-per-page"
+            className="tutorial-per-page-select"
+            value={itemsPerPage}
+            onChange={(e) => {
+              setItemsPerPage(+e.target.value);
+              setCurrentPage(1);
+            }}
+          >
+            <option value={12}>12</option>
+            <option value={24}>24</option>
+            <option value={48}>48</option>
+          </select>
         </div>
       </div>
 
       {filteredTutorials.length === 0 ? (
         <div className="tutorial-empty-state">
           <FaLaptopCode size={50} className="tutorial-empty-icon" />
-          <h3 className="tutorial-empty-title">No security protocols found</h3>
-          <p className="tutorial-empty-text">Adjust your search parameters and try again</p>
+          <h3 className="tutorial-empty-title">No tutorials found</h3>
+          <p className="tutorial-empty-text">
+            Try adjusting your search or filters
+          </p>
+          <button
+            className="tutorial-reset-button"
+            onClick={() => {
+              setSearchQuery("");
+              setSelectedCategory("all");
+            }}
+          >
+            Reset Filters
+          </button>
         </div>
       ) : (
-        <div className="tutorial-grid">
-          {filteredTutorials.map((tutorial) => (
-            <div key={tutorial.id} className="tutorial-card">
-              <div className="tutorial-image-container">
-                <div className="tutorial-category-badge">
-                  {getCategoryIcon(tutorial.category)}
-                  <span className="tutorial-category-name">{tutorial.categoryName}</span>
-                </div>
-                <img 
-                  src={tutorial.image} 
-                  alt={tutorial.title} 
-                  className="tutorial-image"
-                />
-                <div className="tutorial-overlay">
-                  <button 
-                    className="tutorial-play-btn"
-                    onClick={() => openVideoModal(tutorial)}
-                  >
-                    <FaPlay />
-                  </button>
-                </div>
-              </div>
-              <div className="tutorial-content">
-                <h3 className="tutorial-card-title">{tutorial.title}</h3>
-                <p className="tutorial-description">{tutorial.description}</p>
-                <div className="tutorial-meta">
-                  <span className="tutorial-duration">
-                    <FaPlay className="tutorial-duration-icon" /> {tutorial.duration}
-                  </span>
-                  <span className="tutorial-level">{tutorial.level}</span>
-                </div>
-                <button 
-                  className="tutorial-watch-btn"
-                  onClick={() => openVideoModal(tutorial)}
+        <>
+          <div className="tutorial-grid">
+            {currentTutorials.map((tut) => (
+              <article key={tut.id} className="tutorial-card">
+                <a
+                  href={tut.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tutorial-image-container"
+                  aria-label={`Watch ${tut.title} on YouTube`}
                 >
-                  <FaPlay className="tutorial-btn-icon" /> Watch Tutorial
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-      
-      {activeVideo && (
-        <div className="tutorial-video-modal">
-          <div ref={videoModalRef} className="tutorial-video-container">
-            <div className="tutorial-modal-header">
-              <h3 className="tutorial-modal-title">{activeVideo.title}</h3>
-              <button 
-                className="tutorial-close-btn"
-                onClick={closeVideoModal}
-              >
-                <FaTimes size={24} />
-              </button>
-            </div>
-            <div className="tutorial-video-frame">
-              <iframe 
-                src={activeVideo.videoUrl} 
-                title={activeVideo.title}
-                className="tutorial-iframe"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="tutorial-modal-footer">
-              <p className="tutorial-modal-description">{activeVideo.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Custom CSS for cybersecurity theme */}
-      <style jsx>{`
-        /* Global styles */
-        .tutorial-container {
-          padding: 2rem 5%;
-          background-color: #000;
-          color: #ddd;
-          min-height: 100vh;
-          font-family: 'Courier New', monospace;
-        }
-        
-        /* Header styles */
-        .tutorial-page-header {
-          margin-bottom: 3rem;
-          border-bottom: 2px solid #39ff14;
-          padding-bottom: 1rem;
-        }
-        
-        .tutorial-header-content {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-        
-        .tutorial-title {
-          font-size: 2.5rem;
-          font-weight: bold;
-          margin-bottom: 1rem;
-          text-shadow: 0 0 5px #39ff14;
-          animation: tutorialTextFlicker 3s infinite;
-        }
-        
-        .tutorial-title-prefix {
-          color: #39ff14;
-        }
-        
-        .tutorial-subtitle {
-          font-size: 1.2rem;
-          color: #9e9e9e;
-        }
-        
-        /* Loading styles */
-        .tutorial-loading-container {
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background-color: #000;
-        }
-        
-        .tutorial-cyber-terminal {
-          padding: 2rem;
-          border: 2px solid #39ff14;
-          box-shadow: 0 0 10px 1px #39ff14;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        
-        .tutorial-loading-text {
-          color: #39ff14;
-          margin-top: 1rem;
-          font-family: 'Courier New', monospace;
-          letter-spacing: 0.5px;
-        }
-        
-        /* Panel styles */
-        .tutorial-cyber-panel {
-          margin-bottom: 2rem;
-          padding: 1rem;
-          background-color: #111;
-          border: 2px solid #39ff14;
-          box-shadow: 0 0 10px 1px #39ff14;
-          border-radius: 4px;
-        }
-        
-        .tutorial-search-filter {
-          position: relative;
-          margin-bottom: 1rem;
-        }
-        
-        .tutorial-search-icon {
-          position: absolute;
-          left: 0.75rem;
-          top: 0.75rem;
-          color: #39ff14;
-        }
-        
-        .tutorial-search-input {
-          width: 100%;
-          padding: 0.5rem;
-          padding-left: 2.5rem;
-          background-color: #000;
-          border: 2px solid #39ff14;
-          color: #39ff14;
-          outline: none;
-          border-radius: 4px;
-          font-family: 'Courier New', monospace;
-        }
-        
-        .tutorial-search-input:focus {
-          box-shadow: 0 0 5px #39ff14;
-        }
-        
-        .tutorial-category-tabs {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-          gap: 0.5rem;
-        }
-        
-        .tutorial-category-tab {
-          padding: 0.5rem;
-          font-size: 0.875rem;
-          border: 1px solid #39ff14;
-          border-radius: 4px;
-          background-color: transparent;
-          color: #39ff14;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-        
-        .tutorial-category-tab:hover {
-          background-color: rgba(57, 255, 20, 0.2);
-        }
-        
-        .tutorial-category-active {
-          background-color: #39ff14;
-          color: #000;
-          font-weight: bold;
-        }
-        
-        /* Empty state styles */
-        .tutorial-empty-state {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 3rem;
-          background-color: #111;
-          border: 2px solid #39ff14;
-          border-radius: 4px;
-        }
-        
-        .tutorial-empty-icon {
-          color: #39ff14;
-          margin-bottom: 1rem;
-        }
-        
-        .tutorial-empty-title {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #39ff14;
-          margin-bottom: 0.5rem;
-        }
-        
-        .tutorial-empty-text {
-          color: #9e9e9e;
-        }
-        
-        /* Tutorial grid styles */
-        .tutorial-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 1.5rem;
-        }
-        
-        .tutorial-card {
-          background-color: #111;
-          border: 2px solid #39ff14;
-          border-radius: 4px;
-          overflow: hidden;
-          transition: all 0.3s ease;
-        }
-        
-        .tutorial-card:hover {
-          box-shadow: 0 0 15px #39ff14;
-          transform: translateY(-5px);
-        }
-        
-        .tutorial-image-container {
-          position: relative;
-        }
-        
-        .tutorial-category-badge {
-          position: absolute;
-          top: 0.5rem;
-          left: 0.5rem;
-          display: flex;
-          align-items: center;
-          background-color: rgba(0, 0, 0, 0.8);
-          padding: 0.25rem 0.5rem;
-          border-radius: 4px;
-        }
-        
-        .tutorial-icon-neon {
-          color: #39ff14;
-        }
-        
-        .tutorial-category-name {
-          margin-left: 0.5rem;
-          font-size: 0.75rem;
-          color: #39ff14;
-        }
-        
-        .tutorial-image {
-          width: 100%;
-          height: 12rem;
-          object-fit: cover;
-        }
-        
-        .tutorial-overlay {
-          position: absolute;
-          inset: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-        
-        .tutorial-image-container:hover .tutorial-overlay {
-          opacity: 1;
-        }
-        
-        .tutorial-play-btn {
-          padding: 1rem;
-          border-radius: 50%;
-          background-color: #39ff14;
-          color: #000;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-        
-        .tutorial-play-btn:hover {
-          background-color: rgba(57, 255, 20, 0.8);
-          transform: scale(1.1);
-        }
-        
-        .tutorial-content {
-          padding: 1rem;
-        }
-        
-        .tutorial-card-title {
-          font-size: 1.25rem;
-          font-weight: bold;
-          color: #39ff14;
-          margin-bottom: 0.5rem;
-          font-family: 'Courier New', monospace;
-        }
-        
-        .tutorial-description {
-          color: #9e9e9e;
-          margin-bottom: 1rem;
-          font-size: 0.875rem;
-        }
-        
-        .tutorial-meta {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.75rem;
-          color: #6e6e6e;
-          margin-bottom: 1rem;
-        }
-        
-        .tutorial-duration {
-          display: flex;
-          align-items: center;
-        }
-        
-        .tutorial-duration-icon {
-          color: #39ff14;
-          margin-right: 0.25rem;
-        }
-        
-        .tutorial-level {
-          padding: 0.25rem 0.5rem;
-          background-color: #222;
-          border-radius: 4px;
-          color: #39ff14;
-        }
-        
-        .tutorial-watch-btn {
-          width: 100%;
-          padding: 0.5rem;
-          background-color: #39ff14;
-          color: #000;
-          font-weight: bold;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-        }
-        
-        .tutorial-watch-btn:hover {
-          background-color: rgba(57, 255, 20, 0.8);
-        }
-        
-        .tutorial-btn-icon {
-          margin-right: 0.5rem;
-        }
-        
-        /* Video modal styles */
-        .tutorial-video-modal {
-          position: fixed;
-          inset: 0;
-          background-color: rgba(0, 0, 0, 0.9);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 1000;
-        }
-        
-        .tutorial-video-container {
-          width: 90%;
-          max-width: 800px;
-          background-color: #111;
-          padding: 1rem;
-          border: 2px solid #39ff14;
-          border-radius: 4px;
-        }
-        
-        .tutorial-modal-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-        }
-        
-        .tutorial-modal-title {
-          font-size: 1.25rem;
-          font-weight: bold;
-          color: #39ff14;
-        }
-        
-        .tutorial-close-btn {
-          color: #39ff14;
-          background: none;
-          border: none;
-          cursor: pointer;
-        }
-        
-        .tutorial-close-btn:hover {
-          color: #fff;
-        }
-        
-        .tutorial-video-frame {
-          position: relative;
-          padding-bottom: 56.25%; /* 16:9 aspect ratio */
-          height: 0;
-        }
-        
-        .tutorial-iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
-        
-        .tutorial-modal-footer {
-          margin-top: 1rem;
-        }
-        
-        .tutorial-modal-description {
-          color: #9e9e9e;
-          font-size: 0.875rem;
-        }
-        
-        /* Animation */
-        @keyframes tutorialTextFlicker {
-          0% { text-shadow: 0 0 5px #39ff14; }
-          2% { text-shadow: 0 0 15px #39ff14; }
-          4% { text-shadow: 0 0 5px #39ff14; }
-          50% { text-shadow: 0 0 5px #39ff14; }
-          51% { text-shadow: 0 0 15px #39ff14; }
-          52% { text-shadow: 0 0 5px #39ff14; }
-          100% { text-shadow: 0 0 5px #39ff14; }
-        }
-        
-        /* Media queries */
-        @media (max-width: 768px) {
-          .tutorial-grid {
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          }
-          
-          .tutorial-title {
-            font-size: 2rem;
-          }
-          
-          .tutorial-category-tabs {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .tutorial-grid {
-            grid-template-columns: 1fr;
-          }
-          
-          .tutorial-title {
-            font-size: 1.75rem;
-          }
-        }
-      `}</style>
-    </div>
-  )
-}
+                  <div className="tutorial-category-badge">
+                    {getCategoryIcon(tut.category)}
+                    <span className="tutorial-category-name">
+                      {tut.categoryName}
+                    </span>
+                  </div>
+                  <img
+                    src={tut.image || "/placeholder-cyber.jpg"}
+                    alt={`${tut.title} thumbnail`}
+                    className="tutorial-image"
+                    loading="lazy"
+                  />
+                  <div className="tutorial-image-overlay">
+                    <div className="tutorial-play-btn">
+                      <FaPlay />
+                    </div>
+                  </div>
+                </a>
 
-export default Tutorials
+                <div className="tutorial-card-content">
+                  <a
+                    href={tut.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tutorial-card-title"
+                  >
+                    {tut.title}
+                  </a>
+                  <p className="tutorial-card-description">{tut.description}</p>
+                  <div className="tutorial-card-meta">
+                    <span className="tutorial-duration">
+                      <FaPlay className="tutorial-duration-icon" />{" "}
+                      {tut.duration}
+                    </span>
+                    <span className="tutorial-level">{tut.level}</span>
+                  </div>
+                  <a
+                    href={tut.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tutorial-watch-btn"
+                  >
+                    <FaPlay className="tutorial-btn-icon" /> Watch on YouTube
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Tutorials;
