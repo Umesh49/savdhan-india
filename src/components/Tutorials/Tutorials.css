@@ -24,12 +24,12 @@
 @keyframes tutorial-pulse {
   0%,
   100% {
-    border-color: var(--neon-green);
-    box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
   }
   50% {
-    border-color: rgba(57, 255, 20, 0.5);
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    border-color: rgba(0, 255, 136, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
   }
 }
 
@@ -39,24 +39,30 @@ body {
 }
 
 .tutorial-container {
-  --neon-green: #39ff14;
-  --dark-bg: #0a0a0a;
-  --card-bg: #111;
-  --text-primary: #ddd;
+  --primary-color: #00f829;
+  --primary-dim: rgba(0, 255, 136, 0.7);
+  --primary-glow: rgba(0, 255, 136, 0.2);
+  --secondary-color: #00b3f0;
+  --accent-color: #ff003c;
+  --dark-bg: #050505;
+  --card-bg: #0c0c0c;
+  --text-primary: #e0e0e0;
   --text-secondary: #9e9e9e;
   --text-dim: #6e6e6e;
+  --border-color: #2a2a2a;
+  --neon-glow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
 
   padding: 1rem max(5%, 1rem);
   background: var(--dark-bg) radial-gradient(#111 1px, transparent 1px) 0 / 20px
     20px;
   color: var(--text-primary);
   min-height: 100vh;
-  font-family: "Courier New", monospace;
+  font-family: "Rajdhani", "Orbitron", sans-serif;
 }
 
 .tutorial-page-header {
   margin-bottom: 2rem;
-  border-bottom: 2px solid var(--neon-green);
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 1rem;
   position: relative;
   overflow: hidden;
@@ -70,7 +76,7 @@ body {
   left: 0;
   width: 100px;
   height: 2px;
-  background: var(--neon-green);
+  background: var(--primary-color);
   filter: blur(3px);
   animation: tutorial-scanHeader 3s ease-in-out infinite;
 }
@@ -79,11 +85,11 @@ body {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: bold;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 5px var(--neon-green);
+  text-shadow: 0 0 5px var(--primary-color);
 }
 
 .tutorial-title-prefix {
-  color: var(--neon-green);
+  color: var(--primary-color);
   margin-right: 0.5rem;
 }
 
@@ -98,8 +104,8 @@ body {
   margin-bottom: 1.5rem;
   padding: 1rem;
   background: var(--card-bg);
-  border: 2px solid var(--neon-green);
-  box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+  border: 2px solid var(--primary-color);
+  box-shadow: var(--neon-glow);
   border-radius: 4px;
 }
 
@@ -122,7 +128,7 @@ body {
   left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--neon-green);
+  color: var(--primary-color);
   pointer-events: none;
 }
 
@@ -131,14 +137,14 @@ body {
   padding: 0.75rem;
   padding-left: 2.5rem;
   background: rgba(0, 0, 0, 0.7);
-  border: 2px solid var(--neon-green);
+  border: 2px solid var(--primary-color);
   border-radius: 4px;
-  color: var(--neon-green);
+  color: var(--primary-color);
   transition: box-shadow 0.2s;
 }
 
 .tutorial-search-input:focus {
-  box-shadow: 0 0 8px var(--neon-green);
+  box-shadow: 0 0 8px var(--primary-color);
   outline: none;
 }
 
@@ -149,7 +155,7 @@ body {
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: var(--neon-green);
+  color: var(--primary-color);
   opacity: 0.8;
   padding: 5px;
   transition: opacity 0.2s;
@@ -170,17 +176,17 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  background: var(--neon-green);
+  background: var(--primary-color);
   color: black;
   border: none;
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 
 .tutorial-filter-button:hover {
-  background: rgba(57, 255, 20, 0.8);
+  background: rgba(0, 255, 136, 0.8);
 }
 
 .tutorial-filter-arrow {
@@ -195,7 +201,7 @@ body {
   display: flex;
   align-items: center;
   background: rgba(0, 0, 0, 0.7);
-  border: 2px solid var(--neon-green);
+  border: 2px solid var(--primary-color);
   border-radius: 4px;
   padding: 0 0.75rem;
   position: relative;
@@ -203,14 +209,14 @@ body {
 
 .tutorial-sort-icon {
   margin-right: 0.5rem;
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-sort-select {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--neon-green);
+  color: var(--primary-color);
   padding: 0.75rem 0;
   width: 100px;
   appearance: none;
@@ -219,7 +225,7 @@ body {
 
 .tutorial-sort-select option {
   background-color: #111;
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-filter-panel {
@@ -230,7 +236,7 @@ body {
   margin-top: 0.5rem;
   padding: 1rem;
   background: rgba(10, 10, 10, 0.95);
-  border: 1px solid var(--neon-green);
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
   animation: tutorial-fadeIn 0.2s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -238,7 +244,7 @@ body {
 }
 
 .tutorial-filter-title {
-  color: var(--neon-green);
+  color: var(--primary-color);
   margin-bottom: 0.75rem;
   font-size: 1rem;
 }
@@ -254,7 +260,7 @@ body {
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
   background: rgba(17, 17, 17, 0.8);
-  border: 1px solid var(--neon-green);
+  border: 1px solid var(--primary-color);
   border-radius: 20px;
   cursor: pointer;
   color: white;
@@ -262,12 +268,12 @@ body {
 }
 
 .tutorial-category-pill:hover {
-  background: rgba(57, 255, 20, 0.1);
+  background: rgba(0, 255, 136, 0.1);
   transform: translateY(-2px);
 }
 
 .tutorial-category-pill.active {
-  background: var(--neon-green);
+  background: var(--primary-color);
   color: black;
   font-weight: bold;
 }
@@ -289,7 +295,7 @@ body {
 }
 
 .tutorial-results-icon {
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-per-page {
@@ -300,15 +306,15 @@ body {
 
 .tutorial-per-page-select {
   background: transparent;
-  border: 1px solid var(--neon-green);
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
   padding: 0.25rem;
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-per-page-select option {
   background-color: #111;
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-empty-state {
@@ -318,20 +324,20 @@ body {
   justify-content: center;
   padding: 3rem;
   background: var(--card-bg);
-  border: 2px solid var(--neon-green);
+  border: 2px solid var(--primary-color);
   border-radius: 4px;
   animation: tutorial-pulse 2s infinite;
 }
 
 .tutorial-empty-icon {
   margin-bottom: 1rem;
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-empty-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--neon-green);
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -342,17 +348,17 @@ body {
 
 .tutorial-reset-button {
   padding: 0.75rem 1.5rem;
-  background: var(--neon-green);
+  background: var(--primary-color);
   color: black;
   border: none;
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: all 0.2s ease;
 }
 
 .tutorial-reset-button:hover {
-  background: rgba(57, 255, 20, 0.8);
+  background: rgba(0, 255, 136, 0.8);
   transform: scale(1.05);
 }
 
@@ -366,7 +372,7 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--card-bg);
-  border: 2px solid var(--neon-green);
+  border: 2px solid var(--primary-color);
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -374,7 +380,7 @@ body {
 
 .tutorial-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(57, 255, 20, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
 }
 
 .tutorial-image-container {
@@ -398,13 +404,13 @@ body {
 }
 
 .tutorial-icon-neon {
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-category-name {
   margin-left: 0.5rem;
   font-size: 0.75rem;
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-image {
@@ -436,7 +442,7 @@ body {
 .tutorial-play-btn {
   padding: 1rem;
   border-radius: 50%;
-  background: var(--neon-green);
+  background: var(--primary-color);
   color: black;
   display: flex;
   align-items: center;
@@ -447,7 +453,7 @@ body {
 
 .tutorial-image-container:hover .tutorial-play-btn {
   transform: scale(1.1);
-  box-shadow: 0 0 15px var(--neon-green);
+  box-shadow: 0 0 15px var(--primary-color);
 }
 
 .tutorial-card-content {
@@ -474,11 +480,11 @@ body {
   left: 0;
   width: 2rem;
   height: 2px;
-  background: var(--neon-green);
+  background: var(--primary-color);
 }
 
 .tutorial-card-title:hover {
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-card-description {
@@ -508,14 +514,14 @@ body {
 }
 
 .tutorial-duration-icon {
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-level {
   padding: 0.25rem 0.5rem;
-  background: rgba(57, 255, 20, 0.1);
+  background: rgba(0, 255, 136, 0.1);
   border-radius: 3px;
-  color: var(--neon-green);
+  color: var(--primary-color);
 }
 
 .tutorial-watch-btn {
@@ -524,18 +530,18 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem;
-  background: var(--neon-green);
+  background: var(--primary-color);
   color: black;
   border: none;
   border-radius: 4px;
   font-weight: bold;
   text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
+  transition: all 0.2s ease;
   text-align: center;
 }
 
 .tutorial-watch-btn:hover {
-  background: rgba(57, 255, 20, 0.8);
+  background: rgba(0, 255, 136, 0.8);
   transform: translateY(-2px);
 }
 
@@ -557,20 +563,20 @@ body {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid var(--neon-green);
+  border: 1px solid var(--primary-color);
   background: var(--card-bg);
   border-radius: 4px;
-  color: var(--neon-green);
+  color: var(--primary-color);
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 
 .tutorial-pagination-btn:hover:not(:disabled) {
-  background: rgba(57, 255, 20, 0.1);
+  background: rgba(0, 255, 136, 0.1);
 }
 
 .tutorial-pagination-btn.active {
-  background: var(--neon-green);
+  background: var(--primary-color);
   color: black;
   font-weight: bold;
 }

@@ -1,8 +1,7 @@
-
 .pp-tos-theme {
-  --primary-color: #0cf00c;
-  --primary-dim: rgba(12, 240, 12, 0.7);
-  --primary-glow: rgba(12, 240, 12, 0.2);
+  --primary-color: #00f829;
+  --primary-dim: rgba(0, 255, 136, 0.7);
+  --primary-glow: rgba(0, 255, 136, 0.2);
   --secondary-color: #00b3f0;
   --accent-color: #ff003c;
   --bg-dark: #050505;
@@ -11,11 +10,10 @@
   --text-primary: #e0e0e0;
   --text-secondary: #a0a0a0;
   --border-color: #2a2a2a;
-  --neon-glow: 0 0 10px rgba(12, 240, 12, 0.5), 0 0 20px rgba(12, 240, 12, 0.2);
-  --neon-glow-strong: 0 0 10px rgba(12, 240, 12, 0.7),
-    0 0 25px rgba(12, 240, 12, 0.3);
+  --neon-glow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+  --neon-glow-strong: 0 0 10px rgba(0, 255, 136, 0.7), 0 0 25px rgba(0, 255, 136, 0.3);
   --tos-pp-panel-bg: rgba(10, 10, 10, 0.85);
-  --terminal-green: #0cf00c;
+  --terminal-green: #00ff88;
   --error-red: #ff2738;
   --cyberdeck-border: 1px solid var(--primary-dim);
   --font-mono: "Courier New", monospace;
@@ -24,51 +22,41 @@
 
 @keyframes glitch {
   0% {
-    text-shadow: 2px 2px 0px var(--accent-color),
-      -1px -1px 0px var(--secondary-color);
+    text-shadow: 2px 2px 0px var(--accent-color), -1px -1px 0px var(--secondary-color);
   }
   25% {
-    text-shadow: -2px 2px 0px var(--accent-color),
-      1px -1px 0px var(--secondary-color);
+    text-shadow: -2px 2px 0px var(--accent-color), 1px -1px 0px var(--secondary-color);
   }
   50% {
-    text-shadow: 2px -2px 0px var(--accent-color),
-      -1px 1px 0px var(--secondary-color);
+    text-shadow: 2px -2px 0px var(--accent-color), -1px 1px 0px var(--secondary-color);
   }
   75% {
-    text-shadow: -2px -2px 0px var(--accent-color),
-      1px 1px 0px var(--secondary-color);
+    text-shadow: -2px -2px 0px var(--accent-color), 1px 1px 0px var(--secondary-color);
   }
   100% {
-    text-shadow: 2px 2px 0px var(--accent-color),
-      -1px -1px 0px var(--secondary-color);
+    text-shadow: 2px 2px 0px var(--accent-color), -1px -1px 0px var(--secondary-color);
   }
 }
 
 @keyframes enhancedGlitch {
   0% {
-    text-shadow: 2px 2px 0px var(--accent-color),
-      -1px -1px 0px var(--secondary-color);
+    text-shadow: 2px 2px 0px var(--accent-color), -1px -1px 0px var(--secondary-color);
     transform: translateX(0);
   }
   25% {
-    text-shadow: -2px 2px 0px var(--accent-color),
-      1px -1px 0px var(--secondary-color);
+    text-shadow: -2px 2px 0px var(--accent-color), 1px -1px 0px var(--secondary-color);
     transform: translateX(-2px);
   }
   26% {
-    text-shadow: 2px -2px 0px var(--accent-color),
-      -1px 1px 0px var(--secondary-color);
+    text-shadow: 2px -2px 0px var(--accent-color), -1px 1px 0px var(--secondary-color);
     transform: translateX(2px);
   }
   50% {
-    text-shadow: 2px -2px 0px var(--accent-color),
-      -1px 1px 0px var(--secondary-color);
+    text-shadow: 2px -2px 0px var(--accent-color), -1px 1px 0px var(--secondary-color);
     transform: translateY(1px);
   }
   75% {
-    text-shadow: -2px -2px 0px var(--accent-color),
-      1px 1px 0px var(--secondary-color);
+    text-shadow: -2px -2px 0px var(--accent-color), 1px 1px 0px var(--secondary-color);
     transform: translateY(-1px);
   }
   76% {
@@ -76,13 +64,11 @@
     transform: none;
   }
   77% {
-    text-shadow: 2px 2px 0px var(--accent-color),
-      -1px -1px 0px var(--secondary-color);
+    text-shadow: 2px 2px 0px var(--accent-color), -1px -1px 0px var(--secondary-color);
     transform: none;
   }
   100% {
-    text-shadow: 2px 2px 0px var(--accent-color),
-      -1px -1px 0px var(--secondary-color);
+    text-shadow: 2px 2px 0px var(--accent-color), -1px -1px 0px var(--secondary-color);
     transform: translateX(0);
   }
 }
@@ -148,17 +134,17 @@
 @keyframes iconPulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(12, 240, 12, 0.7);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
   }
 
   70% {
     transform: scale(1.1);
-    box-shadow: 0 0 0 10px rgba(12, 240, 12, 0);
+    box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
   }
 
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(12, 240, 12, 0);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
   }
 }
 
@@ -289,8 +275,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--primary-color);
-  text-shadow: 2px 2px 0px var(--accent-color),
-    -1px -1px 0px var(--secondary-color);
+  text-shadow: 2px 2px 0px var(--accent-color), -1px -1px 0px var(--secondary-color);
   margin: 0;
   position: relative;
   animation: enhancedGlitch 5s infinite;
@@ -314,12 +299,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(
-      to right,
-      rgba(12, 240, 12, 0.1) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(12, 240, 12, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
   z-index: 1;
 }
@@ -367,12 +348,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--accent-color),
-    var(--primary-color)
-  );
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color), var(--primary-color));
 }
 
 .tos-pp-panel::after {
@@ -382,12 +358,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--primary-color),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
   opacity: 0.6;
   animation: scanLine 3s linear infinite;
 }
@@ -453,7 +424,7 @@ body {
   flex-shrink: 0;
   width: 50px;
   height: 50px;
-  background-color: rgba(12, 240, 12, 0.1);
+  background-color: rgba(0, 255, 136, 0.1);
   border: 1px solid var(--primary-dim);
   border-radius: 50%;
   display: flex;
@@ -485,7 +456,7 @@ body {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(12, 240, 12, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.3);
   padding-bottom: 0.5rem;
 }
 
@@ -542,7 +513,7 @@ body {
 }
 
 .tos-pp-contact-info {
-  background-color: rgba(12, 240, 12, 0.05);
+  background-color: rgba(0, 255, 136, 0.05);
   border-left: 3px solid var(--primary-color);
   padding: 1rem;
   margin-top: 1rem;
@@ -551,7 +522,7 @@ body {
 
 .tos-pp-contact-info:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(12, 240, 12, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
 }
 
 .tos-pp-contact-text {
@@ -579,12 +550,7 @@ body {
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--primary-color),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
   animation: scanning 3s linear infinite;
   opacity: 0.3;
   pointer-events: none;
@@ -602,11 +568,7 @@ body {
 
 .tos-pp-terms-container::-webkit-scrollbar-thumb,
 .tos-pp-privacy-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    to bottom,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
   border-radius: 5px;
 }
 
@@ -647,7 +609,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  color: rgba(12, 240, 12, 0.05);
+  color: rgba(0, 255, 136, 0.05);
   font-family: monospace;
   font-size: 1rem;
   line-height: 1;
@@ -687,7 +649,7 @@ body {
 
 .tos-pp-counter {
   font-family: var(--font-mono);
-  background-color: rgba(12, 240, 12, 0.1);
+  background-color: rgba(0, 255, 136, 0.1);
   border: 1px solid var(--primary-color);
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
@@ -712,12 +674,7 @@ body {
 
 .tos-pp-security-fill {
   height: 100%;
-  background: linear-gradient(
-    to right,
-    var(--error-red),
-    var(--accent-color),
-    var(--primary-color)
-  );
+  background: linear-gradient(to right, var(--error-red), var(--accent-color), var(--primary-color));
   border-radius: 4px;
   width: 85%;
 }
@@ -782,7 +739,7 @@ body {
 }
 
 .tos-pp-button:hover {
-  background-color: rgba(12, 240, 12, 0.1);
+  background-color: rgba(0, 255, 136, 0.1);
   box-shadow: var(--neon-glow);
 }
 
