@@ -14,7 +14,6 @@ import Contact from "./components/Contact/Contact";
 import AboutUs from "./components/About/AboutUs";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import Tutorials from "./components/Tutorials/Tutorials";
 import Chatbot from "./components/Chatbot/Chatbot.jsx";
 import PrivacyPolicy from "./components/StaticPages/PrivacyPolicy";
@@ -43,7 +42,6 @@ export default function AppRoutes() {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
