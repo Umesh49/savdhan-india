@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import LoadingSpinner from "./components/common/LoadingSpinner/LoadingSpinner";
 import Home from "./components/Home/Home";
 import IndianLaws from "./components/IndianLaws/IndianLaws";
 import ComplaintGuide from "./components/ComplaintGuide/ComplaintGuide.jsx";
@@ -17,10 +16,11 @@ import Chatbot from "./components/Chatbot/Chatbot.jsx";
 import PrivacyPolicy from "./components/StaticPages/PrivacyPolicy";
 import TermsOfService from "./components/StaticPages/TermsOfService";
 import NotFound from "./components/NotFound/NotFound";
+import CyberSpinner from "./components/common/CyberSpinner/CyberSpinner.jsx";
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    <Suspense fallback={<CyberSpinner />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
