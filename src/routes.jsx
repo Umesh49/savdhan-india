@@ -12,8 +12,6 @@ import SecurityChecklist from "./components/SecurityChecklist/SecurityChecklist"
 import FAQ from "./components/FAQs/FAQ";
 import Contact from "./components/Contact/Contact";
 import AboutUs from "./components/About/AboutUs";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
 import Tutorials from "./components/Tutorials/Tutorials";
 import Chatbot from "./components/Chatbot/Chatbot.jsx";
 import PrivacyPolicy from "./components/StaticPages/PrivacyPolicy";
@@ -40,8 +38,6 @@ export default function AppRoutes() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
