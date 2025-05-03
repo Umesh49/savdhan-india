@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import {
   FaShieldAlt,
   FaTwitter,
@@ -9,39 +9,102 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
-  FaLock,
   FaFingerprint,
-  FaUserShield,
   FaChevronRight,
   FaTerminal,
   FaExclamationTriangle,
-  FaBug,
-  FaDatabase,
-  FaVirus
+  FaUserShield
 } from "react-icons/fa";
 import { BiLockAlt } from "react-icons/bi";
-import { GiFirewall, GiCyberEye, GiRadarSweep } from "react-icons/gi";
 import Logo from "../../svg/logo.svg";
 import "./Footer.css";
 
+// Extracted reusable components for better organization
+const SocialLinks = memo(() => (
+  <div className="footer-social-links">
+    {[
+      { href: "https://twitter.com", icon: FaTwitter, label: "Twitter" },
+      { href: "https://facebook.com", icon: FaFacebook, label: "Facebook" },
+      { href: "https://instagram.com", icon: FaInstagram, label: "Instagram" },
+      { href: "https://linkedin.com", icon: FaLinkedin, label: "LinkedIn" },
+      { href: "https://youtube.com", icon: FaYoutube, label: "YouTube" }
+    ].map(({ href, icon: Icon, label }) => (
+      <a
+        key={label}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="footer-social-link"
+        aria-label={label}
+      >
+        <Icon />
+      </a>
+    ))}
+  </div>
+));
+
+const FooterLinks = memo(({ title, icon: IconComponent, links }) => (
+  <div className="footer-section">
+    <h3 className="footer-section-title">
+      <IconComponent className="footer-section-icon" /> {title}<span className="footer-cursor-blink">|</span>
+    </h3>
+    <ul className="footer-links">
+      {links.map((link, index) => (
+        <li key={index} className="footer-link-item">
+          <a href={link.path} className="footer-link">
+            <span className="footer-terminal-prefix">&gt;</span>{link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+));
+
+const ContactInfo = memo(() => (
+  <ul className="footer-contact-list">
+    {[
+      { icon: FaMapMarkerAlt, text: "Mumbai, India" },
+      { icon: FaPhone, text: "+91 XXXX-XXXX-XX" },
+      { icon: FaEnvelope, text: "contact@savdhaanindia.org" }
+    ].map((item, index) => (
+      <li key={index} className="footer-contact-item">
+        <item.icon className="footer-contact-icon" />
+        <span>{item.text}</span>
+      </li>
+    ))}
+  </ul>
+));
+
+const EmergencyContacts = memo(() => (
+  <div className="footer-emergency-grid">
+    {[
+      { icon: FaPhone, label: "Cyber Crime Helpline:", value: "1930", className: "footer-emergency-number" },
+      { icon: FaPhone, label: "Emergency Services:", value: "112", className: "footer-emergency-number" },
+      { icon: FaExclamationTriangle, label: "Report Online Fraud:", value: "cybercrime.gov.in", className: "footer-emergency-website" }
+    ].map((item, index) => (
+      <div key={index} className="footer-emergency-item">
+        <item.icon className="footer-emergency-item-icon" />
+        <span>{item.label} <span className={item.className}>{item.value}</span></span>
+      </div>
+    ))}
+  </div>
+));
+
+const BinaryLine = memo(({ binaryContent }) => (
+  <div className="footer-binary-text">
+    <div className="footer-binary-content">{binaryContent}</div>
+  </div>
+));
+
+// Main Footer component
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [binaryLine, setBinaryLine] = useState("");
-  const [terminalLines, setTerminalLines] = useState([]);
-  const [hackingStatus, setHackingStatus] = useState({ 
-    active: false, 
-    progress: 0, 
-    message: "" 
-  });
 
-  // Generate binary animation for the border
+  // Generate binary animation for the border - optimized to reduce renders
   useEffect(() => {
     const generateBinary = () => {
-      let binary = "";
-      for (let i = 0; i < 64; i++) {
-        binary += Math.random() > 0.5 ? "1" : "0";
-      }
-      return binary;
+      return Array(64).fill(0).map(() => Math.random() > 0.5 ? "1" : "0").join("");
     };
 
     setBinaryLine(generateBinary());
@@ -52,93 +115,33 @@ const Footer = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Simulate terminal activity
-  useEffect(() => {
-    const commands = [
-      { text: "scanning network vulnerabilities...", delay: 1500 },
-      { text: "identifying security protocols...", delay: 2000 },
-      { text: "analyzing threat patterns...", delay: 2500 },
-      { text: "updating firewall rules...", delay: 1800 },
-      { text: "monitoring for suspicious activity...", delay: 2200 },
-      { text: "encrypting secure channels...", delay: 2700 },
-      { text: "patching known CVEs...", delay: 1900 },
-      { text: "running intrusion detection system...", delay: 2100 }
-    ];
-    
-    const executeCommand = (index = 0) => {
-      if (index >= commands.length) index = 0;
-      
-      setTimeout(() => {
-        setTerminalLines(prev => {
-          const newLines = [...prev, commands[index].text];
-          return newLines.length > 3 ? newLines.slice(-3) : newLines;
-        });
-        
-        executeCommand((index + 1) % commands.length);
-      }, commands[index].delay);
-    };
-    
-    executeCommand();
-  }, []);
+  // Quick links data
+  const quickLinks = [
+    { path: "/", label: "Command_Home", icon: FaTerminal },
+    { path: "/indian-laws", label: "Cyber_Laws", icon: FaShieldAlt },
+    { path: "/complaint-guide", label: "Complaint_Guide", icon: FaExclamationTriangle },
+    { path: "/tutorials", label: "Tutorials", icon: FaUserShield }
+  ];
 
-  // Simulated security scan animation
-  const simulateSecurityScan = () => {
-    if (hackingStatus.active) return;
-    
-    setHackingStatus({ active: true, progress: 0, message: "Initializing security scan..." });
-    
-    const messages = [
-      "Bypassing firewalls...",
-      "Scanning for vulnerabilities...",
-      "Detecting malware signatures...",
-      "Analyzing network traffic...",
-      "Securing endpoints...",
-      "Implementing security protocols...",
-      "Scan complete. System secured."
-    ];
-    
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 15) + 5;
-      
-      if (progress >= 100) {
-        progress = 100;
-        clearInterval(interval);
-        setTimeout(() => {
-          setHackingStatus({ active: false, progress: 0, message: "" });
-        }, 2000);
-      }
-      
-      const messageIndex = Math.min(Math.floor(progress / (100 / messages.length)), messages.length - 1);
-      setHackingStatus({ 
-        active: true, 
-        progress, 
-        message: messages[messageIndex] 
-      });
-    }, 400);
-  };
+  // Resources data
+  const resourceLinks = [
+    { path: "/security-tools", label: "Security_Tools" },
+    { path: "/security-checklist", label: "Security_Checklist" },
+    { path: "/cyber-awareness-quiz", label: "Cyber_Awareness_Quiz" },
+    { path: "/faq", label: "FAQ" },
+    { path: "/about-us", label: "About_Us" }
+  ];
 
   return (
     <footer className="footer-container">
-      {/* Scanline effect */}
+      {/* Visual effects */}
       <div className="footer-scanline"></div>
-      
-      {/* Binary code line at top */}
       <div className="footer-binary-top"></div>
-      <div className="footer-binary-text">
-        <div className="footer-binary-content">
-          {binaryLine}
-        </div>
-      </div>
-
-      {/* Matrix effect background */}
+      <BinaryLine binaryContent={binaryLine} />
       <div className="footer-matrix-container"></div>
-
-      {/* Circuit board pattern background */}
       <div className="footer-circuit-pattern"></div>
 
       <div className="footer-content">
-       
         <div className="footer-grid">
           {/* About Section */}
           <div className="footer-section">
@@ -155,144 +158,35 @@ const Footer = () => {
               <span className="footer-terminal-prefix">&gt;</span> Protecting Indians in cyberspace with knowledge, tools and resources 
               to defend against digital threats.
             </p>
-            <div className="footer-social-links">
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="Twitter"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="Facebook"
-              >
-                <FaFacebook />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="YouTube"
-              >
-                <FaYoutube />
-              </a>
-            </div>
+            <SocialLinks />
           </div>
 
           {/* Quick Links */}
-          <div className="footer-section">
-            <h3 className="footer-section-title">
-              <BiLockAlt className="footer-section-icon" /> Quick_Links<span className="footer-cursor-blink">|</span>
-            </h3>
-            <ul className="footer-links">
-              {[
-                { path: "/", label: "Command_Home", icon: FaTerminal },
-                { path: "/indian-laws", label: "Cyber_Laws", icon: FaShieldAlt },
-                { path: "/complaint-guide", label: "Complaint_Guide", icon: FaExclamationTriangle },
-                { path: "/tutorials", label: "Tutorials", icon: FaUserShield }
-              ].map((link, index) => (
-                <li key={index} className="footer-link-item">
-                  <a
-                    href={link.path}
-                    className="footer-link"
-                  >
-                    <span className="footer-terminal-prefix">&gt;</span>
-                    <link.icon className="footer-link-icon" /> {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterLinks 
+            title="Quick_Links" 
+            icon={BiLockAlt} 
+            links={quickLinks} 
+          />
 
           {/* Resources */}
-          <div className="footer-section">
-            <h3 className="footer-section-title">
-              <FaUserShield className="footer-section-icon" /> Resources<span className="footer-cursor-blink">|</span>
-            </h3>
-            <ul className="footer-links">
-              {[
-                { path: "/security-tools", label: "Security_Tools" },
-                { path: "/security-checklist", label: "Security_Checklist" },
-                { path: "/cyber-awareness-quiz", label: "Cyber_Awareness_Quiz" },
-                { path: "/faq", label: "FAQ" },
-                { path: "/about-us", label: "About_Us" }
-              ].map((link, index) => (
-                <li key={index} className="footer-link-item">
-                  <a
-                    href={link.path}
-                    className="footer-link"
-                  >
-                    <span className="footer-terminal-prefix">&gt;</span>
-                    <FaChevronRight className="footer-link-icon" /> {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterLinks 
+            title="Resources" 
+            icon={FaUserShield} 
+            links={resourceLinks} 
+          />
 
           {/* Contact */}
           <div className="footer-section">
             <h3 className="footer-section-title">
               <FaFingerprint className="footer-section-icon" /> Contact_Us<span className="footer-cursor-blink">|</span>
             </h3>
-            <ul className="footer-contact-list">
-              <li className="footer-contact-item">
-                <FaMapMarkerAlt className="footer-contact-icon" />
-                <span>Mumbai, India</span>
-              </li>
-              <li className="footer-contact-item">
-                <FaPhone className="footer-contact-icon" />
-                <span>+91 XXXX-XXXX-XX </span>
-              </li>
-              <li className="footer-contact-item">
-                <FaEnvelope className="footer-contact-icon" />
-                <span>contact@savdhaanindia.org</span>
-              </li>
-            </ul>
+            <ContactInfo />
           </div>
         </div>
 
         {/* Emergency Contact Section */}
         <div className="footer-emergency-section">
-          <div className="footer-emergency-grid">
-            <div className="footer-emergency-item">
-              <FaPhone className="footer-emergency-item-icon" />
-              <span>Cyber Crime Helpline: <span className="footer-emergency-number">1930</span></span>
-            </div>
-            <div className="footer-emergency-item">
-              <FaPhone className="footer-emergency-item-icon" />
-              <span>Emergency Services: <span className="footer-emergency-number">112</span></span>
-            </div>
-            <div className="footer-emergency-item">
-              <FaExclamationTriangle className="footer-emergency-item-icon" />
-              <span>Report Online Fraud: <span className="footer-emergency-website">cybercrime.gov.in</span></span>
-            </div>
-          </div>
+          <EmergencyContacts />
         </div>
 
         {/* Bottom Section */}
@@ -302,9 +196,11 @@ const Footer = () => {
             <span className="footer-cursor-inline">|</span> All rights reserved.
           </div>
           <div className="footer-legal-links">
-            <a href="/privacy-policy" className="footer-legal-link">Privacy_Policy</a>
-            <a href="/terms-of-service" className="footer-legal-link">Terms_of_Service</a>
-            <a href="/sitemap" className="footer-legal-link">Sitemap</a>
+            {["Privacy_Policy", "Terms_of_Service", "Sitemap"].map((item) => (
+              <a key={item} href={`/${item.toLowerCase().replace(/_/g, "-")}`} className="footer-legal-link">
+                {item}
+              </a>
+            ))}
           </div>
         </div>
       </div>

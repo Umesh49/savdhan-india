@@ -1381,9 +1381,6 @@ h3 {
 }
 
 @media (max-width: 768px) {
-  :root {
-    --contact-section-padding: 40px 0;
-  }
 
   .contact-teams-grid {
     grid-template-columns: 1fr;
