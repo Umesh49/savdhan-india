@@ -43,13 +43,13 @@ const TermsOfService = () => {
             <div className="tos-pp-section-content">
               <h2 className="tos-pp-section-title">1. Acceptance of Terms</h2>
               <p className="tos-pp-text">
-                By accessing or using the Savdhaan India website, mobile application, and related services (collectively referred to as the "Platform"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this Platform.
+                By accessing or using the ZeroTrace website, mobile application, and related services (collectively referred to as the "Platform"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this Platform.
               </p>
               <p className="tos-pp-text">
                 These Terms of Service apply to all users of the Platform, including without limitation users who are browsers, visitors, students, educators, cybersecurity professionals, content contributors, and any other stakeholders engaging with our Platform.
               </p>
               <p className="tos-pp-text">
-                Savdhaan India is an educational initiative created by Masters of Computer Application students from Mumbai and Navi Mumbai to promote cybersecurity awareness and digital safety practices. Our mission is to empower Indian citizens with knowledge and tools to protect themselves in the increasingly complex digital landscape.
+                ZeroTrace is an educational initiative created by Masters of Computer Application students from Mumbai and Navi Mumbai to promote cybersecurity awareness and digital safety practices. Our mission is to empower Indian citizens with knowledge and tools to protect themselves in the increasingly complex digital landscape.
               </p>
               <p className="tos-pp-text">
                 We reserve the right to update, change, or replace any part of these Terms of Service by posting updates and changes to our Platform. It is your responsibility to check our Platform periodically for changes. Your continued use of or access to our Platform following the posting of any changes to these Terms of Service constitutes acceptance of those changes.
@@ -82,13 +82,13 @@ const TermsOfService = () => {
                 You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account through our designated security channels.
               </p>
               <p className="tos-pp-text">
-                If you are under 13 years of age, you may use our Platform only with the involvement and supervision of a parent or guardian. Savdhaan India is committed to protecting children's privacy and complying with applicable laws regarding minors.
+                If you are under 13 years of age, you may use our Platform only with the involvement and supervision of a parent or guardian. ZeroTrace is committed to protecting children's privacy and complying with applicable laws regarding minors.
               </p>
               <p className="tos-pp-text">
                 You are responsible for maintaining the confidentiality of your account and password, including but not limited to restricting access to your computer and/or account. You accept responsibility for all activities that occur under your account and/or password.
               </p>
               <p className="tos-pp-text">
-                If you suspect any unauthorized use of your account, you must immediately notify Savdhaan India by contacting our support team via the information provided in Section 10 of these Terms.
+                If you suspect any unauthorized use of your account, you must immediately notify ZeroTrace by contacting our support team via the information provided in Section 10 of these Terms.
               </p>
             </div>
           </div>
@@ -132,7 +132,7 @@ const TermsOfService = () => {
                 We reserve the right to monitor all Content and to remove any Content which can be considered inappropriate, offensive, or causes breach of these Terms of Service at our sole discretion.
               </p>
               <p className="tos-pp-text">
-                You understand and acknowledge that you are responsible for any Content you submit or contribute, and you, not Savdhaan India, have full responsibility for such Content, including its legality, reliability, accuracy, and appropriateness.
+                You understand and acknowledge that you are responsible for any Content you submit or contribute, and you, not ZeroTrace, have full responsibility for such Content, including its legality, reliability, accuracy, and appropriateness.
               </p>
               <p className="tos-pp-text">
                 We reserve the right to terminate the account of any user found to be in violation of these terms, and to refer matters to appropriate law enforcement agencies if necessary.
@@ -164,10 +164,10 @@ const TermsOfService = () => {
                   To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail," "chain letter," "spam," or any other similar solicitation.
                 </li>
                 <li className="tos-pp-list-item">
-                  To impersonate or attempt to impersonate Savdhaan India, a Savdhaan India team member, another user, or any other person or entity.
+                  To impersonate or attempt to impersonate ZeroTrace, a ZeroTrace team member, another user, or any other person or entity.
                 </li>
                 <li className="tos-pp-list-item">
-                  To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Platform, or which may harm Savdhaan India or users of the Platform or expose them to liability.
+                  To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Platform, or which may harm ZeroTrace or users of the Platform or expose them to liability.
                 </li>
                 <li className="tos-pp-list-item">
                   To use the Platform in any manner that could disable, overburden, damage, or impair the site or interfere with any other party's use of the Platform.
@@ -218,7 +218,7 @@ const TermsOfService = () => {
                 Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the Platform or reliance on any information provided on the Platform. Your use of the Platform and your reliance on any information on the Platform is solely at your own risk.
               </p>
               <p className="tos-pp-text">
-                The Savdhaan India Platform is provided on an "AS IS" and "AS AVAILABLE" basis. We disclaim all warranties of any kind, whether express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+                The ZeroTrace Platform is provided on an "AS IS" and "AS AVAILABLE" basis. We disclaim all warranties of any kind, whether express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
               </p>
               <p className="tos-pp-text">
                 We make no warranty that: (1) the Platform will meet your requirements; (2) the Platform will be uninterrupted, timely, secure, or error-free; (3) the results that may be obtained from the use of the Platform will be accurate or reliable; (4) the quality of any products, services, information, or other material purchased or obtained by you through the Platform will meet your expectations.
@@ -227,7 +227,7 @@ const TermsOfService = () => {
                 Any material downloaded or otherwise obtained through the use of the Platform is done at your own discretion and risk, and you will be solely responsible for any damage to your computer system or loss of data that results from the download of any such material.
               </p>
               <p className="tos-pp-text">
-                No advice or information, whether oral or written, obtained by you from Savdhaan India or through or from the Platform shall create any warranty not expressly stated in these Terms.
+                No advice or information, whether oral or written, obtained by you from ZeroTrace or through or from the Platform shall create any warranty not expressly stated in these Terms.
               </p>
             </div>
           </div>
@@ -247,7 +247,7 @@ const TermsOfService = () => {
             <div className="tos-pp-section-content">
               <h2 className="tos-pp-section-title">6. Intellectual Property Rights</h2>
               <p className="tos-pp-text">
-                The Platform and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof), are owned by Savdhaan India, its licensors, or other providers of such material and are protected by Indian and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
+                The Platform and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof), are owned by ZeroTrace, its licensors, or other providers of such material and are protected by Indian and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
               </p>
               <p className="tos-pp-text">
                 These Terms of Service permit you to use the Platform for your personal, non-commercial use only. You must not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Platform, except as follows:
@@ -278,13 +278,13 @@ const TermsOfService = () => {
                 <li className="tos-pp-list-item">Delete or alter any copyright, trademark, or other proprietary rights notices from copies of materials from this Platform.</li>
               </ul>
               <p className="tos-pp-text">
-                If you wish to make any use of material on the Platform other than that set out in this section, please address your request to: permissions@savdhaanindia.org.
+                If you wish to make any use of material on the Platform other than that set out in this section, please address your request to: permissions@zerotrace.org.
               </p>
               <p className="tos-pp-text">
-                If you print, copy, modify, download, or otherwise use or provide any other person with access to any part of the Platform in breach of the Terms of Service, your right to use the Platform will stop immediately and you must, at our option, return or destroy any copies of the materials you have made. No right, title, or interest in or to the Platform or any content on the Platform is transferred to you, and all rights not expressly granted are reserved by Savdhaan India.
+                If you print, copy, modify, download, or otherwise use or provide any other person with access to any part of the Platform in breach of the Terms of Service, your right to use the Platform will stop immediately and you must, at our option, return or destroy any copies of the materials you have made. No right, title, or interest in or to the Platform or any content on the Platform is transferred to you, and all rights not expressly granted are reserved by ZeroTrace.
               </p>
               <p className="tos-pp-text">
-                The Savdhaan India name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of Savdhaan India or its affiliates or licensors. You must not use such marks without the prior written permission of Savdhaan India. All other names, logos, product and service names, designs, and slogans on this Platform are the trademarks of their respective owners.
+                The ZeroTrace name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of ZeroTrace or its affiliates or licensors. You must not use such marks without the prior written permission of ZeroTrace. All other names, logos, product and service names, designs, and slogans on this Platform are the trademarks of their respective owners.
               </p>
             </div>
           </div>
@@ -371,7 +371,7 @@ const TermsOfService = () => {
             <div className="tos-pp-section-content">
               <h2 className="tos-pp-section-title">9. Academic Project Disclosure</h2>
               <p className="tos-pp-text">
-                Savdhaan India is developed as an academic project by Masters of Computer Application students from educational institutions in Mumbai and Navi Mumbai. The Platform is designed primarily for educational purposes and to create cybersecurity awareness among Indian citizens.
+                ZeroTrace is developed as an academic project by Masters of Computer Application students from educational institutions in Mumbai and Navi Mumbai. The Platform is designed primarily for educational purposes and to create cybersecurity awareness among Indian citizens.
               </p>
               <p className="tos-pp-text">
                 As an academic project, the Platform may be subject to periodic updates, changes, or discontinuation based on academic schedules, requirements, or evaluations. We will make reasonable efforts to notify users of any significant changes or discontinuation of services.
@@ -404,16 +404,16 @@ const TermsOfService = () => {
               <h2 className="tos-pp-section-title">10. Contact Us</h2>
               <p className="tos-pp-text">If you have any questions about these Terms of Service, please contact us at:</p>
               <div className="tos-pp-contact-info">
-                <p className="tos-pp-contact-text">Savdhaan India - Cybersecurity Awareness Project</p>
-                <p className="tos-pp-contact-text">Email: <span className="tos-pp-highlight">legal@savdhaanindia.org</span></p>
-                <p className="tos-pp-contact-text">Technical Support: <span className="tos-pp-highlight">support@savdhaanindia.org</span></p>
-                <p className="tos-pp-contact-text">General Inquiries: <span className="tos-pp-highlight">info@savdhaanindia.org</span></p>
+                <p className="tos-pp-contact-text">ZeroTrace - Cybersecurity Awareness Project</p>
+                <p className="tos-pp-contact-text">Email: <span className="tos-pp-highlight">legal@zerotrace.org</span></p>
+                <p className="tos-pp-contact-text">Technical Support: <span className="tos-pp-highlight">support@zerotrace.org</span></p>
+                <p className="tos-pp-contact-text">General Inquiries: <span className="tos-pp-highlight">info@zerotrace.org</span></p>
                 <p className="tos-pp-contact-text">Phone: <span className="tos-pp-highlight">XXXX XXXX XX</span></p>
                 <p className="tos-pp-contact-text">Address: <span className="tos-pp-highlight">Mumbai, Maharashtra, India</span></p>
                 <p className="tos-pp-contact-text">Hours of Operation: <span className="tos-pp-highlight">Monday to Friday, 9:00 AM to 5:00 PM IST</span></p>
               </div>
               <p className="tos-pp-text">
-                For urgent security concerns or vulnerability reports, please email <span className="tos-pp-highlight">security@savdhaanindia.org</span> with details of your concern.
+                For urgent security concerns or vulnerability reports, please email <span className="tos-pp-highlight">security@zerotrace.org</span> with details of your concern.
               </p>
             </div>
           </div>
@@ -433,7 +433,7 @@ const TermsOfService = () => {
             <div className="tos-pp-section-content">
               <h2 className="tos-pp-section-title">11. Modifications to Terms</h2>
               <p className="tos-pp-text">
-                Savdhaan India reserves the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+                ZeroTrace reserves the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
               </p>
               <p className="tos-pp-text">
                 By continuing to access or use our Platform after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Platform.
@@ -477,10 +477,10 @@ const TermsOfService = () => {
                 The Platform is controlled and operated from India. If you access our Platform from other territories, you do so at your own risk and are responsible for compliance with local laws.
               </p>
               <p className="tos-pp-text">
-                By using Savdhaan India, you acknowledge that you have read these Terms of Service, understood them, and agree to be bound by them. If you do not agree to these Terms of Service, you are not authorized to use the Platform.
+                By using ZeroTrace, you acknowledge that you have read these Terms of Service, understood them, and agree to be bound by them. If you do not agree to these Terms of Service, you are not authorized to use the Platform.
               </p>
               <p className="tos-pp-text">
-                Thank you for using Savdhaan India - together, we can build a safer digital India!
+                Thank you for using ZeroTrace - together, we can build a safer digital India!
               </p>
             </div>
           </div>

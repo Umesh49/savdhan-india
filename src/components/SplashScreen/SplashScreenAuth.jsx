@@ -105,12 +105,12 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
         <div className="splashscreen-logo-wrapper">
           <img
             src={logoUrl}
-            alt="Savdhaan India logo"
+            alt="ZeroTrace logo"
             className="splashscreen-cyber-logo"
           />
         </div>
 
-        <h1 className="splashscreen-cyber-title">SAVDHAAN INDIA</h1>
+        <h1 className="splashscreen-cyber-title">Zero Trace</h1>
         <p className="splashscreen-tagline">
           ADVANCED CYBER SECURITY INITIATIVE
         </p>

@@ -88,7 +88,7 @@ export default function AboutUs() {
             <div className="about-header-brackets">
               <span className="about-header-bracket left">[</span>
               <div className="about-header-inner">
-                <h1 className="about-header-title">About Savdhaan India</h1>
+                <h1 className="about-header-title">About ZeroTrace</h1>
                 <p className="about-header-subtitle">
                   <span className="about-typed-text">{typedText}</span>
                   <span className="about-cursor">|</span>
@@ -147,7 +147,7 @@ export default function AboutUs() {
               </div>
               <h3 className="about-panel-heading">Our Mission</h3>
               <p>
-                To translate the cautionary lessons of Savdhaan India into the
+                To translate the cautionary lessons of ZeroTrace into the
                 digital realm by providing clear, practical guidance on cyber
                 safety, empowering students and citizens to recognize and
                 counter online threats.

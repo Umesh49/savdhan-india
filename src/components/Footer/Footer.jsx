@@ -65,7 +65,7 @@ const ContactInfo = memo(() => (
     {[
       { icon: FaMapMarkerAlt, text: "Mumbai, India" },
       { icon: FaPhone, text: "+91 XXXX-XXXX-XX" },
-      { icon: FaEnvelope, text: "contact@savdhaanindia.org" }
+      { icon: FaEnvelope, text: "contact@zerotrace.org" }
     ].map((item, index) => (
       <li key={index} className="footer-contact-item">
         <item.icon className="footer-contact-icon" />
@@ -147,7 +147,7 @@ const Footer = () => {
           <div className="footer-section">
             <div className="footer-branding">
               <div className="footer-logo-container">
-                <img src={Logo} alt="Savdhaan India" className="footer-logo" />
+                <img src={Logo} alt="ZeroTrace" className="footer-logo" />
                 <div className="footer-logo-glow"></div>
               </div>
               <h2 className="footer-brand-name" data-text="Savdhaan_India">
@@ -192,7 +192,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <span className="footer-terminal-prefix">&gt;</span> &copy; {currentYear} Savdhaan India 
+            <span className="footer-terminal-prefix">&gt;</span> &copy; {currentYear} ZeroTrace 
             <span className="footer-cursor-inline">|</span> All rights reserved.
           </div>
           <div className="footer-legal-links">

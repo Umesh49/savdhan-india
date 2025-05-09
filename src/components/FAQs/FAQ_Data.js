@@ -1,24 +1,24 @@
 const faqs = {
   general: [
     {
-      question: "What is Savdhaan India?",
+      question: "What is ZeroTrace?",
       answer:
-        "Savdhaan India is a comprehensive platform focused on cybersecurity awareness, Indian cyber laws, complaint guidance, and educational resources for the Indian public. Our mission is to empower citizens with the knowledge and tools to protect themselves in the digital world and take appropriate action when facing cyber threats.",
+        "ZeroTrace is a comprehensive platform focused on cybersecurity awareness, Indian cyber laws, complaint guidance, and educational resources for the Indian public. Our mission is to empower citizens with the knowledge and tools to protect themselves in the digital world and take appropriate action when facing cyber threats.",
     },
     {
       question: "Who can use this platform?",
       answer:
-        "Our platform is designed for all Indian citizens, businesses, and organizations. Whether you're an individual seeking information about cyber laws, someone who has experienced cybercrime, or an organization wanting to educate employees about cybersecurity best practices, Savdhaan India offers resources tailored to your needs.",
+        "Our platform is designed for all Indian citizens, businesses, and organizations. Whether you're an individual seeking information about cyber laws, someone who has experienced cybercrime, or an organization wanting to educate employees about cybersecurity best practices, ZeroTrace offers resources tailored to your needs.",
     },
     {
       question: "Is this an official government website?",
       answer:
-        "No, Savdhaan India is not an official government website. However, we provide accurate information about Indian cyber laws and redirect users to official government portals like the National Cyber Crime Reporting Portal (cybercrime.gov.in) for filing formal complaints.",
+        "No, ZeroTrace is not an official government website. However, we provide accurate information about Indian cyber laws and redirect users to official government portals like the National Cyber Crime Reporting Portal (cybercrime.gov.in) for filing formal complaints.",
     },
     {
       question: "Are the services on this platform free?",
       answer:
-        "Yes, all informational resources, guides, and educational content on Savdhaan India are completely free to access. Our mission is to make cybersecurity knowledge and resources available to all Indian citizens without any barriers.",
+        "Yes, all informational resources, guides, and educational content on ZeroTrace are completely free to access. Our mission is to make cybersecurity knowledge and resources available to all Indian citizens without any barriers.",
     },
     {
       question: "How often is the content updated?",
@@ -26,56 +26,56 @@ const faqs = {
         "We regularly update our content to reflect the latest cybersecurity threats, legal developments, and best practices. Our team monitors changes in Indian cyber laws, emerging threats, and new security techniques to ensure that the information provided is current and relevant.",
     },
     {
-      question: "Can I contribute content to Savdhaan India?",
+      question: "Can I contribute content to ZeroTrace?",
       answer:
         "We welcome contributions from cybersecurity experts, legal professionals, and educators. If you're interested in contributing articles, guides, or other resources, please contact us through our Contact page with details about your expertise and the type of content you'd like to contribute.",
     },
     {
       question:
-        "What makes Savdhaan India different from other cybersecurity platforms?",
+        "What makes ZeroTrace different from other cybersecurity platforms?",
       answer:
-        "Savdhaan India stands out by focusing specifically on the Indian context, providing information tailored to Indian laws, regulations, and cultural nuances. We offer a unique combination of legal guidance, practical cybersecurity tips, and a direct connection to official reporting channels. Our platform is designed to be accessible to all Indians, regardless of their technical background, and we prioritize vernacular language support to reach a wider audience.",
+        "ZeroTrace stands out by focusing specifically on the Indian context, providing information tailored to Indian laws, regulations, and cultural nuances. We offer a unique combination of legal guidance, practical cybersecurity tips, and a direct connection to official reporting channels. Our platform is designed to be accessible to all Indians, regardless of their technical background, and we prioritize vernacular language support to reach a wider audience.",
     },
     {
       question:
-        "How can I stay updated with the latest cybersecurity news and updates from Savdhaan India?",
+        "How can I stay updated with the latest cybersecurity news and updates from ZeroTrace?",
       answer:
         "You can stay updated by subscribing to our newsletter, following our social media channels (Twitter, Facebook, LinkedIn), and regularly checking our blog and news section on the website. We also offer a mobile app that provides real-time notifications about new threats, updates to laws, and cybersecurity tips.",
     },
     {
       question:
-        "Does Savdhaan India offer any certification or training programs?",
+        "Does ZeroTrace offer any certification or training programs?",
       answer:
         "Yes, we offer a range of online courses and certification programs in cybersecurity awareness, digital literacy, and specific skills like secure coding and incident response. These programs are designed for various skill levels, from beginners to advanced professionals, and are recognized by industry bodies. Visit our Education section for more details and to enroll.",
     },
     {
-      question: "What inspired the creation of Savdhaan India?",
+      question: "What inspired the creation of ZeroTrace?",
       answer:
-        "Savdhaan India was inspired by the growing need for cybersecurity awareness in India. With rapid digitalization and increasing cyber threats, our founders—cybersecurity experts and legal professionals—aimed to bridge the gap in accessible, reliable information for Indian citizens.",
+        "ZeroTrace was inspired by the growing need for cybersecurity awareness in India. With rapid digitalization and increasing cyber threats, our founders—cybersecurity experts and legal professionals—aimed to bridge the gap in accessible, reliable information for Indian citizens.",
     },
     {
       question:
-        "How does Savdhaan India ensure the accuracy of its information?",
+        "How does ZeroTrace ensure the accuracy of its information?",
       answer:
         "Our content is curated and reviewed by a team of cybersecurity experts, legal advisors, and researchers who cross-check facts with official sources, such as Indian laws and government portals, to maintain accuracy and reliability.",
     },
     {
-      question: "Can I access Savdhaan India resources offline?",
+      question: "Can I access ZeroTrace resources offline?",
       answer:
         "Yes, we offer downloadable PDFs and offline guides in our Resources section, allowing users to access critical information without an internet connection.",
     },
     {
-      question: "Is there a mobile app for Savdhaan India?",
+      question: "Is there a mobile app for ZeroTrace?",
       answer:
-        "Yes, Savdhaan India has a mobile app available on Android and iOS platforms, offering easy access to resources, real-time alerts, and educational content on the go.",
+        "Yes, ZeroTrace has a mobile app available on Android and iOS platforms, offering easy access to resources, real-time alerts, and educational content on the go.",
     },
     {
       question: "How can I share feedback about the platform?",
       answer:
-        "You can share feedback via the Contact page, email us at feedback@savdhaanindia.org, or use the feedback form at the bottom of each page. We value your input to improve our services.",
+        "You can share feedback via the Contact page, email us at feedback@zerotrace.org, or use the feedback form at the bottom of each page. We value your input to improve our services.",
     },
     {
-      question: "What are the main features of the Savdhaan India platform?",
+      question: "What are the main features of the ZeroTrace platform?",
       answer:
         "Key features include educational articles, legal guides, a complaint filing assistant, cybersecurity tools, and a community forum for discussions and peer support.",
     },
@@ -91,34 +91,34 @@ const faqs = {
         "Yes, our community forum allows users to ask questions, share experiences, and connect with experts and peers on cybersecurity topics.",
     },
     {
-      question: "Can I access Savdhaan India resources in regional languages?",
+      question: "Can I access ZeroTrace resources in regional languages?",
       answer:
         "Currently, we offer content in English and Hindi, with plans to expand to Tamil, Telugu, Bengali, and other regional languages soon.",
     },
     {
       question:
-        "How does Savdhaan India protect my privacy when I use the platform?",
+        "How does ZeroTrace protect my privacy when I use the platform?",
       answer:
         "We follow strict privacy policies, ensuring your data is encrypted, not shared without consent, and all interactions are secured with industry-standard protocols.",
     },
     {
-      question: "Are there any age restrictions for using Savdhaan India?",
+      question: "Are there any age restrictions for using ZeroTrace?",
       answer:
         "No, there are no age restrictions. Our resources are designed for all age groups, with specific sections tailored for children, parents, and seniors.",
     },
     {
-      question: "Can I use Savdhaan India resources for educational purposes?",
+      question: "Can I use ZeroTrace resources for educational purposes?",
       answer:
         "Yes, our content is free for educational use. Teachers, students, and trainers can use our materials for classrooms, workshops, or self-study.",
     },
     {
-      question: "How can I cite Savdhaan India in my research or projects?",
+      question: "How can I cite ZeroTrace in my research or projects?",
       answer:
-        "You can cite us as: 'Savdhaan India (www.savdhaanindia.org), [Access Date].' Feel free to include specific article titles or section names as needed.",
+        "You can cite us as: 'ZeroTrace (www.zerotrace.org), [Access Date].' Feel free to include specific article titles or section names as needed.",
     },
     {
       question:
-        "Does Savdhaan India offer any tools or apps for cybersecurity?",
+        "Does ZeroTrace offer any tools or apps for cybersecurity?",
       answer:
         "Yes, we provide tools like a password strength checker, phishing detection guide, and a mobile app with additional security features.",
     },
@@ -144,17 +144,17 @@ const faqs = {
         "Begin with our free beginner courses, explore our articles, and consider certifications like CEH or CompTIA Security+ for deeper knowledge.",
     },
     {
-      question: "What new features are planned for Savdhaan India?",
+      question: "What new features are planned for ZeroTrace?",
       answer:
         "Future features include AI-based threat detection tools, expanded language support, and interactive cybersecurity quizzes for users.",
     },
     {
-      question: "How does Savdhaan India plan to expand its reach?",
+      question: "How does ZeroTrace plan to expand its reach?",
       answer:
         "We aim to partner with schools, NGOs, and government bodies to conduct workshops and integrate our resources into digital literacy programs.",
     },
     {
-      question: "Are there resources for small businesses on Savdhaan India?",
+      question: "Are there resources for small businesses on ZeroTrace?",
       answer:
         "Yes, our Security section includes guides on securing business networks, employee training, and compliance with Indian data protection laws.",
     },
@@ -170,42 +170,42 @@ const faqs = {
         "Common threats include phishing, financial fraud, identity theft, ransomware, and social media scams, often targeting mobile users and UPI transactions.",
     },
     {
-      question: "Can I access Savdhaan India on social media?",
+      question: "Can I access ZeroTrace on social media?",
       answer:
         "Yes, we’re active on Twitter, Facebook, LinkedIn, and Instagram. Follow us for updates, tips, and community engagement.",
     },
     {
-      question: "Does Savdhaan India collaborate with other organizations?",
+      question: "Does ZeroTrace collaborate with other organizations?",
       answer:
         "Yes, we collaborate with cybersecurity firms, legal experts, and NGOs to enhance our content and outreach efforts.",
     },
     {
       question: "How can I report a technical issue on the platform?",
       answer:
-        "Report issues via the Contact page or email support@savdhaanindia.org with details of the problem for quick resolution.",
+        "Report issues via the Contact page or email support@zerotrace.org with details of the problem for quick resolution.",
     },
     {
-      question: "Is Savdhaan India accessible for people with disabilities?",
+      question: "Is ZeroTrace accessible for people with disabilities?",
       answer:
         "Yes, our platform follows accessibility guidelines, offering text-to-speech, high-contrast modes, and keyboard navigation support.",
     },
     {
-      question: "What is the vision of Savdhaan India?",
+      question: "What is the vision of ZeroTrace?",
       answer:
         "Our vision is a digitally secure India where every citizen is empowered to navigate the online world safely and confidently.",
     },
     {
-      question: "Can students use Savdhaan India for projects?",
+      question: "Can students use ZeroTrace for projects?",
       answer:
         "Absolutely, students can use our resources for research, projects, or presentations, with free access to all content.",
     },
     {
-      question: "How does Savdhaan India address rural users?",
+      question: "How does ZeroTrace address rural users?",
       answer:
         "We provide offline resources, vernacular content, and plan rural workshops to ensure cybersecurity awareness reaches all regions.",
     },
     {
-      question: "What is the role of volunteers in Savdhaan India?",
+      question: "What is the role of volunteers in ZeroTrace?",
       answer:
         "Volunteers help create content, conduct workshops, translate resources, and raise awareness in their communities.",
     },
@@ -521,7 +521,7 @@ const faqs = {
     {
       question: "What support is available for cybercrime victims?",
       answer:
-        "Government helplines (1930), cyber cells, and NGOs offer support; Savdhaan India provides guides and resources too.",
+        "Government helplines (1930), cyber cells, and NGOs offer support; ZeroTrace provides guides and resources too.",
     },
     {
       question: "Can I file a complaint for social media harassment?",
@@ -1024,7 +1024,7 @@ const faqs = {
   ],
   contact: [
     {
-      question: "How can I contact the Savdhaan India team?",
+      question: "How can I contact the ZeroTrace team?",
       answer:
         "You can contact us through the Contact page on our website, which provides our email address, phone number, and a contact form. For direct assistance, you can also use our live chat feature during business hours or send us a message through our social media channels.",
     },
@@ -1042,7 +1042,7 @@ const faqs = {
       question:
         "How can I provide feedback or suggest improvements to the platform?",
       answer:
-        "We welcome your feedback and suggestions! You can share your thoughts through our Contact page, by emailing feedback@savdhaanindia.org, or by using the feedback form available at the bottom of each page. Your input helps us improve our platform and better serve the cybersecurity needs of Indian citizens.",
+        "We welcome your feedback and suggestions! You can share your thoughts through our Contact page, by emailing feedback@zerotrace.org, or by using the feedback form available at the bottom of each page. Your input helps us improve our platform and better serve the cybersecurity needs of Indian citizens.",
     },
     {
       question:
@@ -1052,26 +1052,26 @@ const faqs = {
     },
     {
       question:
-        "What are the operating hours for the Savdhaan India support team?",
+        "What are the operating hours for the ZeroTrace support team?",
       answer:
         "Our support team is available from 9:00 AM to 6:00 PM IST, Monday through Friday. For urgent matters outside these hours, you can leave a message on our helpline or send an email, and we'll respond as soon as possible. Additionally, our website and resources are available 24/7 for self-service support.",
     },
     {
       question:
-        "Does Savdhaan India offer support in languages other than English?",
+        "Does ZeroTrace offer support in languages other than English?",
       answer:
         "Yes, we strive to make our platform accessible to all Indians. Currently, we offer support in Hindi, Tamil, Telugu, Bengali, and Marathi, in addition to English. We're continuously working to add more regional languages to better serve our diverse user base.",
     },
     {
       question:
-        "How can I volunteer or get involved with Savdhaan India's initiatives?",
+        "How can I volunteer or get involved with ZeroTrace's initiatives?",
       answer:
         "We're always looking for passionate individuals to join our mission. You can volunteer as a cybersecurity educator, content creator, translator, or community outreach coordinator. Visit our 'Get Involved' page to learn more about volunteer opportunities and to submit your application. You can also support us by spreading awareness about cybersecurity in your community or by making a donation to fund our initiatives.",
     },
     {
-      question: "How can I schedule a meeting with the Savdhaan India team?",
+      question: "How can I schedule a meeting with the ZeroTrace team?",
       answer:
-        "Request a meeting via our Contact page or email contact@savdhaanindia.org with your purpose and availability.",
+        "Request a meeting via our Contact page or email contact@zerotrace.org with your purpose and availability.",
     },
     {
       question: "Is there a way to receive updates via SMS?",
@@ -1086,17 +1086,17 @@ const faqs = {
     {
       question: "How do I report a bug or technical issue on the platform?",
       answer:
-        "Email support@savdhaanindia.org or use the Contact form with details of the issue for quick resolution.",
+        "Email support@zerotrace.org or use the Contact form with details of the issue for quick resolution.",
     },
     {
       question: "Are there any partnerships or collaborations available?",
       answer:
-        "Yes, we partner with organizations; reach out via partnerships@savdhaanindia.org to discuss opportunities.",
+        "Yes, we partner with organizations; reach out via partnerships@zerotrace.org to discuss opportunities.",
     },
     {
       question: "What is the email address for media inquiries?",
       answer:
-        "For media inquiries, email media@savdhaanindia.org; we respond within 24-48 hours.",
+        "For media inquiries, email media@zerotrace.org; we respond within 24-48 hours.",
     },
     {
       question: "How can I contact CERT-In for assistance?",
@@ -1104,7 +1104,7 @@ const faqs = {
         "Reach CERT-In at cert-in@nic.in or call their helpline listed on www.cert-in.org.in.",
     },
     {
-      question: "Is there a physical office for Savdhaan India?",
+      question: "Is there a physical office for ZeroTrace?",
       answer:
         "We’re primarily online, but contact us for details if a visit is needed; appointments are required.",
     },
@@ -1114,9 +1114,9 @@ const faqs = {
         "Visit cybercrime.gov.in or call 1930 for immediate reporting and support.",
     },
     {
-      question: "Can I contact Savdhaan India via social media?",
+      question: "Can I contact ZeroTrace via social media?",
       answer:
-        "Yes, message us on Twitter (@SavdhaanIndia), Facebook, or LinkedIn for quick responses.",
+        "Yes, message us on Twitter (@Zero Trace), Facebook, or LinkedIn for quick responses.",
     },
     {
       question: "What is the helpline for financial cybercrimes?",
@@ -1124,9 +1124,9 @@ const faqs = {
         "Call 1930 immediately for financial cybercrime support, available 24/7.",
     },
     {
-      question: "How can schools contact Savdhaan India for programs?",
+      question: "How can schools contact ZeroTrace for programs?",
       answer:
-        "Email education@savdhaanindia.org or use the Contact page to arrange school programs.",
+        "Email education@zerotrace.org or use the Contact page to arrange school programs.",
     },
     {
       question: "Is there a chatbot for instant support?",
@@ -1139,12 +1139,12 @@ const faqs = {
         "Find state-specific contacts under ‘Specialized Cyber Cells’ on our Contact page.",
     },
     {
-      question: "Can I donate to support Savdhaan India?",
+      question: "Can I donate to support ZeroTrace?",
       answer:
         "Yes, visit the ‘Support Us’ page to donate via UPI, bank transfer, or online payment.",
     },
     {
-      question: "How do I request a guest speaker from Savdhaan India?",
+      question: "How do I request a guest speaker from ZeroTrace?",
       answer:
         "Submit a request via the Contact page with event details; we’ll arrange based on availability.",
     },
@@ -1154,7 +1154,7 @@ const faqs = {
         "We aim to respond within 24-48 hours, though urgent queries may be prioritized.",
     },
     {
-      question: "Can I contact Savdhaan India for legal advice?",
+      question: "Can I contact ZeroTrace for legal advice?",
       answer:
         "We provide general guidance; for specific legal advice, we connect you to professionals via our network.",
     },
@@ -1164,39 +1164,39 @@ const faqs = {
         "Call 1930 or email CERT-In at report@cert-in.org.in for immediate threats.",
     },
     {
-      question: "Is there a mailing address for Savdhaan India?",
+      question: "Is there a mailing address for ZeroTrace?",
       answer:
         "Contact us first via email; we’ll provide a mailing address if needed for official correspondence.",
     },
     {
-      question: "How can NGOs collaborate with Savdhaan India?",
+      question: "How can NGOs collaborate with ZeroTrace?",
       answer:
-        "NGOs can email ngo@savdhaanindia.org to explore collaboration on awareness campaigns.",
+        "NGOs can email ngo@zerotrace.org to explore collaboration on awareness campaigns.",
     },
     {
-      question: "What is the WhatsApp number for Savdhaan India?",
+      question: "What is the WhatsApp number for ZeroTrace?",
       answer:
         "Message us at +91-XXXXXXXXXX (available on the Contact page) for quick support.",
     },
     {
-      question: "Can I contact Savdhaan India for job opportunities?",
+      question: "Can I contact ZeroTrace for job opportunities?",
       answer:
-        "Check our ‘Careers’ page or email careers@savdhaanindia.org with your resume.",
+        "Check our ‘Careers’ page or email careers@zerotrace.org with your resume.",
     },
     {
       question: "How do I reach out for technical support?",
       answer:
-        "Use the live chat or email techsupport@savdhaanindia.org for platform-related issues.",
+        "Use the live chat or email techsupport@zerotrace.org for platform-related issues.",
     },
     {
-      question: "Is there a toll-free number for Savdhaan India?",
+      question: "Is there a toll-free number for ZeroTrace?",
       answer:
         "Currently, use 1930 for cybercrime; our direct lines are listed on the Contact page.",
     },
     {
-      question: "How can parents contact Savdhaan India for child safety?",
+      question: "How can parents contact ZeroTrace for child safety?",
       answer:
-        "Email parents@savdhaanindia.org or use the Contact form for child safety resources.",
+        "Email parents@zerotrace.org or use the Contact form for child safety resources.",
     },
     {
       question: "Can I request a call-back from the team?",
@@ -1204,19 +1204,19 @@ const faqs = {
         "Yes, submit your number and preferred time via the Contact page for a call-back.",
     },
     {
-      question: "How do I contact Savdhaan India for research collaboration?",
+      question: "How do I contact ZeroTrace for research collaboration?",
       answer:
-        "Email research@savdhaanindia.org with your proposal for potential collaboration.",
+        "Email research@zerotrace.org with your proposal for potential collaboration.",
     },
     {
-      question: "What is the emergency email for Savdhaan India?",
+      question: "What is the emergency email for ZeroTrace?",
       answer:
-        "For urgent matters, email emergency@savdhaanindia.org; we prioritize these requests.",
+        "For urgent matters, email emergency@zerotrace.org; we prioritize these requests.",
     },
     {
-      question: "How can businesses reach Savdhaan India?",
+      question: "How can businesses reach ZeroTrace?",
       answer:
-        "Email business@savdhaanindia.org for cybersecurity solutions or partnership inquiries.",
+        "Email business@zerotrace.org for cybersecurity solutions or partnership inquiries.",
     },
     {
       question: "Is there a forum to connect with other users?",

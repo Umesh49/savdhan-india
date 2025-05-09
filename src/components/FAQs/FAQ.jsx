@@ -455,7 +455,7 @@ function FAQ() {
               <h3 className="safeguard-option-title">SECURITY TEAM</h3>
               <p>Establish secure connection with our specialized cybersecurity experts for personalized assistance.</p>
               <div className="safeguard-option-button-container">
-                <a href="mailto:savdhaanindia@gmail.com" className="safeguard-btn-terminal">
+                <a href="mailto:zerotrace@gmail.com" className="safeguard-btn-terminal">
                   <span className="safeguard-btn-prompt">$</span> ssh secure@savdhaan.india
                 </a>
               </div>

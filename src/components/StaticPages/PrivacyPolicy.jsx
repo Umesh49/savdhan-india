@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
             <div className="tos-pp-section-content">
               <h2 className="tos-pp-section-title">Introduction</h2>
               <p className="tos-pp-text">
-                Savdhaan India is a cybersecurity awareness platform developed by Masters of Computer Applications (MCA) students from Mumbai and Navi Mumbai. Our mission is to educate users about cybersecurity threats and best practices, empowering individuals and communities to navigate the digital world safely. As part of this mission, we are committed to protecting your privacy and ensuring the security of your personal information.
+                ZeroTrace is a cybersecurity awareness platform developed by Masters of Computer Applications (MCA) students from Mumbai and Navi Mumbai. Our mission is to educate users about cybersecurity threats and best practices, empowering individuals and communities to navigate the digital world safely. As part of this mission, we are committed to protecting your privacy and ensuring the security of your personal information.
               </p>
               <p className="tos-pp-text">
                 This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website or use our services. It is designed to provide transparency into our data handling practices and to ensure that you feel confident in how your information is managed. Please read this policy carefully. If you do not agree with its terms, we kindly ask that you refrain from accessing the site.
@@ -204,7 +204,7 @@ const PrivacyPolicy = () => {
                 <li className="tos-pp-list-item">Opt out of marketing data processing.</li>
               </ul>
               <p className="tos-pp-text">
-                To exercise these rights, contact us at <span className="tos-pp-highlight">privacy@savdhaanindia.org</span>.
+                To exercise these rights, contact us at <span className="tos-pp-highlight">privacy@zerotrace.org</span>.
               </p>
             </div>
           </div>
@@ -244,7 +244,7 @@ const PrivacyPolicy = () => {
             <div className="tos-pp-section-content">
               <h2 className="tos-pp-section-title">Protecting Children's Privacy</h2>
               <p className="tos-pp-text">
-                Our platform welcomes users of all ages, including those under 13. We do not knowingly collect data from children without parental consent. If a parent or guardian believes their child has shared information, please contact us at <span className="tos-pp-highlight">privacy@savdhaanindia.org</span> for prompt removal.
+                Our platform welcomes users of all ages, including those under 13. We do not knowingly collect data from children without parental consent. If a parent or guardian believes their child has shared information, please contact us at <span className="tos-pp-highlight">privacy@zerotrace.org</span> for prompt removal.
               </p>
             </div>
           </div>
@@ -287,8 +287,8 @@ const PrivacyPolicy = () => {
                 For questions or comments about this Privacy Policy, reach out to us at:
               </p>
               <div className="tos-pp-contact-info">
-                <p className="tos-pp-contact-text">Savdhaan India</p>
-                <p className="tos-pp-contact-text">Email: <span className="tos-pp-highlight">privacy@savdhaanindia.org</span></p>
+                <p className="tos-pp-contact-text">ZeroTrace</p>
+                <p className="tos-pp-contact-text">Email: <span className="tos-pp-highlight">privacy@zerotrace.org</span></p>
                 <p className="tos-pp-contact-text">Phone: <span className="tos-pp-highlight">XXXX XXXX XX</span></p>
                 <p className="tos-pp-contact-text">Address: <span className="tos-pp-highlight">Mumbai, India</span></p>
               </div>
