@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { generateQRCode } from "./utils/security-utils";
+import { generateQRCode } from "../../../utils/securityUtils";
 
 import "../Tools.css";
 

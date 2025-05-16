@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checkSecurityHeaders } from "./utils/security-utils";
+import { checkSecurityHeaders } from "../../../utils/securityUtils";
 
 import "../Tools.css";
 

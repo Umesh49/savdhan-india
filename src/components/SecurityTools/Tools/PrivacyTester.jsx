@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checkPrivacy } from "./utils/privacy-utils";
+import { checkPrivacy } from "../../../utils/privacyUtils";
 
 import "../Tools.css";
 

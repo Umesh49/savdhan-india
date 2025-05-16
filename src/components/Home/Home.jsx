@@ -270,7 +270,7 @@ export default function HomePage () {
             <SiHackaday className="logo-icon pulse" />
             <div className="logo-glow"></div>
           </div>
-          <h1 className="hero-title neon-text glitch" data-text="Savdhaan India">Savdhaan India</h1>
+          <h1 className="hero-title neon-text glitch" data-text="ZeroTrace">ZeroTrace</h1>
           <p className="hero-subtitle">
             <span className="typing-text">Cybersecurity command center for threat intelligence and digital defense</span>
           </p>

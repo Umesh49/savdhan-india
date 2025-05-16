@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { lookupIPReputation } from "./utils/security-utils";
+import { lookupIPReputation } from "../../../utils/securityUtils";
 
 import "../Tools.css";
 

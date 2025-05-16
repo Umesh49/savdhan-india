@@ -1,6 +1,6 @@
 import "../Tools.css";
 import { useState } from "react"
-import { lookupIPGeolocation } from "../utils/securityUtils"
+import { lookupIPGeolocation } from "../../../utils/securityUtils"
 
 const IpGeolocation = () => {
   const [ip, setIp] = useState("")

@@ -17,6 +17,22 @@ import PrivacyPolicy from "./components/StaticPages/PrivacyPolicy";
 import TermsOfService from "./components/StaticPages/TermsOfService";
 import NotFound from "./components/NotFound/NotFound";
 import CyberSpinner from "./components/common/CyberSpinner/CyberSpinner.jsx";
+import BreachExposureChecker from "./components/SecurityTools/Tools/BreachExposureChecker.jsx";
+import BrowserFingerprinting from "./components/SecurityTools/Tools/BrowserFingerprinting.jsx";
+import DnsLeakTester from "./components/SecurityTools/Tools/DnsLeakTester.jsx";
+import FileEncryption from "./components/SecurityTools/Tools/FileEncryption.jsx";
+import IpGeolocation from "./components/SecurityTools/Tools/IpGeolocation.jsx";
+import IpReputationLookup from "./components/SecurityTools/Tools/IpReputationLookup.jsx";
+import PasswordGenerator from "./components/SecurityTools/Tools/PasswordGenerator.jsx";
+import PasswordStrengthMeter from "./components/SecurityTools/Tools/PasswordStrengthMeter.jsx";
+import PrivacyPolicyAnalyzer from "./components/SecurityTools/Tools/PrivacyPolicyAnalyzer.jsx";
+import PrivacyTester from "./components/SecurityTools/Tools/PrivacyTester.jsx";
+import QrCodeGenerator from "./components/SecurityTools/Tools/QrCodeGenerator.jsx";
+import SafeBrowsingCheck from "./components/SecurityTools/Tools/SafeBrowsingCheck.jsx";
+import SecurityHeadersAudit from "./components/SecurityTools/Tools/SecurityHeadersAudit.jsx";
+import SecurityNews from "./components/SecurityTools/Tools/SecurityNews.jsx";
+import ThreatMap from "./components/SecurityTools/Tools/ThreatMap.jsx";
+import UrlMalwareScanner from "./components/SecurityTools/Tools/UrlMalwareScanner.jsx";
 
 export default function AppRoutes() {
   return (

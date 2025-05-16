@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { testDnsLeak } from "./utils/security-utils";
+import { testDnsLeak } from "../../../utils/securityUtils";
 
 import "../Tools.css";
 
