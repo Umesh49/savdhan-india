@@ -5,22 +5,37 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
-    "@vitejs/plugin-react-swc": "^3.8.1",
-    "framer-motion": "^12.6.5",
+    "@fingerprintjs/fingerprintjs": "^4.6.2",
+    "@zxcvbn-ts/core": "^3.0.4",
+    "hibp": "^15.0.1",
+    "js-sha1": "^0.7.0",
     "lucide-react": "^0.276.0",
+    "openpgp": "^6.1.0",
     "prop-types": "^15.8.1",
+    "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^4.10.1",
-    "react-router-dom": "^6.30.0"
+    "react-router-dom": "^6.30.0",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
+    "@eslint/js": "^9.26.0",
     "@vitejs/plugin-react": "^4.0.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-deprecation": "^1.5.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "glob": "^9.3.5",
+    "globals": "^16.1.0",
+    "lru-cache": "^11.1.0",
+    "rimraf": "^4.4.1",
     "vite": "^6.2.6"
   }
 }
