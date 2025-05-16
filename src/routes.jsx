@@ -38,7 +38,6 @@ export default function AppRoutes() {
   return (
     <Suspense fallback={<CyberSpinner />}>
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/security-checklist" element={<SecurityChecklist />} />
         <Route path="/indian-laws" element={<IndianLaws />} />
@@ -54,38 +53,22 @@ export default function AppRoutes() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route
-          path="/breach-exposure-checker"
-          element={<BreachExposureChecker />}
-        />
-        <Route
-          path="/browser-fingerprinting"
-          element={<BrowserFingerprinting />}
-        />
+        <Route path="/breach-exposure-checker" element={<BreachExposureChecker />} />
+        <Route path="/browser-fingerprinting" element={<BrowserFingerprinting />} />
         <Route path="/dns-leak-tester" element={<DnsLeakTester />} />
         <Route path="/file-encryption" element={<FileEncryption />} />
         <Route path="/ip-geolocation" element={<IpGeolocation />} />
         <Route path="/ip-reputation-lookup" element={<IpReputationLookup />} />
         <Route path="/password-generator" element={<PasswordGenerator />} />
-        <Route
-          path="/password-strength-meter"
-          element={<PasswordStrengthMeter />}
-        />
-        <Route
-          path="/privacy-policy-analyzer"
-          element={<PrivacyPolicyAnalyzer />}
-        />
+        <Route path="/password-strength-meter" element={<PasswordStrengthMeter />} />
+        <Route path="/privacy-policy-analyzer" element={<PrivacyPolicyAnalyzer />} />
         <Route path="/privacy-tester" element={<PrivacyTester />} />
         <Route path="/qr-code-generator" element={<QrCodeGenerator />} />
         <Route path="/safe-browsing-check" element={<SafeBrowsingCheck />} />
-        <Route
-          path="/security-headers-audit"
-          element={<SecurityHeadersAudit />}
-        />
+        <Route path="/security-headers-audit" element={<SecurityHeadersAudit />} />
         <Route path="/security-news" element={<SecurityNews />} />
         <Route path="/threat-map" element={<ThreatMap />} />
         <Route path="/url-malware-scanner" element={<UrlMalwareScanner />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
