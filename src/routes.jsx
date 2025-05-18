@@ -30,9 +30,9 @@ import PrivacyTester from "./components/SecurityTools/Tools/PrivacyTester.jsx";
 import QrCodeGenerator from "./components/SecurityTools/Tools/QrCodeGenerator.jsx";
 import SafeBrowsingCheck from "./components/SecurityTools/Tools/SafeBrowsingCheck.jsx";
 import SecurityHeadersAudit from "./components/SecurityTools/Tools/SecurityHeadersAudit.jsx";
-import SecurityNews from "./components/SecurityNews/SecurityNews.jsx";
-import ThreatMap from "./components/ThreatStats/ThreatStats.jsx";
 import UrlMalwareScanner from "./components/SecurityTools/Tools/UrlMalwareScanner.jsx";
+import ThreatStats from "./components/ThreatStats/ThreatStats.jsx";
+import SecurityNews from "./components/SecurityNews/SecurityNews.jsx";
 
 export default function AppRoutes() {
   return (
@@ -53,6 +53,10 @@ export default function AppRoutes() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/security-news" element={<SecurityNews />} />
+        <Route path="/threat-stats" element={<ThreatStats />} />
+        
+        {/* Tools */}
         <Route path="/breach-exposure-checker" element={<BreachExposureChecker />} />
         <Route path="/browser-fingerprinting" element={<BrowserFingerprinting />} />
         <Route path="/dns-leak-tester" element={<DnsLeakTester />} />
@@ -66,8 +70,6 @@ export default function AppRoutes() {
         <Route path="/qr-code-generator" element={<QrCodeGenerator />} />
         <Route path="/safe-browsing-check" element={<SafeBrowsingCheck />} />
         <Route path="/security-headers-audit" element={<SecurityHeadersAudit />} />
-        <Route path="/security-news" element={<SecurityNews />} />
-        <Route path="/threat-map" element={<ThreatMap />} />
         <Route path="/url-malware-scanner" element={<UrlMalwareScanner />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

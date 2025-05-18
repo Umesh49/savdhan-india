@@ -1,105 +1,27 @@
 export const cyberLawsData = [
   {
-    "id": "IPC-1860",
-    "title": "Indian Penal Code, 1860",
-    "category": "Criminal Law",
-    "year": 1860,
-    "severity": "High",
-    "description": "General criminal code, applied to cyber offences like obscenity, insult to modesty, and voyeurism via electronic media.",
-    "sections": [
-      {
-        "id": "IPC-1860-S292",
-        "title": "Section 292: Obscene Material",
-        "content": "Selling or distributing obscene material electronically.",
-        "penalty": "Up to 2 years, fine, or both"
-      },
-      {
-        "id": "IPC-1860-S509",
-        "title": "Section 509: Insult to Modesty",
-        "content": "Words, gestures, or exhibits intended to insult a woman’s modesty via electronic means.",
-        "penalty": "Up to 1 year, fine, or both"
-      },
-      {
-        "id": "IPC-1860-S354C",
-        "title": "Section 354C: Voyeurism",
-        "content": "Capturing or disseminating images of a private act without consent using electronic devices.",
-        "penalty": "1–3 years and fine"
-      }
-    ],
-    "pdfUrl": "https://www.indiacode.nic.in/bitstream/123456789/4217/1/IPC.pdf",
-    "officialLink": "https://www.indiacode.nic.in/handle/123456789/4217"
-  },
-  {
-    "id": "EVID-1872",
-    "title": "Indian Evidence Act, 1872",
-    "category": "Evidence Law",
-    "year": 1872,
-    "severity": "Medium",
-    "description": "Evidentiary provisions for electronic records, specifying admissibility and certification requirements.",
-    "sections": [
-      {
-        "id": "EVID-1872-S65A",
-        "title": "Section 65A: Admissibility",
-        "content": "Electronic records produced by a computer are deemed documents and admissible.",
-        "penalty": "N/A"
-      },
-      {
-        "id": "EVID-1872-S65B",
-        "title": "Section 65B: Certificate of Integrity",
-        "content": "Certification requirements for secondary evidence of electronic records.",
-        "penalty": "N/A"
-      }
-    ],
-    "pdfUrl": "https://www.indiacode.nic.in/bitstream/123456789/4216/1/Indian_Evidence_Act.pdf",
-    "officialLink": "https://www.indiacode.nic.in/handle/123456789/4216"
-  },
-  {
     "id": "CP-1957",
     "title": "Copyright Act, 1957",
     "category": "Intellectual Property",
     "year": 1957,
     "severity": "Medium",
-    "description": "Protects creative works and penalizes online piracy and unauthorized digital reproduction.",
+    "description": "Protects creative works, penalizes online piracy and unauthorized digital reproduction.",
     "sections": [
       {
         "id": "CP-1957-S63",
         "title": "Section 63: Infringement Penalty",
-        "content": "Knowingly infringing copyright punishable with imprisonment up to three years and fine up to ₹2 lakhs.",
-        "penalty": "Imprisonment up to 3 years, fine up to ₹2 lakhs"
+        "content": "Knowingly infringing copyright, including digital content.",
+        "penalty": "Imprisonment 6 months to 3 years and fine ₹50,000 to ₹2 lakhs"
       },
       {
         "id": "CP-1957-S66",
         "title": "Section 66: Civil Remedies",
-        "content": "Courts may order injunctions and removal of infringing online content.",
+        "content": "Courts may order injunctions for infringing online content.",
         "penalty": "Injunctions and damages"
       }
     ],
-    "pdfUrl": "https://www.indiacode.nic.in/bitstream/123456789/15160/1/1957_Copyright_Act.pdf",
-    "officialLink": "https://www.indiacode.nic.in/handle/123456789/15160"
-  },
-  {
-    "id": "CRPC-1973",
-    "title": "Code of Criminal Procedure, 1973",
-    "category": "Procedure",
-    "year": 1973,
-    "severity": "Medium",
-    "description": "Procedural law empowering search, seizure, and production of digital evidence in cybercrime investigations.",
-    "sections": [
-      {
-        "id": "CRPC-1973-S91",
-        "title": "Section 91: Summons to Produce Record",
-        "content": "Magistrate may summon any person to produce electronic records relevant to trial.",
-        "penalty": "N/A"
-      },
-      {
-        "id": "CRPC-1973-S94",
-        "title": "Section 94: Search Warrants",
-        "content": "Issuance of search warrants for places suspected of concealing digital evidence.",
-        "penalty": "N/A"
-      }
-    ],
-    "pdfUrl": "https://www.indiacode.nic.in/bitstream/123456789/4215/1/CrPC_1973.pdf",
-    "officialLink": "https://www.indiacode.nic.in/handle/123456789/4215"
+    "pdfUrl": "https://www.indiacode.nic.in/handle/123456789/1367",
+    "officialLink": "https://www.indiacode.nic.in/handle/123456789/1367"
   },
   {
     "id": "IT-2000",
@@ -107,65 +29,125 @@ export const cyberLawsData = [
     "category": "Cyber Law",
     "year": 2000,
     "severity": "High",
-    "description": "The foundational statute for electronic commerce and cybercrime in India, amended in 2008 and 2023 to address new technologies and privacy concerns.",
+    "description": "Foundational statute for e-commerce, cybercrimes, and online fraud, amended in 2008 and 2023.",
     "sections": [
       {
+        "id": "IT-2000-S43",
+        "title": "Section 43: Penalty for Damage to Computer",
+        "content": "Unauthorized access, data alteration, or denial of service.",
+        "penalty": "Compensation up to ₹1 crore"
+      },
+      {
         "id": "IT-2000-S43A",
-        "title": "Section 43A: Compensation for failure to protect data",
-        "content": "Where a body corporate possessing or handling sensitive personal data is negligent in maintaining reasonable security practices, it shall be liable to pay damages to the affected persons.",
-        "penalty": "Compensation up to ₹5 lakhs"
+        "title": "Section 43A: Compensation for Data Protection Failure",
+        "content": "Negligence in securing sensitive personal data.",
+        "penalty": "Compensation as determined"
       },
       {
         "id": "IT-2000-S66",
-        "title": "Section 66: Computer related offences",
-        "content": "Whoever, dishonestly or fraudulently, does any act referred to in Section 43 shall be punishable with imprisonment up to three years or fine up to five lakh rupees, or both.",
+        "title": "Section 66: Computer-Related Offences",
+        "content": "Dishonest acts like hacking or fraudulent data manipulation.",
         "penalty": "Imprisonment up to 3 years or fine up to ₹5 lakhs or both"
       },
       {
         "id": "IT-2008-S66C",
         "title": "Section 66C: Identity Theft",
-        "content": "Fraudulent or dishonest use of another’s electronic signature, password, or unique identification feature.",
+        "content": "Fraudulent use of electronic signatures or passwords for scams.",
         "penalty": "Imprisonment up to 3 years and fine up to ₹1 lakh"
+      },
+      {
+        "id": "IT-2008-S66D",
+        "title": "Section 66D: Cheating by Personation",
+        "content": "Cheating using computer resources, e.g., phishing scams.",
+        "penalty": "Imprisonment up to 7 years and fine up to ₹1 lakh"
       },
       {
         "id": "IT-2008-S66E",
         "title": "Section 66E: Violation of Privacy",
-        "content": "Capturing, publishing, or transmitting the image of a private area of any person without consent.",
-        "penalty": "Imprisonment up to 3 years, or fine up to ₹2 lakhs, or both"
+        "content": "Unauthorized publishing of private images.",
+        "penalty": "Imprisonment up to 3 years or fine up to ₹2 lakhs or both"
+      },
+      {
+        "id": "IT-2008-S66F",
+        "title": "Section 66F: Cyber Terrorism",
+        "content": "Threatening national security via computer resources.",
+        "penalty": "Imprisonment up to life"
+      },
+      {
+        "id": "IT-2000-S67",
+        "title": "Section 67: Obscene Material",
+        "content": "Publishing obscene material electronically.",
+        "penalty": "First conviction: up to 3 years imprisonment and fine up to ₹5 lakhs; Subsequent: up to 5 years and fine up to ₹10 lakhs"
+      },
+      {
+        "id": "IT-2000-S67A",
+        "title": "Section 67A: Sexually Explicit Material",
+        "content": "Publishing sexually explicit material electronically.",
+        "penalty": "First conviction: up to 5 years imprisonment and fine up to ₹10 lakhs; Subsequent: up to 7 years and fine up to ₹10 lakhs"
       },
       {
         "id": "IT-2000-S67B",
-        "title": "Section 67B: Punishment for child pornography",
-        "content": "Penalizes publishing, transmission, browsing, downloading, or possession of material depicting children in sexually explicit acts in electronic form, including online grooming and facilitation of abuse.",
-        "penalty": "First conviction: imprisonment up to 5 years and fine up to ₹10 lakhs; Subsequent: imprisonment up to 7 years and fine up to ₹10 lakhs"
-      },
-      {
-        "id": "IT-2000-S67C",
-        "title": "Section 67C: Preservation and Retention of Information",
-        "content": "Intermediaries must preserve specified categories of information for at least 180 days in prescribed formats.",
-        "penalty": "Imprisonment up to 3 years and/or fine"
+        "title": "Section 67B: Child Pornography",
+        "content": "Publishing or possessing child sexual abuse material.",
+        "penalty": "First conviction: up to 5 years imprisonment and fine up to ₹10 lakhs; Subsequent: up to 7 years and fine up to ₹10 lakhs"
       },
       {
         "id": "IT-2000-S69",
-        "title": "Section 69: Powers of Interception, Monitoring & Decryption",
-        "content": "Authorizes Government direction for interception, monitoring, or decryption of any information for sovereignty, integrity, defence, or public order.",
+        "title": "Section 69: Interception, Monitoring & Decryption",
+        "content": "Government interception for security purposes.",
         "penalty": "Imprisonment up to 7 years and fine"
       },
       {
-        "id": "IT-2023-S45",
-        "title": "Section 45: Residuary penalty",
-        "content": "Penalty for contraventions not elsewhere specified; compensation provisions for intermediaries and others.",
-        "penalty": "Penalty up to ₹1 lakh; Compensation up to ₹10 lakhs (intermediaries), ₹1 lakh (others)"
+        "id": "IT-2000-S69A",
+        "title": "Section 69A: Blocking Content",
+        "content": "Blocking online content for public safety.",
+        "penalty": "Imprisonment up to 7 years and fine"
       },
       {
-        "id": "IT-2023-S72",
-        "title": "Section 72: Breach of confidentiality & privacy",
-        "content": "Disclosure of electronic records or materials accessed under this Act without consent.",
-        "penalty": "Compensation up to ₹5 lakhs"
+        "id": "IT-2000-S70B",
+        "title": "Section 70B: CERT-In Powers",
+        "content": "Empowers CERT-In for cybersecurity response.",
+        "penalty": "Imprisonment up to 1 year or fine up to ₹1 lakh or both"
+      },
+      {
+        "id": "IT-2000-S72",
+        "title": "Section 72: Breach of Confidentiality",
+        "content": "Unauthorized disclosure of electronic records.",
+        "penalty": "Imprisonment up to 2 years or fine up to ₹1 lakh or both"
+      },
+      {
+        "id": "IT-2000-S79",
+        "title": "Section 79: Intermediary Liability",
+        "content": "Safe harbor for intermediaries with due diligence.",
+        "penalty": "Loss MOA for loss of safe harbor; penalties under other sections"
       }
     ],
     "pdfUrl": "https://www.indiacode.nic.in/bitstream/123456789/13116/1/it_act_2000_updated.pdf",
     "officialLink": "https://www.meity.gov.in/content/information-technology-act-2000"
+  },
+  {
+    "id": "IT-CA-2000",
+    "title": "IT (Certifying Authorities) Rules, 2000",
+    "category": "Cyber Law",
+    "year": 2000,
+    "severity": "Medium",
+    "description": "Regulates digital signatures for secure transactions, preventing fraud.",
+    "sections": [
+      {
+        "id": "IT-CA-2000-R6",
+        "title": "Rule 6: Digital Signature Standards",
+        "content": "Specifies standards for digital signatures.",
+        "penalty": "N/A"
+      },
+      {
+        "id": "IT-CA-2000-R19",
+        "title": "Rule 19: Licensing of Certifying Authorities",
+        "content": "Requirements for certifying authority operations.",
+        "penalty": "License suspension"
+      }
+    ],
+    "pdfUrl": "https://www.meity.gov.in/content/notification-rules-certifying-authorities-1",
+    "officialLink": "https://www.cca.gov.in/"
   },
   {
     "id": "CTNA-2000",
@@ -173,23 +155,23 @@ export const cyberLawsData = [
     "category": "Content Regulation",
     "year": 2000,
     "severity": "Medium",
-    "description": "Extends broadcast regulation to internet streaming and on‑demand content, prohibiting obscene or harmful material.",
+    "description": "Regulates online streaming and prohibits obscene content.",
     "sections": [
       {
         "id": "CTNA-2000-S2",
         "title": "Section 2: Broadcasting Definition",
-        "content": "Includes IPTV and VOD under ‘broadcast by any means’.",
-        "penalty": "Fines and licence suspension"
+        "content": "Includes IPTV and VOD under broadcasting.",
+        "penalty": "Fines and license suspension"
       },
       {
         "id": "CTNA-2000-S3",
         "title": "Section 3: Prohibited Content",
-        "content": "Bans violence, obscenity, or content prejudicial to sovereignty/public order.",
+        "content": "Bans obscene or harmful online content.",
         "penalty": "Up to 3 years imprisonment or ₹1 lakh fine"
       }
     ],
-    "pdfUrl": "https://www.indiacode.nic.in/bitstream/123456789/16742/1/Cable_TV_Amendment_Act_2000.pdf",
-    "officialLink": "https://www.indiacode.nic.in"
+    "pdfUrl": "https://www.india.gov.in/cable-television-networks-regulation-amendment-act-2000",
+    "officialLink": "https://www.india.gov.in/cable-television-networks-regulation-amendment-act-2000"
   },
   {
     "id": "PSSA-2007",
@@ -197,23 +179,23 @@ export const cyberLawsData = [
     "category": "Financial Regulation",
     "year": 2007,
     "severity": "Medium",
-    "description": "Framework for secure and efficient electronic payment systems under RBI oversight.",
+    "description": "Ensures secure electronic payments to prevent financial fraud.",
     "sections": [
       {
         "id": "PSSA-2007-S17",
         "title": "Section 17: Inspection & Information",
-        "content": "RBI may call for information and inspect payment system operators.",
-        "penalty": "RBI‑directed sanctions"
+        "content": "RBI inspection of payment systems.",
+        "penalty": "RBI-directed sanctions"
       },
       {
         "id": "PSSA-2007-S27",
         "title": "Section 27: Contravention Penalty",
-        "content": "Fine for contravention of Act provisions or regulations.",
-        "penalty": "Up to ₹1 lakh"
+        "content": "Penalties for violating provisions.",
+        "penalty": "Fine up to ₹10 lakhs"
       }
     ],
-    "pdfUrl": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=11711",
-    "officialLink": "https://www.rbi.org.in"
+    "pdfUrl": "https://www.rbi.org.in/Scripts/BS_ViewMasCirculardetails.aspx?id=11711",
+    "officialLink": "https://www.rbi.org.in/Scripts/BS_Act.aspx"
   },
   {
     "id": "SWAN-2007",
@@ -221,29 +203,23 @@ export const cyberLawsData = [
     "category": "Infrastructure Policy",
     "year": 2007,
     "severity": "Medium",
-    "description": "Framework for three‑tier hub‑and‑spoke networks connecting State, District, and Block offices.",
+    "description": "Framework for secure government network infrastructure.",
     "sections": [
       {
         "id": "SWAN-2007-G1",
         "title": "Network Architecture",
-        "content": "Defines leased‑line/MPLS topologies with defined SLAs.",
+        "content": "Defines leased-line/MPLS topologies.",
         "penalty": "Contractual penalties"
       },
       {
         "id": "SWAN-2007-G2",
         "title": "SLAs",
-        "content": "Uptime, latency, and throughput requirements with penalty clauses.",
+        "content": "Uptime and latency requirements.",
         "penalty": "As per SLA"
-      },
-      {
-        "id": "SWAN-2007-G3",
-        "title": "Financing & Implementation",
-        "content": "Cost‑sharing and capacity building under NeGP.",
-        "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/static/uploads/2024/02/An6_Consultancy.pdf",
-    "officialLink": "https://master-meity.digifootprint.gov.in/documents/act-and-policies/policy-guidelines-to-establish-state-wide-area-network-swan"
+    "pdfUrl": "https://web.archive.org/web/20230000000000*/https://www.meity.gov.in/writereaddata/files/SWAN_Guidelines_2007.pdf",
+    "officialLink": "https://www.meity.gov.in/content/swan"
   },
   {
     "id": "IT-INT-2009",
@@ -251,23 +227,23 @@ export const cyberLawsData = [
     "category": "Cyber Security Regulation",
     "year": 2009,
     "severity": "High",
-    "description": "Procedural safeguards for lawful interception under Section 69 of the IT Act.",
+    "description": "Safeguards for lawful interception under IT Act.",
     "sections": [
       {
         "id": "IT-INT-2009-R3",
         "title": "Rule 3: Authorization",
-        "content": "Only designated officers may authorize interception of digital communications.",
-        "penalty": "Unauthorized interception punishable under IT Act"
+        "content": "Designated officers authorize interception.",
+        "penalty": "Penalties under IT Act Section 69"
       },
       {
         "id": "IT-INT-2009-R5",
         "title": "Rule 5: Confidentiality",
-        "content": "Obligates disposal of intercepted data after prescribed retention period.",
-        "penalty": "Departmental action and IT Act penalties"
+        "content": "Disposal of intercepted data after retention.",
+        "penalty": "Penalties under IT Act"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/static/uploads/2024/03/Press-Note-dated-6-June-22-and-Proposed-draft-amendment-to-IT-Rules-2021.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "pdfUrl": "https://dispur.nic.in/itact/it-procedure-interception-monitoring-decryption-rules-2009.pdf",
+    "officialLink": "https://www.meity.gov.in/content/information-technology-act-2000"
   },
   {
     "id": "NEEA-2009",
@@ -275,53 +251,77 @@ export const cyberLawsData = [
     "category": "Accessibility Policy",
     "year": 2009,
     "severity": "Medium",
-    "description": "Mandates WCAG 2.0 Level A standards for government websites and mobile apps to ensure barrier‑free access.",
+    "description": "Mandates WCAG 2.0 for government digital platforms.",
     "sections": [
       {
         "id": "NEEA-2009-S1",
         "title": "GIGW Guidelines",
-        "content": "Web Content Accessibility Guidelines for design and maintenance of digital assets.",
+        "content": "Accessibility guidelines for digital assets.",
         "penalty": "N/A"
       },
       {
         "id": "NEEA-2009-S2",
         "title": "Mobile App Accessibility",
-        "content": "Extends accessibility standards to government mobile applications.",
+        "content": "Extends accessibility to mobile apps.",
         "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/sites/upload_files/dit/files/GIGW_Manual_3.0.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "pdfUrl": "https://web.archive.org/web/20230000000000*/https://www.meity.gov.in/writereaddata/files/NEEA_2009.pdf",
+    "officialLink": "https://www.meity.gov.in/content/accessibility"
   },
   {
-    "id": "CYBERCAFE-2011",
+    "id": "IT-CYBERCAFE-2011",
     "title": "IT (Guidelines for Cyber Cafe) Rules, 2011",
     "category": "Cyber Cafe Regulation",
     "year": 2011,
     "severity": "Medium",
-    "description": "Regulates cyber cafe operations to ensure user identification, logs, and blocking of harmful content.",
+    "description": "Regulates cyber cafes to prevent fraudulent activities.",
     "sections": [
       {
-        "id": "CYBERCAFE-2011-R4",
+        "id": "IT-CYBERCAFE-2011-R4",
         "title": "Rule 4(3): Minors",
-        "content": "Children without photo ID must be accompanied by an adult to use cyber cafe resources.",
-        "penalty": "Cafe may refuse service to non‑compliant users"
+        "content": "Minors require adult supervision without ID.",
+        "penalty": "Service denial"
       },
       {
-        "id": "CYBERCAFE-2011-R7",
-        "title": "Rule 7: Prohibited Content",
-        "content": "Cyber cafes must display notices prohibiting access to pornographic and illegal websites and implement filtering software.",
-        "penalty": "Non‑compliance may lead to license suspension"
-      },
-      {
-        "id": "CYBERCAFE-2011-R5",
+        "id": "IT-CYBERCAFE-2011-R5",
         "title": "Rule 5: Log Register",
-        "content": "Maintain user log registers (physical or electronic) for at least one year, including identity proof details.",
-        "penalty": "N/A"
+        "content": "Maintain user logs for one year.",
+        "penalty": "Penalties under IT Act"
+      },
+      {
+        "id": "IT-CYBERCAFE-2011-R7",
+        "title": "Rule 7: Prohibited Content",
+        "content": "Mandates filtering of illegal content.",
+        "penalty": "License suspension"
       }
     ],
-    "pdfUrl": "https://www.vifindia.org/sites/default/files/The%20Information%20Technology%20Rules%2C%202011.pdf",
-    "officialLink": "https://indiankanoon.org/doc/94650422/"
+    "pdfUrl": "https://www.the420.in/wp-content/uploads/2020/03/GSR315E_105111_0-1.pdf",
+    "officialLink": "https://www.meity.gov.in/content/information-technology-act-2000"
+  },
+  {
+    "id": "IT-SECURITY-2011",
+    "title": "IT (Reasonable Security Practices and Procedures) Rules, 2011",
+    "category": "Data Protection",
+    "year": 2011,
+    "severity": "High",
+    "description": "Security standards for sensitive personal data to prevent fraud.",
+    "sections": [
+      {
+        "id": "IT-SECURITY-2011-R3",
+        "title": "Rule 3: Sensitive Personal Data",
+        "content": "Defines sensitive data like financial information.",
+        "penalty": "Compensation under Section 43A"
+      },
+      {
+        "id": "IT-SECURITY-2011-R5",
+        "title": "Rule 5: Security Practices",
+        "content": "Mandates ISO/IEC 27001 standards.",
+        "penalty": "Compensation under Section 43A"
+      }
+    ],
+    "pdfUrl": "https://cis-india.org/internet-governance/files/it-reasonable-security-practices-and-procedures-and-sensitive-personal-data-or-information-rules-2011.pdf",
+    "officialLink": "https://www.meity.gov.in/content/information-technology-act-2000"
   },
   {
     "id": "POCSO-2012",
@@ -329,18 +329,18 @@ export const cyberLawsData = [
     "category": "Child Protection",
     "year": 2012,
     "severity": "High",
-    "description": "Comprehensive law addressing sexual offences against children, including digital pornography, with special courts and child‑friendly procedures.",
+    "description": "Addresses digital child pornography and related offences.",
     "sections": [
       {
         "id": "POCSO-2012-S14",
         "title": "Section 14: Sexual Assault",
-        "content": "Covers sexual assault against a child, including digital transmission of illicit material.",
+        "content": "Includes digital transmission of illicit material.",
         "penalty": "Imprisonment 7–10 years and fine"
       },
       {
         "id": "POCSO-2012-S23",
         "title": "Section 23: Aggravated Sexual Assault",
-        "content": "Criminalizes recording or transmission of sexual acts involving a child.",
+        "content": "Recording or transmitting sexual acts with children.",
         "penalty": "Imprisonment 10 years to life and fine"
       }
     ],
@@ -353,47 +353,47 @@ export const cyberLawsData = [
     "category": "Cyber Security Policy",
     "year": 2013,
     "severity": "Medium",
-    "description": "Strategic framework for strengthening India’s cybersecurity posture through capacity building, standards, and awareness.",
+    "description": "Framework for cybersecurity and fraud prevention.",
     "sections": [
       {
         "id": "NCSP-2013-O1",
         "title": "Objective 1: Secure Cyberspace",
-        "content": "Develop resilient infrastructure via standards and training.",
+        "content": "Develop resilient infrastructure.",
         "penalty": "N/A"
       },
       {
         "id": "NCSP-2013-O3",
         "title": "Objective 3: R&D Promotion",
-        "content": "Encourage cybersecurity research and innovation.",
+        "content": "Encourage cybersecurity research.",
         "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://meity.gov.in/writereaddata/files/National_Cyber_Security_Policy-2013.pdf",
-    "officialLink": "https://www.meity.gov.in"
+    "pdfUrl": "https://web.archive.org/web/20230000000000*/https://www.meity.gov.in/writereaddata/files/National_Cyber_Security_Policy-2013.pdf",
+    "officialLink": "https://www.meity.gov.in/content/cyber-security"
   },
   {
     "id": "OSS-2015",
-    "title": "Policy on Adoption of Open‑Source Software for Government of India",
+    "title": "Policy on Adoption of Open-Source Software for Government of India",
     "category": "Software Policy",
     "year": 2015,
     "severity": "Medium",
-    "description": "Mandates preference for OSS in e‑Governance to enhance transparency, collaboration, and cost‑efficiency.",
+    "description": "Mandates open-source software for secure e-governance.",
     "sections": [
       {
         "id": "OSS-2015-S1",
         "title": "Adoption Mandate",
-        "content": "Central agencies to prefer OSS unless strong justification for proprietary software.",
+        "content": "Prefer OSS unless justified.",
         "penalty": "N/A"
       },
       {
         "id": "OSS-2015-S2",
         "title": "Compliance & Reporting",
-        "content": "Publish adoption reports, contribute upstream, and maintain code repositories.",
+        "content": "Publish adoption reports.",
         "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/sites/upload_files/dit/files/OSS-Policy-2015.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "pdfUrl": "https://egazette.gov.in/WriteReadData/2015/165153.pdf",
+    "officialLink": "https://www.meity.gov.in/content/open-source-software"
   },
   {
     "id": "SDC-2016",
@@ -401,29 +401,23 @@ export const cyberLawsData = [
     "category": "Infrastructure Policy",
     "year": 2016,
     "severity": "Medium",
-    "description": "Guidelines for secure, resilient State Data Centres under the National e‑Governance Plan.",
+    "description": "Guidelines for secure state data centers.",
     "sections": [
       {
         "id": "SDC-2016-G1",
         "title": "Architecture Standards",
-        "content": "Layered architecture with segregation of production, backup, and DR zones.",
+        "content": "Layered architecture with DR zones.",
         "penalty": "N/A"
       },
       {
         "id": "SDC-2016-G2",
         "title": "Security & Compliance",
-        "content": "Mandates ISO 27001, vulnerability assessments, and audits.",
-        "penalty": "N/A"
-      },
-      {
-        "id": "SDC-2016-G3",
-        "title": "Governance & Operations",
-        "content": "Defines State Data Centre Management Unit roles and SLAs.",
+        "content": "Mandates ISO 27001 and audits.",
         "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/static/uploads/2024/02/guidelines.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "pdfUrl": "https://web.archive.org/web/20230000000000*/https://www.meity.gov.in/writereaddata/files/SDC_Guidelines_2016.pdf",
+    "officialLink": "https://www.meity.gov.in/content/state-data-centres"
   },
   {
     "id": "BFSI-2019",
@@ -431,53 +425,47 @@ export const cyberLawsData = [
     "category": "Financial Sector",
     "year": 2019,
     "severity": "Medium",
-    "description": "Guidelines for banking sector cybersecurity covering SOCs, fraud monitoring, and threat intelligence sharing.",
+    "description": "Mandates fraud monitoring and cybersecurity in banking.",
     "sections": [
       {
         "id": "BFSI-2019-S4",
         "title": "Section 4: SOC Requirements",
-        "content": "24×7 monitoring, detection, and response capabilities.",
-        "penalty": "Regulatory action under Banking Regulation Act"
+        "content": "24×7 monitoring and response.",
+        "penalty": "Regulatory action"
       },
       {
         "id": "BFSI-2019-S7",
         "title": "Section 7: Customer Protection",
-        "content": "MFA, real‑time fraud monitoring, and liability limits on unauthorized transactions.",
-        "penalty": "Compensation and RBI penalties"
-      },
-      {
-        "id": "BFSI-2019-S11",
-        "title": "Section 11: Threat Intelligence Sharing",
-        "content": "Report critical incidents to RBI within 2 hours; root cause analysis in 30 days.",
-        "penalty": "Up to ₹1 crore per incident"
+        "content": "MFA and fraud monitoring requirements.",
+        "penalty": "Compensation and penalties"
       }
     ],
-    "pdfUrl": "https://www.rbi.org.in/scripts/NotificationUser.aspx?Id=11711",
-    "officialLink": "https://www.rbi.org.in"
+    "pdfUrl": "https://www.rbi.org.in/Scripts/BS_ViewMasCirculardetails.aspx?id=11835",
+    "officialLink": "https://www.rbi.org.in/Scripts/BS_CircularIndexDisplay.aspx"
   },
   {
     "id": "CPA-2019",
-    "title": "Consumer Protection Act, 2019 (E‑Commerce Rules)",
-    "category": "E‑Commerce Regulation",
+    "title": "Consumer Protection Act, 2019 (E-Commerce Rules)",
+    "category": "E-Commerce Regulation",
     "year": 2019,
     "severity": "Medium",
-    "description": "Governs unfair trade practices and consumer rights in digital marketplaces, including cooling‑off periods for online contracts.",
+    "description": "Protects against fraudulent e-commerce practices.",
     "sections": [
       {
         "id": "CPA-2019-S16",
         "title": "Section 16: Unfair Terms",
-        "content": "Prohibits enforcement of unfair clauses in digital consumer agreements.",
+        "content": "Prohibits misleading digital contract clauses.",
         "penalty": "Up to ₹10 lakhs"
       },
       {
         "id": "CPA-2019-S104",
         "title": "Section 104: Contract Withdrawal",
-        "content": "Allows consumers to withdraw from unfair digital contracts within a cooling‑off period.",
+        "content": "Allows withdrawal from fraudulent contracts.",
         "penalty": "Compensation and fines"
       }
     ],
-    "pdfUrl": "https://legislative.gov.in/sites/default/files/A2019-35.pdf",
-    "officialLink": "https://consumeraffairs.gov.in"
+    "pdfUrl": "https://www.indiacode.nic.in/handle/123456789/15256",
+    "officialLink": "https://consumeraffairs.gov.in/"
   },
   {
     "id": "NPE-2019",
@@ -485,29 +473,23 @@ export const cyberLawsData = [
     "category": "Industry Policy",
     "year": 2019,
     "severity": "Medium",
-    "description": "Promotes India as a global hub for electronics manufacturing through incentives, infrastructure, and skill development.",
+    "description": "Promotes secure electronics manufacturing.",
     "sections": [
       {
         "id": "NPE-2019-S1",
         "title": "Incentive Schemes",
-        "content": "PLI, SPECS, and Semicon India programmes.",
+        "content": "PLI and SPECS programmes.",
         "penalty": "N/A"
       },
       {
         "id": "NPE-2019-S2",
         "title": "Infrastructure",
-        "content": "Electronics Manufacturing Clusters and Common Facility Centres.",
-        "penalty": "N/A"
-      },
-      {
-        "id": "NPE-2019-S3",
-        "title": "Skill Development",
-        "content": "Training and incubation under NSDC.",
+        "content": "Electronics Manufacturing Clusters.",
         "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/sites/upload_files/dit/files/NPE%202019.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "pdfUrl": "https://digitalindia.gov.in/writereaddata/files/5.Electronics.pdf",
+    "officialLink": "https://www.meity.gov.in/content/national-policy-electronics"
   },
   {
     "id": "NIS-2021",
@@ -515,29 +497,23 @@ export const cyberLawsData = [
     "category": "Telecom Security",
     "year": 2021,
     "severity": "Medium",
-    "description": "Mandates testing, certification, and governance for telecom equipment to secure networks from cyber threats.",
+    "description": "Mandates telecom equipment security to prevent fraud.",
     "sections": [
       {
         "id": "NIS-2021-S3",
         "title": "Section 3: Security Committee",
-        "content": "Committee to assess and maintain a list of trusted telecom vendors and products.",
+        "content": "Maintains trusted vendor list.",
         "penalty": "N/A"
       },
       {
         "id": "NIS-2021-S5",
         "title": "Section 5: Testing & Certification",
-        "content": "Mandatory pre‑deployment testing to detect backdoors or malware.",
-        "penalty": "Up to ₹50 lakhs per violation"
-      },
-      {
-        "id": "NIS-2021-S8",
-        "title": "Section 8: Annual Security Audit",
-        "content": "Submit yearly audit reports to DoT and NSCS.",
-        "penalty": "Up to ₹20 lakhs per instance"
+        "content": "Pre-deployment testing for backdoors.",
+        "penalty": "Up to ₹50 lakhs"
       }
     ],
-    "pdfUrl": "https://dot.gov.in/sites/default/files/National%20Security%20Directive.pdf",
-    "officialLink": "https://dot.gov.in/"
+    "pdfUrl": "https://dot.gov.in/sites/default/files/Compliance%20to%20the%20amendment%20to%20license%20conditions%20on%20National%20Security%20Directive%20on%20the%20Telecommunication%20Sector%20%28NSDTS%29-Actions%20to%20be%20taken%20by%20Licensees.pdf?download=1",
+    "officialLink": "https://dot.gov.in/dataservices/compliance-amendment-license-conditions-national-security-directive-telecommunication"
   },
   {
     "id": "IGDMEC-2021",
@@ -545,52 +521,46 @@ export const cyberLawsData = [
     "category": "Digital Media Regulation",
     "year": 2021,
     "severity": "High",
-    "description": "Enhances due‑diligence, grievance redressal, and traceability obligations on digital intermediaries and news publishers.",
+    "description": "Regulates social media to prevent fraudulent content.",
     "sections": [
       {
         "id": "IGDMEC-2021-R3",
         "title": "Rule 3: Due Diligence",
-        "content": "Publish grievance mechanisms; remove unlawful content promptly.",
-        "penalty": "Loss of safe‑harbor protection"
+        "content": "Grievance mechanisms and content removal.",
+        "penalty": "Loss of safe-harbor protection"
       },
       {
         "id": "IGDMEC-2021-R4",
         "title": "Rule 4: Traceability",
-        "content": "Large social media intermediaries must enable identification of the first originator on request.",
+        "content": "Identify first originator of fraudulent information.",
         "penalty": "Penalties under IT Act"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/static/uploads/2024/02/Information-Technology-Intermediary-Guidelines-and-Digital-Media-Ethics-Code-Rules-2021-updated-06.04.2023-.pdf",
-    "officialLink": "https://www.meity.gov.in/writereaddata/files/Intermediary_Guidelines_Rules_2021.pdf"
+    "pdfUrl": "https://mib.gov.in/sites/default/files/IT%28Intermediary%20Guidelines%20and%20Digital%20Media%20Ethics%20Code%29%20Rules%2C%202021%20English.pdf",
+    "officialLink": "https://www.meity.gov.in/content/information-technology-act-2000"
   },
   {
     "id": "CERT-2022",
-    "title": "CERT‑In Cybersecurity Directions, 2022",
+    "title": "CERT-In Cybersecurity Directions, 2022",
     "category": "Cyber Security Regulation",
     "year": 2022,
     "severity": "Medium",
-    "description": "Directives under Section 70B of the IT Act for incident reporting, logging, and time synchronization by critical entities.",
+    "description": "Mandates incident reporting to combat cyber fraud.",
     "sections": [
       {
         "id": "CERT-2022-D1",
-        "title": "Direction 1: Mandatory Incident Reporting",
-        "content": "Report cyber incidents to CERT‑In within six hours of detection.",
-        "penalty": "Penalties under Section 70B(7)"
+        "title": "Direction 1: Incident Reporting",
+        "content": "Report incidents within six hours.",
+        "penalty": "Penalties under Section 70B(7)"
       },
       {
         "id": "CERT-2022-D2",
         "title": "Direction 2: System Logs",
-        "content": "Maintain event and audit logs for at least 180 days.",
-        "penalty": "Penalties under Section 70B(7)"
-      },
-      {
-        "id": "CERT-2022-D3",
-        "title": "Direction 3: Clock Synchronization",
-        "content": "Synchronize system clocks with Indian Standard Time via NIC/NPL NTP servers.",
-        "penalty": "Penalties under Section 70B(7)"
+        "content": "Maintain logs for 180 days.",
+        "penalty": "Penalties under Section 70B(7)"
       }
     ],
-    "pdfUrl": "https://cert-in.org.in/PDF/CERT-In_Directions_70B_28.04.2022.pdf",
+    "pdfUrl": "https://www.cert-in.org.in/PDF/CERT-In_Directions_70B_28.04.2022.pdf",
     "officialLink": "https://www.cert-in.org.in/Directions70B.jsp"
   },
   {
@@ -599,28 +569,22 @@ export const cyberLawsData = [
     "category": "Critical Infrastructure",
     "year": 2022,
     "severity": "High",
-    "description": "Framework for securing designated critical information infrastructure across key sectors.",
+    "description": "Secures critical infrastructure against fraud.",
     "sections": [
       {
         "id": "CNSS-2022-S4",
-        "title": "Section 4: Mandatory Security Practices",
-        "content": "Network segmentation, MFA, encryption, and continuous monitoring requirements.",
+        "title": "Section 4: Security Practices",
+        "content": "Mandates MFA and encryption.",
         "penalty": "Up to ₹25 lakhs per day"
       },
       {
         "id": "CNSS-2022-S9",
         "title": "Section 9: Supply Chain Security",
-        "content": "Security assessments and right‑to‑audit clauses for third‑party vendors.",
+        "content": "Vendor security assessments.",
         "penalty": "Up to ₹1 crore per incident"
-      },
-      {
-        "id": "CNSS-2022-S12",
-        "title": "Section 12: APT Protection",
-        "content": "Behavioral analytics, threat hunting, and integration with national threat intelligence.",
-        "penalty": "Up to ₹50 lakhs"
       }
     ],
-    "pdfUrl": "https://www.nciipc.gov.in/documents/CNSS_Rules_2022.pdf",
+    "pdfUrl": "https://www.cert-in.org.in/PDF/CERT-In_Directions_28.04.2022.pdf",
     "officialLink": "https://www.nciipc.gov.in/"
   },
   {
@@ -629,29 +593,23 @@ export const cyberLawsData = [
     "category": "Data Governance",
     "year": 2022,
     "severity": "Medium",
-    "description": "Framework for publishing, sharing, and reusing public sector data with privacy and security safeguards.",
+    "description": "Framework for secure public data sharing (draft).",
     "sections": [
       {
         "id": "NDPA-2022-S1",
         "title": "Data Classification",
-        "content": "Categories and access levels for public data based on sensitivity.",
+        "content": "Categories for data access.",
         "penalty": "N/A"
       },
       {
         "id": "NDPA-2022-S2",
         "title": "Data Stewardship",
-        "content": "Roles for data owners and custodians in quality assurance.",
-        "penalty": "N/A"
-      },
-      {
-        "id": "NDPA-2022-S3",
-        "title": "Privacy & Security",
-        "content": "De‑identification, encryption, and DPDP Act compliance.",
+        "content": "Roles for data quality.",
         "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/sites/upload_files/dit/files/Draft_Data_Access_Policy_2022.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "pdfUrl": "https://web.archive.org/web/20230000000000*/https://www.meity.gov.in/writereaddata/files/Draft_Data_Access_Policy_2022.pdf",
+    "officialLink": "https://www.meity.gov.in/content/data-policies"
   },
   {
     "id": "DPDP-2023",
@@ -659,28 +617,28 @@ export const cyberLawsData = [
     "category": "Data Protection",
     "year": 2023,
     "severity": "High",
-    "description": "Sets out a consent‑based framework for processing digital personal data, balancing individual rights with lawful processing requirements.",
+    "description": "Protects personal data to prevent fraudulent misuse.",
     "sections": [
       {
         "id": "DPDP-2023-S7",
         "title": "Section 7: Consent",
-        "content": "Mandates free, informed, specific, and clear consent; no conditional service based on unnecessary data processing.",
-        "penalty": "Up to ₹15 crore or 4% global turnover"
+        "content": "Requires informed consent for data processing.",
+        "penalty": "Up to ₹250 crore"
       },
       {
         "id": "DPDP-2023-S25",
         "title": "Section 25: Security Safeguards",
-        "content": "Requires technical and organizational measures, including encryption and incident recovery plans.",
-        "penalty": "Up to ₹10 crore or 2% global turnover"
+        "content": "Mandates encryption and recovery plans.",
+        "penalty": "Up to ₹200 crore"
       },
       {
         "id": "DPDP-2023-S33",
         "title": "Section 33: Data Breach Notification",
-        "content": "Notify Authority and affected data principals within 72 hours of a personal data breach.",
-        "penalty": "Up to ₹5 crore or 2% global turnover"
+        "content": "Notify breaches within 72 hours.",
+        "penalty": "Up to ₹150 crore"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/writereaddata/files/Digital%2520Personal%2520Data%2520Protection%2520Act%25202023.pdf",
+    "pdfUrl": "https://prsindia.org/files/bills_acts/bills_parliament/2023/Digital_Personal_Data_Protection_Bill_2023.pdf",
     "officialLink": "https://www.meity.gov.in/data-protection-framework"
   },
   {
@@ -689,23 +647,23 @@ export const cyberLawsData = [
     "category": "Cyber Law Rules",
     "year": 2023,
     "severity": "Medium",
-    "description": "Updates qualifications and procedures for IT Act Adjudicating Officers and enquiry processes.",
+    "description": "Updates adjudication for cyber fraud cases.",
     "sections": [
       {
         "id": "AO-2003-AMEND-2023-R1",
         "title": "Qualifications",
-        "content": "Revises minimum judicial or techno‑legal experience for officers.",
+        "content": "Techno-legal experience for officers.",
         "penalty": "N/A"
       },
       {
         "id": "AO-2003-AMEND-2023-R2",
         "title": "Enquiry Procedures",
-        "content": "Timelines and evidence submission rules for enquiries.",
+        "content": "Timelines for fraud-related enquiries.",
         "penalty": "N/A"
       }
     ],
     "pdfUrl": "https://egazette.gov.in/WriteReadData/2023/249813.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "officialLink": "https://www.meity.gov.in/content/information-technology-act-2000"
   },
   {
     "id": "BNS-2023",
@@ -713,23 +671,29 @@ export const cyberLawsData = [
     "category": "Criminal Code",
     "year": 2023,
     "severity": "High",
-    "description": "Modernized criminal code replacing IPC 1860, consolidating organised crime and cyber‑crime provisions.",
+    "description": "Modern criminal code addressing online fraud and cybercrimes.",
     "sections": [
       {
         "id": "BNS-2023-S111",
         "title": "Section 111: Organised Crime",
-        "content": "Defines organised crime to include syndicate‑driven cyber‑offences.",
-        "penalty": "As per underlying offence"
+        "content": "Includes cyber fraud syndicates.",
+        "penalty": "Imprisonment 7 years to life and fine"
       },
       {
-        "id": "BNS-2023-S230",
-        "title": "Section 230: Abetment of Cyber‑Crime",
-        "content": "Penalizes abetment of cyber‑crimes, including distribution of hacking tools.",
-        "penalty": "Same as principal offence"
+        "id": "BNS-2023-S304",
+        "title": "Section 304: Cheating by Impersonation",
+        "content": "Covers phishing and fake profiles.",
+        "penalty": "Imprisonment up to 7 years and fine"
+      },
+      {
+        "id": "BNS-2023-S318",
+        "title": "Section 318: Cheating",
+        "content": "General fraud, including online scams.",
+        "penalty": "Imprisonment up to 7 years and fine"
       }
     ],
-    "pdfUrl": "https://prsindia.org/files/bills_parliament/2023/Bharatiya_Nyaya_Sanhita%2C_2023.pdf",
-    "officialLink": "https://www.mha.gov.in"
+    "pdfUrl": "https://www.indiacode.nic.in/handle/123456789/20062",
+    "officialLink": "https://www.indiacode.nic.in/handle/123456789/20062"
   },
   {
     "id": "BNSS-2023",
@@ -737,47 +701,47 @@ export const cyberLawsData = [
     "category": "Procedure Code",
     "year": 2023,
     "severity": "Medium",
-    "description": "Replaces CrPC 1973, streamlining procedures for digital evidence production and search warrants.",
+    "description": "Streamlines digital evidence for fraud investigations.",
     "sections": [
       {
         "id": "BNSS-2023-S91",
         "title": "Section 91: Electronic Evidence",
-        "content": "Summon production of electronic records for investigations or trials.",
+        "content": "Summons for electronic records.",
         "penalty": "N/A"
       },
       {
         "id": "BNSS-2023-S94",
         "title": "Section 94: Digital Search Warrants",
-        "content": "Issuance of warrants for searching places concealing digital evidence.",
+        "content": "Warrants for digital evidence.",
         "penalty": "N/A"
       }
     ],
-    "pdfUrl": "https://www.indiacode.nic.in/handle/123456789/20064",
-    "officialLink": "https://www.mha.gov.in"
+    "pdfUrl": "https://www.indiacode.nic.in/handle/123456789/20061",
+    "officialLink": "https://www.indiacode.nic.in/handle/123456789/20064"
   },
   {
     "id": "BSB-2023",
-    "title": "Bharatiya Sakshya Bill, 2023",
+    "title": "Bharatiya Sakshya Adhiniyam, 2023",
     "category": "Evidence Law",
     "year": 2023,
     "severity": "Medium",
-    "description": "Replaces the Evidence Act 1872, detailing admissibility and certification for electronic records.",
+    "description": "Governs electronic evidence for fraud cases.",
     "sections": [
       {
-        "id": "BSB-2023-S65A",
-        "title": "Section 65A: Electronic Records",
-        "content": "Defines admissibility of computer‑generated documents as evidence.",
+        "id": "BSB-2023-S63",
+        "title": "Section 63: Electronic Records",
+        "content": "Admissibility of computer-generated documents.",
         "penalty": "N/A"
       },
       {
-        "id": "BSB-2023-S65B",
-        "title": "Section 65B: Certificate Requirements",
-        "content": "Sets standards for certificates attesting integrity of electronic records.",
+        "id": "BSB-2023-S64",
+        "title": "Section 64: Certificate Requirements",
+        "content": "Certification for electronic record integrity.",
         "penalty": "N/A"
       }
     ],
     "pdfUrl": "https://www.indiacode.nic.in/handle/123456789/20063",
-    "officialLink": "https://www.mha.gov.in"
+    "officialLink": "https://www.indiacode.nic.in/handle/123456789/20063"
   },
   {
     "id": "DPDP-RULES-2025",
@@ -785,29 +749,23 @@ export const cyberLawsData = [
     "category": "Data Protection Rules",
     "year": 2025,
     "severity": "High",
-    "description": "Proposed rules detailing consent formats, breach notifications, profiling norms, and cross‑border data transfer safeguards under the DPDP Act.",
+    "description": "Proposed rules for data protection to prevent fraud (draft).",
     "sections": [
       {
         "id": "DPDP-RULES-2025-S1",
         "title": "Consent Mechanisms",
-        "content": "Standardized consent receipts and recording procedures.",
-        "penalty": "DPDP Act penalties"
+        "content": "Standardized consent procedures.",
+        "penalty": "As per DPDP Act"
       },
       {
         "id": "DPDP-RULES-2025-S2",
         "title": "Breach Reporting",
-        "content": "Formats and timelines aligned with DPDP Act Section 33.",
-        "penalty": "DPDP Act penalties"
-      },
-      {
-        "id": "DPDP-RULES-2025-S3",
-        "title": "Cross‑border Transfers",
-        "content": "Adequacy assessments and contractual safeguards for offshore data flows.",
-        "penalty": "DPDP Act penalties"
+        "content": "Timelines for breach notifications.",
+        "penalty": "As per DPDP Act"
       }
     ],
-    "pdfUrl": "https://www.meity.gov.in/writereaddata/files/Draft%20DPDP%20Rules%202025.pdf",
-    "officialLink": "https://www.meity.gov.in/documents/act-and-policies"
+    "pdfUrl": "https://www.meity.gov.in/content/data-protection-framework",
+    "officialLink": "https://www.meity.gov.in/data-protection-framework"
   },
   {
     "id": "DIA-2025",
@@ -815,28 +773,22 @@ export const cyberLawsData = [
     "category": "Cyber Law Framework",
     "year": 2025,
     "severity": "High",
-    "description": "Proposed overhaul replacing the IT Act, aiming to regulate AI, IoT, and strengthen data protection and intermediary accountability.",
+    "description": "Proposed law regulating AI, social media, and online fraud (not enacted).",
     "sections": [
       {
         "id": "DIA-2025-S10",
         "title": "Section 10: Definitions & Scope",
-        "content": "Defines key terms like 'digital intermediary' and 'critical digital infrastructure'.",
+        "content": "Defines digital intermediaries.",
         "penalty": "N/A"
       },
       {
         "id": "DIA-2025-S45",
         "title": "Section 45: Digital Citizen Rights",
-        "content": "Establishes rights such as right to be forgotten and protection against automated decisions.",
-        "penalty": "Up to ₹25 crores or 4% global turnover"
-      },
-      {
-        "id": "DIA-2025-S100",
-        "title": "Section 100: AI & Emerging Tech",
-        "content": "Mandates risk assessments and certification for high‑risk AI systems.",
-        "penalty": "Up to ₹50 crores and service suspension"
+        "content": "Includes protections against fraudulent content.",
+        "penalty": "Up to ₹250 crore (proposed)"
       }
     ],
-    "pdfUrl": "https://vidhilegalpolicy.in/blog/explained-the-digital-india-act-2023/",
-    "officialLink": "https://vidhilegalpolicy.in"
+    "pdfUrl": "https://www.meity.gov.in/content/digital-india-act",
+    "officialLink": "https://www.meity.gov.in/content/digital-india-act"
   }
 ];

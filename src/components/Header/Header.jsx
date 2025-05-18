@@ -8,13 +8,13 @@ const Navbar = () => {
 
   const terminalText = "ZeroTrace Terminal v0.1";
   const navItems = [
-    { path: "/home", label: "Command Center" },
-    { path: "/indian-laws", label: "Cyber Law Database" },
-    { path: "/complaint-guide", label: "Incident Response" },
-    { path: "/complaint-form", label: "Breach Report" },
-    { path: "/resources", label: "Security Resources" },
-    { path: "/security-tools", label: "Defense Arsenal" },
-    { path: "/quiz", label: "Security Training" },
+    { path: "/indian-laws", label: "Indian Cyber Laws" },
+    { path: "/complaint-guide", label: "Complaint Guide" },
+    { path: "/quiz", label: "Test Your Knowledge" },
+    { path: "/security-checklist", label: "Security Checklist" },
+    { path: "/security-tools", label: "Security Tools" },
+    { path: "/faq", label: "FAQ" },
+    { path: "/contact", label: "Contact" },
   ];
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Navbar = () => {
           <div className="nav-header-content">
             <div className="nav-header-logo">
               <div className="nav-logo-box">
-                <img src="../../../logo.svg" />
+                <img src="../../../logo.svg" alt="ZeroTrace Logo" />
                 <div className="nav-logo-pulse"></div>
               </div>
               <div className="nav-title-box">
@@ -84,9 +84,9 @@ const Navbar = () => {
               ))}
             </nav>
 
-            <a href="/complaint-form" className="nav-emergency-btn">
-              <span className="nav-emergency-icon">⚠️</span>
-              <span>Report Incident</span>
+            <a href="/chatbot" className="nav-emergency-btn">
+              <span className="nav-emergency-icon"></span>
+              <span>ZeroBot Help</span>
             </a>
           </div>
         </div>
@@ -131,7 +131,7 @@ const Navbar = () => {
         </button>
 
         <div className="nav-mobile-logo">
-          <img src="../../../logo.svg" height="30px"/>
+          <img src="../../../logo.svg" height="30px" alt="ZeroTrace Logo" />
           <span className="nav-app-title">ZeroTrace</span>
         </div>
       </header>

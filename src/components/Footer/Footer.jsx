@@ -21,23 +21,22 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { path: "/home", label: "Command Center" },
-    { path: "/indian-laws", label: "Cyber Law Database" },
-    { path: "/complaint-guide", label: "Incident Response" },
-    { path: "/complaint-form", label: "Breach Report" },
+    { path: "/indian-laws", label: "Indian Cyber Laws" },
+    { path: "/complaint-guide", label: "Complaint Guide" },
+    { path: "/complaint-form", label: "File a Complaint" },
   ];
 
   const resourceLinks = [
-    { path: "/resources", label: "Security Resources" },
-    { path: "/security-tools", label: "Defense Arsenal" },
-    { path: "/quiz", label: "Security Training" },
+    { path: "/tutorials", label: "Tutorials" },
+    { path: "/security-tools", label: "Security Tools" },
+    { path: "/quiz", label: "Cybersecurity Quiz" },
     { path: "/about", label: "About Us" },
   ];
 
   const policyLinks = [
     { path: "/privacy-policy", label: "Privacy Policy" },
-    { path: "/terms", label: "Terms of Service" },
-    { path: "/sitemap", label: "Sitemap" },
+    { path: "/terms-of-service", label: "Terms of Service" },
+    { path: "/contact", label: "Contact Us" },
   ];
 
   return (
@@ -55,7 +54,7 @@ const Footer = () => {
             <div className="foot-footer-section">
               <div className="foot-footer-brand">
                 <div className="foot-logo-box">
-                  <img src="../../../logo.svg" />
+                  <img src="../../../logo.svg" alt="ZeroTrace Logo" />
                   <div className="foot-logo-pulse"></div>
                 </div>
                 <div className="foot-title-box">
@@ -348,7 +347,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Emergency Contacts Section */}
           <div className="foot-emergency-section">
             <div className="foot-emergency-grid">
               <div className="foot-emergency-item">
@@ -368,7 +366,9 @@ const Footer = () => {
                 </svg>
                 <span className="foot-emergency-label">
                   Cyber Crime Helpline:{" "}
-                  <span className="foot-emergency-number">1930</span>
+                  <a href="tel:1930" className="foot-emergency-number">
+                    1930
+                  </a>
                 </span>
                 <div className="foot-emergency-pulse"></div>
               </div>
@@ -389,7 +389,9 @@ const Footer = () => {
                 </svg>
                 <span className="foot-emergency-label">
                   Emergency Services:{" "}
-                  <span className="foot-emergency-number">112</span>
+                  <a href="tel:112" className="foot-emergency-number">
+                    112
+                  </a>
                 </span>
                 <div className="foot-emergency-pulse"></div>
               </div>
@@ -410,16 +412,20 @@ const Footer = () => {
                 </svg>
                 <span className="foot-emergency-label">
                   Report Online Fraud:{" "}
-                  <span className="foot-emergency-website">
+                  <a
+                    href="https://cybercrime.gov.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="foot-emergency-website"
+                  >
                     cybercrime.gov.in
-                  </span>
+                  </a>
                 </span>
                 <div className="foot-emergency-pulse"></div>
               </div>
             </div>
           </div>
 
-          {/* Footer Bottom / Copyright Section */}
           <div className="foot-footer-bottom">
             <div className="foot-footer-copyright">
               <span className="foot-terminal-prefix">&gt;</span> &copy;{" "}

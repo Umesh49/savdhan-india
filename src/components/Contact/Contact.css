@@ -1,16 +1,16 @@
 .contact-page {
-  --contact-primary-green: #007726;
-  --contact-secondary-green: #0ae140;
-  --contact-accent-green: #2df400;
-  --contact-dark-bg: #000000;
-  --contact-darker-bg: #111111;
-  --contact-terminal-bg: #1a1a1a;
+  --contact-primary-green: #00ffaa;
+  --contact-secondary-green: #00ffaa;
+  --contact-accent-green: #00ffaa;
+  --contact-dark-bg: #030812;
+  --contact-darker-bg: #020610;
+  --contact-terminal-bg: #020610;
   --contact-text-color: #e0e0e0;
-  --contact-error-color: #ff073a;
-  --contact-info-color: #1e90ff;
+  --contact-error-color: #ff3e00;
+  --contact-info-color: #b0b0b0;
   --contact-border-radius: 5px;
   --contact-section-padding: 70px 0;
-  --contact-accent-cyan: #0fcfdc;
+  --contact-accent-cyan: #00ffaa;
   --contact-glow-intensity: 10px;
   position: relative;
   background-color: var(--contact-dark-bg);
@@ -32,7 +32,6 @@
   margin: 0 auto;
   padding: 0 20px;
 }
-
 
 .contact-background {
   position: fixed;
@@ -61,10 +60,10 @@
   height: 100%;
   background-image: linear-gradient(
       to right,
-      rgba(0, 119, 38, 0.05) 1px,
+      rgba(0, 255, 170, 0.05) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(0, 119, 38, 0.05) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(0, 255, 170, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
@@ -93,7 +92,7 @@
     transparent
   );
   opacity: 0.3;
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
   animation: contact-horizontal-scan 12s linear infinite;
 }
 
@@ -108,7 +107,7 @@
     transparent
   );
   opacity: 0.2;
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
   animation: contact-vertical-scan 18s linear infinite;
 }
 
@@ -181,7 +180,6 @@
   animation: contact-node-pulse 2s ease-in-out infinite;
 }
 
-
 .contact-matrix-container {
   position: absolute;
   top: 0;
@@ -228,7 +226,6 @@
     opacity: 0.8;
   }
 }
-
 
 .contact-particles-overlay {
   position: fixed;
@@ -315,7 +312,6 @@
   }
 }
 
-
 .contact-floating-nav {
   position: fixed;
   right: 20px;
@@ -334,8 +330,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgba(10, 30, 15, 0.6);
-  border: 1px solid rgba(10, 225, 64, 0.3);
+  background-color: rgba(0, 255, 170, 0.2);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   color: var(--contact-text-color);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -344,16 +340,16 @@
 
 .contact-nav-item:hover,
 .contact-nav-item.active {
-  background-color: rgba(0, 119, 38, 0.8);
+  background-color: rgba(0, 255, 170, 0.8);
   border-color: var(--contact-secondary-green);
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
   transform: scale(1.1);
 }
 
 .contact-tooltip {
   position: absolute;
   right: 50px;
-  background-color: rgba(10, 30, 15, 0.9);
+  background-color: rgba(0, 255, 170, 0.2);
   padding: 5px 10px;
   border-radius: 3px;
   font-size: 0.8rem;
@@ -361,14 +357,13 @@
   visibility: hidden;
   transition: all 0.3s ease;
   white-space: nowrap;
-  border: 1px solid rgba(10, 225, 64, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.3);
 }
 
 .contact-nav-item:hover .contact-tooltip {
   opacity: 1;
   visibility: visible;
 }
-
 
 section {
   padding: var(--contact-section-padding);
@@ -385,9 +380,8 @@ section {
 }
 
 section:nth-child(even) {
-  background-color: rgba(17, 17, 17, 0.5);
+  background-color: rgba(2, 6, 16, 0.5);
 }
-
 
 .contact-animated-heading {
   position: relative;
@@ -431,7 +425,7 @@ section:nth-child(even) {
   font-size: 3.5rem;
   margin: 15px 0;
   color: var(--contact-secondary-green);
-  text-shadow: 0 0 15px rgba(10, 225, 64, 0.5);
+  text-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
   font-weight: bold;
   opacity: 0;
   animation: contact-title-appear 1s ease forwards 0.3s;
@@ -492,13 +486,12 @@ section:nth-child(even) {
 @keyframes contact-badge-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 7, 58, 0.4);
+    box-shadow: 0 0 0 0 rgba(255, 62, 0, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(255, 7, 58, 0);
+    box-shadow: 0 0 0 10px rgba(255, 62, 0, 0);
   }
 }
-
 
 .contact-button-animated {
   position: relative;
@@ -552,11 +545,10 @@ section:nth-child(even) {
   }
 }
 
-
 .contact-hero-section {
   padding: 120px 0 80px;
   text-align: center;
-  border-bottom: 1px solid rgba(10, 225, 64, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 170, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -571,8 +563,8 @@ section:nth-child(even) {
 .contact-badge {
   display: inline-block;
   padding: 8px 16px;
-  background-color: rgba(10, 225, 64, 0.15);
-  border: 1px solid rgba(10, 225, 64, 0.3);
+  background-color: rgba(0, 255, 170, 0.15);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   border-radius: 20px;
   color: var(--contact-accent-green);
   font-size: 0.9rem;
@@ -582,8 +574,8 @@ section:nth-child(even) {
 .contact-badge-alert {
   display: inline-block;
   padding: 8px 16px;
-  background-color: rgba(255, 7, 58, 0.15);
-  border: 1px solid rgba(255, 7, 58, 0.3);
+  background-color: rgba(255, 62, 0, 0.15);
+  border: 1px solid rgba(255, 62, 0, 0.3);
   border-radius: 20px;
   color: var(--contact-error-color);
   font-size: 0.9rem;
@@ -601,15 +593,14 @@ section:nth-child(even) {
   }
 }
 
-
 .contact-alert-banner {
   display: flex;
   align-items: center;
   margin-top: 30px;
   background: linear-gradient(
     90deg,
-    rgba(255, 7, 58, 0.1) 0%,
-    rgba(255, 7, 58, 0.2) 100%
+    rgba(255, 62, 0, 0.1) 0%,
+    rgba(255, 62, 0, 0.2) 100%
   );
   border-radius: 8px;
   padding: 15px;
@@ -662,7 +653,6 @@ section:nth-child(even) {
   font-size: 0.9rem;
 }
 
-
 .contact-hero-buttons {
   display: flex;
   justify-content: center;
@@ -686,14 +676,14 @@ section:nth-child(even) {
 }
 
 .contact-primary-button {
-  background: linear-gradient(to right, var(--contact-primary-green), #005e1e);
+  background: linear-gradient(to right, var(--contact-primary-green), #00b377);
   color: white;
   border: 1px solid var(--contact-secondary-green);
 }
 
 .contact-primary-button:hover {
-  background: linear-gradient(to right, #009e34, #007726);
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.3);
+  background: linear-gradient(to right, #00ffaa, #00cc88);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
 }
 
 .contact-secondary-button {
@@ -703,10 +693,9 @@ section:nth-child(even) {
 }
 
 .contact-secondary-button:hover {
-  background-color: rgba(10, 225, 64, 0.1);
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.2);
+  background-color: rgba(0, 255, 170, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
 }
-
 
 h2 {
   font-size: 2.2rem;
@@ -736,7 +725,6 @@ h3 {
   opacity: 0.9;
 }
 
-
 .contact-emergency-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -744,8 +732,8 @@ h3 {
 }
 
 .contact-emergency-card {
-  background-color: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(0, 119, 38, 0.5);
+  background-color: rgba(2, 6, 16, 0.8);
+  border: 1px solid rgba(0, 255, 170, 0.5);
   border-radius: var(--contact-border-radius);
   padding: 30px;
   text-align: center;
@@ -764,7 +752,7 @@ h3 {
 
 .contact-emergency-card:hover {
   border-color: var(--contact-secondary-green);
-  box-shadow: 0 0 20px rgba(10, 225, 64, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.2);
   transform: translateY(-5px);
 }
 
@@ -782,7 +770,7 @@ h3 {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
-  background-color: rgba(10, 225, 64, 0.1);
+  background-color: rgba(0, 255, 170, 0.1);
   z-index: -1;
   animation: contact-icon-pulse 3s infinite;
 }
@@ -809,9 +797,9 @@ h3 {
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  background-color: rgba(10, 225, 64, 0.1);
+  background-color: rgba(0, 255, 170, 0.1);
   color: var(--contact-secondary-green);
-  border: 1px solid rgba(10, 225, 64, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   border-radius: 4px;
   margin: 15px 0;
   text-decoration: none;
@@ -822,11 +810,11 @@ h3 {
 .contact-phone-button:hover {
   background-color: var(--contact-primary-green);
   color: white;
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
 }
 
 .contact-portal-info {
-  background-color: rgba(26, 26, 26, 0.8);
+  background-color: rgba(2, 6, 16, 0.8);
   border-left: 4px solid var(--contact-info-color);
   padding: 25px;
   margin-top: 40px;
@@ -853,8 +841,8 @@ h3 {
 }
 
 .contact-external-link:hover {
-  background-color: rgba(30, 144, 255, 0.1);
-  box-shadow: 0 0 15px rgba(30, 144, 255, 0.2);
+  background-color: rgba(176, 176, 176, 0.1);
+  box-shadow: 0 0 15px rgba(176, 176, 176, 0.2);
 }
 
 .contact-external-link::after {
@@ -895,7 +883,6 @@ h3 {
   }
 }
 
-
 .contact-two-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -906,7 +893,6 @@ h3 {
   margin-bottom: 30px;
 }
 
-
 .contact-info-cards {
   display: flex;
   flex-direction: column;
@@ -916,10 +902,10 @@ h3 {
 .contact-info-card {
   display: flex;
   gap: 20px;
-  background-color: rgba(26, 26, 26, 0.8);
+  background-color: rgba(2, 6, 16, 0.8);
   padding: 20px;
   border-radius: var(--contact-border-radius);
-  border: 1px solid rgba(0, 119, 38, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   opacity: 0;
   animation: contact-card-fade-in 0.5s ease forwards;
   transform: translateY(20px);
@@ -967,7 +953,7 @@ h3 {
 }
 
 .contact-advisory {
-  background-color: rgba(26, 26, 26, 0.8);
+  background-color: rgba(2, 6, 16, 0.8);
   border-left: 4px solid var(--contact-error-color);
   padding: 20px;
   margin-top: 30px;
@@ -978,7 +964,6 @@ h3 {
   color: var(--contact-error-color);
 }
 
-
 .contact-crime-types-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -986,8 +971,8 @@ h3 {
 }
 
 .contact-crime-type-card {
-  background-color: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(0, 119, 38, 0.3);
+  background-color: rgba(2, 6, 16, 0.8);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   padding: 20px;
   border-radius: var(--contact-border-radius);
   transition: all 0.3s ease;
@@ -998,15 +983,15 @@ h3 {
 
 .contact-crime-type-card:hover {
   border-color: var(--contact-secondary-green);
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
 }
 
 .contact-crime-type-badge {
   display: inline-block;
   padding: 4px 12px;
-  background-color: rgba(10, 225, 64, 0.1);
+  background-color: rgba(0, 255, 170, 0.1);
   color: var(--contact-accent-green);
-  border: 1px solid rgba(10, 225, 64, 0.2);
+  border: 1px solid rgba(0, 255, 170, 0.2);
   border-radius: 4px;
   font-size: 0.9rem;
   margin-bottom: 15px;
@@ -1016,10 +1001,11 @@ h3 {
   color: var(--contact-accent-green);
 }
 
-
 .contact-mobile-apps {
-  background-color: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(30, 144, 255, 0.3);
+  background-color: rgba(2, 6, 16, 0.8);
+  border: 1px solid rgba(0, 255, 170, 0.3);
+ 
+
   padding: 20px;
   margin-top: 30px;
   border-radius: var(--contact-border-radius);
@@ -1050,7 +1036,7 @@ h3 {
 }
 
 .contact-list-icon {
-  background-color: rgba(30, 144, 255, 0.1);
+  background-color: rgba(0, 255, 170, 0.1);
   color: var(--contact-accent-cyan);
   width: 28px;
   height: 28px;
@@ -1061,7 +1047,6 @@ h3 {
   margin-right: 15px;
 }
 
-
 .contact-teams-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -1070,8 +1055,8 @@ h3 {
 }
 
 .contact-team-card {
-  background-color: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(0, 119, 38, 0.3);
+  background-color: rgba(2, 6, 16, 0.8);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   padding: 25px;
   border-radius: var(--contact-border-radius);
   transition: all 0.3s ease;
@@ -1082,12 +1067,12 @@ h3 {
 
 .contact-team-card:hover {
   border-color: var(--contact-secondary-green);
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.15);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.15);
   transform: translateY(-5px);
 }
 
 .contact-team-specialty {
-  background-color: rgba(10, 225, 64, 0.08);
+  background-color: rgba(0, 255, 170, 0.08);
   border-left: 3px solid var(--contact-secondary-green);
   padding: 12px;
   margin: 15px 0;
@@ -1125,7 +1110,6 @@ h3 {
   font-size: 0.9rem;
 }
 
-
 .contact-resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1133,8 +1117,8 @@ h3 {
 }
 
 .contact-resource-card {
-  background-color: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(0, 119, 38, 0.3);
+  background-color: rgba(2, 6, 16, 0.8);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   padding: 25px;
   border-radius: var(--contact-border-radius);
   text-align: center;
@@ -1148,7 +1132,7 @@ h3 {
 
 .contact-resource-card:hover {
   border-color: var(--contact-secondary-green);
-  box-shadow: 0 0 15px rgba(10, 225, 64, 0.15);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.15);
   transform: translateY(-5px);
 }
 
@@ -1174,7 +1158,7 @@ h3 {
   color: var(--contact-accent-cyan);
   text-decoration: none;
   padding: 8px;
-  border: 1px solid rgba(30, 144, 255, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   border-radius: 4px;
   margin-top: 15px;
   transition: all 0.3s ease;
@@ -1184,8 +1168,8 @@ h3 {
 }
 
 .contact-website-link:hover {
-  background-color: rgba(30, 144, 255, 0.1);
-  box-shadow: 0 0 15px rgba(30, 144, 255, 0.2);
+  background-color: rgba(0, 255, 170, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
 }
 
 .contact-website-link::after {
@@ -1219,7 +1203,6 @@ h3 {
   font-size: 0.9rem;
 }
 
-
 .contact-enhanced-faq-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -1227,8 +1210,8 @@ h3 {
 }
 
 .contact-enhanced-faq-card {
-  background-color: rgba(26, 26, 26, 0.8);
-  border: 1px solid rgba(0, 119, 38, 0.3);
+  background-color: rgba(2, 6, 16, 0.8);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   border-radius: var(--contact-border-radius);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1238,7 +1221,7 @@ h3 {
 
 .contact-enhanced-faq-card:hover {
   border-color: var(--contact-secondary-green);
-  box-shadow: 0 0 10px rgba(10, 225, 64, 0.15);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.15);
 }
 
 .contact-faq-header {
@@ -1258,6 +1241,8 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+ 
+
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
@@ -1279,14 +1264,13 @@ h3 {
   padding: 0 20px 20px;
 }
 
-
 .contact-security-status {
   position: fixed;
   bottom: 20px;
   left: 20px;
   display: flex;
   align-items: center;
-  background-color: rgba(0, 20, 5, 0.7);
+  background-color: rgba(0, 255, 170, 0.2);
   padding: 10px 15px;
   border-radius: 30px;
   border: 1px solid var(--contact-secondary-green);
@@ -1355,7 +1339,6 @@ h3 {
   font-size: 0.9rem;
 }
 
-
 @media (max-width: 1200px) {
   .contact-container {
     padding: 0 15px;
@@ -1381,7 +1364,6 @@ h3 {
 }
 
 @media (max-width: 768px) {
-
   .contact-teams-grid {
     grid-template-columns: 1fr;
   }
