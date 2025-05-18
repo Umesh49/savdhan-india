@@ -9,9 +9,10 @@ import {
   FaCheck,
   FaRedo,
 } from "react-icons/fa";
+import { Terminal, Phone } from "lucide-react";
 import "./ComplaintForm.css";
-import { Phone } from "lucide-react";
 
+// OTP Modal Component
 const OtpModal = ({ otp, onClose }) => {
   return (
     <div className="com-form-modal-overlay">
@@ -44,18 +45,24 @@ const OtpModal = ({ otp, onClose }) => {
   );
 };
 
+// Captcha Generator Component
 const CaptchaGenerator = ({ onCaptchaGenerated }) => {
   const [captchaText, setCaptchaText] = useState("");
 
   const generateCaptcha = () => {
     const canvas = document.getElementById("captchaCanvas");
-    if (!canvas) return;
+    if (!canvas) {
+      console.error("Canvas element not found");
+      return;
+    }
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!ctx) {
+      console.error("Canvas context not available");
+      return;
+    }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.fillStyle = "#020610";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -125,6 +132,7 @@ const CaptchaGenerator = ({ onCaptchaGenerated }) => {
   );
 };
 
+// Login Form Component
 const LoginForm = ({ onLoginSuccess }) => {
   const [formData, setFormData] = useState({
     loginId: "",
@@ -234,7 +242,7 @@ const LoginForm = ({ onLoginSuccess }) => {
         Enter your credentials to access the cybercrime reporting system.
       </p>
 
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="com-form-form-grid">
           <div className="com-form-form-group com-form-full-width">
             <label htmlFor="loginId">
@@ -327,6 +335,7 @@ const LoginForm = ({ onLoginSuccess }) => {
             type="submit"
             className="com-form-btn-primary"
             disabled={isSubmitting}
+            onClick={handleSubmit}
           >
             {isSubmitting ? "Processing..." : "Login"}
           </button>
@@ -340,6 +349,7 @@ const LoginForm = ({ onLoginSuccess }) => {
   );
 };
 
+// Personal Info Form Component
 const PersonalInfoForm = ({ userData, onSubmit }) => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -469,8 +479,7 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
         <h2>Personal Information</h2>
       </div>
       <p className="com-form-step-description">
-        Please provide your personal details for identification and
-        verification.
+        Please provide your personal details for identification and verification.
       </p>
 
       <form onSubmit={handleSubmit}>
@@ -511,9 +520,7 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
               <option value="guardian">Guardian</option>
             </select>
             {errors.relationType && (
-              <span className="com-form-error-message">
-                {errors.relationType}
-              </span>
+              <span className="com-form-error-message">{errors.relationType}</span>
             )}
           </div>
 
@@ -531,9 +538,7 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
               className={errors.relationName ? "error" : ""}
             />
             {errors.relationName && (
-              <span className="com-form-error-message">
-                {errors.relationName}
-              </span>
+              <span className="com-form-error-message">{errors.relationName}</span>
             )}
           </div>
 
@@ -573,9 +578,7 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
               className={errors.dateOfBirth ? "error" : ""}
             />
             {errors.dateOfBirth && (
-              <span className="com-form-error-message">
-                {errors.dateOfBirth}
-              </span>
+              <span className="com-form-error-message">{errors.dateOfBirth}</span>
             )}
           </div>
 
@@ -707,9 +710,9 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
                 onChange={handleChange}
               />
               <span>
-                I consent to the processing of my personal data for the purpose
-                of cybercrime reporting. I understand my information may be
-                shared with relevant law enforcement agencies.
+                I consent to the processing of my personal data for the purpose of
+                cybercrime reporting. I understand my information may be shared
+                with relevant law enforcement agencies.
               </span>
             </label>
             {errors.consent && (
@@ -741,6 +744,7 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
   );
 };
 
+// Complaint Details Form Component
 const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
   const [formData, setFormData] = useState({
     complaintCategory: "",
@@ -862,10 +866,7 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
     if (e.target.files && e.target.files.length > 0) {
       setFormData({
         ...formData,
-        evidenceFiles: [
-          ...formData.evidenceFiles,
-          ...Array.from(e.target.files),
-        ],
+        evidenceFiles: [...formData.evidenceFiles, ...Array.from(e.target.files)],
       });
     }
   };
@@ -1005,13 +1006,11 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
                 className={errors.complaintSubCategory ? "error" : ""}
               >
                 <option value="">--- Select ---</option>
-                {subCategories[formData.complaintCategory]?.map(
-                  (subCategory) => (
-                    <option key={subCategory} value={subCategory}>
-                      {subCategory}
-                    </option>
-                  )
-                )}
+                {subCategories[formData.complaintCategory]?.map((subCategory) => (
+                  <option key={subCategory} value={subCategory}>
+                    {subCategory}
+                  </option>
+                ))}
               </select>
               {errors.complaintSubCategory && (
                 <span className="com-form-error-message">
@@ -1081,9 +1080,7 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
               className={errors.incidentDate ? "error" : ""}
             />
             {errors.incidentDate && (
-              <span className="com-form-error-message">
-                {errors.incidentDate}
-              </span>
+              <span className="com-form-error-message">{errors.incidentDate}</span>
             )}
           </div>
 
@@ -1207,7 +1204,7 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
                           type="button"
                           onClick={() => handleRemoveFile(index)}
                         >
-                          &times;
+                          ×
                         </button>
                       </li>
                     ))}
@@ -1219,8 +1216,7 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
 
           <div className="com-form-form-group com-form-full-width">
             <label htmlFor="additionalInfo">
-              Additional Information{" "}
-              <span className="com-form-required">*</span>
+              Additional Information <span className="com-form-required">*</span>
             </label>
             <textarea
               id="additionalInfo"
@@ -1245,9 +1241,9 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
         <div className="com-form-note-box">
           <FaInfoCircle />
           <p>
-            Please ensure all details are accurate. For urgent cases, contact
-            the <span className="com-form-highlight">Cybercrime Helpline</span>{" "}
-            at <span className="com-form-highlight">1930</span>.
+            Please ensure all details are accurate. For urgent cases, contact the{" "}
+            <span className="com-form-highlight">Cybercrime Helpline</span> at{" "}
+            <span className="com-form-highlight">1930</span>.
           </p>
         </div>
 
@@ -1272,6 +1268,7 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
   );
 };
 
+// Suspect Info Form Component
 const SuspectInfoForm = ({ userData, onSubmit, onPrevStep }) => {
   const [formData, setFormData] = useState({
     suspectKnown: "no",
@@ -1510,6 +1507,7 @@ const SuspectInfoForm = ({ userData, onSubmit, onPrevStep }) => {
   );
 };
 
+// Identity Verification Form Component
 const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
   const [formData, setFormData] = useState({
     idDocument: null,
@@ -1619,8 +1617,7 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
         <h2>Identity Verification</h2>
       </div>
       <p className="com-form-step-description">
-        Upload documents to verify your identity for secure complaint
-        submission.
+        Upload documents to verify your identity for secure complaint submission.
       </p>
 
       <form onSubmit={handleSubmit}>
@@ -1654,7 +1651,7 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
                         type="button"
                         onClick={() => handleRemoveFile("idDocument")}
                       >
-                        &times;
+                        ×
                       </button>
                     </li>
                   </ul>
@@ -1662,9 +1659,7 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
               )}
             </div>
             {errors.idDocument && (
-              <span className="com-form-error-message">
-                {errors.idDocument}
-              </span>
+              <span className="com-form-error-message">{errors.idDocument}</span>
             )}
             <p className="com-form-help-text">
               Upload a clear copy of your Aadhaar, PAN, Passport, Voter ID, or
@@ -1701,7 +1696,7 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
                         type="button"
                         onClick={() => handleRemoveFile("selfie")}
                       >
-                        &times;
+                        ×
                       </button>
                     </li>
                   </ul>
@@ -1725,15 +1720,13 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
                 onChange={handleChange}
               />
               <span>
-                I declare that the uploaded documents are genuine and belong to
-                me. I understand that providing false documents is a punishable
+                I declare that the uploaded documents are genuine and belong to me.
+                I understand that providing false documents is a punishable
                 offense.
               </span>
             </label>
             {errors.declaration && (
-              <span className="com-form-error-message">
-                {errors.declaration}
-              </span>
+              <span className="com-form-error-message">{errors.declaration}</span>
             )}
           </div>
         </div>
@@ -1767,6 +1760,7 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
   );
 };
 
+// Preview Form Component
 const PreviewForm = ({
   userData,
   complaintData,
@@ -1823,62 +1817,82 @@ const PreviewForm = ({
         <div className="com-form-preview-grid">
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Login ID</div>
-            <div className="com-form-preview-value">{userData.loginId}</div>
+            <div className="com-form-preview-value">
+              {userData?.loginId ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Mobile Number</div>
             <div className="com-form-preview-value">
-              +91 {userData.mobileNo}
+              {userData?.mobileNo ? `+91 ${userData.mobileNo}` : "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Full Name</div>
-            <div className="com-form-preview-value">{userData.fullName}</div>
+            <div className="com-form-preview-value">
+              {userData?.fullName ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Relation</div>
             <div className="com-form-preview-value">
-              {userData.relationType} - {userData.relationName}
+              {userData?.relationType && userData?.relationName
+                ? `${userData.relationType} - ${userData.relationName}`
+                : "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Gender</div>
-            <div className="com-form-preview-value">{userData.gender}</div>
+            <div className="com-form-preview-value">
+              {userData?.gender ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Date of Birth</div>
-            <div className="com-form-preview-value">{userData.dateOfBirth}</div>
+            <div className="com-form-preview-value">
+              {userData?.dateOfBirth ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item com-form-full-width">
             <div className="com-form-preview-label">Address</div>
-            <div className="com-form-preview-value">{userData.address}</div>
+            <div className="com-form-preview-value">
+              {userData?.address ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">City</div>
-            <div className="com-form-preview-value">{userData.city}</div>
+            <div className="com-form-preview-value">
+              {userData?.city ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">PIN Code</div>
-            <div className="com-form-preview-value">{userData.pincode}</div>
+            <div className="com-form-preview-value">
+              {userData?.pincode ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">ID Type</div>
-            <div className="com-form-preview-value">{userData.idType}</div>
+            <div className="com-form-preview-value">
+              {userData?.idType ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">ID Number</div>
-            <div className="com-form-preview-value">{userData.idNumber}</div>
+            <div className="com-form-preview-value">
+              {userData?.idNumber ?? "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Occupation</div>
             <div className="com-form-preview-value">
-              {userData.occupation || "N/A"}
+              {userData?.occupation ?? "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Education</div>
             <div className="com-form-preview-value">
-              {userData.education || "N/A"}
+              {userData?.education ?? "N/A"}
             </div>
           </div>
         </div>
@@ -1890,61 +1904,61 @@ const PreviewForm = ({
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Category</div>
             <div className="com-form-preview-value">
-              {complaintData.complaintCategory}
+              {complaintData?.complaintCategory ?? "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Sub-Category</div>
             <div className="com-form-preview-value">
-              {complaintData.complaintSubCategory}
+              {complaintData?.complaintSubCategory ?? "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Money Lost</div>
             <div className="com-form-preview-value">
-              {complaintData.lostMoney === "yes"
-                ? `Yes (₹${complaintData.lostAmount})`
+              {complaintData?.lostMoney === "yes"
+                ? `Yes (₹${complaintData.lostAmount ?? "0"})`
                 : "No"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Incident Date</div>
             <div className="com-form-preview-value">
-              {complaintData.incidentDate}
+              {complaintData?.incidentDate ?? "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Incident Time</div>
             <div className="com-form-preview-value">
-              {`${complaintData.incidentTime.hour}:${complaintData.incidentTime.minute} ${complaintData.incidentTime.period}`}
+              {complaintData?.incidentTime
+                ? `${complaintData.incidentTime.hour}:${complaintData.incidentTime.minute} ${complaintData.incidentTime.period}`
+                : "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Delay in Reporting</div>
             <div className="com-form-preview-value">
-              {complaintData.delayInReporting}
+              {complaintData?.delayInReporting ?? "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Location</div>
             <div className="com-form-preview-value">
-              {complaintData.incidentLocation}
+              {complaintData?.incidentLocation ?? "N/A"}
             </div>
           </div>
           <div className="com-form-preview-item com-form-full-width">
             <div className="com-form-preview-label">Evidence Files</div>
             <div className="com-form-preview-value">
-              {complaintData.evidenceFiles.length > 0
-                ? complaintData.evidenceFiles
-                    .map((file) => file.name)
-                    .join(", ")
+              {complaintData?.evidenceFiles?.length > 0
+                ? complaintData.evidenceFiles.map((file) => file.name).join(", ")
                 : "None"}
             </div>
           </div>
           <div className="com-form-preview-item com-form-full-width">
             <div className="com-form-preview-label">Additional Information</div>
             <div className="com-form-preview-value com-form-preview-text">
-              {complaintData.additionalInfo}
+              {complaintData?.additionalInfo ?? "N/A"}
             </div>
           </div>
         </div>
@@ -1956,27 +1970,27 @@ const PreviewForm = ({
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Suspect Known</div>
             <div className="com-form-preview-value">
-              {suspectData.suspectKnown}
+              {suspectData?.suspectKnown ?? "N/A"}
             </div>
           </div>
-          {suspectData.suspectKnown === "yes" && (
+          {suspectData?.suspectKnown === "yes" && (
             <>
               <div className="com-form-preview-item">
                 <div className="com-form-preview-label">Suspect Name</div>
                 <div className="com-form-preview-value">
-                  {suspectData.suspectName}
+                  {suspectData?.suspectName ?? "N/A"}
                 </div>
               </div>
               <div className="com-form-preview-item">
                 <div className="com-form-preview-label">Suspect Contact</div>
                 <div className="com-form-preview-value">
-                  {suspectData.suspectContact || "N/A"}
+                  {suspectData?.suspectContact ?? "N/A"}
                 </div>
               </div>
               <div className="com-form-preview-item com-form-full-width">
                 <div className="com-form-preview-label">Suspect Address</div>
                 <div className="com-form-preview-value">
-                  {suspectData.suspectAddress || "N/A"}
+                  {suspectData?.suspectAddress ?? "N/A"}
                 </div>
               </div>
             </>
@@ -1984,7 +1998,7 @@ const PreviewForm = ({
           <div className="com-form-preview-item com-form-full-width">
             <div className="com-form-preview-label">Suspect Details</div>
             <div className="com-form-preview-value com-form-preview-text">
-              {suspectData.suspectDetails}
+              {suspectData?.suspectDetails ?? "N/A"}
             </div>
           </div>
         </div>
@@ -1996,13 +2010,13 @@ const PreviewForm = ({
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">ID Document</div>
             <div className="com-form-preview-value">
-              {identityData.idDocument ? identityData.idDocument.name : "None"}
+              {identityData?.idDocument?.name ?? "None"}
             </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Selfie</div>
             <div className="com-form-preview-value">
-              {identityData.selfie ? identityData.selfie.name : "None"}
+              {identityData?.selfie?.name ?? "None"}
             </div>
           </div>
         </div>
@@ -2029,6 +2043,7 @@ const PreviewForm = ({
   );
 };
 
+// Success Message Component
 const SuccessMessage = ({ complaintId }) => {
   return (
     <div className="com-form-success-message">
@@ -2056,8 +2071,8 @@ const SuccessMessage = ({ complaintId }) => {
       <FaCheck className="com-form-success-icon" />
       <h2>Complaint Submitted Successfully!</h2>
       <p>
-        Your cybercrime complaint has been successfully submitted to the
-        National Cybercrime Reporting Portal.
+        Your cybercrime complaint has been successfully submitted to the National
+        Cybercrime Reporting Portal.
       </p>
       <div className="com-form-complaint-id-box">
         <div className="com-form-complaint-id-label">Complaint ID</div>
@@ -2073,17 +2088,14 @@ const SuccessMessage = ({ complaintId }) => {
         <li>
           The complaint will be reviewed by the Cybercrime Investigation Team.
         </li>
-        <li>
-          You may be contacted for additional information or clarification.
-        </li>
-        <li>
-          Track your complaint status using the Complaint ID on the portal.
-        </li>
+        <li>You may be contacted for additional information or clarification.</li>
+        <li>Track your complaint status using the Complaint ID on the portal.</li>
       </ul>
     </div>
   );
 };
 
+// Main Complaint Form Component
 const ComplaintForm = () => {
   const [step, setStep] = useState(0);
   const [userData, setUserData] = useState({});
@@ -2130,7 +2142,10 @@ const ComplaintForm = () => {
   return (
     <div className="com-form-container">
       <header className="com-form-page-header">
-        <h1>National Cybercrime Reporting (Test Portal)</h1>
+        <h1>
+          <Terminal size={28} className="com-header-icon" />
+          <span>National Cybercrime Reporting (Test Portal)</span>
+        </h1>
         <div className="com-form-header-details">
           <p>
             Report cybercrime securely with our{" "}
@@ -2206,7 +2221,7 @@ const ComplaintForm = () => {
             </div>
             <h4>National Police Helpline</h4>
             <p>Call: 112</p>
-            <p>For immediate assistance in emergencies</p>
+            <p>Available 24/7 for emergency assistance</p>
           </div>
           <div
             className="com-form-emergency-card"

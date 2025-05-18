@@ -3,19 +3,20 @@
   margin-top: 20px;
   max-width: 1500px;
   padding: 0 15px;
+  background-color: #080e17;
 }
 
 .com-form-page-header {
-  background-color: #030812;
+  background-color: #080e17;
   border-bottom: 2px solid #00ffaa;
   padding: 2rem 0;
   margin-bottom: 2rem;
-  box-shadow: 0 3px 15px rgba(0, 255, 170, 0.2);
+  box-shadow: 0 3px 15px rgba(0, 255, 170, 0.15);
 }
 
 .com-form-page-header h1 {
   color: #00ffaa;
-  text-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
+  text-shadow: 0 0 5px rgba(0, 255, 170, 0.4);
   font-size: 2rem;
   margin: 0;
   text-align: center;
@@ -24,9 +25,10 @@
 
 .com-form-header-details {
   text-align: center;
-  border-top: 1px solid rgba(0, 255, 170, 0.3);
+  border-top: 1px solid rgba(0, 255, 170, 0.2);
   margin-top: 1rem;
   padding-top: 1rem;
+  color: #b0b0b0;
 }
 
 .com-form-blink {
@@ -34,9 +36,15 @@
   color: #00ffaa;
 }
 
+.com-header-icon {
+  margin-right: 0.75rem;
+  color: #00ffaa;
+  font-size: 2rem;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 170, 0.4));
+}
+
 @keyframes com-form-blink {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
@@ -49,7 +57,7 @@
 }
 
 .com-form-cyber-panel {
-  background-color: #030812;
+  background-color: #080e17;
   border: 1px solid #00ffaa;
   box-shadow: 0 0 10px rgba(0, 255, 170, 0.15);
   padding: 2rem;
@@ -94,7 +102,7 @@
   content: "";
   position: absolute;
   height: 2px;
-  background-color: rgba(0, 255, 170, 0.3);
+  background-color: rgba(0, 255, 170, 0.2);
   top: 19px;
   left: 0;
   right: 0;
@@ -113,8 +121,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #020610;
-  border: 2px solid rgba(0, 255, 170, 0.3);
+  background-color: #0a1020;
+  border: 2px solid rgba(0, 255, 170, 0.2);
   color: #e0e0e0;
   display: flex;
   align-items: center;
@@ -133,20 +141,19 @@
 }
 
 .com-form-progress-step.active .com-form-step-number {
-  background-color: #00ffaa;
+  background: linear-gradient(135deg, #00ffaa, #00cc88);
   color: #030812;
   border-color: #00ffaa;
-  box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.4);
 }
 
 .com-form-progress-step.active .com-form-step-label {
   color: #00ffaa;
-  font-weight: bold;
 }
 
 .com-form-progress-step.completed .com-form-step-number {
-  background-color: #27c93f;
-  border-color: #27c93f;
+  background: linear-gradient(135deg, #00ffaa, #00cc88);
+  border-color: #00ffaa;
   color: #030812;
 }
 
@@ -169,7 +176,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0, 255, 170, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 170, 0.2);
   padding-bottom: 1rem;
 }
 
@@ -177,6 +184,7 @@
   color: #00ffaa;
   margin-right: 1rem;
   font-size: 1.5rem;
+  filter: drop-shadow(0 0 3px rgba(0, 255, 170, 0.4));
 }
 
 .com-form-form-step h2 {
@@ -226,9 +234,9 @@ select,
 textarea {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid rgba(0, 255, 170, 0.3);
-  background-color: #020610;
-  color: #00ffaa;
+  border: 1px solid rgba(0, 255, 170, 0.2);
+  background-color: #0a1020;
+  color: #e0e0e0;
   border-radius: 3px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
@@ -281,10 +289,10 @@ textarea.error {
 }
 
 .com-form-country-code {
-  background-color: rgba(0, 255, 170, 0.1);
-  color: #00ffaa;
+  background-color: rgba(0, 255, 170, 0.05);
+  color: #e0e0e0;
   padding: 0.8rem;
-  border: 1px solid rgba(0, 255, 170, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.2);
   border-right: none;
   border-radius: 3px 0 0 3px;
   min-width: 50px;
@@ -300,6 +308,16 @@ textarea.error {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
+  background: linear-gradient(135deg, #00ffaa, #00cc88);
+  color: #030812;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.com-form-send-otp-btn:hover {
+  background: linear-gradient(135deg, #33ffbb, #00cc88);
 }
 
 .com-form-time-input-container {
@@ -328,10 +346,10 @@ textarea.error {
 }
 
 .com-form-currency-symbol {
-  background-color: rgba(0, 255, 170, 0.1);
-  color: #00ffaa;
+  background-color: rgba(0, 255, 170, 0.05);
+  color: #e0e0e0;
   padding: 0.8rem;
-  border: 1px solid rgba(0, 255, 170, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.2);
   border-right: none;
   border-radius: 3px 0 0 3px;
   min-width: 30px;
@@ -443,6 +461,7 @@ textarea.error {
   padding: 0.5rem 0;
   border-bottom: 1px solid rgba(0, 255, 170, 0.1);
   font-size: 0.9rem;
+  color: #e0e0e0;
 }
 
 .com-form-uploaded-files li:last-child {
@@ -492,6 +511,7 @@ textarea.error {
 .com-form-warning-box p {
   margin: 0;
   font-size: 0.9rem;
+  color: #b0b0b0;
 }
 
 .com-form-highlight {
@@ -520,25 +540,25 @@ textarea.error {
 }
 
 .com-form-btn-primary {
-  background: linear-gradient(135deg, #00ffaa, #27c93f);
+  background: linear-gradient(135deg, #00ffaa, #00cc88);
   color: #030812;
-  box-shadow: 0 0 10px rgba(0, 255, 170, 0.4);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
 }
 
 .com-form-btn-primary:hover {
-  background: linear-gradient(135deg, #27c93f, #00ffaa);
-  box-shadow: 0 0 15px rgba(0, 255, 170, 0.6);
+  background: linear-gradient(135deg, #33ffbb, #00cc88);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
 }
 
 .com-form-btn-primary:disabled {
-  background: rgba(0, 255, 170, 0.3);
+  background: rgba(0, 255, 170, 0.2);
   cursor: not-allowed;
   box-shadow: none;
 }
 
 .com-form-btn-outline {
   background-color: transparent;
-  color: #00ffaa;
+  color: #e0e0e0;
   border: 2px solid #00ffaa;
 }
 
@@ -548,12 +568,12 @@ textarea.error {
 }
 
 .com-form-btn-secondary {
-  background-color: #b0b0b0;
-  color: #030812;
+  background-color: #0a1020;
+  color: #e0e0e0;
 }
 
 .com-form-btn-secondary:hover {
-  background-color: #e0e0e0;
+  background-color: rgba(0, 255, 170, 0.1);
 }
 
 .com-form-link-button {
@@ -568,7 +588,7 @@ textarea.error {
 }
 
 .com-form-link-button:hover {
-  color: #27c93f;
+  color: #33ffbb;
 }
 
 .com-form-captcha-container {
@@ -578,7 +598,7 @@ textarea.error {
 }
 
 .com-form-captcha-canvas {
-  border: 1px solid rgba(0, 255, 170, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.2);
   border-radius: 3px;
   margin-right: 1rem;
 }
@@ -611,7 +631,7 @@ textarea.error {
 }
 
 .com-form-modal-content {
-  background-color: #030812;
+  background-color: #080e17;
   border: 2px solid #00ffaa;
   border-radius: 5px;
   width: 90%;
@@ -635,7 +655,7 @@ textarea.error {
   display: flex;
   align-items: center;
   padding: 1rem;
-  border-bottom: 1px solid rgba(0, 255, 170, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 170, 0.2);
 }
 
 .com-form-modal-icon {
@@ -663,7 +683,7 @@ textarea.error {
 .com-form-otp-digit {
   width: 40px;
   height: 50px;
-  background-color: rgba(0, 255, 170, 0.1);
+  background-color: rgba(0, 255, 170, 0.05);
   border: 2px solid #00ffaa;
   border-radius: 5px;
   margin: 0 5px;
@@ -685,7 +705,7 @@ textarea.error {
 
 .com-form-modal-footer {
   padding: 1rem;
-  border-top: 1px solid rgba(0, 255, 170, 0.3);
+  border-top: 1px solid rgba(0, 255, 170, 0.2);
   text-align: center;
 }
 
@@ -693,19 +713,16 @@ textarea.error {
   padding: 2rem;
   background: linear-gradient(to bottom, #080e17, #0a1020);
   border-radius: 8px;
-  border: 2px solid rgba(255, 62, 0, 0.5);
+  border: 2px solid rgba(255, 62, 0, 0.3);
 }
 
 .com-form-emergency-contact-section h3 {
   color: #ff3e00;
   text-align: center;
   margin-bottom: 2.5rem;
-  border-bottom: 2px solid rgba(255, 62, 0, 0.4);
+  border-bottom: 2px solid rgba(255, 62, 0, 0.3);
   padding-bottom: 1.25rem;
   font-size: 1.5rem;
-  font-weight: 600;
-  font-family: "Courier New", monospace;
-  text-shadow: 0 0 5px rgba(255, 62, 0, 0.3);
 }
 
 .com-form-emergency-grid {
@@ -716,7 +733,7 @@ textarea.error {
 
 .com-form-emergency-card {
   background-color: #0a1020;
-  border: 1px solid #ff3e00;
+  border: 1px solid rgba(255, 62, 0, 0.3);
   padding: 2rem;
   text-align: center;
   border-radius: 8px;
@@ -728,7 +745,7 @@ textarea.error {
 .com-form-emergency-card:hover {
   box-shadow: 0 8px 20px rgba(255, 62, 0, 0.3);
   transform: translateY(-5px);
-  border-color: #ff7700;
+  border-color: #ff3e00;
 }
 
 .com-form-emergency-card::before {
@@ -739,16 +756,12 @@ textarea.error {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, transparent, #ff3e00, transparent);
-  opacity: 0.7;
 }
 
 .com-form-emergency-card h4 {
   color: #ff3e00;
   margin: 0.5rem 0 1rem;
   font-size: 1.25rem;
-  font-weight: 600;
-  font-family: "Courier New", monospace;
-  text-shadow: 0 0 3px rgba(255, 62, 0, 0.3);
 }
 
 .com-form-emergency-card p {
@@ -756,7 +769,6 @@ textarea.error {
   margin: 0 0 1rem;
   font-size: 0.95rem;
   line-height: 1.6;
-  font-family: "Courier New", monospace;
 }
 
 .com-form-portal-logo {
@@ -789,17 +801,17 @@ textarea.error {
 
 .com-form-preview-section {
   margin-bottom: 2rem;
-  border: 1px solid rgba(0, 255, 170, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.2);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .com-form-preview-section h3 {
-  background-color: rgba(0, 255, 170, 0.1);
+  background-color: rgba(0, 255, 170, 0.05);
   color: #00ffaa;
   margin: 0;
   padding: 0.8rem 1rem;
-  border-bottom: 1px solid rgba(0, 255, 170, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 170, 0.2);
 }
 
 .com-form-preview-grid {
@@ -828,6 +840,7 @@ textarea.error {
   background-color: rgba(0, 255, 170, 0.05);
   padding: 0.5rem;
   border-radius: 3px;
+  color: #e0e0e0;
 }
 
 .com-form-preview-text {
@@ -868,7 +881,7 @@ textarea.error {
 }
 
 .com-form-complaint-id-box {
-  background-color: rgba(0, 255, 170, 0.1);
+  background-color: rgba(0, 255, 170, 0.05);
   border: 2px solid #00ffaa;
   padding: 1rem;
   border-radius: 4px;

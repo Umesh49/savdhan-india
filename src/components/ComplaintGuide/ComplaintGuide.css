@@ -166,6 +166,11 @@
   filter: drop-shadow(0 0 3px rgba(0, 255, 170, 0.5));
 }
 
+.guide-tab-button.guide-active .guide-tab-icon {
+  color: #030812;
+  filter: none;
+}
+
 .guide-content {
   padding: 2.5rem 1.5rem;
   background-color: #080e17;
