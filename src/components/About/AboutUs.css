@@ -1,6 +1,6 @@
-.about-about-page {
-  --about-primary: #0cf00c;
-  --about-primary-dim: rgba(12, 240, 12, 0.7);
+.about-page {
+  --about-primary: #00ffaa;
+  --about-primary-dim: rgba(0, 255, 170, 0.7);
   --about-primary-glow: rgba(12, 240, 12, 0.2);
   --about-secondary: #00b3f0;
   --about-accent: #ff003c;
@@ -10,12 +10,12 @@
   --about-text-primary: #e0e0e0;
   --about-text-secondary: #a0a0a0;
   --about-border: #2a2a2a;
-  --about-neon-glow: 0 0 10px rgba(12, 240, 12, 0.5),
-    0 0 20px rgba(12, 240, 12, 0.2);
-  --about-neon-glow-strong: 0 0 10px rgba(12, 240, 12, 0.7),
-    0 0 25px rgba(12, 240, 12, 0.3);
-  --about-panel-bg: rgba(10, 10, 10, 0.85);
-  --about-terminal-green: #0cf00c;
+  --about-neon-glow: 0 0 10px rgba(0, 255, 170, 0.5),
+    0 0 20px rgba(0, 255, 170, 0.2);
+  --about-neon-glow-strong: 0 0 10px rgba(0, 255, 170, 0.7),
+    0 0 25px rgba(0, 255, 170, 0.3);
+  --about-panel-bg: #152030;
+  --about-terminal-green: #00ffaa;
   --about-error-red: #ff2738;
   --about-deck-border: 1px solid var(--about-primary-dim);
   background-color: var(--about-bg-dark);
@@ -84,10 +84,6 @@
   100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
-}
-
-body {
-  margin: 0;
 }
 
 .about-container {

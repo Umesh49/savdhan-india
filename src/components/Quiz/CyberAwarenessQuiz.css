@@ -22,14 +22,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: var(--primary-bg);
-  color: var(--text-primary);
-  font-family: "Courier New", monospace;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
 .quiz-savdhan-app {
   position: relative;
   min-height: 100vh;

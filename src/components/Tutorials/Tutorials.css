@@ -33,10 +33,6 @@
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
 .tutorial-container {
   --primary-color: #00ffaa;
   --primary-dim: rgba(0, 255, 170, 0.7);

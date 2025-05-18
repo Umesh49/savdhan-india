@@ -205,10 +205,6 @@
   }
 }
 
-body {
-  margin: 0;
-}
-
 .tos-pp-container {
   background-color: var(--bg-dark);
   color: var(--text-primary);

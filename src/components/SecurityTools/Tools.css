@@ -20,16 +20,6 @@
   --neon-glow: 0 0 10px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.2);
 }
 
-body {
-  margin: 0;
-  font-family: "Fira Code", monospace;
-  background-color: var(--dark-bg);
-  color: var(--text-primary);
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-}
-
 .security-tools body::before {
   content: "";
   position: fixed;
