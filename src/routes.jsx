@@ -30,8 +30,8 @@ import PrivacyTester from "./components/SecurityTools/Tools/PrivacyTester.jsx";
 import QrCodeGenerator from "./components/SecurityTools/Tools/QrCodeGenerator.jsx";
 import SafeBrowsingCheck from "./components/SecurityTools/Tools/SafeBrowsingCheck.jsx";
 import SecurityHeadersAudit from "./components/SecurityTools/Tools/SecurityHeadersAudit.jsx";
-import SecurityNews from "./components/SecurityTools/Tools/SecurityNews.jsx";
-import ThreatMap from "./components/SecurityTools/Tools/ThreatMap.jsx";
+import SecurityNews from "./components/SecurityNews/SecurityNews.jsx";
+import ThreatMap from "./components/ThreatStats/ThreatStats.jsx";
 import UrlMalwareScanner from "./components/SecurityTools/Tools/UrlMalwareScanner.jsx";
 
 export default function AppRoutes() {
@@ -48,7 +48,7 @@ export default function AppRoutes() {
         <Route path="/quiz/:categoryId" element={<CyberAwarenessQuiz />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/tutorials" element={<Tutorials />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

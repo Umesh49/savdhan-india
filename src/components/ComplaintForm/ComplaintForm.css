@@ -1,7 +1,7 @@
 .com-form-container {
-  width: 90%;
-  max-width: 1200px;
   margin: 0 auto;
+  margin-top: 20px;
+  max-width: 1500px;
   padding: 0 15px;
 }
 
@@ -690,72 +690,100 @@ textarea.error {
 }
 
 .com-form-emergency-contact-section {
-  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #080e17, #0a1020);
+  border-radius: 8px;
+  border: 2px solid rgba(255, 62, 0, 0.5);
 }
 
 .com-form-emergency-contact-section h3 {
-  color: #00ffaa;
+  color: #ff3e00;
   text-align: center;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid rgba(0, 255, 170, 0.3);
-  padding-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid rgba(255, 62, 0, 0.4);
+  padding-bottom: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Courier New", monospace;
+  text-shadow: 0 0 5px rgba(255, 62, 0, 0.3);
 }
 
 .com-form-emergency-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .com-form-emergency-card {
-  background-color: #020610;
-  border: 1px solid #00ffaa;
-  padding: 1.5rem;
+  background-color: #0a1020;
+  border: 1px solid #ff3e00;
+  padding: 2rem;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .com-form-emergency-card:hover {
-  box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
+  box-shadow: 0 8px 20px rgba(255, 62, 0, 0.3);
   transform: translateY(-5px);
+  border-color: #ff7700;
+}
+
+.com-form-emergency-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff3e00, transparent);
+  opacity: 0.7;
 }
 
 .com-form-emergency-card h4 {
-  color: #00ffaa;
-  margin-top: 0;
+  color: #ff3e00;
+  margin: 0.5rem 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: "Courier New", monospace;
+  text-shadow: 0 0 3px rgba(255, 62, 0, 0.3);
 }
 
 .com-form-emergency-card p {
   color: #b0b0b0;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-family: "Courier New", monospace;
 }
 
 .com-form-portal-logo {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .com-form-logo-icon {
-  font-size: 2rem;
-  color: #00ffaa;
-  animation: com-form-pulse 2s infinite;
+  font-size: 2.5rem;
+  color: #ff3e00;
+  filter: drop-shadow(0 0 5px rgba(255, 62, 0, 0.4));
+  animation: com-form-pulse 2s infinite ease-in-out;
 }
 
 @keyframes com-form-pulse {
   0% {
-    opacity: 0.7;
     transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(255, 62, 0, 0.4));
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255, 62, 0, 0.6));
   }
   100% {
-    opacity: 0.7;
     transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(255, 62, 0, 0.4));
   }
 }
 

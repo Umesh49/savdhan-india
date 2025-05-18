@@ -18,7 +18,6 @@
   --about-terminal-green: #00ffaa;
   --about-error-red: #ff2738;
   --about-deck-border: 1px solid var(--about-primary-dim);
-  background-color: var(--about-bg-dark);
   color: var(--about-text-primary);
   font-family: "Courier New", monospace;
 }

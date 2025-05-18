@@ -81,7 +81,6 @@ export default function AboutUs() {
   return (
     <div className="about-page">
       <div className="about-grid-lines"></div>
-
       <section className="about-page-header">
         <div className="about-container">
           <div className="about-header-content">

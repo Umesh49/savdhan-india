@@ -1,6 +1,5 @@
-"use client"
-
-import { useState, useEffect, memo } from "react"
+import { useState, useEffect, memo, Component } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AlertTriangle,
   Check,
@@ -17,8 +16,8 @@ import {
   Server,
   Terminal,
   User,
-} from "lucide-react"
-import "./ComplaintGuide.css"
+} from "lucide-react";
+import "./ComplaintGuide.css";
 import {
   crimeCategories,
   reportingAuthorities,
@@ -26,8 +25,34 @@ import {
   evidenceGuidelines,
   portalSteps,
   processSteps,
-} from "./tabsData.jsx"
-import CyberSpinner from "../common/CyberSpinner/CyberSpinner.jsx"
+} from "./tabsData.jsx";
+import CyberSpinner from "../common/CyberSpinner/CyberSpinner.jsx";
+
+// Error Boundary Component
+class ErrorBoundary extends Component {
+  state = { hasError: false, error: null };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="guide-container">
+          <h2 style={{ color: "#ff3e00" }}>Something went wrong.</h2>
+          <p>Please try refreshing the page or contact support.</p>
+          <p>Error: {this.state.error?.message}</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 const SectionHeader = memo(({ icon, title, intro }) => {
   return (
@@ -37,26 +62,28 @@ const SectionHeader = memo(({ icon, title, intro }) => {
       </h2>
       {intro && <p className="guide-intro">{intro}</p>}
     </>
-  )
-})
+  );
+});
 
 const CardGrid = memo(({ children }) => {
-  return <div className="guide-card-grid">{children}</div>
-})
+  return <div className="guide-card-grid">{children}</div>;
+});
 
 const Accordion = memo(({ items }) => {
-  const [expandedSection, setExpandedSection] = useState(null)
+  const [expandedSection, setExpandedSection] = useState(null);
 
   const toggleSection = (sectionId) => {
-    setExpandedSection((prev) => (prev === sectionId ? null : sectionId))
-  }
+    setExpandedSection((prev) => (prev === sectionId ? null : sectionId));
+  };
 
   return (
     <div className="guide-accordion">
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <div key={item.id} className="guide-accordion-item">
           <div
-            className={`guide-accordion-header ${expandedSection === item.id ? "guide-expanded" : ""}`}
+            className={`guide-accordion-header ${
+              expandedSection === item.id ? "guide-expanded" : ""
+            }`}
             onClick={() => toggleSection(item.id)}
           >
             <div className="guide-accordion-title">
@@ -65,17 +92,25 @@ const Accordion = memo(({ items }) => {
               <h3>{item.title}</h3>
             </div>
             <div className="guide-accordion-arrow">
-              {expandedSection === item.id ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              {expandedSection === item.id ? (
+                <ChevronUp size={20} />
+              ) : (
+                <ChevronDown size={20} />
+              )}
             </div>
           </div>
-          <div className={`guide-accordion-content ${expandedSection === item.id ? "guide-expanded" : ""}`}>
+          <div
+            className={`guide-accordion-content ${
+              expandedSection === item.id ? "guide-expanded" : ""
+            }`}
+          >
             {item.content}
           </div>
         </div>
       ))}
     </div>
-  )
-})
+  );
+});
 
 const EmergencyBanner = memo(() => {
   return (
@@ -86,8 +121,8 @@ const EmergencyBanner = memo(() => {
       <div className="guide-emergency-content">
         <h2>Cyber Crime Emergency?</h2>
         <p>
-          Call the National Cyber Crime Helpline immediately: <span className="guide-emergency-number">1930</span> or
-          visit{" "}
+          Call the National Cyber Crime Helpline immediately:{" "}
+          <span className="guide-emergency-number">1930</span> or visit{" "}
           <a
             href="https://cybercrime.gov.in/"
             className="guide-emergency-link"
@@ -98,13 +133,14 @@ const EmergencyBanner = memo(() => {
           </a>
         </p>
         <p>
-          For financial fraud cases, reporting within the first 24 hours (the Golden Hour) significantly increases the
-          chances of recovering your money. Act quickly!
+          For financial fraud cases, reporting within the first 24 hours (the
+          Golden Hour) significantly increases the chances of recovering your
+          money. Act quickly!
         </p>
       </div>
     </div>
-  )
-})
+  );
+});
 
 const TabNavigation = memo(({ activeTab, setActiveTab }) => {
   const tabs = [
@@ -126,14 +162,16 @@ const TabNavigation = memo(({ activeTab, setActiveTab }) => {
       icon: <Server size={18} />,
     },
     { id: "faq", label: "FAQs", icon: <Info size={18} /> },
-  ]
+  ];
 
   return (
     <div className="guide-tabs">
       {tabs.map((tab) => (
         <button
           key={tab.id}
-          className={`guide-tab-button ${activeTab === tab.id ? "guide-active" : ""}`}
+          className={`guide-tab-button ${
+            activeTab === tab.id ? "guide-active" : ""
+          }`}
           onClick={() => setActiveTab(tab.id)}
         >
           <span className="guide-tab-icon">{tab.icon}</span>
@@ -141,10 +179,9 @@ const TabNavigation = memo(({ activeTab, setActiveTab }) => {
         </button>
       ))}
     </div>
-  )
-})
+  );
+});
 
-// Tab Content Components
 const ProcessTab = memo(() => {
   return (
     <div className="guide-section">
@@ -155,7 +192,7 @@ const ProcessTab = memo(() => {
       />
 
       <div className="guide-process-steps">
-        {processSteps.map((step, index) => (
+        {processSteps?.map((step, index) => (
           <div key={index} className="guide-step">
             <div className="guide-step-header">
               <div className="guide-step-number">{index + 1}</div>
@@ -163,7 +200,7 @@ const ProcessTab = memo(() => {
             </div>
             <p>{step.description}</p>
             <ul className="guide-checklist">
-              {step.items.map((item, itemIndex) => (
+              {step.items?.map((item, itemIndex) => (
                 <li key={itemIndex}>
                   <Check className="guide-check-icon" />
                   <span>{item}</span>
@@ -174,8 +211,8 @@ const ProcessTab = memo(() => {
         ))}
       </div>
     </div>
-  )
-})
+  );
+});
 
 const PortalTab = memo(() => {
   return (
@@ -188,10 +225,16 @@ const PortalTab = memo(() => {
 
       <Accordion items={portalSteps} />
     </div>
-  )
-})
+  );
+});
 
 const FileComplaintForm = memo(() => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/complaint-form");
+  };
+
   return (
     <div className="guide-two-columns">
       <div className="guide-ready-box">
@@ -199,8 +242,10 @@ const FileComplaintForm = memo(() => {
           <Check className="guide-success-icon" /> Ready to File Your Complaint?
         </h3>
         <p>
-          Now that you know the complete process, you can file your cybercrime complaint on the official National
-          Cyber Crime Reporting Portal. Remember to gather all necessary evidence and information before starting.
+          Now that you know the complete process, you can file your cybercrime
+          complaint on the official National Cyber Crime Reporting Portal.
+          Remember to gather all necessary evidence and information before
+          starting.
         </p>
         <div className="guide-button-group">
           <a
@@ -211,7 +256,11 @@ const FileComplaintForm = memo(() => {
           >
             <Globe className="guide-button-icon" /> Go to Official Portal
           </a>
-          <button className="guide-secondary-button">
+          <button
+            className="guide-secondary-button"
+            onClick={handleClick}
+            aria-label="Try test form"
+          >
             <HelpCircle size={16} className="guide-button-icon" /> Try Test Form
           </button>
         </div>
@@ -222,13 +271,14 @@ const FileComplaintForm = memo(() => {
           <HelpCircle className="guide-help-icon" /> Need More Information?
         </h3>
         <p>
-          Check out our other guides on crime categories, evidence gathering tips, or FAQs using the tabs above. You
-          can also call the National Cyber Crime Helpline at <strong>1930</strong> for direct assistance.
+          Check out our other guides on crime categories, evidence gathering
+          tips, or FAQs using the tabs above. You can also call the National
+          Cyber Crime Helpline at <strong>1930</strong> for direct assistance.
         </p>
       </div>
     </div>
-  )
-})
+  );
+});
 
 const CategoriesTab = memo(() => {
   return (
@@ -240,8 +290,12 @@ const CategoriesTab = memo(() => {
       />
 
       <CardGrid>
-        {crimeCategories.map((category) => (
-          <div key={category.id} className="guide-card" style={{ borderTopColor: category.color }}>
+        {crimeCategories?.map((category) => (
+          <div
+            key={category.id}
+            className="guide-card"
+            style={{ borderTopColor: category.color }}
+          >
             <div className="guide-card-header">
               <div className="guide-card-icon">{category.icon}</div>
               <h3>{category.title}</h3>
@@ -250,7 +304,7 @@ const CategoriesTab = memo(() => {
               <p>{category.description}</p>
               <h4>Common Types:</h4>
               <ul className="guide-card-list">
-                {category.subcategories.map((subcat, index) => (
+                {category.subcategories?.map((subcat, index) => (
                   <li key={index}>
                     <span>{subcat.icon}</span>
                     <span>{subcat.title}</span>
@@ -262,8 +316,8 @@ const CategoriesTab = memo(() => {
         ))}
       </CardGrid>
     </div>
-  )
-})
+  );
+});
 
 const EvidenceTab = memo(() => {
   return (
@@ -275,13 +329,13 @@ const EvidenceTab = memo(() => {
       />
 
       <CardGrid>
-        {evidenceGuidelines.map((guideline, index) => (
+        {evidenceGuidelines?.map((guideline, index) => (
           <div key={index} className="guide-card">
             <h3>{guideline.title}</h3>
             <p>{guideline.description}</p>
             <h4>Important Tips:</h4>
             <ul className="guide-checklist">
-              {guideline.tips.map((tip, tipIndex) => (
+              {guideline.tips?.map((tip, tipIndex) => (
                 <li key={tipIndex}>
                   <Check size={16} className="guide-check-icon" />
                   <span>{tip}</span>
@@ -292,8 +346,8 @@ const EvidenceTab = memo(() => {
         ))}
       </CardGrid>
     </div>
-  )
-})
+  );
+});
 
 const AuthoritiesTab = memo(() => {
   return (
@@ -305,7 +359,7 @@ const AuthoritiesTab = memo(() => {
       />
 
       <CardGrid>
-        {reportingAuthorities.map((authority, index) => (
+        {reportingAuthorities?.map((authority, index) => (
           <div key={index} className="guide-card">
             <h3>{authority.title}</h3>
             <p>{authority.description}</p>
@@ -313,7 +367,11 @@ const AuthoritiesTab = memo(() => {
               {authority.website && (
                 <div className="guide-contact-item">
                   <Globe size={16} className="guide-contact-icon" />
-                  <a href={authority.website} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={authority.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {authority.website}
                   </a>
                 </div>
@@ -335,7 +393,7 @@ const AuthoritiesTab = memo(() => {
             </div>
             <h4>Reporting Process:</h4>
             <ol className="guide-numbered-list">
-              {authority.steps.map((step, stepIndex) => (
+              {authority.steps?.map((step, stepIndex) => (
                 <li key={stepIndex}>{step}</li>
               ))}
             </ol>
@@ -343,8 +401,8 @@ const AuthoritiesTab = memo(() => {
         ))}
       </CardGrid>
     </div>
-  )
-})
+  );
+});
 
 const FaqTab = memo(() => {
   return (
@@ -356,7 +414,7 @@ const FaqTab = memo(() => {
       />
 
       <div className="guide-faq-list">
-        {faqData.map((faq, index) => (
+        {faqData?.map((faq, index) => (
           <div key={index} className="guide-faq-item">
             <h3>
               <HelpCircle size={16} className="guide-faq-icon" />
@@ -367,70 +425,71 @@ const FaqTab = memo(() => {
         ))}
       </div>
     </div>
-  )
-})
+  );
+});
 
-// Main Component
 const ComplaintGuide = () => {
-  const [activeTab, setActiveTab] = useState("process")
-  const [isLoading, setIsLoading] = useState(true)
+  const [activeTab, setActiveTab] = useState("process");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 800)
-    return () => clearTimeout(timer)
-  }, [])
+      setIsLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
-  // Render the active tab content based on state
   const renderTabContent = () => {
     switch (activeTab) {
       case "process":
-        return <ProcessTab />
+        return <ProcessTab />;
       case "portal":
-        return <PortalTab />
+        return <PortalTab />;
       case "categories":
-        return <CategoriesTab />
+        return <CategoriesTab />;
       case "evidence":
-        return <EvidenceTab />
+        return <EvidenceTab />;
       case "authorities":
-        return <AuthoritiesTab />
+        return <AuthoritiesTab />;
       case "faq":
-        return <FaqTab />
+        return <FaqTab />;
       default:
-        return <ProcessTab />
+        return <ProcessTab />;
     }
-  }
+  };
 
   if (isLoading) {
     return (
       <div className="guide-loading-container">
         <CyberSpinner />
       </div>
-    )
+    );
   }
 
   return (
-    <div className="guide-container">
-      {/* Header */}
-      <div className="guide-header">
-        <h1>
-          <Terminal size={28} className="guide-header-icon" />
-          <span>Cyber Crime Complaint Guide</span>
-        </h1>
-        <p>Step-by-step guidance on filing cybercrime complaints with relevant authorities in India</p>
+    <ErrorBoundary>
+      <div className="guide-container">
+        <div className="guide-header">
+          <h1>
+            <Terminal size={28} className="guide-header-icon" />
+            <span>Cyber Crime Complaint Guide</span>
+          </h1>
+          <p>
+            Step-by-step guidance on filing cybercrime complaints with relevant
+            authorities in India
+          </p>
+        </div>
+
+        <EmergencyBanner />
+        <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+
+        <div className="guide-content">
+          {renderTabContent()}
+          <FileComplaintForm />
+        </div>
       </div>
+    </ErrorBoundary>
+  );
+};
 
-      <EmergencyBanner />
-      <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
-
-      <div className="guide-content">
-        {renderTabContent()}
-        <FileComplaintForm />
-      </div>
-    </div>
-  )
-}
-
-export default ComplaintGuide
+export default ComplaintGuide;

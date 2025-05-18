@@ -10,6 +10,7 @@ import {
   FaRedo,
 } from "react-icons/fa";
 import "./ComplaintForm.css";
+import { Phone } from "lucide-react";
 
 const OtpModal = ({ otp, onClose }) => {
   return (
@@ -314,7 +315,9 @@ const LoginForm = ({ onLoginSuccess }) => {
               className={errors.captchaInput ? "error" : ""}
             />
             {errors.captchaInput && (
-              <span className="com-form-error-message">{errors.captchaInput}</span>
+              <span className="com-form-error-message">
+                {errors.captchaInput}
+              </span>
             )}
           </div>
         </div>
@@ -444,9 +447,9 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
         {[1, 2, 3, 4, 5, 6].map((stepNum) => (
           <div
             key={stepNum}
-            className={`com-form-progress-step ${stepNum === 1 ? "active" : ""} ${
-              stepNum < 1 ? "completed" : ""
-            }`}
+            className={`com-form-progress-step ${
+              stepNum === 1 ? "active" : ""
+            } ${stepNum < 1 ? "completed" : ""}`}
           >
             <div className="com-form-step-number">{stepNum}</div>
             <div className="com-form-step-label">
@@ -466,7 +469,8 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
         <h2>Personal Information</h2>
       </div>
       <p className="com-form-step-description">
-        Please provide your personal details for identification and verification.
+        Please provide your personal details for identification and
+        verification.
       </p>
 
       <form onSubmit={handleSubmit}>
@@ -507,7 +511,9 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
               <option value="guardian">Guardian</option>
             </select>
             {errors.relationType && (
-              <span className="com-form-error-message">{errors.relationType}</span>
+              <span className="com-form-error-message">
+                {errors.relationType}
+              </span>
             )}
           </div>
 
@@ -525,7 +531,9 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
               className={errors.relationName ? "error" : ""}
             />
             {errors.relationName && (
-              <span className="com-form-error-message">{errors.relationName}</span>
+              <span className="com-form-error-message">
+                {errors.relationName}
+              </span>
             )}
           </div>
 
@@ -565,7 +573,9 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
               className={errors.dateOfBirth ? "error" : ""}
             />
             {errors.dateOfBirth && (
-              <span className="com-form-error-message">{errors.dateOfBirth}</span>
+              <span className="com-form-error-message">
+                {errors.dateOfBirth}
+              </span>
             )}
           </div>
 
@@ -697,9 +707,9 @@ const PersonalInfoForm = ({ userData, onSubmit }) => {
                 onChange={handleChange}
               />
               <span>
-                I consent to the processing of my personal data for the purpose of
-                cybercrime reporting. I understand my information may be shared
-                with relevant law enforcement agencies.
+                I consent to the processing of my personal data for the purpose
+                of cybercrime reporting. I understand my information may be
+                shared with relevant law enforcement agencies.
               </span>
             </label>
             {errors.consent && (
@@ -929,9 +939,9 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
         {[1, 2, 3, 4, 5, 6].map((stepNum) => (
           <div
             key={stepNum}
-            className={`com-form-progress-step ${stepNum === 2 ? "active" : ""} ${
-              stepNum < 2 ? "completed" : ""
-            }`}
+            className={`com-form-progress-step ${
+              stepNum === 2 ? "active" : ""
+            } ${stepNum < 2 ? "completed" : ""}`}
           >
             <div className="com-form-step-number">{stepNum}</div>
             <div className="com-form-step-label">
@@ -995,11 +1005,13 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
                 className={errors.complaintSubCategory ? "error" : ""}
               >
                 <option value="">--- Select ---</option>
-                {subCategories[formData.complaintCategory]?.map((subCategory) => (
-                  <option key={subCategory} value={subCategory}>
-                    {subCategory}
-                  </option>
-                ))}
+                {subCategories[formData.complaintCategory]?.map(
+                  (subCategory) => (
+                    <option key={subCategory} value={subCategory}>
+                      {subCategory}
+                    </option>
+                  )
+                )}
               </select>
               {errors.complaintSubCategory && (
                 <span className="com-form-error-message">
@@ -1069,7 +1081,9 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
               className={errors.incidentDate ? "error" : ""}
             />
             {errors.incidentDate && (
-              <span className="com-form-error-message">{errors.incidentDate}</span>
+              <span className="com-form-error-message">
+                {errors.incidentDate}
+              </span>
             )}
           </div>
 
@@ -1231,9 +1245,9 @@ const ComplaintDetailsForm = ({ userData, onSubmit, onPrevStep }) => {
         <div className="com-form-note-box">
           <FaInfoCircle />
           <p>
-            Please ensure all details are accurate. For urgent cases, contact the{" "}
-            <span className="com-form-highlight">Cybercrime Helpline</span> at{" "}
-            <span className="com-form-highlight">1930</span>.
+            Please ensure all details are accurate. For urgent cases, contact
+            the <span className="com-form-highlight">Cybercrime Helpline</span>{" "}
+            at <span className="com-form-highlight">1930</span>.
           </p>
         </div>
 
@@ -1300,7 +1314,10 @@ const SuspectInfoForm = ({ userData, onSubmit, onPrevStep }) => {
         newErrors.suspectName = "Suspect name is required";
       }
 
-      if (formData.suspectContact && !/^[0-9]{10}$/.test(formData.suspectContact)) {
+      if (
+        formData.suspectContact &&
+        !/^[0-9]{10}$/.test(formData.suspectContact)
+      ) {
         newErrors.suspectContact = "Suspect contact should be 10 digits";
       }
     }
@@ -1328,9 +1345,9 @@ const SuspectInfoForm = ({ userData, onSubmit, onPrevStep }) => {
         {[1, 2, 3, 4, 5, 6].map((stepNum) => (
           <div
             key={stepNum}
-            className={`com-form-progress-step ${stepNum === 3 ? "active" : ""} ${
-              stepNum < 3 ? "completed" : ""
-            }`}
+            className={`com-form-progress-step ${
+              stepNum === 3 ? "active" : ""
+            } ${stepNum < 3 ? "completed" : ""}`}
           >
             <div className="com-form-step-number">{stepNum}</div>
             <div className="com-form-step-label">
@@ -1580,9 +1597,9 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
         {[1, 2, 3, 4, 5, 6].map((stepNum) => (
           <div
             key={stepNum}
-            className={`com-form-progress-step ${stepNum === 4 ? "active" : ""} ${
-              stepNum < 4 ? "completed" : ""
-            }`}
+            className={`com-form-progress-step ${
+              stepNum === 4 ? "active" : ""
+            } ${stepNum < 4 ? "completed" : ""}`}
           >
             <div className="com-form-step-number">{stepNum}</div>
             <div className="com-form-step-label">
@@ -1602,7 +1619,8 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
         <h2>Identity Verification</h2>
       </div>
       <p className="com-form-step-description">
-        Upload documents to verify your identity for secure complaint submission.
+        Upload documents to verify your identity for secure complaint
+        submission.
       </p>
 
       <form onSubmit={handleSubmit}>
@@ -1644,7 +1662,9 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
               )}
             </div>
             {errors.idDocument && (
-              <span className="com-form-error-message">{errors.idDocument}</span>
+              <span className="com-form-error-message">
+                {errors.idDocument}
+              </span>
             )}
             <p className="com-form-help-text">
               Upload a clear copy of your Aadhaar, PAN, Passport, Voter ID, or
@@ -1705,13 +1725,15 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
                 onChange={handleChange}
               />
               <span>
-                I declare that the uploaded documents are genuine and belong to me.
-                I understand that providing false documents is a punishable
+                I declare that the uploaded documents are genuine and belong to
+                me. I understand that providing false documents is a punishable
                 offense.
               </span>
             </label>
             {errors.declaration && (
-              <span className="com-form-error-message">{errors.declaration}</span>
+              <span className="com-form-error-message">
+                {errors.declaration}
+              </span>
             )}
           </div>
         </div>
@@ -1745,7 +1767,14 @@ const IdentityVerificationForm = ({ userData, onSubmit, onPrevStep }) => {
   );
 };
 
-const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSubmit, onPrevStep }) => {
+const PreviewForm = ({
+  userData,
+  complaintData,
+  suspectData,
+  identityData,
+  onSubmit,
+  onPrevStep,
+}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
@@ -1764,9 +1793,9 @@ const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSub
         {[1, 2, 3, 4, 5, 6].map((stepNum) => (
           <div
             key={stepNum}
-            className={`com-form-progress-step ${stepNum === 5 ? "active" : ""} ${
-              stepNum < 5 ? "completed" : ""
-            }`}
+            className={`com-form-progress-step ${
+              stepNum === 5 ? "active" : ""
+            } ${stepNum < 5 ? "completed" : ""}`}
           >
             <div className="com-form-step-number">{stepNum}</div>
             <div className="com-form-step-label">
@@ -1798,7 +1827,9 @@ const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSub
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Mobile Number</div>
-            <div className="com-form-preview-value">+91 {userData.mobileNo}</div>
+            <div className="com-form-preview-value">
+              +91 {userData.mobileNo}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Full Name</div>
@@ -1840,11 +1871,15 @@ const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSub
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Occupation</div>
-            <div className="com-form-preview-value">{userData.occupation || "N/A"}</div>
+            <div className="com-form-preview-value">
+              {userData.occupation || "N/A"}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Education</div>
-            <div className="com-form-preview-value">{userData.education || "N/A"}</div>
+            <div className="com-form-preview-value">
+              {userData.education || "N/A"}
+            </div>
           </div>
         </div>
       </div>
@@ -1854,11 +1889,15 @@ const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSub
         <div className="com-form-preview-grid">
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Category</div>
-            <div className="com-form-preview-value">{complaintData.complaintCategory}</div>
+            <div className="com-form-preview-value">
+              {complaintData.complaintCategory}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Sub-Category</div>
-            <div className="com-form-preview-value">{complaintData.complaintSubCategory}</div>
+            <div className="com-form-preview-value">
+              {complaintData.complaintSubCategory}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Money Lost</div>
@@ -1870,7 +1909,9 @@ const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSub
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Incident Date</div>
-            <div className="com-form-preview-value">{complaintData.incidentDate}</div>
+            <div className="com-form-preview-value">
+              {complaintData.incidentDate}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Incident Time</div>
@@ -1880,17 +1921,23 @@ const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSub
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Delay in Reporting</div>
-            <div className="com-form-preview-value">{complaintData.delayInReporting}</div>
+            <div className="com-form-preview-value">
+              {complaintData.delayInReporting}
+            </div>
           </div>
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Location</div>
-            <div className="com-form-preview-value">{complaintData.incidentLocation}</div>
+            <div className="com-form-preview-value">
+              {complaintData.incidentLocation}
+            </div>
           </div>
           <div className="com-form-preview-item com-form-full-width">
             <div className="com-form-preview-label">Evidence Files</div>
             <div className="com-form-preview-value">
               {complaintData.evidenceFiles.length > 0
-                ? complaintData.evidenceFiles.map((file) => file.name).join(", ")
+                ? complaintData.evidenceFiles
+                    .map((file) => file.name)
+                    .join(", ")
                 : "None"}
             </div>
           </div>
@@ -1908,13 +1955,17 @@ const PreviewForm = ({ userData, complaintData, suspectData, identityData, onSub
         <div className="com-form-preview-grid">
           <div className="com-form-preview-item">
             <div className="com-form-preview-label">Suspect Known</div>
-            <div className="com-form-preview-value">{suspectData.suspectKnown}</div>
+            <div className="com-form-preview-value">
+              {suspectData.suspectKnown}
+            </div>
           </div>
           {suspectData.suspectKnown === "yes" && (
             <>
               <div className="com-form-preview-item">
                 <div className="com-form-preview-label">Suspect Name</div>
-                <div className="com-form-preview-value">{suspectData.suspectName}</div>
+                <div className="com-form-preview-value">
+                  {suspectData.suspectName}
+                </div>
               </div>
               <div className="com-form-preview-item">
                 <div className="com-form-preview-label">Suspect Contact</div>
@@ -1985,7 +2036,9 @@ const SuccessMessage = ({ complaintId }) => {
         {[1, 2, 3, 4, 5, 6].map((stepNum) => (
           <div
             key={stepNum}
-            className={`com-form-progress-step ${stepNum === 6 ? "active" : "completed"}`}
+            className={`com-form-progress-step ${
+              stepNum === 6 ? "active" : "completed"
+            }`}
           >
             <div className="com-form-step-number">{stepNum}</div>
             <div className="com-form-step-label">
@@ -2003,8 +2056,8 @@ const SuccessMessage = ({ complaintId }) => {
       <FaCheck className="com-form-success-icon" />
       <h2>Complaint Submitted Successfully!</h2>
       <p>
-        Your cybercrime complaint has been successfully submitted to the National
-        Cybercrime Reporting Portal.
+        Your cybercrime complaint has been successfully submitted to the
+        National Cybercrime Reporting Portal.
       </p>
       <div className="com-form-complaint-id-box">
         <div className="com-form-complaint-id-label">Complaint ID</div>
@@ -2077,13 +2130,11 @@ const ComplaintForm = () => {
   return (
     <div className="com-form-container">
       <header className="com-form-page-header">
-        <div className="com-form-portal-logo">
-          <FaShieldAlt className="com-form-logo-icon" />
-        </div>
-        <h1>National Cybercrime Reporting Portal</h1>
+        <h1>National Cybercrime Reporting (Test Portal)</h1>
         <div className="com-form-header-details">
           <p>
-            Report cybercrime securely with our <span className="com-form-blink">encrypted</span> system
+            Report cybercrime securely with our{" "}
+            <span className="com-form-blink">encrypted</span> system
           </p>
         </div>
       </header>
@@ -2135,17 +2186,35 @@ const ComplaintForm = () => {
       <div className="com-form-emergency-contact-section">
         <h3>Emergency Contacts</h3>
         <div className="com-form-emergency-grid">
-          <div className="com-form-emergency-card">
+          <div
+            className="com-form-emergency-card"
+            aria-label="Cybercrime Helpline Contact"
+          >
+            <div className="com-form-portal-logo">
+              <Phone className="com-form-logo-icon" />
+            </div>
             <h4>Cybercrime Helpline</h4>
             <p>Call: 1930</p>
             <p>Available 24/7 for urgent cybercrime reporting</p>
           </div>
-          <div className="com-form-emergency-card">
+          <div
+            className="com-form-emergency-card"
+            aria-label="National Police Helpline Contact"
+          >
+            <div className="com-form-portal-logo">
+              <Phone className="com-form-logo-icon" />
+            </div>
             <h4>National Police Helpline</h4>
             <p>Call: 112</p>
             <p>For immediate assistance in emergencies</p>
           </div>
-          <div className="com-form-emergency-card">
+          <div
+            className="com-form-emergency-card"
+            aria-label="Women Helpline Contact"
+          >
+            <div className="com-form-portal-logo">
+              <Phone className="com-form-logo-icon" />
+            </div>
             <h4>Women Helpline</h4>
             <p>Call: 181</p>
             <p>Support for women facing cybercrime or harassment</p>
