@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useState, useRef } from "react"
 import { FaExclamationTriangle, FaHome, FaSearch, FaShieldAlt, FaLock, FaServer, FaNetworkWired, FaTerminal } from "react-icons/fa"
 import './NotFound.css';

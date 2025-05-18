@@ -1,20 +1,20 @@
 .safeguard-faq-page {
-  --primary-color: #0cf00c;
-  --primary-dim: rgba(12, 240, 12, 0.7);
-  --primary-glow: rgba(12, 240, 12, 0.2);
-  --secondary-color: #00b3f0;
-  --accent-color: #ff003c;
-  --bg-dark: #050505;
-  --bg-medium: #0c0c0c;
-  --bg-light: #1a1a1a;
+  --primary-color: #00ffaa;
+  --primary-dim: rgba(0, 255, 170, 0.7);
+  --primary-glow: rgba(0, 255, 170, 0.2);
+  --secondary-color: #030812;
+  --accent-color: #ff3e00;
+  --bg-dark: #080e17;
+  --bg-medium: #0a1020;
+  --bg-light: #152030;
   --text-primary: #e0e0e0;
-  --text-secondary: #a0a0a0;
+  --text-secondary: #b0b0b0;
   --border-color: #2a2a2a;
-  --neon-glow: 0 0 10px rgba(12, 240, 12, 0.5), 0 0 20px rgba(12, 240, 12, 0.2);
-  --neon-glow-strong: 0 0 10px rgba(12, 240, 12, 0.7), 0 0 25px rgba(12, 240, 12, 0.3);
-  --cyber-panel-bg: rgba(10, 10, 10, 0.85);
-  --terminal-green: #0cf00c;
-  --error-red: #ff2738;
+  --neon-glow: 0 0 10px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.2);
+  --neon-glow-strong: 0 0 10px rgba(0, 255, 170, 0.7), 0 0 25px rgba(0, 255, 170, 0.3);
+  --cyber-panel-bg: rgba(8, 14, 23, 0.85);
+  --terminal-green: #00ffaa;
+  --error-red: #ff3e00;
   --cyberdeck-border: 1px solid var(--primary-dim);
   background-color: var(--bg-dark);
   color: var(--text-primary);
@@ -132,9 +132,15 @@
   transition: all 0.3s ease;
 }
 
+.safeguard-clear-search {
+  background-color: rgba(255, 62, 0, 0.2);
+  border: 1px solid rgba(255, 62, 0, 0.5);
+  color: var(--error-red);
+}
+
 .safeguard-clear-search:hover {
-  background-color: rgba(255, 39, 56, 0.3);
-  box-shadow: 0 0 8px rgba(255, 39, 56, 0.4);
+  background-color: rgba(255, 62, 0, 0.3);
+  box-shadow: 0 0 8px rgba(255, 62, 0, 0.4);
 }
 
 .safeguard-header-content {

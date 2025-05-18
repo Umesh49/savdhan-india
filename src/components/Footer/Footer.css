@@ -169,7 +169,7 @@
 }
 
 .foot-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #00ffaa;
   letter-spacing: 1px;
@@ -179,6 +179,11 @@
 
 .foot-glitch-text {
   position: relative;
+  color: #00ffaa;
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .foot-glitch-text::before,
@@ -190,18 +195,37 @@
   width: 100%;
   height: 100%;
   background: #030812;
+  opacity: 0.8;
 }
 
 .foot-glitch-text::before {
   left: 2px;
-  text-shadow: -1px 0 #00a2ff;
+  text-shadow: -2px 0 #00ccff;
   clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  animation: glitch-top 1s infinite linear alternate-reverse;
 }
 
 .foot-glitch-text::after {
   left: -2px;
-  text-shadow: 1px 0 #ff3e00;
+  text-shadow: 2px 0 #ff4d4d;
   clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  animation: glitch-bottom 1.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-top {
+  0% { transform: translate(0, 0); opacity: 0.8; }
+  20% { transform: translate(2px, -1px); opacity: 0.6; }
+  40% { transform: translate(-2px, 1px); opacity: 0.9; }
+  60% { transform: translate(1px, 0); opacity: 0.7; }
+  100% { transform: translate(-1px, 1px); opacity: 0.8; }
+}
+
+@keyframes glitch-bottom {
+  0% { transform: translate(0, 0); opacity: 0.8; }
+  20% { transform: translate(-2px, 1px); opacity: 0.7; }
+  40% { transform: translate(2px, -1px); opacity: 0.9; }
+  60% { transform: translate(-1px, 0); opacity: 0.6; }
+  100% { transform: translate(1px, -1px); opacity: 0.8; }
 }
 
 .foot-footer-tagline {

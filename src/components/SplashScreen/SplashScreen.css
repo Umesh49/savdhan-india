@@ -181,8 +181,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0a0e17;
-  color: #d5ffe1;
+  background-color: #080e17;
+  color: #e0e0e0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -213,7 +213,7 @@
   position: absolute;
   width: 60px;
   height: 60px;
-  background-color: rgba(0, 255, 65, 0.03);
+  background-color: rgba(0, 255, 170, 0.03);
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   animation: float 6s ease-in-out infinite;
   z-index: 1;
@@ -224,9 +224,9 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background-color: #00ff41;
+  background-color: #00ffaa;
   border-radius: 50%;
-  box-shadow: 0 0 8px #00ff41;
+  box-shadow: 0 0 8px #00ffaa;
   opacity: 0.7;
   z-index: 3;
   animation: particle 4s linear infinite;
@@ -237,11 +237,11 @@
   position: relative;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(0, 255, 65, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   border-radius: 8px;
   padding: 2rem;
   max-width: 500px;
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 170, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -268,13 +268,13 @@
 }
 
 .splashscreen-cyber-title {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: bold;
-  color: #00ff41;
+  color: #00ffaa;
+  letter-spacing: 0.0.5em;
   margin-bottom: 0.5em;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41;
+  text-transform: capitalize;
+  text-shadow: 0 0 5px #00ffaa, 0 0 10px #00ffaa;
   position: relative;
   text-align: center;
 }
@@ -291,14 +291,14 @@
 }
 
 .splashscreen-cyber-title::before {
-  color: #ff00ff;
+  color: #ff3e00;
   z-index: -2;
   left: -3px;
   animation: glitch 5s infinite;
 }
 
 .splashscreen-cyber-title::after {
-  color: #00ffff;
+  color: #33ffbb;
   z-index: -1;
   left: 3px;
   animation: glitch 3s infinite reverse;
@@ -306,9 +306,9 @@
 
 .splashscreen-tagline {
   font-size: 1em;
-  color: #8effb5;
-  margin-bottom: 2em;
-  letter-spacing: 0.15em;
+  color: #b0b0b0;
+  margin-bottom: 0.50em;
+  letter-spacing: 0.05em;
   text-align: center;
 }
 
@@ -322,15 +322,15 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 1.5rem;
-  color: #8effb5;
+  color: #b0b0b0;
   font-size: 0.9rem;
   letter-spacing: 0.1em;
-  border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 170, 0.3);
   padding-bottom: 0.5rem;
 }
 
 .splashscreen-key-icon {
-  color: #00ff41;
+  color: #00ffaa;
 }
 
 .splashscreen-input-container {
@@ -343,16 +343,16 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #00ff41;
+  color: #00ffaa;
 }
 
 .splashscreen-cyber-input {
   width: -webkit-fill-available;
   padding: 12px 12px 12px 40px;
   background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 255, 65, 0.4);
+  border: 1px solid rgba(0, 255, 170, 0.4);
   border-radius: 4px;
-  color: #00ff41;
+  color: #00ffaa;
   font-family: "Courier New", monospace;
   font-size: 1rem;
   letter-spacing: 0.1em;
@@ -361,18 +361,18 @@
 
 .splashscreen-cyber-input:focus {
   outline: none;
-  border-color: #00ff41;
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  border-color: #00ffaa;
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
 }
 
 .splashscreen-cyber-input::placeholder {
-  color: rgba(0, 255, 65, 0.5);
+  color: rgba(0, 255, 170, 0.5);
 }
 
 .splashscreen-error-message {
-  color: #ff3e3e;
-  background-color: rgba(255, 0, 0, 0.1);
-  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: #ff3e00;
+  background-color: rgba(255, 62, 0, 0.1);
+  border: 1px solid rgba(255, 62, 0, 0.3);
   padding: 10px;
   margin-bottom: 1.5rem;
   border-radius: 4px;
@@ -390,9 +390,9 @@
 .splashscreen-auth-button {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(90deg, #003300, #006600);
-  border: 1px solid rgba(0, 255, 65, 0.5);
-  color: #00ff41;
+  background: linear-gradient(90deg, #030812, #0a1020);
+  border: 1px solid rgba(0, 255, 170, 0.5);
+  color: #00ffaa;
   font-family: "Courier New", monospace;
   font-weight: bold;
   font-size: 1rem;
@@ -409,8 +409,8 @@
 }
 
 .splashscreen-auth-button:hover:not(:disabled) {
-  background: linear-gradient(90deg, #004400, #008800);
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+  background: linear-gradient(90deg, #0a1020, #152030);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
 }
 
 .splashscreen-auth-button:disabled {
@@ -428,7 +428,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 255, 65, 0.2),
+    rgba(0, 255, 170, 0.2),
     transparent
   );
   animation: scan 1.5s linear infinite;
@@ -465,7 +465,7 @@
   justify-content: flex-start;
   gap: 3px;
   font-family: monospace;
-  color: rgba(0, 255, 65, 0.7);
+  color: rgba(0, 255, 170, 0.7);
 }
 
 .splashscreen-binary-stream span {
@@ -477,7 +477,7 @@
   position: fixed;
   width: 100px;
   height: 100px;
-  border: 2px solid #00ff41;
+  border: 2px solid #00ffaa;
   opacity: 0.5;
 }
 
@@ -530,10 +530,10 @@
   align-items: center;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 255, 65, 0.3);
+  border: 1px solid rgba(0, 255, 170, 0.3);
   padding: 10px 15px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.1);
   animation: fadeIn 0.5s forwards;
   opacity: 0;
 }
@@ -548,7 +548,7 @@
 
 .splashscreen-status-icon {
   margin-right: 12px;
-  color: #00ff41;
+  color: #00ffaa;
   font-size: 1.2em;
 }
 
@@ -568,14 +568,14 @@
 }
 
 .splashscreen-active {
-  background-color: rgba(0, 255, 65, 0.2);
-  color: #00ff41;
+  background-color: rgba(0, 255, 170, 0.2);
+  color: #00ffaa;
   animation: pulse 2s infinite;
 }
 
 .splashscreen-scanning {
-  background-color: rgba(255, 204, 0, 0.2);
-  color: #ffcc00;
+  background-color: rgba(255, 119, 0, 0.2);
+  color: #ff7700;
   animation: blink 1s infinite;
 }
 
@@ -597,12 +597,12 @@
 
 .splashscreen-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #00ff41, #39ff14);
+  background: linear-gradient(90deg, #00ffaa, #33ffbb);
   width: 0;
   border-radius: 6px;
   position: relative;
   transition: width 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
 }
 
 .splashscreen-progress-glitch {
@@ -625,7 +625,7 @@
 
 .splashscreen-loading-text {
   font-size: 0.9em;
-  color: #00ff41;
+  color: #00ffaa;
   flex: 1;
 }
 
@@ -642,7 +642,7 @@
   height: 240px;
   overflow: hidden;
   margin-top: 20px;
-  border: 1px solid rgba(0, 255, 65, 0.2);
+  border: 1px solid rgba(0, 255, 170, 0.2);
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -670,19 +670,19 @@
 }
 
 .splashscreen-check-item.splashscreen-complete {
-  border-left-color: #00ff41;
-  background-color: rgba(0, 255, 65, 0.1);
+  border-left-color: #00ffaa;
+  background-color: rgba(0, 255, 170, 0.1);
 }
 
 .splashscreen-check-item svg {
-  color: #8effb5;
+  color: #b0b0b0;
   font-size: 1.1em;
   margin-right: 10px;
   flex-shrink: 0;
 }
 
 .splashscreen-check-item.splashscreen-complete svg {
-  color: #00ff41;
+  color: #00ffaa;
   animation: pulse 2s infinite;
 }
 

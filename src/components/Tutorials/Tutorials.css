@@ -37,24 +37,22 @@ body {
   margin: 0;
   padding: 0;
 }
-
 .tutorial-container {
-  --primary-color: #00f829;
-  --primary-dim: rgba(0, 255, 136, 0.7);
-  --primary-glow: rgba(0, 255, 136, 0.2);
-  --secondary-color: #00b3f0;
-  --accent-color: #ff003c;
-  --dark-bg: #050505;
-  --card-bg: #0c0c0c;
+  --primary-color: #00ffaa;
+  --primary-dim: rgba(0, 255, 170, 0.7);
+  --primary-glow: rgba(0, 255, 170, 0.2);
+  --secondary-color: #030812;
+  --accent-color: #ff3e00;
+  --dark-bg: #080e17;
+  --card-bg: #0a1020;
   --text-primary: #e0e0e0;
-  --text-secondary: #9e9e9e;
+  --text-secondary: #b0b0b0;
   --text-dim: #6e6e6e;
   --border-color: #2a2a2a;
-  --neon-glow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+  --neon-glow: 0 0 10px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.2);
 
   padding: 1rem max(5%, 1rem);
-  background: var(--dark-bg) radial-gradient(#111 1px, transparent 1px) 0 / 20px
-    20px;
+  background: var(--dark-bg) radial-gradient(#111 1px, transparent 1px) 0 / 20px 20px;
   color: var(--text-primary);
   min-height: 100vh;
   font-family: "Rajdhani", "Orbitron", sans-serif;
@@ -135,7 +133,7 @@ body {
 .tutorial-search-input {
   width: -webkit-fill-available;
   padding: 0.75rem;
-  padding-left: 2.5rem;
+  padding-left: 2.5rem !important;
   background: rgba(0, 0, 0, 0.7);
   border: 2px solid var(--primary-color);
   border-radius: 4px;

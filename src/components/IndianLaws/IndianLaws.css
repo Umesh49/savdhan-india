@@ -1,27 +1,23 @@
 .indian-laws-cyber-container {
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
-  font-family: "Rajdhani", "Orbitron", sans-serif;
-  margin: 0 auto;
+  background-color: #080e17;
+  color: #e0e0e0;
+  font-family: "Courier New", monospace;
+  margin: 0;
   padding: 0;
   position: relative;
   overflow: hidden;
-  --primary-color: #00f829;
-  --primary-color-dark: #00c033;
-  --primary-color-light: #33ff64;
-  --secondary-color: #0a1929;
-  --accent-color: #ff003c;
-  --accent-color-light: #ff3363;
-  --bg-dark: #0a0e17;
-  --bg-medium: #1a1e2e;
-  --bg-light: #232738;
-  --text-primary: #e2e8f0;
-  --text-secondary: #a0aec0;
+  --primary-color: #00ffaa;
+  --primary-color-dark: #00cc88;
+  --primary-color-light: #33ffbb;
+  --secondary-color: #030812;
+  --accent-color: #ff3e00;
+  --accent-color-light: #ff7700;
+  --bg-dark: #080e17;
+  --bg-medium: #0a1020;
+  --bg-light: #152030;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
   --text-highlight: #ffffff;
-}
-
-body {
-  margin: 0;
 }
 
 .indian-laws-terminal-header {
@@ -46,13 +42,18 @@ body {
 }
 
 .indian-laws-terminal-red {
-  background-color: var(--accent-color);
+  background-color: #ff5f56;
+  box-shadow: 0 0 5px rgba(255, 95, 86, 0.8);
 }
+
 .indian-laws-terminal-yellow {
-  background-color: #ffcc00;
+  background-color: #ffbd2e;
+  box-shadow: 0 0 5px rgba(255, 189, 46, 0.8);
 }
+
 .indian-laws-terminal-green {
-  background-color: var(--primary-color);
+  background-color: #27c93f;
+  box-shadow: 0 0 5px rgba(39, 201, 63, 0.8);
 }
 
 .indian-laws-terminal-title {
@@ -61,7 +62,7 @@ body {
 }
 
 .indian-laws-terminal-body {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(3, 8, 18, 0.95);
   padding: 20px;
   min-height: 700px;
   border: 1px solid var(--primary-color-dark);
@@ -75,8 +76,8 @@ body {
   position: relative;
   padding: 20px;
   border: 1px solid var(--primary-color);
-  background-color: rgba(0, 15, 0, 0.8);
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+  background-color: rgba(3, 8, 18, 0.9);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
 }
 
 .indian-laws-cyber-header h1 {
@@ -86,25 +87,16 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-  animation: textGlow 2s infinite alternate;
-}
-
-@keyframes textGlow {
-  0% {
-    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 15px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.5);
-  }
+  position: relative;
+  display: inline-block;
+  animation: textReveal 3s infinite alternate;
 }
 
 .indian-laws-cyber-header p {
   font-size: 16px;
-  margin: 0;
+  margin: 0 auto;
   color: var(--text-primary);
   max-width: 800px;
-  margin: 0 auto;
 }
 
 .indian-laws-matrix-animation {
@@ -118,35 +110,16 @@ body {
   background: linear-gradient(
     0deg,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 255, 65, 0.05) 50%,
+    rgba(0, 255, 170, 0.05) 50%,
     rgba(0, 0, 0, 0) 100%
   );
   animation: matrix 3s infinite linear;
   z-index: 0;
 }
 
-@keyframes matrix {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
-}
-
 .indian-laws-blink {
   animation: blink 1s infinite step-end;
   color: var(--primary-color);
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
 }
 
 .indian-laws-search-filter-section {
@@ -184,9 +157,10 @@ body {
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   padding: 10px 15px 10px 35px;
-  font-family: "Rajdhani", "Orbitron", sans-serif;
+  padding-left: 2rem !important;
+  font-family: "Courier New", monospace;
   font-size: 16px;
-  box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
   transition: all 0.3s ease;
 }
 
@@ -241,7 +215,7 @@ body {
   border: none;
   padding: 8px 10px;
   cursor: pointer;
-  font-family: "Rajdhani", "Orbitron", sans-serif;
+  font-family: "Courier New", monospace;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,15 +226,6 @@ body {
   background-color: var(--primary-color);
   color: #000;
   animation: buttonPulse 2s infinite alternate;
-}
-
-@keyframes buttonPulse {
-  0% {
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-  }
-  100% {
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
-  }
 }
 
 .indian-laws-view-button:not(.indian-laws-active):hover {
@@ -275,17 +240,6 @@ body {
   padding-top: 15px;
   border-top: 1px solid var(--primary-color-dark);
   animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .indian-laws-filter-group {
@@ -307,8 +261,8 @@ body {
   border: 1px solid var(--primary-color);
   color: var(--text-primary);
   padding: 8px 10px;
-  font-family: "Rajdhani", "Orbitron", sans-serif;
-  box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  font-family: "Courier New", monospace;
+  box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
   cursor: pointer;
   width: 100%;
   transition: all 0.3s ease;
@@ -330,6 +284,16 @@ body {
   padding: 8px;
   font-size: 12px;
   transition: all 0.3s ease;
+  background-color: rgba(255, 62, 0, 0.1) !important;
+  color: var(--accent-color) !important;
+  border: 1px solid var(--accent-color) !important;
+  box-shadow: 0 0 5px rgba(255, 62, 0, 0.3) !important;
+}
+
+.indian-laws-reset-filters:hover {
+  background-color: var(--accent-color) !important;
+  color: #000 !important;
+  box-shadow: 0 0 15px var(--accent-color) !important;
 }
 
 .indian-laws-results-summary {
@@ -356,23 +320,14 @@ body {
   animation: countPulse 2s infinite alternate;
 }
 
-@keyframes countPulse {
-  0% {
-    text-shadow: 0 0 2px rgba(0, 255, 65, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
-  }
-}
-
 .indian-laws-filters-applied {
-  color: #ffcc00;
+  color: #ffbd2e;
 }
 
 .indian-laws-cyber-panel {
-  background-color: rgba(0, 15, 0, 0.8);
+  background-color: rgba(3, 8, 18, 0.9);
   border: 1px solid var(--primary-color);
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
@@ -414,22 +369,13 @@ body {
   animation: scanline 3s infinite linear;
 }
 
-@keyframes scanline {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
 .indian-laws-law-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 255, 170, 0.2);
 }
 
 .indian-laws-law-card.indian-laws-expanded {
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
 }
 
 .indian-laws-law-header {
@@ -440,7 +386,7 @@ body {
 }
 
 .indian-laws-law-header:hover {
-  background-color: rgba(0, 30, 0, 0.5);
+  background-color: rgba(0, 255, 170, 0.05);
 }
 
 .indian-laws-law-title-container {
@@ -469,13 +415,14 @@ body {
   color: var(--primary-color);
   font-size: 20px;
   margin: 0 0 10px 0;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-  font-family: "Rajdhani", "Orbitron", sans-serif;
-  transition: text-shadow 0.3s ease;
+  font-family: "Courier New", monospace;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
 }
 
 .indian-laws-law-card:hover h2 {
-  text-shadow: 0 0 10px var(--primary-color);
+  color: var(--primary-color-light);
 }
 
 .indian-laws-law-metadata {
@@ -497,13 +444,13 @@ body {
   color: var(--primary-color);
   padding: 2px 8px;
   border: 1px solid var(--primary-color);
-  background-color: rgba(0, 24, 0, 0.8);
+  background-color: rgba(0, 255, 170, 0.05);
   transition: all 0.3s ease;
 }
 
 .indian-laws-law-card:hover .indian-laws-law-category {
-  background-color: rgba(0, 51, 0, 0.8);
-  box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  background-color: rgba(0, 255, 170, 0.1);
+  box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
 }
 
 .indian-laws-law-preview {
@@ -525,19 +472,19 @@ body {
 }
 
 .indian-laws-severity-high {
-  background-color: rgba(255, 0, 0, 0.2);
+  background-color: rgba(255, 62, 0, 0.1);
   color: var(--accent-color-light);
   border: 1px solid var(--accent-color);
 }
 
 .indian-laws-severity-medium {
-  background-color: rgba(255, 204, 0, 0.2);
-  color: #ffcc66;
-  border: 1px solid #ffcc00;
+  background-color: rgba(255, 189, 46, 0.1);
+  color: #ffbd2e;
+  border: 1px solid #ffbd2e;
 }
 
 .indian-laws-severity-low {
-  background-color: rgba(0, 153, 255, 0.2);
+  background-color: rgba(0, 153, 255, 0.1);
   color: #66ccff;
   border: 1px solid #3399ff;
 }
@@ -552,34 +499,12 @@ body {
   animation: contentFadeIn 0.5s ease;
 }
 
-@keyframes contentFadeIn {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 2000px;
-  }
-}
-
 .indian-laws-law-summary {
   padding: 15px;
   margin-bottom: 20px;
-  background-color: rgba(0, 20, 0, 0.3);
+  background-color: rgba(0, 255, 170, 0.05);
   border-left: 3px solid var(--primary-color);
   animation: slideIn 0.5s ease;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
 }
 
 .indian-laws-summary-header {
@@ -608,7 +533,7 @@ body {
   gap: 10px;
   margin-bottom: 25px;
   padding: 15px;
-  background-color: rgba(0, 25, 0, 0.4);
+  background-color: rgba(0, 255, 170, 0.05);
   border: 1px solid var(--primary-color-dark);
   animation: fadeIn 0.7s ease;
 }
@@ -645,7 +570,7 @@ body {
   color: var(--primary-color);
   font-size: 20px;
   margin: 0 0 10px 0;
-  font-family: "Rajdhani", "Orbitron", sans-serif;
+  font-family: "Courier New", monospace;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -662,15 +587,6 @@ body {
   animation: glow 2s infinite alternate;
 }
 
-@keyframes glow {
-  0% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .indian-laws-law-sections {
   display: flex;
   flex-direction: column;
@@ -678,27 +594,16 @@ body {
   animation: staggeredFadeIn 1s ease;
 }
 
-@keyframes staggeredFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .indian-laws-law-section {
   padding: 15px;
   border-left: 2px solid var(--primary-color);
-  background-color: rgba(0, 20, 0, 0.4);
+  background-color: rgba(0, 255, 170, 0.05);
   position: relative;
   transition: all 0.3s ease;
 }
 
 .indian-laws-law-section:hover {
-  background-color: rgba(0, 30, 0, 0.5);
+  background-color: rgba(0, 255, 170, 0.1);
   transform: translateX(5px);
 }
 
@@ -718,13 +623,13 @@ body {
 .indian-laws-section-penalty {
   margin-top: 15px;
   padding: 10px;
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: rgba(255, 62, 0, 0.1);
   border-left: 3px solid var(--accent-color);
   transition: all 0.3s ease;
 }
 
 .indian-laws-section-penalty:hover {
-  background-color: rgba(255, 0, 0, 0.2);
+  background-color: rgba(255, 62, 0, 0.15);
 }
 
 .indian-laws-penalty-label {
@@ -742,7 +647,7 @@ body {
   color: var(--primary-color);
   font-size: 20px;
   margin: 0 0 10px 0;
-  font-family: "Rajdhani", "Orbitron", sans-serif;
+  font-family: "Courier New", monospace;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -757,9 +662,9 @@ body {
   display: flex;
   gap: 10px;
   margin-bottom: 12px;
-  background-color: rgba(0, 30, 0, 0.3);
+  background-color: rgba(0, 255, 170, 0.05);
   padding: 12px;
-  border-left: 2px solid #0099ff;
+  border-left: 2px solid #3399ff;
   transition: all 0.3s ease;
   animation: slideInRight 0.5s ease;
   animation-fill-mode: both;
@@ -781,19 +686,8 @@ body {
   animation-delay: 0.5s;
 }
 
-@keyframes slideInRight {
-  from {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 .indian-laws-takeaway-item:hover {
-  background-color: rgba(0, 40, 0, 0.4);
+  background-color: rgba(0, 255, 170, 0.1);
   transform: translateX(5px);
 }
 
@@ -819,17 +713,17 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: rgba(0, 24, 0, 0.8);
+  background-color: rgba(0, 255, 170, 0.05);
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
   padding: 10px 15px;
-  font-family: "Rajdhani", "Orbitron", sans-serif;
+  font-family: "Courier New", monospace;
   text-transform: uppercase;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s;
   text-decoration: none;
-  box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
 }
 
 .indian-laws-cyber-button:hover {
@@ -858,7 +752,7 @@ body {
 }
 
 .indian-laws-terminal-output {
-  font-family: "Rajdhani", "Orbitron", sans-serif;
+  font-family: "Courier New", monospace;
   color: var(--primary-color);
   line-height: 1.6;
 }
@@ -866,17 +760,6 @@ body {
 .indian-laws-terminal-output p {
   margin: 10px 0;
   animation: typingEffect 1s steps(40, end);
-}
-
-@keyframes typingEffect {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-  to {
-    width: 100%;
-    opacity: 1;
-  }
 }
 
 .indian-laws-loading-line {
@@ -897,15 +780,6 @@ body {
   box-shadow: 0 0 10px var(--primary-color);
 }
 
-@keyframes loading {
-  0% {
-    left: -30%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
 .indian-laws-empty-panel {
   padding: 30px;
   text-align: center;
@@ -913,19 +787,10 @@ body {
 }
 
 .indian-laws-terminal-text {
-  font-family: "Rajdhani", "Orbitron", sans-serif;
+  font-family: "Courier New", monospace;
   color: var(--accent-color);
   margin: 10px 0;
   animation: blinkError 2s infinite alternate;
-}
-
-@keyframes blinkError {
-  0% {
-    text-shadow: 0 0 2px rgba(255, 0, 0, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
-  }
 }
 
 .indian-laws-results-footer {
@@ -966,30 +831,6 @@ body {
   background: var(--bg-light);
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-  }
-}
-
-.indian-laws-law-card.indian-laws-expanded::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid var(--primary-color);
-  pointer-events: none;
-  animation: pulse 2s infinite;
-}
-
 .indian-laws-cyber-button:focus,
 .indian-laws-search-input:focus,
 .indian-laws-cyber-select:focus,
@@ -1006,38 +847,30 @@ body {
   .indian-laws-grid-view {
     grid-template-columns: 1fr;
   }
-
   .indian-laws-search-row {
     flex-direction: column;
     align-items: stretch;
   }
-
   .indian-laws-filter-options {
     flex-direction: column;
   }
-
   .indian-laws-law-actions {
     flex-direction: column;
   }
-
   .indian-laws-cyber-button {
     width: 100%;
     justify-content: center;
   }
-
   .indian-laws-advanced-filters {
     grid-template-columns: 1fr;
   }
-
   .indian-laws-quick-info-panel {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .indian-laws-results-footer {
     flex-direction: column;
     gap: 15px;
   }
-
   .indian-laws-scroll-top {
     width: 100%;
     justify-content: center;
@@ -1059,9 +892,170 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
   border: 1px solid var(--primary-color);
-  font-size: 12px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--primary-color);
   white-space: nowrap;
   z-index: 10;
-  box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
   animation: fadeIn 0.3s ease;
+}
+
+@keyframes textReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.7;
+  }
+  50% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  60% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(0, 255, 170, 0.7);
+  }
+}
+
+@keyframes matrix {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes countPulse {
+  0% {
+    text-shadow: 0 0 2px rgba(0, 255, 170, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(0, 255, 170, 0.5);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 2000px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes staggeredFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes typingEffect {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes blinkError {
+  0% {
+    text-shadow: 0 0 2px rgba(255, 62, 0, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(255, 62, 0, 0.8);
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  }
 }

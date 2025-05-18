@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import { FaKey, FaLock, FaTerminal } from "react-icons/fa";
 import { IoWarning } from "react-icons/io5";
@@ -105,7 +105,7 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
         <div className="splashscreen-logo-wrapper">
           <img
             src={logoUrl}
-            alt="ZeroTrace logo"
+            alt="logo"
             className="splashscreen-cyber-logo"
           />
         </div>
