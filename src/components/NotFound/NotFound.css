@@ -140,16 +140,16 @@
   position: relative;
   overflow: hidden;
   font-family: "Rajdhani", "Orbitron", sans-serif;
-  --primary-color: #00ff41;
-  --primary-color-dark: #00c033;
-  --primary-color-light: #33ff64;
+  --primary-color: #00ffaa;
+  --primary-color-dark: #00c088;
+  --primary-color-light: #33ffbb;
   --secondary-color: #0a1929;
   --accent-color: #ff003c;
   --accent-color-light: #ff3363;
-  --bg-dark: #0a0e17;
+  --bg-dark: #030812;
   --bg-medium: #1a1e2e;
   --bg-light: #232738;
-  --text-primary: #e2e8f0;
+  --text-primary: #e0e0e0;
   --text-secondary: #a0aec0;
   --text-highlight: #ffffff;
 }
