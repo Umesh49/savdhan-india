@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { testDnsLeak } from "../../../utils/securityUtils";
-
 import "../Tools.css";
 
 const DnsLeakTester = () => {
@@ -17,25 +16,21 @@ const DnsLeakTester = () => {
 
     try {
       const testPhases = ["IP Leak Test", "WebRTC Leak Test", "DNS Configuration"];
-
       let completedTests = 0;
 
       const progressInterval = setInterval(() => {
         completedTests++;
         setProgress(Math.round((completedTests / (testPhases.length * 2)) * 100));
-
         if (completedTests >= testPhases.length * 2) {
           clearInterval(progressInterval);
         }
       }, 600);
 
       const leakResults = await testDnsLeak();
-
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       setProgress(100);
       clearInterval(progressInterval);
-
       setResults(leakResults);
     } catch (err) {
       console.error("Error testing DNS leak:", err);
@@ -67,102 +62,92 @@ const DnsLeakTester = () => {
   const leakStatus = results ? getLeakStatus() : null;
 
   return (
-    <div className="sec-tool-page">
-      <div className="sec-tool-page-container">
-        
-
-        <div className="sec-tool-page-header">
-          <h1 className="sec-tool-page-title">DNS Leak Tester</h1>
-          <p className="sec-tool-page-subtitle">Check if your DNS requests are leaking outside your VPN</p>
+    <div className="security-tools">
+      <div className="sec-tool-container">
+        <div className="sec-tool-header">
+          <h1 className="sec-tool-title">DNS Leak Tester</h1>
+          <p className="sec-tool-subtitle">Check if your DNS requests are leaking outside your VPN</p>
         </div>
-
-        <div className="sec-tool-page-content">
-          <p className="sec-tool-info">
-            This tool tests whether your DNS requests are being properly routed through your VPN or if they're "leaking"
-            to your ISP's DNS servers.
-          </p>
-
-          <button className="sec-tool-button" onClick={runDnsLeakTest} disabled={isLoading}>
-            {isLoading ? "Testing..." : "Run DNS Leak Test"}
-          </button>
-
-          {isLoading && (
-            <div className="sec-tool-loading">
-              <div className="sec-tool-spinner"></div>
-              <p>Testing DNS configuration... {progress}% complete</p>
-            </div>
-          )}
-
-          {error && !isLoading && (
-            <div className="sec-tool-result">
-              <p className="sec-tool-error">{error}</p>
-            </div>
-          )}
-
-          {results && !isLoading && !error && (
-            <div className="sec-tool-result">
-              <h4 className="sec-tool-result-header">DNS Leak Test Results:</h4>
-
-              {leakStatus && (
-                <div
-                  className={`sec-tool-leak-status ${
-                    leakStatus.isLeaking ? "sec-tool-text-danger" : "sec-tool-text-success"
-                  }`}
-                >
-                  <p>
-                    <strong>
-                      {leakStatus.isLeaking ? "⚠️ " : "✓ "}
-                      {leakStatus.message}
-                    </strong>
-                  </p>
-                </div>
-              )}
-
-              <p>
-                <strong>Your IP:</strong> {results.ip}
-              </p>
-              <p>
-                <strong>DNS Servers Detected:</strong> {results.servers ? results.servers.length : 0}
-              </p>
-
-              {results.servers && results.servers.length > 0 && (
-                <table className="sec-tool-table">
-                  <thead>
-                    <tr>
-                      <th>DNS Server</th>
-                      <th>ISP</th>
-                      <th>Country</th>
-                      <th>Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {results.servers.map((server, index) => (
-                      <tr key={index}>
-                        <td>{server.ip}</td>
-                        <td>{server.isp || "Unknown"}</td>
-                        <td>{server.country || "Unknown"}</td>
-                        <td>{server.type || "Unknown"}</td>
+        <div className="sec-tool-card">
+          <div className="sec-tool-card-body">
+            <p className="sec-tool-info">
+              This tool tests whether your DNS requests are being properly routed through your VPN or if they're "leaking"
+              to your ISP's DNS servers.
+            </p>
+            <button className="sec-tool-button" onClick={runDnsLeakTest} disabled={isLoading}>
+              {isLoading ? "Testing..." : "Run DNS Leak Test"}
+            </button>
+            {isLoading && (
+              <div className="sec-tool-loading">
+                <div className="sec-tool-spinner"></div>
+                <p>Testing DNS configuration... {progress}% complete</p>
+              </div>
+            )}
+            {error && !isLoading && (
+              <div className="sec-tool-result">
+                <p className="sec-tool-error">{error}</p>
+              </div>
+            )}
+            {results && !isLoading && !error && (
+              <div className="sec-tool-result">
+                <h4 className="sec-tool-result-header">DNS Leak Test Results:</h4>
+                {leakStatus && (
+                  <div
+                    className={`sec-tool-leak-status ${
+                      leakStatus.isLeaking ? "sec-tool-text-danger" : "sec-tool-text-success"
+                    }`}
+                  >
+                    <p>
+                      <strong>
+                        {leakStatus.isLeaking ? "⚠️ " : "✓ "}
+                        {leakStatus.message}
+                      </strong>
+                    </p>
+                  </div>
+                )}
+                <p>
+                  <strong>Your IP:</strong> {results.ip}
+                </p>
+                <p>
+                  <strong>DNS Servers Detected:</strong> {results.servers ? results.servers.length : 0}
+                </p>
+                {results.servers && results.servers.length > 0 && (
+                  <table className="sec-tool-table">
+                    <thead>
+                      <tr>
+                        <th>DNS Server</th>
+                        <th>ISP</th>
+                        <th>Country</th>
+                        <th>Type</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-
-              {leakStatus && leakStatus.isLeaking && (
-                <div className="sec-tool-advice">
-                  <h4>How to Fix DNS Leaks:</h4>
-                  <ul className="sec-tool-list">
-                    <li>Ensure your VPN's DNS settings are properly configured</li>
-                    <li>Use your VPN's built-in DNS leak protection feature</li>
-                    <li>Manually set your DNS servers to a secure provider</li>
-                    <li>Disable WebRTC in your browser, which can leak your real IP</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          )}
+                    </thead>
+                    <tbody>
+                      {results.servers.map((server, index) => (
+                        <tr key={index}>
+                          <td>{server.ip}</td>
+                          <td>{server.isp || "Unknown"}</td>
+                          <td>{server.country || "Unknown"}</td>
+                          <td>{server.type || "Unknown"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+                {leakStatus && leakStatus.isLeaking && (
+                  <div className="sec-tool-advice">
+                    <h4>How to Fix DNS Leaks:</h4>
+                    <ul className="sec-tool-list">
+                      <li>Ensure your VPN's DNS settings are properly configured</li>
+                      <li>Use your VPN's built-in DNS leak protection feature</li>
+                      <li>Manually set your DNS servers to a secure provider</li>
+                      <li>Disable WebRTC in your browser, which can leak your real IP</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-
       </div>
     </div>
   );

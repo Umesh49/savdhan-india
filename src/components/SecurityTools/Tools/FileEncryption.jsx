@@ -146,121 +146,119 @@ const FileEncryption = () => {
   };
 
   return (
-    <div className="sec-tool-page">
-      <div className="sec-tool-page-container">
-        
-
-        <div className="sec-tool-page-header">
-          <h1 className="sec-tool-page-title">File Encryption</h1>
-          <p className="sec-tool-page-subtitle">Encrypt and decrypt your files using PGP</p>
+    <div className="security-tools">
+      <div className="sec-tool-container">
+        <div className="sec-tool-header">
+          <h1 className="sec-tool-title">File Encryption</h1>
+          <p className="sec-tool-subtitle">Encrypt and decrypt your files using PGP</p>
         </div>
-
-        <div className="sec-tool-page-content">
-          <div className="sec-tool-toggle-group">
-            <button
-              className={`sec-tool-toggle ${operation === "encrypt" ? "active" : ""}`}
-              onClick={() => {
-                setOperation("encrypt");
-                setResult(null);
-                setError(null);
-              }}
-            >
-              Encrypt File
-            </button>
-            <button
-              className={`sec-tool-toggle ${operation === "decrypt" ? "active" : ""}`}
-              onClick={() => {
-                setOperation("decrypt");
-                setResult(null);
-                setError(null);
-              }}
-            >
-              Decrypt File
-            </button>
-          </div>
-
-          <div className="sec-tool-form-group">
-            <label className="sec-tool-label">Select File to {operation === "encrypt" ? "Encrypt" : "Decrypt"}</label>
-            <input type="file" onChange={handleFileChange} className="sec-tool-file-input" />
-            {file && (
-              <p className="sec-tool-info">
-                {file.name} ({(file.size / 1024).toFixed(2)} KB)
-              </p>
-            )}
-          </div>
-
-          <div className="sec-tool-form-group">
-            <label htmlFor="encryptionPassword" className="sec-tool-label">
-              Password
-            </label>
-            <div className="sec-tool-password-field">
-              <input
-                type={showPassword ? "text" : "password"}
-                id="encryptionPassword"
-                className="sec-tool-input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder={`Enter password to ${operation} file`}
-              />
+        <div className="sec-tool-card">
+          <div className="sec-tool-card-body">
+            <div className="sec-tool-toggle-group">
               <button
-                type="button"
-                className="sec-tool-toggle-visibility"
-                onClick={() => setShowPassword(!showPassword)}
+                className={`sec-tool-toggle ${operation === "encrypt" ? "active" : ""}`}
+                onClick={() => {
+                  setOperation("encrypt");
+                  setResult(null);
+                  setError(null);
+                }}
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                Encrypt File
+              </button>
+              <button
+                className={`sec-tool-toggle ${operation === "decrypt" ? "active" : ""}`}
+                onClick={() => {
+                  setOperation("decrypt");
+                  setResult(null);
+                  setError(null);
+                }}
+              >
+                Decrypt File
               </button>
             </div>
-          </div>
 
-          {operation === "encrypt" && (
             <div className="sec-tool-form-group">
-              <label htmlFor="confirmPassword" className="sec-tool-label">
-                Confirm Password
+              <label className="sec-tool-label">Select File to {operation === "encrypt" ? "Encrypt" : "Decrypt"}</label>
+              <input type="file" onChange={handleFileChange} className="sec-tool-file-input" />
+              {file && (
+                <p className="sec-tool-info">
+                  {file.name} ({(file.size / 1024).toFixed(2)} KB)
+                </p>
+              )}
+            </div>
+
+            <div className="sec-tool-form-group">
+              <label htmlFor="encryptionPassword" className="sec-tool-label">
+                Password
               </label>
               <div className="sec-tool-password-field">
                 <input
                   type={showPassword ? "text" : "password"}
-                  id="confirmPassword"
+                  id="encryptionPassword"
                   className="sec-tool-input"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="Confirm encryption password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder={`Enter password to ${operation} file`}
                 />
+                <button
+                  type="button"
+                  className="sec-tool-toggle-visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
             </div>
-          )}
 
-          <button
-            className="sec-tool-button"
-            onClick={processFile}
-            disabled={isLoading || !file || !password || (operation === "encrypt" && !confirmPassword)}
-          >
-            {isLoading
-              ? `${operation === "encrypt" ? "Encrypting" : "Decrypting"}...`
-              : `${operation === "encrypt" ? "Encrypt" : "Decrypt"} File`}
-          </button>
+            {operation === "encrypt" && (
+              <div className="sec-tool-form-group">
+                <label htmlFor="confirmPassword" className="sec-tool-label">
+                  Confirm Password
+                </label>
+                <div className="sec-tool-password-field">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="confirmPassword"
+                    className="sec-tool-input"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Confirm encryption password"
+                  />
+                </div>
+              </div>
+            )}
 
-          {error && <div className="sec-tool-error">{error}</div>}
+            <button
+              className="sec-tool-button"
+              onClick={processFile}
+              disabled={isLoading || !file || !password || (operation === "encrypt" && !confirmPassword)}
+            >
+              {isLoading
+                ? `${operation === "encrypt" ? "Encrypting" : "Decrypting"}...`
+                : `${operation === "encrypt" ? "Encrypt" : "Decrypt"} File`}
+            </button>
 
-          {result && result.success && (
-            <div className="sec-tool-result">
-              <p className="sec-tool-text-success">
-                {result.operation === "encrypt"
-                  ? `File encrypted successfully as ${result.encryptedName}.`
-                  : `File decrypted successfully as ${result.decryptedName}.`}
+            {error && <div className="sec-tool-error">{error}</div>}
+
+            {result && result.success && (
+              <div className="sec-tool-result">
+                <p className="sec-tool-text-success">
+                  {result.operation === "encrypt"
+                    ? `File encrypted successfully as ${result.encryptedName}.`
+                    : `File decrypted successfully as ${result.decryptedName}.`}
+                </p>
+                <p className="sec-tool-info">Your file download should begin automatically.</p>
+              </div>
+            )}
+
+            <div className="sec-tool-info">
+              <p>
+                <strong>Note:</strong> All encryption/decryption happens in your browser. Your files and passwords are
+                never sent to any server.
               </p>
-              <p className="sec-tool-info">Your file download should begin automatically.</p>
             </div>
-          )}
-
-          <div className="sec-tool-info">
-            <p>
-              <strong>Note:</strong> All encryption/decryption happens in your browser. Your files and passwords are
-              never sent to any server.
-            </p>
           </div>
         </div>
-
       </div>
     </div>
   );

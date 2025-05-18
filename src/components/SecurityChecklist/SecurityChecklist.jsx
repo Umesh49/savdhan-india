@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react"
 import {
   FaCheck,
   FaLock,
@@ -18,9 +18,9 @@ import {
   FaHome,
   FaBriefcase,
   FaUserSecret,
-} from "react-icons/fa";
-import initialChecklist from "./checklist.js";
-import "./SecurityChecklist.css";
+} from "react-icons/fa"
+import initialChecklist from "./checklist.js"
+import "./SecurityChecklist.css"
 
 const SECTIONS = {
   passwords: { title: "Password Security", icon: <FaLock /> },
@@ -31,11 +31,8 @@ const SECTIONS = {
   privacy: { title: "Privacy Protection", icon: <FaShieldAlt /> },
   iot: { title: "Smart Home Security", icon: <FaHome /> },
   workFromHome: { title: "Work From Home", icon: <FaBriefcase /> },
-  socialEngineering: {
-    title: "Social Engineering Defense",
-    icon: <FaUserSecret />,
-  },
-};
+  socialEngineering: { title: "Social Engineering Defense", icon: <FaUserSecret /> },
+}
 
 const getCategoryColor = (category) => {
   const categoryColors = {
@@ -48,194 +45,139 @@ const getCategoryColor = (category) => {
     iot: "var(--tertiary-color)",
     workFromHome: "var(--quaternary-color)",
     socialEngineering: "var(--warning-color)",
-  };
+  }
 
-  return categoryColors[category] || "var(--primary-color)";
-};
+  return categoryColors[category] || "var(--primary-color)"
+}
 
 const generateSessionId = () =>
-  Math.random().toString(36).substring(2, 15) +
-  Math.random().toString(36).substring(2, 15);
+  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 
 function SecurityChecklist() {
-  const [checklist, setChecklist] = useState(initialChecklist);
+  const [checklist, setChecklist] = useState(initialChecklist)
   const [expandedSections, setExpandedSections] = useState(
-    // Initialize with all sections collapsed except passwords
     Object.keys(SECTIONS).reduce((acc, section) => {
-      acc[section] = section === "passwords";
-      return acc;
-    }, {})
-  );
-  const [showExplanation, setShowExplanation] = useState({});
-  const [sessionId, setSessionId] = useState("");
+      acc[section] = section === "passwords"
+      return acc
+    }, {}),
+  )
+  const [showExplanation, setShowExplanation] = useState({})
+  const [sessionId, setSessionId] = useState("")
 
-  // Load saved state on mount
   useEffect(() => {
-    // Get or create session ID
-    let currentSessionId = localStorage.getItem("securityChecklistSessionId");
+    let currentSessionId = localStorage.getItem("securityChecklistSessionId")
     if (!currentSessionId) {
-      currentSessionId = generateSessionId();
-      localStorage.setItem("securityChecklistSessionId", currentSessionId);
+      currentSessionId = generateSessionId()
+      localStorage.setItem("securityChecklistSessionId", currentSessionId)
     }
-    setSessionId(currentSessionId);
+    setSessionId(currentSessionId)
 
-    // Load saved data
     try {
-      // Load saved checklist
-      const savedChecklist = localStorage.getItem(
-        `securityChecklist_${currentSessionId}`
-      );
+      const savedChecklist = localStorage.getItem(`securityChecklist_${currentSessionId}`)
       if (savedChecklist) {
-        setChecklist(JSON.parse(savedChecklist));
+        setChecklist(JSON.parse(savedChecklist))
       }
 
-      // Load saved expanded sections
-      const savedExpandedSections = localStorage.getItem(
-        `securityChecklistSections_${currentSessionId}`
-      );
+      const savedExpandedSections = localStorage.getItem(`securityChecklistSections_${currentSessionId}`)
       if (savedExpandedSections) {
-        setExpandedSections(JSON.parse(savedExpandedSections));
+        setExpandedSections(JSON.parse(savedExpandedSections))
       }
     } catch (error) {
-      console.error("Error loading saved data:", error);
+      console.error("Error loading saved data:", error)
     }
-  }, []);
+  }, [])
 
-  // Save checklist data when it changes
   useEffect(() => {
-    if (!sessionId) return;
+    if (!sessionId) return
 
     try {
-      // Save checklist
-      localStorage.setItem(
-        `securityChecklist_${sessionId}`,
-        JSON.stringify(checklist)
-      );
-
-      // Set expiration to 1 year
-      const expirationDate = new Date();
-      expirationDate.setFullYear(expirationDate.getFullYear() + 1);
-      localStorage.setItem(
-        `securityChecklistExpires_${sessionId}`,
-        expirationDate.toISOString()
-      );
-
-      // Set a cookie with the expiration date
-      document.cookie = `securityChecklistSaved=true; expires=${expirationDate.toUTCString()}; path=/; SameSite=Strict`;
+      localStorage.setItem(`securityChecklist_${sessionId}`, JSON.stringify(checklist))
+      const expirationDate = new Date()
+      expirationDate.setFullYear(expirationDate.getFullYear() + 1)
+      localStorage.setItem(`securityChecklistExpires_${sessionId}`, expirationDate.toISOString())
+      document.cookie = `securityChecklistSaved=true; expires=${expirationDate.toUTCString()}; path=/; SameSite=Strict`
     } catch (error) {
-      console.error("Error saving checklist data:", error);
+      console.error("Error saving checklist data:", error)
     }
-  }, [checklist, sessionId]);
+  }, [checklist, sessionId])
 
-  // Save expanded sections state
   useEffect(() => {
-    if (!sessionId) return;
+    if (!sessionId) return
 
     try {
-      localStorage.setItem(
-        `securityChecklistSections_${sessionId}`,
-        JSON.stringify(expandedSections)
-      );
+      localStorage.setItem(`securityChecklistSections_${sessionId}`, JSON.stringify(expandedSections))
     } catch (error) {
-      console.error("Error saving expanded sections:", error);
+      console.error("Error saving expanded sections:", error)
     }
-  }, [expandedSections, sessionId]);
+  }, [expandedSections, sessionId])
 
-  // Memoized handlers to prevent recreation on each render
   const handleCheckItem = useCallback((category, id) => {
     setChecklist((prevChecklist) => ({
       ...prevChecklist,
       [category]: prevChecklist[category].map((item) =>
         item.id === id ? { ...item, checked: !item.checked } : item
       ),
-    }));
-  }, []);
+    }))
+  }, [])
 
   const toggleExplanation = useCallback((itemId) => {
     setShowExplanation((prev) => ({
       ...prev,
       [itemId]: !prev[itemId],
-    }));
-  }, []);
+    }))
+  }, [])
 
   const toggleSection = useCallback((section) => {
     setExpandedSections((prev) => ({
       ...prev,
       [section]: !prev[section],
-    }));
-  }, []);
+    }))
+  }, [])
 
   const handlePrint = useCallback(() => {
-    window.print();
-  }, []);
+    window.print()
+  }, [])
 
   const handleResetProgress = useCallback(() => {
-    if (
-      confirm(
-        "Are you sure you want to reset all progress? This cannot be undone."
-      )
-    ) {
-      // Create new session ID
-      const newSessionId = generateSessionId();
-      setSessionId(newSessionId);
-
-      // Reset checklist to initial state
-      setChecklist(initialChecklist);
-
-      // Save new session ID
-      localStorage.setItem("securityChecklistSessionId", newSessionId);
-
-      // Remove old session data
-      localStorage.removeItem(`securityChecklist_${sessionId}`);
-      localStorage.removeItem(`securityChecklistSections_${sessionId}`);
-      localStorage.removeItem(`securityChecklistExpires_${sessionId}`);
+    if (confirm("Are you sure you want to reset all progress? This cannot be undone.")) {
+      const newSessionId = generateSessionId()
+      setSessionId(newSessionId)
+      setChecklist(initialChecklist)
+      localStorage.setItem("securityChecklistSessionId", newSessionId)
+      localStorage.removeItem(`securityChecklist_${sessionId}`)
+      localStorage.removeItem(`securityChecklistSections_${sessionId}`)
+      localStorage.removeItem(`securityChecklistExpires_${sessionId}`)
     }
-  }, [sessionId]);
+  }, [sessionId])
 
-  // Calculate progress for a category
   const calculateProgress = useCallback(
     (category) => {
-      const categoryItems = checklist[category];
-      if (!categoryItems || categoryItems.length === 0) return 0;
-
-      const totalItems = categoryItems.length;
-      const checkedItems = categoryItems.filter((item) => item.checked).length;
-      return (checkedItems / totalItems) * 100;
+      const items = checklist[category] || []
+      if (items.length === 0) return 0
+      const checkedCount = items.filter((item) => item.checked).length
+      return (checkedCount / items.length) * 100
     },
     [checklist]
-  );
+  )
 
-  // Memoize total progress calculation 
   const totalProgress = useMemo(() => {
-    const allItems = Object.values(checklist).flat();
-    if (allItems.length === 0) return 0;
-
-    const totalItems = allItems.length;
-    const checkedItems = allItems.filter((item) => item.checked).length;
-    return (checkedItems / totalItems) * 100;
-  }, [checklist]);
+    const allItems = Object.values(checklist).flat()
+    if (allItems.length === 0) return 0
+    const checkedCount = allItems.filter((item) => item.checked).length
+    return (checkedCount / allItems.length) * 100
+  }, [checklist])
 
   return (
     <div className="security-checklist-container">
-      {/* Header Section */}
-      <header className="security-checklist-header">
-        <div className="security-checklist-header-content">
-          <div className="security-checklist-terminal-text">
-            <FaShieldAlt aria-hidden="true" />
-            <span>Personal Cybersecurity Checklist</span>
-          </div>
-          <h1>
-            Your Digital Safety Guide{" "}
-            <span className="security-checklist-blink">_</span>
-          </h1>
-          <p>
-            Complete this checklist to protect yourself from common cyber
-            threats and safeguard your personal information.
-          </p>
-        </div>
+      <header className="security-checklist-page-header">
+        <h1 className="security-checklist-page-title">
+          <span className="security-checklist-title-prefix">&gt;_</span> Security Checklist
+        </h1>
+        <p className="security-checklist-page-subtitle">
+          Complete this checklist to protect yourself from common cyber threats and safeguard your personal information
+        </p>
       </header>
 
-      {/* Dashboard Overview */}
       <main className="security-checklist-dashboard">
         <div className="security-checklist-panel">
           <div className="security-checklist-panel-header">
@@ -243,24 +185,15 @@ function SecurityChecklist() {
               <FaTerminal aria-hidden="true" /> Your Security Status
             </h2>
             <div className="security-checklist-button-group">
-              <button
-                className="security-checklist-button"
-                onClick={handlePrint}
-                aria-label="Print Checklist"
-              >
+              <button onClick={handlePrint} className="security-checklist-button" aria-label="Print Checklist">
                 <FaPrint aria-hidden="true" /> Print Checklist
               </button>
-              <button
-                className="security-checklist-button"
-                onClick={handleResetProgress}
-                aria-label="Reset Progress"
-              >
+              <button onClick={handleResetProgress} className="security-checklist-button" aria-label="Reset Progress">
                 Reset Progress
               </button>
             </div>
           </div>
 
-          {/* Overall Progress */}
           <div className="security-checklist-progress-tracker">
             <div className="security-checklist-progress-header">
               <span>Overall Security Score</span>
@@ -280,197 +213,153 @@ function SecurityChecklist() {
             </div>
           </div>
 
-          {/* Security Metrics */}
           <div className="security-checklist-metrics">
             {Object.entries(SECTIONS).map(([key, section]) => {
-              const categoryColor = getCategoryColor(key);
-              const progressValue = Math.round(calculateProgress(key));
+              const color = getCategoryColor(key)
+              const progress = Math.round(calculateProgress(key))
 
               return (
                 <div
                   key={key}
                   className="security-checklist-metric-card"
-                  style={{ borderLeft: `3px solid ${categoryColor}` }}
+                  style={{ borderLeft: `3px solid ${color}` }}
                 >
-                  <div aria-hidden="true" style={{ color: categoryColor }}>
+                  <div aria-hidden="true" style={{ color }}>
                     {section.icon}
                   </div>
                   <h3>{section.title}</h3>
-                  <div>{progressValue}%</div>
+                  <div>{progress}%</div>
                 </div>
-              );
+              )
             })}
           </div>
 
-          {/* Session ID Display */}
           <div className="security-checklist-session-info">
             <small>
-              Your progress is automatically saved to this device. Session ID:{" "}
-              {sessionId && sessionId.substring(0, 8)}...
+              Your progress is automatically saved to this device. Session ID: {sessionId.slice(0, 8)}...
             </small>
           </div>
         </div>
 
-        {/* Security Protocol Accordion Sections */}
         {Object.entries(SECTIONS).map(([key, section]) => {
-          const isExpanded = expandedSections[key];
-          const categoryColor = getCategoryColor(key);
-          const progressValue = Math.round(calculateProgress(key));
+          const isOpen = expandedSections[key]
+          const color = getCategoryColor(key)
+          const progress = Math.round(calculateProgress(key))
 
           return (
             <div key={key} className="security-checklist-protocol-section">
               <div
                 className="security-checklist-protocol-header"
                 onClick={() => toggleSection(key)}
+                role="button"
+                aria-expanded={isOpen}
+                aria-controls={`section-${key}-content`}
                 style={{
-                  borderLeft: `3px solid ${categoryColor}`,
+                  borderLeft: `3px solid ${color}`,
                   borderTop: `1px solid var(--border-color)`,
                   borderRight: `1px solid var(--border-color)`,
-                  borderBottom: isExpanded
-                    ? "none"
-                    : `1px solid var(--border-color)`,
+                  borderBottom: isOpen ? "none" : `1px solid var(--border-color)`,
                 }}
-                role="button"
-                aria-expanded={isExpanded}
-                aria-controls={`section-${key}-content`}
               >
-                <h2 style={{ color: categoryColor }}>
+                <h2 style={{ color }}>
                   {section.icon} {section.title}
                 </h2>
                 <div className="security-checklist-protocol-header-right">
-                  <div>{progressValue}%</div>
-                  {isExpanded ? (
-                    <FaChevronUp aria-hidden="true" />
-                  ) : (
-                    <FaChevronDown aria-hidden="true" />
-                  )}
+                  <div>{progress}%</div>
+                  {isOpen ? <FaChevronUp /> : <FaChevronDown />}
                 </div>
               </div>
 
-              {isExpanded && (
+              {isOpen && (
                 <div
                   id={`section-${key}-content`}
                   className="security-checklist-protocol-content"
                   style={{
-                    borderLeft: `3px solid ${categoryColor}`,
+                    borderLeft: `3px solid ${color}`,
                     borderRight: `1px solid var(--border-color)`,
                     borderBottom: `1px solid var(--border-color)`,
                   }}
                 >
-                  {/* Progress Bar */}
                   <div className="security-checklist-category-progress">
                     <div className="security-checklist-progress-header">
                       <span>Completion Progress</span>
-                      <span style={{ color: categoryColor }}>
-                        {progressValue}%
-                      </span>
+                      <span style={{ color }}>{progress}%</span>
                     </div>
                     <div
                       className="security-checklist-progress-bar"
                       role="progressbar"
-                      aria-valuenow={progressValue}
+                      aria-valuenow={progress}
                       aria-valuemin="0"
                       aria-valuemax="100"
                     >
                       <div
                         className="security-checklist-progress-fill"
-                        style={{
-                          width: `${progressValue}%`,
-                          backgroundColor: categoryColor,
-                        }}
+                        style={{ width: `${progress}%`, backgroundColor: color }}
                       ></div>
                     </div>
                   </div>
 
-                  {/* Task List */}
                   <div className="security-checklist-task-list">
-                    {checklist[key] &&
-                      checklist[key].map((item) => (
-                        <div key={item.id}>
+                    {checklist[key]?.map((item) => (
+                      <div key={item.id}>
+                        <div className={`security-checklist-task-item ${item.checked ? "checked" : ""}`}>
                           <div
-                            className={`security-checklist-task-item ${
-                              item.checked ? "checked" : ""
-                            }`}
+                            className={`security-checklist-task-checkbox ${item.checked ? "checked" : ""}`}
+                            role="checkbox"
+                            aria-checked={item.checked}
+                            tabIndex={0}
+                            onClick={() => handleCheckItem(key, item.id)}
+                            onKeyPress={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                handleCheckItem(key, item.id)
+                              }
+                            }}
+                            style={{ borderColor: color, backgroundColor: item.checked ? color : "transparent" }}
                           >
-                            <div
-                              className={`security-checklist-task-checkbox ${
-                                item.checked ? "checked" : ""
-                              }`}
-                              onClick={() => handleCheckItem(key, item.id)}
-                              role="checkbox"
-                              aria-checked={item.checked}
-                              tabIndex={0}
-                              style={{
-                                borderColor: categoryColor,
-                                backgroundColor: item.checked
-                                  ? categoryColor
-                                  : "transparent",
-                              }}
-                              onKeyPress={(e) => {
-                                if (e.key === "Enter" || e.key === " ") {
-                                  handleCheckItem(key, item.id);
-                                }
-                              }}
-                            >
-                              {item.checked && <FaCheck aria-hidden="true" />}
-                            </div>
-                            <span className="security-checklist-task-text">
-                              {item.text}
-                            </span>
-                            <button
-                              className="security-checklist-info-button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                toggleExplanation(item.id);
-                              }}
-                              aria-label={`More information about ${item.text}`}
-                              aria-expanded={showExplanation[item.id]}
-                            >
-                              <FaQuestionCircle aria-hidden="true" />
-                            </button>
+                            {item.checked && <FaCheck />}
                           </div>
-                          {showExplanation[item.id] && (
-                            <div className="security-checklist-explanation">
-                              <FaInfoCircle aria-hidden="true" />
-                              <span>{item.explanation}</span>
-                            </div>
-                          )}
+                          <span className="security-checklist-task-text">{item.text}</span>
+                          <button
+                            className="security-checklist-info-button"
+                            onClick={(e) => { e.stopPropagation(); toggleExplanation(item.id); }}
+                            aria-expanded={showExplanation[item.id]}
+                            aria-label={`More information about ${item.text}`}
+                          >
+                            <FaQuestionCircle />
+                          </button>
                         </div>
-                      ))}
+                        {showExplanation[item.id] && (
+                          <div className="security-checklist-explanation">
+                            <FaInfoCircle />
+                            <span>{item.explanation}</span>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
             </div>
-          );
+          )
         })}
       </main>
 
-      {/* Learn More Section */}
       <section className="security-checklist-cta">
         <div>
           <h2>Learn More About Protecting Yourself</h2>
-          <p>
-            Access easy-to-understand guides and tools to keep yourself safe
-            online.
-          </p>
+          <p>Access easy-to-understand guides and tools to keep yourself safe online.</p>
           <div className="security-checklist-cta-buttons">
-            <a
-              href="/security-basics"
-              className="security-checklist-cta-button primary"
-            >
-              <FaVirus aria-hidden="true" /> Security Basics
+            <a href="/tutorials" className="security-checklist-cta-button primary">
+              <FaVirus /> Increase Your Knowledge
             </a>
-            <a
-              href="/privacy-quiz"
-              className="security-checklist-cta-button secondary"
-            >
-              <FaCode aria-hidden="true" /> Test Your Knowledge
+            <a href="/privacy-quiz" className="security-checklist-cta-button secondary">
+              <FaCode /> Test Your Knowledge
             </a>
           </div>
         </div>
       </section>
     </div>
-  );
+  )
 }
 
 export default SecurityChecklist;

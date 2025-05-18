@@ -1,22 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
 
 .security-checklist-container {
-  --primary-color: #00f829;
-  --primary-dim: rgba(0, 255, 136, 0.7);
-  --primary-glow: rgba(0, 255, 136, 0.2);
-  --secondary-color: #00b3f0;
-
+  --primary-color: #00ffaa;
+  --primary-dim: rgba(0, 255, 170, 0.7);
+  --primary-glow: rgba(0, 255, 170, 0.2);
+  --secondary-color: #17c5cb;
   --tertiary-color: #9c27b0;
-  --quaternary-color: #2196f3;
-  --warning-color: #f44336;
-  --accent-color: #ff003c;
-  --dark-bg: #050505;
-  --card-bg: #0c0c0c;
+  --quaternary-color: #33ffbb;
+  --warning-color: #ff3e00;
+  --accent-color: #ff3e00;
+  --dark-bg: #080e17;
+  --card-bg: #0a1020;
   --text-primary: #e0e0e0;
-  --text-secondary: #9e9e9e;
+  --text-secondary: #b0b0b0;
   --text-dim: #6e6e6e;
   --border-color: #2a2a2a;
-  --neon-glow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+  --neon-glow: 0 0 10px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.2);
 
   background-color: var(--dark-bg);
   background: var(--dark-bg) radial-gradient(#111 1px, transparent 1px) 0 / 20px
@@ -24,8 +23,8 @@
   color: var(--text-primary);
   line-height: 1.6;
   font-family: "Rajdhani", sans-serif;
-  margin: 0 auto;
   padding: 1rem 5%;
+  margin: 1rem;
 }
 
 body {
@@ -36,6 +35,60 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.security-checklist-page-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.security-checklist-page-header::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background: var(--primary-color);
+  filter: blur(3px);
+  animation: security-checklist-scanHeader 3s ease-in-out infinite;
+}
+
+.security-checklist-page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px var(--primary-color);
+  font-family: "Orbitron", sans-serif;
+  color: var(--text-primary);
+}
+
+.security-checklist-title-prefix {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+.security-checklist-page-subtitle {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes security-checklist-scanHeader {
+  0%,
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+  50% {
+    left: calc(100% - 100px);
+    opacity: 0.6;
+  }
 }
 
 .security-checklist-header {
@@ -184,7 +237,7 @@ body {
 
 .security-checklist-progress-bar {
   height: 10px;
-  background-color: #151515;
+  background-color: #152030;
   border: 1px solid var(--border-color);
   border-radius: 2px;
   overflow: hidden;
@@ -197,7 +250,7 @@ body {
   background-image: linear-gradient(
     90deg,
     var(--primary-color),
-    var(--secondary-color),
+    var(--quaternary-color),
     var(--primary-color)
   );
   box-shadow: var(--neon-glow);
@@ -262,7 +315,7 @@ body {
 }
 
 .security-checklist-protocol-header:hover {
-  background-color: #151515;
+  background-color: #152030;
 }
 
 .security-checklist-protocol-header h2 {
@@ -308,7 +361,7 @@ body {
 }
 
 .security-checklist-task-item:hover {
-  background-color: rgba(12, 12, 12, 0.7);
+  background-color: rgba(10, 16, 32, 0.7);
 }
 
 .security-checklist-task-item.checked {
@@ -360,7 +413,7 @@ body {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   padding: 0.75rem;
-  background-color: rgba(12, 12, 12, 0.7);
+  background-color: rgba(10, 16, 32, 0.7);
   border-left: 3px solid var(--primary-color);
   color: var(--text-secondary);
   display: flex;
@@ -386,6 +439,15 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: block;
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+}
+
+.security-checklist-cta > div {
+  position: relative;
+  z-index: 2;
 }
 
 .security-checklist-cta::before {
@@ -517,11 +579,25 @@ body {
   }
 
   .security-checklist-cta {
-    padding: 2rem 1rem;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
 @media (max-width: 480px) {
+  .security-checklist-page-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .security-checklist-page-title {
+    font-size: 1.8rem;
+  }
+
+  .security-checklist-page-subtitle {
+    font-size: 0.9rem;
+  }
+
   .security-checklist-header {
     padding: 1.5rem 1rem;
   }

@@ -1,23 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
 
 .security-tools {
-  --neon-green: #00ff41;
-  --dark-green: #0a8030;
-  --darker-green: #0a3a17;
-  --border-green: #155e2d;
-  --black: #050505;
-  --dark-black: #080808;
-  --medium-black: #0c0c0c;
-  --danger: #ff3e3e;
-  --warning: #ffff00;
+  --primary-color: #00ffaa;
+  --primary-dim: rgba(0, 255, 170, 0.7);
+  --primary-glow: rgba(0, 255, 170, 0.2);
+  --secondary-color: #030812;
+  --tertiary-color: #9c27b0;
+  --quaternary-color: #33ffbb;
+  --dark-bg: #080e17;
+  --card-bg: #0a1020;
+  --bg-light: #152030;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-dim: #6e6e6e;
+  --border-color: #2a2a2a;
+  --accent-color: #ff3e00;
+  --warning-color: #ff3e00;
   --neutral: #888888;
+  --neon-glow: 0 0 10px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.2);
 }
 
 body {
   margin: 0;
   font-family: "Fira Code", monospace;
-  background-color: var(--black);
-  color: var(--neon-green);
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -30,8 +37,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 255, 170, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(0, 255, 170, 0.02) 1px, transparent 1px);
   background-size: 20px 20px, 20px 20px;
   background-position: 0 0, 10px 10px;
   z-index: -1;
@@ -45,12 +52,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0) 50%,
-    rgba(0, 0, 0, 0.02) 50%,
-    rgba(0, 0, 0, 0)
-  );
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0));
   background-size: 100% 4px;
   z-index: 1000;
   pointer-events: none;
@@ -64,7 +66,7 @@ body {
   padding: 2rem;
   position: relative;
   box-sizing: border-box;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .sec-tool-grid {
@@ -78,7 +80,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .sec-tool-header {
@@ -96,13 +98,13 @@ body {
   transform: translateX(-50%);
   width: 60%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #00ff41, transparent);
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 .sec-tool-title {
   font-size: 3rem;
-  color: #00ff41;
-  text-shadow: 0 0 15px rgba(0, 255, 65, 0.7), 0 0 25px rgba(0, 255, 65, 0.5);
+  color: var(--primary-color);
+  text-shadow: 0 0 15px rgba(0, 255, 170, 0.7), 0 0 25px rgba(0, 255, 170, 0.5);
   letter-spacing: 3px;
   margin-bottom: 0.5rem;
   font-weight: 700;
@@ -112,19 +114,19 @@ body {
 }
 
 .sec-tool-subtitle {
-  color: #0a8030;
+  color: var(--primary-dim);
   font-size: 1.2rem;
   letter-spacing: 2px;
   margin-top: 0.5rem;
-  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  text-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
 }
 
 .sec-tool-card {
-  background-color: #0c0c0c;
+  background-color: var(--card-bg);
   border-radius: 10px;
   padding: 1.5rem;
-  border: 1px solid #155e2d;
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -137,7 +139,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #00ff41, transparent);
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -149,17 +151,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle at top right,
-    rgba(0, 255, 65, 0.05),
-    transparent 70%
-  );
+  background: radial-gradient(circle at top right, rgba(0, 255, 170, 0.05), transparent 70%);
   pointer-events: none;
 }
 
 .sec-tool-card:hover {
-  box-shadow: 0 0 25px rgba(0, 255, 65, 0.3), inset 0 0 15px rgba(0, 0, 0, 0.8);
-  border-color: #00ff41;
+  box-shadow: 0 0 25px rgba(0, 255, 170, 0.3), inset 0 0 15px rgba(0, 0, 0, 0.8);
+  border-color: var(--primary-color);
   transform: translateY(-5px);
 }
 
@@ -170,16 +168,16 @@ body {
 .sec-tool-card-header {
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #155e2d;
+  border-bottom: 1px solid var(--border-color);
   position: relative;
 }
 
 .sec-tool-card-title {
   font-size: 1.5rem;
-  color: #00ff41;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+  text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
 }
 
 .sec-tool-card-body {
@@ -193,7 +191,7 @@ body {
 .sec-tool-label {
   display: block;
   margin-bottom: 0.75rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -201,9 +199,9 @@ body {
 
 .sec-tool-input {
   width: 100%;
-  background-color: #080808;
-  border: 1px solid #155e2d;
-  color: #00ff41;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
   padding: 0.75rem;
   margin-bottom: 1rem;
   font-family: "Fira Code", monospace;
@@ -215,8 +213,8 @@ body {
 }
 
 .sec-tool-input:focus {
-  border-color: #00ff41;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3), inset 0 0 5px rgba(0, 0, 0, 0.5);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.3), inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 textarea.sec-tool-input {
@@ -235,7 +233,7 @@ textarea.sec-tool-input {
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #0a8030;
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 0;
   font-size: 1.2rem;
@@ -243,16 +241,16 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-toggle-visibility:hover {
-  color: #00ff41;
+  color: var(--primary-color);
 }
 
 .sec-tool-file-input {
-  background-color: #080808;
-  border: 1px solid #155e2d;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   padding: 0.75rem;
   border-radius: 4px;
   width: 100%;
-  color: #0a8030;
+  color: var(--text-secondary);
   font-family: "Fira Code", monospace;
   cursor: pointer;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
@@ -260,8 +258,8 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-file-input::file-selector-button {
-  background-color: #0a3a17;
-  color: #00ff41;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -272,13 +270,13 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-file-input::file-selector-button:hover {
-  background-color: #0a8030;
+  background-color: var(--card-bg);
 }
 
 .sec-tool-checkbox {
   display: flex;
   align-items: center;
-  color: #0a8030;
+  color: var(--text-secondary);
   cursor: pointer;
   user-select: none;
   margin-bottom: 0.75rem;
@@ -286,7 +284,7 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-checkbox:hover {
-  color: #00ff41;
+  color: var(--primary-color);
 }
 
 .sec-tool-checkbox input {
@@ -295,22 +293,22 @@ textarea.sec-tool-input {
   appearance: none;
   width: 16px;
   height: 16px;
-  border: 1px solid #0a8030;
+  border: 1px solid var(--border-color);
   border-radius: 3px;
-  background-color: #080808;
+  background-color: var(--secondary-color);
   position: relative;
   transition: all 0.2s ease;
 }
 
 .sec-tool-checkbox input:checked {
-  background-color: #0a3a17;
-  border-color: #00ff41;
+  background-color: var(--bg-light);
+  border-color: var(--primary-color);
 }
 
 .sec-tool-checkbox input:checked::before {
   content: "✓";
   position: absolute;
-  color: #00ff41;
+  color: var(--primary-color);
   font-size: 12px;
   top: -2px;
   left: 3px;
@@ -318,12 +316,12 @@ textarea.sec-tool-input {
 
 .sec-tool-checkbox input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.3);
+  box-shadow: 0 0 0 2px rgba(0, 255, 170, 0.3);
 }
 
 .sec-tool-range {
   width: 100%;
-  background-color: #080808;
+  background-color: var(--secondary-color);
   appearance: none;
   height: 6px;
   border-radius: 3px;
@@ -337,9 +335,9 @@ textarea.sec-tool-input {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #00ff41;
+  background: var(--primary-color);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
   transition: all 0.2s ease;
 }
 
@@ -351,9 +349,9 @@ textarea.sec-tool-input {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #00ff41;
+  background: var(--primary-color);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
   border: none;
   transition: all 0.2s ease;
 }
@@ -363,9 +361,9 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-button {
-  background-color: #0a3a17;
-  color: #00ff41;
-  border: 1px solid #155e2d;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
   padding: 0.85rem 1.5rem;
   cursor: pointer;
   font-family: "Fira Code", monospace;
@@ -377,8 +375,8 @@ textarea.sec-tool-input {
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+  text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.1);
 }
 
 .sec-tool-button::after {
@@ -388,20 +386,15 @@ textarea.sec-tool-input {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 255, 65, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 170, 0.2), transparent);
   transition: 0.5s;
 }
 
 .sec-tool-button:hover {
-  background-color: #0a8030;
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+  background-color: var(--card-bg);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
   transform: translateY(-2px);
-  border-color: #00ff41;
+  border-color: var(--primary-color);
 }
 
 .sec-tool-button:hover::after {
@@ -410,7 +403,7 @@ textarea.sec-tool-input {
 
 .sec-tool-button:active {
   transform: translateY(1px);
-  box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+  box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
 }
 
 .sec-tool-button:disabled {
@@ -430,17 +423,17 @@ textarea.sec-tool-input {
 .sec-tool-toggle-group {
   display: flex;
   margin-bottom: 1.5rem;
-  background-color: #080808;
+  background-color: var(--secondary-color);
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid #155e2d;
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-toggle {
   flex: 1;
   background: none;
   border: none;
-  color: #0a8030;
+  color: var(--text-secondary);
   padding: 0.75rem;
   cursor: pointer;
   font-family: "Fira Code", monospace;
@@ -449,24 +442,24 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-toggle:not(:last-child) {
-  border-right: 1px solid #155e2d;
+  border-right: 1px solid var(--border-color);
 }
 
 .sec-tool-toggle:hover {
-  background-color: rgba(0, 255, 65, 0.05);
-  color: #00ff41;
+  background-color: rgba(0, 255, 170, 0.05);
+  color: var(--primary-color);
 }
 
 .sec-tool-toggle.active {
-  background-color: #0a3a17;
-  color: #00ff41;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
 }
 
 .sec-tool-result {
   margin-top: 1.5rem;
   padding: 1.2rem;
-  background-color: #080808;
-  border: 1px solid #155e2d;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   overflow-wrap: break-word;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
@@ -481,29 +474,25 @@ textarea.sec-tool-input {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle at top right,
-    rgba(0, 255, 65, 0.1),
-    transparent 60%
-  );
+  background: radial-gradient(circle at top right, rgba(0, 255, 170, 0.1), transparent 60%);
   pointer-events: none;
 }
 
 .sec-tool-result-header {
   font-size: 1.1rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
   letter-spacing: 0.5px;
-  text-shadow: 0 0 3px rgba(0, 255, 65, 0.2);
+  text-shadow: 0 0 3px rgba(0, 255, 170, 0.2);
 }
 
 .sec-tool-error {
-  color: #ff3e3e;
+  color: var(--accent-color);
   margin: 0.8rem 0;
   padding: 0.5rem;
   font-size: 0.9rem;
-  background-color: rgba(255, 0, 0, 0.1);
-  border-left: 3px solid #ff3e3e;
+  background-color: rgba(255, 62, 0, 0.1);
+  border-left: 3px solid var(--accent-color);
   font-weight: 500;
 }
 
@@ -513,16 +502,16 @@ textarea.sec-tool-input {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  color: #0a8030;
+  color: var(--text-secondary);
 }
 
 .sec-tool-spinner {
   display: inline-block;
   width: 30px;
   height: 30px;
-  border: 3px solid rgba(0, 255, 65, 0.1);
+  border: 3px solid rgba(0, 255, 170, 0.1);
   border-radius: 50%;
-  border-top-color: #00ff41;
+  border-top-color: var(--primary-color);
   animation: spin 1s linear infinite;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -531,7 +520,7 @@ textarea.sec-tool-input {
 .sec-tool-progress {
   width: 100%;
   height: 8px;
-  background-color: #080808;
+  background-color: var(--secondary-color);
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -540,7 +529,7 @@ textarea.sec-tool-input {
 
 .sec-tool-progress-bar {
   height: 100%;
-  background-color: #0a8030;
+  background-color: var(--primary-dim);
   transition: width 0.5s ease;
   position: relative;
 }
@@ -552,53 +541,48 @@ textarea.sec-tool-input {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   transform: translateX(-100%);
   animation: progressShimmer 2s infinite;
 }
 
 .sec-tool-progress-bar.strong {
-  background-color: #00ff41;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
 }
 
 .sec-tool-progress-bar.medium {
-  background-color: #ffff00;
-  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+  background-color: var(--quaternary-color);
+  box-shadow: 0 0 10px rgba(51, 255, 187, 0.5);
 }
 
 .sec-tool-progress-bar.weak {
-  background-color: #ff3e3e;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  background-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(255, 62, 0, 0.5);
 }
 
 .sec-tool-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .sec-tool-table th {
   text-align: left;
   padding: 0.5rem;
-  border-bottom: 1px solid #155e2d;
-  color: #00ff41;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--primary-color);
 }
 
 .sec-tool-table td {
   padding: 0.5rem;
-  border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+  border-bottom: 1px solid rgba(0, 255, 170, 0.1);
 }
 
 .sec-tool-table tr:hover td {
-  background-color: rgba(0, 255, 65, 0.03);
+  background-color: rgba(0, 255, 170, 0.03);
 }
 
 .sec-tool-table tr:last-child td {
@@ -608,7 +592,7 @@ textarea.sec-tool-input {
 .sec-tool-list {
   margin: 0;
   padding-left: 1.5rem;
-  color: #0a8030;
+  color: var(--text-secondary);
 }
 
 .sec-tool-list li {
@@ -616,28 +600,28 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-list li::marker {
-  color: #00ff41;
+  color: var(--primary-color);
 }
 
 .sec-tool-text-success {
-  color: #00ff41;
+  color: var(--primary-color);
 }
 
 .sec-tool-text-warning {
-  color: #ffff00;
+  color: var(--quaternary-color);
 }
 
 .sec-tool-text-danger {
-  color: #ff3e3e;
+  color: var(--accent-color);
 }
 
 .sec-tool-text-neutral {
-  color: #888888;
+  color: var(--neutral);
 }
 
 .sec-tool-info {
   font-size: 0.9rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   margin-bottom: 1.2rem;
   line-height: 1.5;
   opacity: 0.9;
@@ -645,22 +629,22 @@ textarea.sec-tool-input {
 
 .sec-tool-description {
   font-size: 0.9rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   margin-bottom: 1.2rem;
   line-height: 1.5;
 }
 
 .sec-tool-disclaimer {
   font-size: 0.8rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
 .sec-tool-password-output {
   font-family: "Fira Code", monospace;
   background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid #155e2d;
-  color: #00ff41;
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
   padding: 0.75rem;
   border-radius: 4px;
   width: 100%;
@@ -692,12 +676,12 @@ textarea.sec-tool-input {
 .sec-tool-map-image {
   max-width: 100%;
   border-radius: 4px;
-  border: 1px solid #155e2d;
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-map-note {
   font-size: 0.8rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   margin-top: 0.5rem;
 }
 
@@ -712,16 +696,16 @@ textarea.sec-tool-input {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #0a3a17;
-  color: #00ff41;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
   font-size: 1rem;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
-  border: 1px solid #155e2d;
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-score-label {
@@ -733,12 +717,12 @@ textarea.sec-tool-input {
   padding: 0.75rem;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  border: 1px solid #155e2d;
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-code {
   font-family: "Fira Code", monospace;
-  color: #00ff41;
+  color: var(--primary-color);
   background-color: rgba(0, 0, 0, 0.3);
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
@@ -754,7 +738,7 @@ textarea.sec-tool-input {
   margin-bottom: 1rem;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.2);
-  border-left: 3px solid #00ff41;
+  border-left: 3px solid var(--primary-color);
 }
 
 .sec-tool-qr-result {
@@ -770,8 +754,8 @@ textarea.sec-tool-input {
   margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
-  border: 1px solid #155e2d;
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
 }
 
 .sec-tool-qr-container::after {
@@ -781,12 +765,7 @@ textarea.sec-tool-input {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
   pointer-events: none;
 }
 
@@ -808,18 +787,18 @@ textarea.sec-tool-input {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
   margin-bottom: 0.5rem;
-  border: 1px solid #155e2d;
+  border: 1px solid var(--border-color);
   transition: all 0.2s ease;
 }
 
 .sec-tool-header-item:hover {
-  border-color: #0a8030;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+  border-color: var(--primary-dim);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.1);
 }
 
 .sec-tool-header-name {
   margin-bottom: 0.25rem;
-  color: #00ff41;
+  color: var(--primary-color);
 }
 
 .sec-tool-header-status {
@@ -829,7 +808,7 @@ textarea.sec-tool-input {
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid #155e2d;
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-header-value {
@@ -844,7 +823,7 @@ textarea.sec-tool-input {
 
 .sec-tool-header-description {
   font-size: 0.85rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   margin-top: 0.5rem;
 }
 
@@ -853,7 +832,7 @@ textarea.sec-tool-input {
   margin-bottom: 1rem;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.2);
-  border-left: 3px solid #0a8030;
+  border-left: 3px solid var(--primary-dim);
 }
 
 .sec-tool-grade {
@@ -867,16 +846,16 @@ textarea.sec-tool-input {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #0a3a17;
-  color: #00ff41;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
-  border: 1px solid #155e2d;
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-safety-status {
@@ -888,13 +867,13 @@ textarea.sec-tool-input {
 }
 
 .sec-tool-status-safe {
-  background-color: rgba(0, 255, 65, 0.1);
-  border-left: 4px solid #00ff41;
+  background-color: rgba(0, 255, 170, 0.1);
+  border-left: 4px solid var(--primary-color);
 }
 
 .sec-tool-status-unsafe {
-  background-color: rgba(255, 62, 62, 0.1);
-  border-left: 4px solid #ff3e3e;
+  background-color: rgba(255, 62, 0, 0.1);
+  border-left: 4px solid var(--accent-color);
 }
 
 .sec-tool-status-icon {
@@ -914,7 +893,7 @@ textarea.sec-tool-input {
 
 .sec-tool-status-description {
   font-size: 0.9rem;
-  color: #0a8030;
+  color: var(--text-secondary);
 }
 
 .sec-tool-check-info {
@@ -947,8 +926,8 @@ textarea.sec-tool-input {
 .sec-tool-score-value {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #00ff41;
-  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
 }
 
 .sec-tool-scan-stats {
@@ -967,27 +946,27 @@ textarea.sec-tool-input {
   padding: 0.3rem 0.6rem;
   border-radius: 4px;
   font-size: 0.85rem;
-  background-color: #0a3a17;
-  color: #00ff41;
-  border: 1px solid #155e2d;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-badge-success {
-  background-color: #0a3a17;
-  color: #00ff41;
-  border: 1px solid #155e2d;
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
 }
 
 .sec-tool-badge-warning {
-  background-color: rgba(255, 255, 0, 0.1);
-  color: #ffff00;
-  border: 1px solid rgba(255, 255, 0, 0.3);
+  background-color: rgba(51, 255, 187, 0.1);
+  color: var(--quaternary-color);
+  border: 1px solid rgba(51, 255, 187, 0.3);
 }
 
 .sec-tool-badge-danger {
-  background-color: rgba(255, 62, 62, 0.1);
-  color: #ff3e3e;
-  border: 1px solid rgba(255, 62, 62, 0.3);
+  background-color: rgba(255, 62, 0, 0.1);
+  color: var(--accent-color);
+  border: 1px solid rgba(255, 62, 0, 0.3);
 }
 
 .sec-tool-notice {
@@ -995,112 +974,26 @@ textarea.sec-tool-input {
   margin-bottom: 1rem;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.2);
-  border-left: 3px solid #0a8030;
+  border-left: 3px solid var(--primary-dim);
   font-size: 0.9rem;
 }
 
 .sec-tool-help-text {
   font-size: 0.85rem;
-  color: #0a8030;
+  color: var(--text-secondary);
   margin-top: 0.5rem;
 }
 
 .sec-tool-link {
-  color: #00ff41;
+  color: var(--primary-color);
   text-decoration: none;
   transition: all 0.2s ease;
-  border-bottom: 1px dotted #0a8030;
+  border-bottom: 1px dotted var(--primary-dim);
 }
 
 .sec-tool-link:hover {
-  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
-  border-bottom-color: #00ff41;
-}
-
-.security-news {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.news-card {
-  background-color: #0c0c0c;
-  border-radius: 8px;
-  padding: 1.5rem;
-  border: 1px solid #155e2d;
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.news-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00ff41, transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.news-card:hover {
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-  transform: translateY(-5px);
-  border-color: #00ff41;
-}
-
-.news-card:hover::before {
-  opacity: 1;
-}
-
-.news-date {
-  color: #0a8030;
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-}
-
-.news-card h3 {
-  color: #00ff41;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
-}
-
-.news-card p {
-  color: #0a8030;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-}
-
-.news-link {
-  color: #00ff41;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.2s ease;
-  border-bottom: 1px dotted #0a8030;
-}
-
-.news-link:hover {
-  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
-  border-bottom-color: #00ff41;
-}
-
-.news-link::after {
-  content: "→";
-  margin-left: 0.5rem;
-  transition: transform 0.2s ease;
-}
-
-.news-link:hover::after {
-  transform: translateX(3px);
+  text-shadow: 0 0 8px rgba(0, 255, 170, 0.5);
+  border-bottom-color: var(--primary-color);
 }
 
 .checking-status {
@@ -1109,18 +1002,26 @@ textarea.sec-tool-input {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  color: #0a8030;
+  color: var(--text-secondary);
 }
 
 .loader {
   display: inline-block;
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(0, 255, 65, 0.1);
+  border: 3px solid rgba(0, 255, 170, 0.1);
   border-radius: 50%;
-  border-top-color: #00ff41;
+  border-top-color: var(--primary-color);
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
+}
+
+.sec-tool-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
 }
 
 @keyframes glitch {
@@ -1128,23 +1029,23 @@ textarea.sec-tool-input {
   5%,
   10%,
   100% {
-    text-shadow: 0 0 15px rgba(0, 255, 65, 0.7), 0 0 25px rgba(0, 255, 65, 0.5);
+    text-shadow: 0 0 15px rgba(0, 255, 170, 0.7), 0 0 25px rgba(0, 255, 170, 0.5);
     transform: none;
   }
   1% {
-    text-shadow: 0 0 10px #0f0, -2px 0 #0f0, 2px 0 #00f;
+    text-shadow: 0 0 10px var(--primary-color), -2px 0 var(--primary-color), 2px 0 var(--accent-color);
     transform: translate(-2px, 0);
   }
   2% {
-    text-shadow: 0 0 10px #0f0, 2px 0 #0f0, -2px 0 #00f;
+    text-shadow: 0 0 10px var(--primary-color), 2px 0 var(--primary-color), -2px 0 var(--accent-color);
     transform: translate(2px, 0);
   }
   3% {
-    text-shadow: 0 0 10px #0f0, -1px 0 #0f0, 1px 0 #00f;
+    text-shadow: 0 0 10px var(--primary-color), -1px 0 var(--primary-color), 1px 0 var(--accent-color);
     transform: translate(-1px, 0);
   }
   4% {
-    text-shadow: 0 0 10px #0f0, 1px 0 #0f0, -1px 0 #00f;
+    text-shadow: 0 0 10px var(--primary-color), 1px 0 var(--primary-color), -1px 0 var(--accent-color);
     transform: translate(1px, 0);
   }
 }
@@ -1167,121 +1068,8 @@ textarea.sec-tool-input {
     background-color: rgba(0, 0, 0, 0.3);
   }
   50% {
-    background-color: rgba(0, 255, 65, 0.3);
+    background-color: rgba(0, 255, 170, 0.3);
   }
-}
-
-.sec-tool-news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.sec-tool-news-card {
-  background-color: #0c0c0c;
-  border-radius: 10px;
-  border: 1px solid #155e2d;
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.sec-tool-news-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #00ff41, transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.sec-tool-news-card:hover {
-  box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
-  transform: translateY(-5px);
-  border-color: #00ff41;
-}
-
-.sec-tool-news-card:hover::before {
-  opacity: 1;
-}
-
-.sec-tool-news-content {
-  padding: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.sec-tool-news-date {
-  color: #0a8030;
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-  display: inline-block;
-  padding: 0.3rem 0.6rem;
-  background-color: rgba(0, 255, 65, 0.05);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 255, 65, 0.1);
-}
-
-.sec-tool-news-title {
-  color: #00ff41;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
-  line-height: 1.4;
-}
-
-.sec-tool-news-description {
-  color: #0a8030;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.sec-tool-news-link {
-  color: #00ff41;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.2s ease;
-  border-bottom: 1px dotted #0a8030;
-  align-self: flex-start;
-  margin-top: auto;
-  padding: 0.5rem 0;
-}
-
-.sec-tool-news-link:hover {
-  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
-  border-bottom-color: #00ff41;
-}
-
-.sec-tool-news-link::after {
-  content: "→";
-  margin-left: 0.5rem;
-  transition: transform 0.2s ease;
-}
-
-.sec-tool-news-link:hover::after {
-  transform: translateX(5px);
-}
-
-.sec-tool-centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
 }
 
 @media (max-width: 768px) {
@@ -1305,10 +1093,6 @@ textarea.sec-tool-input {
     grid-template-columns: 1fr;
   }
 
-  .security-news {
-    grid-template-columns: 1fr;
-  }
-
   .sec-tool-scan-summary {
     flex-direction: column;
     align-items: flex-start;
@@ -1326,14 +1110,6 @@ textarea.sec-tool-input {
   .sec-tool-status-icon {
     margin-right: 0;
     margin-bottom: 0.5rem;
-  }
-
-  .sec-tool-news-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sec-tool-news-title {
-    font-size: 1.2rem;
   }
 }
 
