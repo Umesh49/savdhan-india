@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { quizCategories } from "./quizData_Shuffler";
-import { FaShieldAlt, FaArrowRight } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import "./CyberAwarenessQuiz.css";
 
 function QuizCategorySelector() {
@@ -54,9 +54,6 @@ function QuizCategorySelector() {
         <div className="quiz-savdhan-container">
           <div className="quiz-savdhan-card">
             <div className="quiz-savdhan-header">
-              <div className="quiz-savdhan-icon-wrapper">
-                <FaShieldAlt size={48} className="quiz-savdhan-icon-shield" />
-              </div>
               <h1 className="quiz-savdhan-title">{hackerEffect}</h1>
               <div className="quiz-savdhan-divider"></div>
               <p className="quiz-savdhan-subtitle">SELECT SECURITY PROTOCOL // INITIALIZE DEFENSE SYSTEMS</p>

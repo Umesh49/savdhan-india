@@ -9,7 +9,6 @@ import {
   FaRedo,
   FaTrophy,
   FaShieldAlt,
-  FaLock,
   FaExclamationTriangle,
 } from "react-icons/fa";
 import "./CyberAwarenessQuiz.css";
@@ -273,9 +272,6 @@ function CyberAwarenessQuiz() {
         <div className="quiz-savdhan-container">
           <div className="quiz-savdhan-card">
             <div className="quiz-savdhan-header">
-              <div className="quiz-savdhan-icon-wrapper">
-                <FaLock size={48} className="quiz-savdhan-icon-lock" />
-              </div>
               <h1 className="quiz-savdhan-title">{hackerEffect}</h1>
               <div className="quiz-savdhan-divider"></div>
               <p className="quiz-savdhan-subtitle">
