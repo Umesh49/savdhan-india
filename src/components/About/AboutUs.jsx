@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  FaShieldAlt,
-  FaUsers,
-  FaHandshake,
-  FaLightbulb,
-  FaChartLine,
-  FaGlobe,
-} from "react-icons/fa";
+  ShieldCheck,
+  Users,
+  Briefcase,
+  Lightbulb,
+  TrendingUp,
+  Globe,
+} from "lucide-react";
 import "./AboutUs.css";
 
 export default function AboutUs() {
@@ -142,7 +142,7 @@ export default function AboutUs() {
           <div className="about-mission-vision-grid">
             <div className="about-panel about-mission-panel about-animation-element">
               <div className="about-panel-icon">
-                <FaShieldAlt className="about-icon" />
+                <ShieldCheck className="about-icon" size={32} />
               </div>
               <h3 className="about-panel-heading">Our Mission</h3>
               <p>
@@ -155,7 +155,7 @@ export default function AboutUs() {
 
             <div className="about-panel about-vision-panel about-animation-element">
               <div className="about-panel-icon vision">
-                <FaLightbulb className="about-icon" />
+                <Lightbulb className="about-icon" size={32} />
               </div>
               <h3 className="about-panel-heading">Our Vision</h3>
               <p>
@@ -181,7 +181,7 @@ export default function AboutUs() {
             <div className="about-values-grid">
               <div className="about-value-item">
                 <div className="about-value-icon inclusivity">
-                  <FaUsers className="about-icon" />
+                  <Users className="about-icon" size={24} />
                 </div>
                 <div className="about-value-content">
                   <h3 className="about-value-title">Inclusivity</h3>
@@ -195,7 +195,7 @@ export default function AboutUs() {
 
               <div className="about-value-item">
                 <div className="about-value-icon integrity">
-                  <FaHandshake className="about-icon" />
+                  <Briefcase className="about-icon" size={24} />
                 </div>
                 <div className="about-value-content">
                   <h3 className="about-value-title">Integrity</h3>
@@ -209,7 +209,7 @@ export default function AboutUs() {
 
               <div className="about-value-item">
                 <div className="about-value-icon innovation">
-                  <FaChartLine className="about-icon" />
+                  <TrendingUp className="about-icon" size={24} />
                 </div>
                 <div className="about-value-content">
                   <h3 className="about-value-title">Innovation</h3>
@@ -223,7 +223,7 @@ export default function AboutUs() {
 
               <div className="about-value-item">
                 <div className="about-value-icon empowerment">
-                  <FaGlobe className="about-icon" />
+                  <Globe className="about-icon" size={24} />
                 </div>
                 <div className="about-value-content">
                   <h3 className="about-value-title">Empowerment</h3>
@@ -245,7 +245,7 @@ export default function AboutUs() {
             <h2 className="about-cta-title">Join Our Mission</h2>
             <p className="about-cta-text">
               Help us create a safer digital India by spreading awareness and
-              sharing our resources with your community.
+              sharing our resources with the community.
             </p>
             <div className="about-cta-buttons">
               <a href="/contact" className="about-btn-terminal">

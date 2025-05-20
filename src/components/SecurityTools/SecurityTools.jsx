@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Shield,
   Lock,
@@ -21,15 +22,18 @@ import {
   Activity,
   Users,
   AlertCircle,
-} from "lucide-react"
-import "./SecurityTools.css"
+  X,
+  ChevronRight,
+} from "lucide-react";
+import "./SecurityTools.css";
 
 const toolCategories = [
   {
     id: "password",
     name: "Password Tools",
     icon: <Lock size={24} />,
-    description: "Tools for password management, generation and security assessment",
+    description:
+      "Tools for password management, generation and security assessment",
     color: "#00ffaa",
     tools: [
       {
@@ -58,7 +62,8 @@ const toolCategories = [
       {
         id: "breach-checker",
         name: "Breach Exposure Checker",
-        description: "Check if your email or accounts have been compromised in data breaches",
+        description:
+          "Check if your email or accounts have been compromised in data breaches",
         icon: <AlertTriangle size={18} />,
         path: "/breach-exposure-checker",
       },
@@ -102,7 +107,8 @@ const toolCategories = [
       {
         id: "ip-reputation",
         name: "IP Reputation Lookup",
-        description: "Check if an IP address is associated with malicious activity",
+        description:
+          "Check if an IP address is associated with malicious activity",
         icon: <Shield size={18} />,
         path: "/ip-reputation-lookup",
       },
@@ -170,7 +176,7 @@ const toolCategories = [
       },
     ],
   },
-]
+];
 
 const securityStats = [
   {
@@ -197,116 +203,204 @@ const securityStats = [
     label: "Uptime Reliability",
     icon: <Activity size={24} color="#ff7700" />,
   },
-]
+];
 
 const SecurityTools = () => {
-  const canvasRef = useRef(null)
-  const matrixContainerRef = useRef(null)
-  const [searchQuery, setSearchQuery] = useState("")
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
 
-  const filteredCategories = toolCategories.filter(
-    (category) =>
-      category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      category.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      category.tools.some(
-        (tool) =>
-          tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          tool.description.toLowerCase().includes(searchQuery.toLowerCase()),
-      ),
-  )
+  // Enhanced search function that returns detailed results
+  const performSearch = useCallback(
+    (query) => {
+      if (!query.trim()) {
+        setSearchResults([]);
+        return;
+      }
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const container = matrixContainerRef.current
+      const lowerQuery = query.toLowerCase();
+      const results = [];
 
-    if (!canvas || !container) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    canvas.width = container.offsetWidth
-    canvas.height = container.offsetHeight
-
-    const fontSize = 16
-    let columns = Math.floor(container.offsetWidth / fontSize)
-    let drops = Array(columns).fill(1)
-
-    const drawMatrix = () => {
-      ctx.fillStyle = "rgba(3, 8, 18, 0.05)"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-      ctx.fillStyle = "#00ffaa"
-      ctx.font = `${fontSize}px "Courier New", monospace`
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = String.fromCharCode(33 + Math.floor(Math.random() * (126 - 33)))
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize)
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0
+      // Search in categories
+      toolCategories.forEach((category) => {
+        if (
+          category.name.toLowerCase().includes(lowerQuery) ||
+          category.description.toLowerCase().includes(lowerQuery)
+        ) {
+          results.push({
+            type: "category",
+            id: category.id,
+            name: category.name,
+            description: category.description,
+            icon: category.icon,
+            color: category.color,
+            relevance: category.name.toLowerCase().includes(lowerQuery) ? 2 : 1,
+          });
         }
 
-        drops[i]++
+        // Search in tools
+        category.tools.forEach((tool) => {
+          if (
+            tool.name.toLowerCase().includes(lowerQuery) ||
+            tool.description.toLowerCase().includes(lowerQuery)
+          ) {
+            results.push({
+              type: "tool",
+              id: tool.id,
+              name: tool.name,
+              description: tool.description,
+              icon: tool.icon,
+              path: tool.path,
+              categoryName: category.name,
+              categoryId: category.id,
+              color: category.color,
+              relevance: tool.name.toLowerCase().includes(lowerQuery) ? 2 : 1,
+            });
+          }
+        });
+      });
+
+      // Sort by relevance
+      results.sort((a, b) => b.relevance - a.relevance);
+      setSearchResults(results);
+    },
+    [setSearchResults]
+  );
+
+  useEffect(() => {
+    if (searchQuery) {
+      setIsSearching(true);
+      const debounceTimer = setTimeout(() => {
+        performSearch(searchQuery);
+        setIsSearching(false);
+      }, 300);
+
+      return () => clearTimeout(debounceTimer);
+    } else {
+      setSearchResults([]);
+      setIsSearching(false);
+    }
+  }, [searchQuery, performSearch]);
+
+  const handleToolClick = useCallback(
+    (e, path) => {
+      e.preventDefault();
+      e.stopPropagation();
+      navigate(path);
+    },
+    [navigate]
+  );
+
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery("");
+    setSearchResults([]);
+  }, []);
+
+  const handleSearchChange = useCallback((e) => {
+    setSearchQuery(e.target.value);
+  }, []);
+
+  const handleSearchFocus = useCallback(() => {
+    setSearchFocused(true);
+  }, []);
+
+  const handleSearchBlur = useCallback(() => {
+    // Delay to allow click on search results
+    setTimeout(() => {
+      setSearchFocused(false);
+    }, 200);
+  }, []);
+
+  const handleSearchResultClick = useCallback(
+    (e, result) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (result.type === "tool") {
+        navigate(result.path);
+      } else {
+        // Scroll to category
+        const categoryElement = document.getElementById(
+          `category-${result.id}`
+        );
+        if (categoryElement) {
+          categoryElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          // Highlight the category briefly
+          categoryElement.classList.add("sec-tm-highlight-category");
+          setTimeout(() => {
+            categoryElement.classList.remove("sec-tm-highlight-category");
+          }, 2000);
+        }
       }
-    }
+      setSearchQuery("");
+      setSearchResults([]);
+    },
+    [navigate]
+  );
 
-    let animationFrameId
+  // Function to highlight matching text
+  const highlightMatch = (text, query) => {
+    if (!query.trim()) return text;
 
-    const animate = () => {
-      drawMatrix()
-      animationFrameId = requestAnimationFrame(animate)
-    }
+    const parts = text.split(new RegExp(`(${query})`, "gi"));
+    return parts.map((part, index) =>
+      part.toLowerCase() === query.toLowerCase() ? (
+        <span key={index} className="sec-tm-highlight">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
 
-    animate()
-
-    const handleResize = () => {
-      canvas.width = container.offsetWidth
-      canvas.height = container.offsetHeight
-      columns = Math.floor(container.offsetWidth / fontSize)
-      drops = Array(columns).fill(1)
-    }
-
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [])
+  const filteredCategories = searchQuery
+    ? toolCategories.filter(
+        (category) =>
+          category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          category.description
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          category.tools.some(
+            (tool) =>
+              tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              tool.description.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+      )
+    : toolCategories;
 
   const adjustColorBrightness = (hex, percent) => {
-    let r = Number.parseInt(hex.substring(1, 3), 16)
-    let g = Number.parseInt(hex.substring(3, 5), 16)
-    let b = Number.parseInt(hex.substring(5, 7), 16)
+    let r = Number.parseInt(hex.substring(1, 3), 16);
+    let g = Number.parseInt(hex.substring(3, 5), 16);
+    let b = Number.parseInt(hex.substring(5, 7), 16);
 
-    r = Math.min(255, Math.round((r * (100 + percent)) / 100))
-    g = Math.min(255, Math.round((g * (100 + percent)) / 100))
-    b = Math.min(255, Math.round((b * (100 + percent)) / 100))
+    r = Math.min(255, Math.round((r * (100 + percent)) / 100));
+    g = Math.min(255, Math.round((g * (100 + percent)) / 100));
+    b = Math.min(255, Math.round((b * (100 + percent)) / 100));
 
-    const RR = r.toString(16).padStart(2, "0")
-    const GG = g.toString(16).padStart(2, "0")
-    const BB = b.toString(16).padStart(2, "0")
+    const RR = r.toString(16).padStart(2, "0");
+    const GG = g.toString(16).padStart(2, "0");
+    const BB = b.toString(16).padStart(2, "0");
 
-    return `#${RR}${GG}${BB}`
-  }
+    return `#${RR}${GG}${BB}`;
+  };
 
   const getCategoryGradientStyle = (color) => {
     return {
-      background: `linear-gradient(135deg, ${color} 0%, ${adjustColorBrightness(color, -30)} 100%)`,
-    }
-  }
-
-  const handleToolClick = (toolId, path) => {
-    console.log(`Tool clicked: ${toolId}, navigating to: ${path}`)
-    window.location.href = path
-  }
+      background: `linear-gradient(135deg, ${color} 0%, ${adjustColorBrightness(
+        color,
+        -30
+      )} 100%)`,
+    };
+  };
 
   return (
     <div className="sec-tm-container">
-      <div className="sec-tm-matrix-background" ref={matrixContainerRef}>
-        <canvas ref={canvasRef}></canvas>
-      </div>
-
       <div className="sec-tm-content">
         <section className="sec-tm-header">
           <h1 className="sec-tm-title">
@@ -314,14 +408,22 @@ const SecurityTools = () => {
             Cybersecurity Portal
           </h1>
           <p className="sec-tm-subtitle">
-            Access our interactive security tools to enhance your online security and privacy in the digital age.
+            Access our interactive security tools to enhance your online
+            security and privacy in the digital age.
           </p>
         </section>
 
-        <section className="sec-tm-search-section">
+        <section
+          className="sec-tm-search-section"
+          aria-label="Search security tools"
+        >
           <div className="sec-tm-search-container">
-            <div className="sec-tm-search-input-group">
-              <span className="sec-tm-search-icon">
+            <div
+              className={`sec-tm-search-input-group ${
+                searchFocused ? "focused" : ""
+              }`}
+            >
+              <span className="sec-tm-search-icon" aria-hidden="true">
                 <Search size={18} />
               </span>
               <input
@@ -329,28 +431,111 @@ const SecurityTools = () => {
                 className="sec-tm-search-input"
                 placeholder="Search security tools and categories..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleSearchChange}
+                onFocus={handleSearchFocus}
+                onBlur={handleSearchBlur}
                 name="security-search"
                 id="security-search"
+                aria-label="Search security tools and categories"
               />
               {searchQuery && (
                 <button
                   className="sec-tm-search-clear-button"
-                  onClick={() => setSearchQuery("")}
+                  onClick={handleClearSearch}
                   aria-label="Clear search"
                 >
-                  ×
+                  <X size={18} />
                 </button>
               )}
             </div>
+
+            {/* Enhanced search results dropdown */}
+            {searchFocused && searchResults.length > 0 && (
+              <div className="sec-tm-search-results">
+                <div className="sec-tm-search-results-header">
+                  <span>Search Results</span>
+                  <span className="sec-tm-search-results-count">
+                    {searchResults.length} found
+                  </span>
+                </div>
+                <div className="sec-tm-search-results-list">
+                  {searchResults.map((result) => (
+                    <button
+                      key={`${result.type}-${result.id}`}
+                      className="sec-tm-search-result-item"
+                      onClick={(e) => handleSearchResultClick(e, result)}
+                      style={{
+                        "--result-color": result.color,
+                      }}
+                    >
+                      <div
+                        className="sec-tm-search-result-icon"
+                        style={{ color: result.color }}
+                      >
+                        {result.icon}
+                      </div>
+                      <div className="sec-tm-search-result-content">
+                        <div className="sec-tm-search-result-name">
+                          {highlightMatch(result.name, searchQuery)}
+                        </div>
+                        <div className="sec-tm-search-result-description">
+                          {highlightMatch(result.description, searchQuery)}
+                        </div>
+                        {result.type === "tool" && (
+                          <div className="sec-tm-search-result-category">
+                            in {result.categoryName}
+                          </div>
+                        )}
+                      </div>
+                      <ChevronRight
+                        size={16}
+                        className="sec-tm-search-result-arrow"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* No results message */}
+            {searchFocused &&
+              searchQuery &&
+              searchResults.length === 0 &&
+              !isSearching && (
+                <div className="sec-tm-search-results sec-tm-search-no-results">
+                  <div className="sec-tm-search-no-results-content">
+                    <AlertCircle size={24} />
+                    <p>No results found for "{searchQuery}"</p>
+                    <button
+                      className="sec-tm-search-clear-button"
+                      onClick={handleClearSearch}
+                    >
+                      Clear search
+                    </button>
+                  </div>
+                </div>
+              )}
+
+            {/* Loading indicator */}
+            {isSearching && (
+              <div className="sec-tm-search-results sec-tm-search-loading">
+                <div className="sec-tm-search-loading-spinner"></div>
+                <p>Searching...</p>
+              </div>
+            )}
           </div>
         </section>
 
-        <section className="sec-tm-stats-section">
+        <section
+          className="sec-tm-stats-section"
+          aria-label="Security statistics"
+        >
           <div className="sec-tm-stats-container">
             {securityStats.map((stat) => (
-              <div key={stat.id} className="sec-tm-stat-item">
-                <div className="sec-tm-stat-icon">{stat.icon}</div>
+              <div key={stat.id} className="sec-tm-stat-item" tabIndex="0">
+                <div className="sec-tm-stat-icon" aria-hidden="true">
+                  {stat.icon}
+                </div>
                 <div className="sec-tm-stat-value">{stat.value}</div>
                 <div className="sec-tm-stat-label">{stat.label}</div>
               </div>
@@ -358,53 +543,80 @@ const SecurityTools = () => {
           </div>
         </section>
 
-        <section className="sec-tm-categories-grid">
-          {filteredCategories.map((category) => (
-            <div key={category.id} className="sec-tm-category-card">
+        <section
+          className="sec-tm-categories-section"
+          aria-label="Security tool categories"
+        >
+          <div className="sec-tm-categories-grid">
+            {filteredCategories.map((category) => (
               <div
-                className="sec-tm-category-card-inner"
-                style={getCategoryGradientStyle(category.color)}
-                // Removed onClick from category card inner
+                key={category.id}
+                id={`category-${category.id}`}
+                className="sec-tm-category-card"
               >
-                <div className="sec-tm-category-card-content">
-                  <div>
-                    <div className="sec-tm-category-icon-container">
-                      <div className="sec-tm-category-icon" style={{ backgroundColor: `${category.color}33` }}>
-                        {category.icon}
-                      </div>
-                      <h3 className="sec-tm-category-title">{category.name}</h3>
-                    </div>
-                    <p className="sec-tm-category-description">{category.description}</p>
-                  </div>
-
-                  <div className="sec-tm-card-tools">
-                    {category.tools.map((tool) => (
-                      <div
-                        key={tool.id}
-                        className="sec-tm-tool-item"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleToolClick(tool.id, tool.path)
-                        }}
-                      >
-                        <div className="sec-tm-tool-icon">{tool.icon}</div>
-                        <div className="sec-tm-tool-info">
-                          <div className="sec-tm-tool-name">{tool.name}</div>
-                          <div className="sec-tm-tool-description">{tool.description}</div>
+                <div
+                  className="sec-tm-category-card-inner"
+                  style={getCategoryGradientStyle(category.color)}
+                >
+                  <div className="sec-tm-category-card-content">
+                    <div>
+                      <div className="sec-tm-category-icon-container">
+                        <div
+                          className="sec-tm-category-icon"
+                          style={{ backgroundColor: `${category.color}33` }}
+                          aria-hidden="true"
+                        >
+                          {category.icon}
                         </div>
-                        <ExternalLink size={14} className="sec-tm-tool-arrow" />
+                        <h3 className="sec-tm-category-title">
+                          {category.name}
+                        </h3>
                       </div>
-                    ))}
+                      <p className="sec-tm-category-description">
+                        {category.description}
+                      </p>
+                    </div>
+
+                    <div className="sec-tm-card-tools">
+                      {category.tools.map((tool) => (
+                        <button
+                          key={tool.id}
+                          className="sec-tm-tool-item"
+                          onClick={(e) => handleToolClick(e, tool.path)}
+                          aria-label={`Open ${tool.name}`}
+                        >
+                          <div className="sec-tm-tool-icon" aria-hidden="true">
+                            {tool.icon}
+                          </div>
+                          <div className="sec-tm-tool-info">
+                            <div className="sec-tm-tool-name">{tool.name}</div>
+                            <div className="sec-tm-tool-description">
+                              {tool.description}
+                            </div>
+                          </div>
+                          <ExternalLink
+                            size={14}
+                            className="sec-tm-tool-arrow"
+                            aria-hidden="true"
+                          />
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
 
-        <section className="sec-tm-quick-access-section">
+        <section
+          className="sec-tm-quick-access-section"
+          aria-label="Quick access to popular tools"
+        >
           <div className="sec-tm-section-container">
-            <h2 className="sec-tm-section-title">Quick Access to Popular Tools</h2>
+            <h2 className="sec-tm-section-title">
+              Quick Access to Popular Tools
+            </h2>
             <div className="sec-tm-quick-access-grid">
               {[
                 {
@@ -463,25 +675,28 @@ const SecurityTools = () => {
                   color: "#33ffbb",
                   path: "/privacy-tester",
                 },
-              ].map((item, index) => (
-                <div
-                  key={index}
+              ].map((item) => (
+                <button
+                  key={item.id}
                   className="sec-tm-quick-access-button"
-                  onClick={() => handleToolClick(item.id, item.path)}
+                  onClick={(e) => handleToolClick(e, item.path)}
                   style={{
                     "--button-color": item.color,
                   }}
+                  aria-label={`Open ${item.text}`}
                 >
-                  <span className="sec-tm-quick-access-icon">{item.icon}</span>
+                  <span className="sec-tm-quick-access-icon" aria-hidden="true">
+                    {item.icon}
+                  </span>
                   <span className="sec-tm-quick-access-text">{item.text}</span>
-                </div>
+                </button>
               ))}
             </div>
           </div>
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SecurityTools
+export default SecurityTools;
