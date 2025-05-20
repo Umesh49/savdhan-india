@@ -3,30 +3,30 @@ import {
   FaShieldAlt,
   FaBook,
   FaClipboardList,
-  FaMapMarkedAlt,
   FaTools,
   FaUserSecret,
-  FaLock,
   FaSatelliteDish,
   FaVirus,
   FaNetworkWired,
   FaExclamationTriangle,
   FaServer,
+  FaLaptopCode,
+  FaNewspaper,
+  FaQuestion,
+  FaCommentAlt,
+  FaChartBar
 } from "react-icons/fa";
 import {
   RiAlarmWarningLine,
-  RiShieldKeyholeLine,
-  RiCodeSSlashLine
-} from "react-icons/ri";
+  RiShieldKeyholeLine} from "react-icons/ri";
 import { GiBiohazard, GiFirewall } from "react-icons/gi";
 import { SiHackaday } from "react-icons/si";
 import { TbBinaryTree } from "react-icons/tb";
-import { MdOutlineRadar } from "react-icons/md";
-import MatrixBackground from "../common/MatrixBackground.jsx";
-import CyberSpinner from "../common/CyberSpinner/CyberSpinner.jsx";
+import MatrixBackground from "../common/MatrixBackground";
+import CyberSpinner from "../common/CyberSpinner/CyberSpinner";
 import "./Home.css";
 
-export default function HomePage () {
+const Home = () => {
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState(null);
   const [threatLevel, setThreatLevel] = useState("Elevated");
@@ -34,7 +34,6 @@ export default function HomePage () {
   const [isVisible, setIsVisible] = useState({});
   const sectionsRef = useRef({});
 
-  // Observer for scroll animations
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
@@ -54,14 +53,20 @@ export default function HomePage () {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     
-    // Register all sections for observation
     const sections = [
-      'hero-section',
-      'threat-dashboard',
-      'stats-section',
-      'services-section',
-      'cta-section',
-      'terminal-section'
+      'home-hero-section',
+      'home-threat-dashboard',
+      'home-stats-section',
+      'home-services-section',
+      'home-checklist-section',
+      'home-laws-section',
+      'home-tools-section',
+      'home-quiz-section',
+      'home-tutorials-section',
+      'home-chatbot-section',
+      'home-news-section',
+      'home-cta-section',
+      'home-terminal-section'
     ];
     
     sections.forEach(section => {
@@ -81,10 +86,8 @@ export default function HomePage () {
   }, [loading]);
 
   useEffect(() => {
-    // Simulate loading data with Promise for better error handling
     const fetchData = async () => {
       try {
-        // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 1200));
 
         const mockStats = {
@@ -110,25 +113,21 @@ export default function HomePage () {
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
-        // Implement fallback data if needed
       }
     };
 
     fetchData();
 
-    // Set up interval for "real-time" updates
     const threatUpdateInterval = setInterval(() => {
       if (!loading) {
-        // Update threat level randomly to simulate changing conditions
         const levels = ["Low", "Moderate", "Elevated", "High", "Severe"];
         const newLevel = levels[Math.floor(Math.random() * levels.length)];
         setThreatLevel(newLevel);
 
-        // Update one random stat to simulate live data
         if (stats && threatData) {
           const newThreatData = { ...threatData };
           const keys = Object.keys(newThreatData);
-          const randomKey = keys[Math.floor(Math.random() * (keys.length - 1))]; // Exclude lastUpdated
+          const randomKey = keys[Math.floor(Math.random() * (keys.length - 1))];
           newThreatData[randomKey] = Math.max(
             0,
             newThreatData[randomKey] + Math.floor(Math.random() * 7) - 3
@@ -149,104 +148,226 @@ export default function HomePage () {
       id: 1,
       title: "Cyber Laws",
       description: "Understand Indian IT Act and cybercrime legal framework",
-      icon: <FaBook className="feature-icon" />,
-      link: "/laws",
+      icon: <FaBook className="home-feature-icon" />,
+      link: "/indian-laws",
       color: "blue",
     },
     {
       id: 2,
       title: "Incident Response",
       description: "Step-by-step procedures for handling security incidents",
-      icon: <FaExclamationTriangle className="feature-icon" />,
-      link: "/incident-response",
+      icon: <FaExclamationTriangle className="home-feature-icon" />,
+      link: "/complaint-guide",
       color: "red",
     },
     {
       id: 3,
       title: "Security Toolkit",
       description: "Open-source tools for vulnerability assessment",
-      icon: <FaTools className="feature-icon" />,
+      icon: <FaTools className="home-feature-icon" />,
       link: "/security-tools",
       color: "green",
     },
     {
       id: 4,
-      title: "Vulnerability DB",
-      description: "Searchable repository of known CVEs and exploits",
-      icon: <GiBiohazard className="feature-icon" />,
-      link: "/vulnerabilities",
-      color: "orange",
+      title: "Security Checklist",
+      description: "Essential cybersecurity practices for personal and corporate security",
+      icon: <FaClipboardList className="home-feature-icon" />,
+      link: "/security-checklist",
+      color: "purple",
     },
     {
       id: 5,
-      title: "Penetration Testing",
-      description: "Ethical hacking methodologies and best practices",
-      icon: <RiCodeSSlashLine className="feature-icon" />,
-      link: "/pentest-guide",
-      color: "cyan",
+      title: "Security News",
+      description: "Latest cybersecurity news, breaches and vulnerabilities",
+      icon: <FaSatelliteDish className="home-feature-icon" />,
+      link: "/security-news",
+      color: "teal",
     },
     {
       id: 6,
-      title: "Encryption Tools",
-      description: "Guides to implement strong cryptographic solutions",
-      icon: <FaLock className="feature-icon" />,
-      link: "/encryption",
-      color: "yellow",
+      title: "Cyber Quiz",
+      description: "Test your cybersecurity knowledge and learn through challenges",
+      icon: <TbBinaryTree className="home-feature-icon" />,
+      link: "/quiz",
+      color: "indigo",
     },
     {
       id: 7,
-      title: "SOC Training",
-      description: "Security Operations Center analyst training materials",
-      icon: <FaNetworkWired className="feature-icon" />,
-      link: "/soc-training",
-      color: "magenta",
+      title: "Security Assistant",
+      description: "AI-powered cybersecurity chatbot for instant guidance",
+      icon: <FaUserSecret className="home-feature-icon" />,
+      link: "/chatbot",
+      color: "gray",
+    },
+    {
+      id: 8,
+      title: "FAQ",
+      description: "Answers to commonly asked cybersecurity questions",
+      icon: <RiAlarmWarningLine className="home-feature-icon" />,
+      link: "/faq",
+      color: "brown",
+    },
+    {
+      id: 9,
+      title: "Case Studies",
+      description: "Explore real-world cybersecurity incidents and responses",
+      icon: <FaLaptopCode className="home-feature-icon" />,
+      link: "/case-study",
+      color: "cyan",
     },
   ];
 
   const renderThreatLevelIndicator = () => {
-    const levelColors = {
-      Low: "green",
-      Moderate: "blue",
-      Elevated: "orange",
-      High: "red",
-      Severe: "purple",
-    };
+    let levelColor = "blue";
+    if (threatLevel === "Low") levelColor = "green";
+    else if (threatLevel === "Moderate") levelColor = "blue";
+    else if (threatLevel === "Elevated") levelColor = "orange";
+    else if (threatLevel === "High") levelColor = "red";
+    else if (threatLevel === "Severe") levelColor = "purple";
+
+    let levelIcon = <FaShieldAlt />;
+    if (threatLevel === "Low") levelIcon = <FaShieldAlt />;
+    else if (threatLevel === "Moderate") levelIcon = <RiShieldKeyholeLine />;
+    else if (threatLevel === "Elevated") levelIcon = <FaExclamationTriangle />;
+    else if (threatLevel === "High") levelIcon = <GiBiohazard />;
+    else if (threatLevel === "Severe") levelIcon = <FaVirus />;
 
     return (
-      <div className={`threat-level-indicator ${levelColors[threatLevel]}`}>
-        <div className="threat-level-content">
-          <div className="threat-level-icon">
-            <RiShieldKeyholeLine />
-          </div>
-          <div className="threat-level-text">
-            <p className="threat-level-label">Current Threat Level</p>
-            <h3 className="threat-level-value">{threatLevel}</h3>
+      <div className={`home-threat-level-indicator ${levelColor}`}>
+        <div className="home-threat-level-content">
+          <div className="home-threat-level-icon">{levelIcon}</div>
+          <div className="home-threat-level-text">
+            <p className="home-threat-level-label">Current Threat Level</p>
+            <h3 className="home-threat-level-value">{threatLevel}</h3>
           </div>
         </div>
-        <div className="threat-level-pulse"></div>
+        <div className="home-threat-level-pulse"></div>
       </div>
     );
   };
 
   const terminalLines = [
-    { type: 'prompt', content: 'sudo initiate --security-scan' },
-    { type: 'output', content: 'Scanning network for vulnerabilities...' },
-    { type: 'output', content: `Found ${stats?.vulnerabilitiesDetected || '??'} potential vulnerabilities.` },
-    { type: 'output', content: `Current threat level: ${threatLevel.toUpperCase()}` },
-    { type: 'output', content: 'Tracking malicious IP addresses...' },
-    { type: 'output', content: 'Firewall rules updated. Deploying countermeasures.' },
-    { type: 'prompt', content: '' } // Empty prompt for cursor
+    { id: 1, type: "prompt", content: "$ system_scan --target=network --level=deep" },
+    { id: 2, type: "output", content: "Initializing scan components..." },
+    { id: 3, type: "output", content: "Checking for anomalies in network traffic patterns" },
+    { id: 4, type: "output", content: "Analyzing packet headers for malicious signatures" },
+    { id: 5, type: "output", content: "Alert: Suspicious connection attempt detected from 192.168.1.35" },
+    { id: 6, type: "output", content: "Blocking origin IP and logging activity details" },
+    { id: 7, type: "output", content: "Scan complete. 1 critical issue detected. Report available at /var/log/security/" },
+    { id: 8, type: "prompt", content: "$ deploy_countermeasures --auto" },
+    { id: 9, type: "output", content: "Deploying reactive protection protocols..." },
+    { id: 10, type: "output", content: "Firewall rules updated. System secured." },
+  ];
+
+  const securityChecklistItems = [
+    {
+      title: "Use Strong Passwords",
+      description: "Create unique passwords with at least 12 characters including numbers, symbols, and mixed case."
+    },
+    {
+      title: "Enable Two-Factor Authentication",
+      description: "Add an extra layer of security by enabling 2FA on all critical accounts."
+    },
+    {
+      title: "Keep Software Updated",
+      description: "Regularly update operating systems and applications to patch security vulnerabilities."
+    }
+  ];
+
+  const indianLaws = [
+    {
+      title: "Information Technology Act, 2000",
+      description: "Legal framework for electronic governance and cybercrime prevention."
+    },
+    {
+      title: "IT Amendment Act, 2008",
+      description: "Strengthens the IT Act with provisions for data protection and cybercrime."
+    },
+    {
+      title: "CERT-In Guidelines",
+      description: "Mandatory reporting requirements for cyber security incidents."
+    }
+  ];
+
+  const securityTools = [
+    {
+      title: "Network Vulnerability Scanner",
+      description: "Identify vulnerabilities in your network infrastructure."
+    },
+    {
+      title: "Password Manager",
+      description: "Securely store and generate strong passwords for all your accounts."
+    },
+    {
+      title: "Intrusion Detection System",
+      description: "Monitor network traffic for suspicious activity and policy violations."
+    }
+  ];
+
+  const quizCategories = [
+    {
+      title: "Network Security",
+      questions: 15,
+      difficulty: "Intermediate"
+    },
+    {
+      title: "Social Engineering",
+      questions: 10,
+      difficulty: "Beginner"
+    },
+    {
+      title: "Cryptography",
+      questions: 20,
+      difficulty: "Advanced"
+    }
+  ];
+
+  const tutorials = [
+    {
+      title: "Secure Your Home Network",
+      duration: "25 mins",
+      level: "Beginner"
+    },
+    {
+      title: "Identify Phishing Attempts",
+      duration: "15 mins",
+      level: "Beginner"
+    },
+    {
+      title: "Setup a Personal VPN",
+      duration: "40 mins",
+      level: "Intermediate"
+    }
+  ];
+
+  const securityNews = [
+    {
+      title: "Major Bank Suffers Data Breach",
+      date: "2023-05-15",
+      source: "Cyber Security Times"
+    },
+    {
+      title: "New Ransomware Variant Spreading Rapidly",
+      date: "2023-05-10",
+      source: "Threat Intelligence Weekly"
+    },
+    {
+      title: "Critical Vulnerability Found in Popular Software",
+      date: "2023-05-05",
+      source: "Security Alerts Daily"
+    }
   ];
 
   if (loading) {
     return (
-      <div className="loading-container">
+      <div className="home-loading-container">
         <CyberSpinner />
-        <p className="loading-text">Establishing secure connection...</p>
-        <div className="loading-progress">
-          <div className="loading-bar"></div>
+        <p className="home-loading-text">Establishing secure connection...</p>
+        <div className="home-loading-progress">
+          <div className="home-loading-bar"></div>
         </div>
-        <div className="loading-details">
+        <div className="home-loading-details">
           <p>Verifying user credentials...</p>
           <p>Scanning network perimeter...</p>
           <p>Encrypting connection...</p>
@@ -257,266 +378,352 @@ export default function HomePage () {
 
   return (
     <div className="home-container">
-      <div className="matrix-background">
+      <div className="home-matrix-background">
         <MatrixBackground speed={1.2} density={1.2} colorVariant="cyber" />
       </div>
       
-      <div className="cyber-grid-overlay"></div>
+      <div className="home-cyber-grid-overlay"></div>
 
-      {/* Hero Section */}
-      <section id="hero-section" className={`hero-section ${isVisible['hero-section'] ? 'visible' : ''}`}>
-        <div className="hero-content">
-          <div className="logo-container">
-            <SiHackaday className="logo-icon pulse" />
-            <div className="logo-glow"></div>
+      <section id="home-hero-section" className={`home-hero-section ${isVisible['home-hero-section'] ? 'visible' : ''}`}>
+        <div className="home-hero-content">
+          <div className="home-logo-container">
+            <SiHackaday className="home-logo-icon home-pulse" />
+            <div className="home-logo-glow"></div>
           </div>
-          <h1 className="hero-title neon-text glitch" data-text="ZeroTrace">ZeroTrace</h1>
-          <p className="hero-subtitle">
-            <span className="typing-text">Cybersecurity command center for threat intelligence and digital defense</span>
+          <h1 className="home-hero-title home-neon-text home-glitch" data-text="ZeroTrace">ZeroTrace</h1>
+          <p className="home-hero-subtitle">
+            <span className="home-typing-text">Cybersecurity command center for threat intelligence and digital defense</span>
           </p>
-          <div className="cyber-line"></div>
-          <div className="hero-buttons">
-            <a to="/incident-response" className="cyber-button primary">
+          <div className="home-cyber-line"></div>
+          <div className="home-hero-buttons">
+            <a href="/complaint-guide" className="home-cyber-button home-primary">
               <FaExclamationTriangle /> <span>Report Incident</span>
-              <div className="button-glow"></div>
+              <div className="home-button-glow"></div>
             </a>
-            <a to="/threat-intelligence" className="cyber-button secondary">
+            <a href="/threat-stats" className="home-cyber-button home-secondary">
               <FaSatelliteDish /> <span>Threat Intelligence</span>
-              <div className="button-glow"></div>
+              <div className="home-button-glow"></div>
             </a>
           </div>
         </div>
-        <div className="hero-decoration">
-          <div className="cyber-circle"></div>
-          <div className="cyber-hexagon"></div>
+        <div className="home-hero-decoration">
+          <div className="home-cyber-circle"></div>
+          <div className="home-cyber-hexagon"></div>
         </div>
       </section>
 
-      {/* Threat Dashboard */}
-      <section id="threat-dashboard" className={`threat-dashboard ${isVisible['threat-dashboard'] ? 'visible' : ''}`}>
-        <div className="dashboard-header">
-          <div className="dashboard-title-container">
-            <GiFirewall className="dashboard-icon" />
-            <h2 className="dashboard-title">Threat Intelligence Dashboard</h2>
+      <section id="home-threat-dashboard" className={`home-threat-dashboard ${isVisible['home-threat-dashboard'] ? 'visible' : ''}`}>
+        <div className="home-dashboard-header">
+          <div className="home-dashboard-title-container">
+            <FaNetworkWired className="home-dashboard-icon" />
+            <h2 className="home-dashboard-title">Threat Intelligence Dashboard</h2>
           </div>
-          <div className="dashboard-status">
-            <div className="status-indicator active"></div>
-            <p className="dashboard-update">Last updated: {threatData.lastUpdated}</p>
+          <div className="home-dashboard-status">
+            <div className="home-status-indicator home-active"></div>
+            <p className="home-dashboard-update">
+              Last updated: {threatData ? threatData.lastUpdated : "Loading..."}
+            </p>
           </div>
         </div>
 
-        <div className="dashboard-grid">
+        <div className="home-dashboard-grid">
           {renderThreatLevelIndicator()}
 
-          <div className="threat-metrics">
-            <div className="metric-item">
-              <FaVirus className="metric-icon" />
-              <div className="metric-content">
-                <span className="metric-value counter">{threatData.malwareDetections}</span>
-                <span className="metric-label">Malware Detections</span>
+          <div className="home-threat-metrics">
+            <div className="home-metric-item">
+              <FaVirus className="home-metric-icon" />
+              <div className="home-metric-content">
+                <span className="home-metric-value">{threatData ? threatData.malwareDetections.toLocaleString() : "-"}</span>
+                <span className="home-metric-label">Malware Detections</span>
               </div>
-              <div className="metric-bar">
-                <div className="metric-fill" style={{ width: `${Math.min(100, (threatData.malwareDetections / 1000) * 100)}%` }}></div>
-              </div>
-            </div>
-
-            <div className="metric-item">
-              <FaUserSecret className="metric-icon" />
-              <div className="metric-content">
-                <span className="metric-value counter">{threatData.phishingAttempts}</span>
-                <span className="metric-label">Phishing Attempts</span>
-              </div>
-              <div className="metric-bar">
-                <div className="metric-fill" style={{ width: `${Math.min(100, (threatData.phishingAttempts / 1000) * 100)}%` }}></div>
+              <div className="home-metric-bar">
+                <div className="home-metric-fill" style={{ width: "65%" }}></div>
               </div>
             </div>
 
-            <div className="metric-item">
-              <FaNetworkWired className="metric-icon" />
-              <div className="metric-content">
-                <span className="metric-value counter">{threatData.ddosAttacks}</span>
-                <span className="metric-label">DDoS Attacks</span>
+            <div className="home-metric-item">
+              <FaUserSecret className="home-metric-icon" />
+              <div className="home-metric-content">
+                <span className="home-metric-value">{threatData ? threatData.phishingAttempts.toLocaleString() : "-"}</span>
+                <span className="home-metric-label">Phishing Attempts</span>
               </div>
-              <div className="metric-bar">
-                <div className="metric-fill" style={{ width: `${Math.min(100, (threatData.ddosAttacks / 100) * 100)}%` }}></div>
+              <div className="home-metric-bar">
+                <div className="home-metric-fill" style={{ width: "78%" }}></div>
               </div>
             </div>
 
-            <div className="metric-item alert">
-              <GiBiohazard className="metric-icon" />
-              <div className="metric-content">
-                <span className="metric-value counter">{threatData.zerodays}</span>
-                <span className="metric-label">Zero-day Exploits</span>
+            <div className="home-metric-item">
+              <GiFirewall className="home-metric-icon" />
+              <div className="home-metric-content">
+                <span className="home-metric-value">{threatData ? threatData.ddosAttacks.toLocaleString() : "-"}</span>
+                <span className="home-metric-label">DDoS Attacks</span>
               </div>
-              <div className="metric-bar">
-                <div className="metric-fill" style={{ width: `${Math.min(100, (threatData.zerodays / 5) * 100)}%` }}></div>
+              <div className="home-metric-bar">
+                <div className="home-metric-fill" style={{ width: "42%" }}></div>
+              </div>
+            </div>
+
+            <div className="home-metric-item home-alert">
+              <RiAlarmWarningLine className="home-metric-icon" />
+              <div className="home-metric-content">
+                <span className="home-metric-value">{threatData ? threatData.zerodays.toLocaleString() : "-"}</span>
+                <span className="home-metric-label">Zero-day Exploits</span>
+              </div>
+              <div className="home-metric-bar">
+                <div className="home-metric-fill" style={{ width: "25%" }}></div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div className="dashboard-radar">
-          <div className="radar-container">
-            <div className="radar-sweep"></div>
-            <div className="radar-dot" style={{ top: '30%', left: '40%' }}></div>
-            <div className="radar-dot" style={{ top: '60%', left: '70%' }}></div>
-            <div className="radar-dot" style={{ top: '20%', left: '80%' }}></div>
-            <div className="radar-dot large" style={{ top: '75%', left: '25%' }}></div>
-          </div>
-          <div className="radar-stats">
-            <MdOutlineRadar className="radar-icon" />
-            <div className="radar-info">
-              <h4>Threat Detection Radar</h4>
-              <p>Active threats identified: <span className="highlight">{stats.securityAlerts}</span></p>
-            </div>
+
+        <div className="home-dashboard-radar">
+          <div className="home-radar-stats">
+            <a href="/threat-stats" className="home-view-more-button">
+              <span>View Detailed Threat Statistics</span>
+              <FaChartBar />
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section id="stats-section" className={`stats-section ${isVisible['stats-section'] ? 'visible' : ''}`}>
-        <div className="stats-header">
-          <h2 className="stats-title"><FaServer /> Security Metrics</h2>
-          <div className="stats-line"></div>
+      <section id="home-stats-section" className={`home-stats-section ${isVisible['home-stats-section'] ? 'visible' : ''}`}>
+        <div className="home-stats-header">
+          <h2 className="home-stats-title">
+            <FaChartBar /> Cybersecurity Statistics
+          </h2>
+          <div className="home-stats-line"></div>
         </div>
-        
-        <div className="stats-grid">
-          <div className="stat-card cyan">
-            <div className="stat-icon">
-              <RiAlarmWarningLine />
-            </div>
-            <h3 className="stat-number counter">{stats.activeCases}</h3>
-            <p className="stat-label">Active Cases</p>
-            <div className="stat-glow"></div>
-          </div>
 
-          <div className="stat-card green">
-            <div className="stat-icon">
+        <div className="home-stats-grid">
+          <div className="home-stat-card home-cyan">
+            <div className="home-stat-icon">
               <FaClipboardList />
             </div>
-            <h3 className="stat-number counter">{stats.resolvedComplaints}</h3>
-            <p className="stat-label">Resolved Incidents</p>
-            <div className="stat-glow"></div>
+            <div className="home-stat-number home-counter">
+              {stats ? stats.activeCases.toLocaleString() : "-"}
+            </div>
+            <p className="home-stat-label">Active Cases</p>
+            <div className="home-stat-glow"></div>
           </div>
 
-          <div className="stat-card purple">
-            <div className="stat-icon">
-              <FaUserSecret />
+          <div className="home-stat-card home-green">
+            <div className="home-stat-icon">
+              <FaShieldAlt />
             </div>
-            <h3 className="stat-number counter">{stats.ongoingInvestigations}</h3>
-            <p className="stat-label">Active Investigations</p>
-            <div className="stat-glow"></div>
+            <div className="home-stat-number home-counter">
+              {stats ? stats.resolvedComplaints.toLocaleString() : "-"}
+            </div>
+            <p className="home-stat-label">Resolved Complaints</p>
+            <div className="home-stat-glow"></div>
           </div>
 
-          <div className="stat-card red">
-            <div className="stat-icon">
-              <GiBiohazard />
+          <div className="home-stat-card home-purple">
+            <div className="home-stat-icon">
+              <FaServer />
             </div>
-            <h3 className="stat-number counter">{stats.vulnerabilitiesDetected}</h3>
-            <p className="stat-label">Vulnerabilities</p>
-            <div className="stat-glow"></div>
+            <div className="home-stat-number home-counter">
+              {stats ? stats.ongoingInvestigations.toLocaleString() : "-"}
+            </div>
+            <p className="home-stat-label">Ongoing Investigations</p>
+            <div className="home-stat-glow"></div>
+          </div>
+
+          <div className="home-stat-card home-red">
+            <div className="home-stat-icon">
+              <FaExclamationTriangle />
+            </div>
+            <div className="home-stat-number home-counter">
+              {stats ? stats.securityAlerts.toLocaleString() : "-"}
+            </div>
+            <p className="home-stat-label">Security Alerts</p>
+            <div className="home-stat-glow"></div>
           </div>
         </div>
-        
-        <div className="binary-decoration">
-          <TbBinaryTree className="binary-icon" />
+
+        <div className="home-binary-decoration">
+          <FaNetworkWired className="home-binary-icon" />
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services-section" className={`services-section ${isVisible['services-section'] ? 'visible' : ''}`}>
-        <div className="section-header">
-          <h2 className="section-title">Cybersecurity Services</h2>
-          <p className="section-subtitle">
+      <section id="home-services-section" className={`home-services-section ${isVisible['home-services-section'] ? 'visible' : ''}`}>
+        <div className="home-section-header">
+          <h2 className="home-section-title">Cybersecurity Services</h2>
+          <p className="home-section-subtitle">
             Advanced defense tools and resources for digital warfare
           </p>
-          <div className="section-underline"></div>
+          <div className="home-section-underline"></div>
         </div>
 
-        <div className="services-grid">
+        <div className="home-services-grid">
           {services.map((service) => (
             <a
-              to={service.link}
+              href={service.link}
               key={service.id}
-              className={`service-card ${service.color}`}
+              className={`home-service-card home-${service.color}`}
             >
-              <div className={`service-icon-wrapper ${service.color}`}>
+              <div className={`home-service-icon-wrapper home-${service.color}`}>
                 {service.icon}
-                <div className="service-icon-glow"></div>
+                <div className="home-service-icon-glow"></div>
               </div>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-              <div className="service-hover-effect"></div>
+              <h3 className="home-service-title">{service.title}</h3>
+              <p className="home-service-description">{service.description}</p>
+              <div className="home-service-hover-effect"></div>
             </a>
           ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="cta-section" className={`cta-section ${isVisible['cta-section'] ? 'visible' : ''}`}>
-        <div className="cta-decoration">
-          <div className="cta-circuit-left"></div>
-          <div className="cta-circuit-right"></div>
-        </div>
-        
-        <div className="cta-content">
-          <h2 className="cta-title">Secure Your Digital Perimeter</h2>
-          <p className="cta-subtitle">
-            Join India's elite cybersecurity force. Gain access to classified
-            threat intelligence, advanced defensive tools, and training in
-            offensive security techniques.
-          </p>
-          <div className="cta-buttons">
-            <a to="/register" className="cyber-button glow-button">
-              <FaLock /> <span>Create Secure Account</span>
-              <div className="button-glow"></div>
-            </a>
-            <a to="/training" className="cyber-button outline-button">
-              <FaUserSecret /> <span>Access Training Portal</span>
-              <div className="button-glow"></div>
+      <section id="home-laws-section" className={`home-section home-section-alt ${isVisible['home-laws-section'] ? 'visible' : ''}`}>
+        <div className="home-section-container">
+          <div className="home-section-header">
+            <h2 className="home-section-title"><FaBook /> Indian Cyber Laws</h2>
+            <p className="home-section-subtitle">Understanding the legal framework for cybersecurity in India</p>
+            <div className="home-section-underline"></div>
+          </div>
+          
+          <div className="home-cards-grid">
+            {indianLaws.map((law, index) => (
+              <div key={index} className="home-info-card home-info-card-alt">
+                <h3 className="home-info-card-title">{law.title}</h3>
+                <p className="home-info-card-description">{law.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="home-view-more-container">
+            <a href="/indian-laws" className="home-view-more-button home-view-more-button-alt">
+              <span>View All Cyber Laws</span>
+              <FaBook />
             </a>
           </div>
-        </div>
-        
-        <div className="cyber-badge">
-          <div className="badge-icon">
-            <FaShieldAlt />
-          </div>
-          <div className="badge-text">Certified Security</div>
         </div>
       </section>
 
-      {/* Terminal Section */}
-      <section id="terminal-section" className={`terminal-section ${isVisible['terminal-section'] ? 'visible' : ''}`}>
-        <div className="terminal-header">
-          <span className="terminal-dot red"></span>
-          <span className="terminal-dot yellow"></span>
-          <span className="terminal-dot green"></span>
-          <span className="terminal-title">savdhaan@cybersec:~$</span>
+      <section id="home-tools-section" className={`home-section ${isVisible['home-tools-section'] ? 'visible' : ''}`}>
+        <div className="home-section-container">
+          <div className="home-section-header">
+            <h2 className="home-section-title"><FaTools /> Security Tools</h2>
+            <p className="home-section-subtitle">Essential open-source tools for vulnerability assessment and security monitoring</p>
+            <div className="home-section-underline"></div>
+          </div>
+          
+          <div className="home-cards-grid">
+            {securityTools.map((tool, index) => (
+              <div key={index} className="home-info-card home-info-card-tool">
+                <h3 className="home-info-card-title">{tool.title}</h3>
+                <p className="home-info-card-description">{tool.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="home-view-more-container">
+            <a href="/security-tools" className="home-view-more-button">
+              <span>Explore Security Tools</span>
+              <FaTools />
+            </a>
+          </div>
         </div>
-        <div className="terminal-body">
-          {terminalLines.map((line, index) => (
-            <div key={index} className="terminal-line">
-              {line.type === 'prompt' ? (
-                <>
-                  <span className="terminal-prompt">$</span>
-                  <span className="terminal-command">{line.content}</span>
-                  {line.content === '' && <span className="terminal-cursor">_</span>}
-                </>
-              ) : (
-                <span className="terminal-output">{line.content}</span>
-              )}
+      </section>
+
+      <section id="home-quiz-section" className={`home-section home-section-alt ${isVisible['home-quiz-section'] ? 'visible' : ''}`}>
+        <div className="home-section-container">
+          <div className="home-section-header">
+            <h2 className="home-section-title"><FaQuestion /> Cyber Security Quiz</h2>
+            <p className="home-section-subtitle">Test your knowledge and learn about cybersecurity best practices</p>
+            <div className="home-section-underline"></div>
+          </div>
+          
+          <div className="home-cards-grid">
+            {quizCategories.map((category, index) => (
+              <div key={index} className="home-info-card home-info-card-alt home-quiz-card">
+                <h3 className="home-info-card-title">{category.title}</h3>
+                <div className="home-quiz-card-stats">
+                  <span className="home-quiz-stat">Questions: {category.questions}</span>
+                  <span className="home-quiz-stat">Difficulty: {category.difficulty}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="home-view-more-container">
+            <a href="/quiz" className="home-view-more-button home-view-more-button-alt">
+              <span>Take a Quiz</span>
+              <FaQuestion />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="home-chatbot-section" className={`home-section home-section-alt ${isVisible['home-chatbot-section'] ? 'visible' : ''}`}>
+        <div className="home-section-container">
+          <div className="home-section-header">
+            <h2 className="home-section-title"><FaCommentAlt /> Security Assistant</h2>
+            <p className="home-section-subtitle">Get instant answers to your cybersecurity questions with our AI assistant</p>
+            <div className="home-section-underline"></div>
+          </div>
+          
+          <div className="home-chatbot-preview">
+            <div className="home-chatbot-messages">
+              <div className="home-chatbot-message home-chatbot-bot">
+                How can I help with your cybersecurity needs today?
+              </div>
+              <div className="home-chatbot-message home-chatbot-user">
+                How do I check if my account has been compromised?
+              </div>
+              <div className="home-chatbot-message home-chatbot-bot">
+                You can check if your email has been involved in a data breach by visiting haveibeenpwned.com and entering your email address.
+              </div>
             </div>
-          ))}
+            
+            <div className="home-chatbot-prompt">
+              <div className="home-chatbot-input">Ask a cybersecurity question...</div>
+              <div className="home-chatbot-icon">
+                <FaCommentAlt />
+              </div>
+            </div>
+          </div>
+          
+          <div className="home-view-more-container">
+            <a href="/chatbot" className="home-view-more-button home-view-more-button-alt">
+              <span>Talk to Security Assistant</span>
+              <FaCommentAlt />
+            </a>
+          </div>
         </div>
       </section>
-      
-      <div className="corner-decorations">
-        <div className="corner top-left"></div>
-        <div className="corner top-right"></div>
-        <div className="corner bottom-left"></div>
-        <div className="corner bottom-right"></div>
-      </div>
+
+      <section id="home-news-section" className={`home-section ${isVisible['home-news-section'] ? 'visible' : ''}`}>
+        <div className="home-section-container">
+          <div className="home-section-header">
+            <h2 className="home-section-title"><FaNewspaper /> Security News</h2>
+            <p className="home-section-subtitle">Stay updated with the latest cybersecurity news and threat intelligence</p>
+            <div className="home-section-underline"></div>
+          </div>
+          
+          <div className="home-news-grid">
+            {securityNews.map((news, index) => (
+              <div key={index} className="home-news-card">
+                <div className="home-news-date">{news.date}</div>
+                <h3 className="home-news-title">{news.title}</h3>
+                <div className="home-news-source">Source: {news.source}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="home-view-more-container">
+            <a href="/security-news" className="home-view-more-button">
+              <span>Read All Security News</span>
+              <FaNewspaper />
+            </a>
+            <a href="/threat-stats" className="home-view-more-button home-view-more-button-secondary">
+              <span>View Threat Statistics</span>
+              <FaChartBar />
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
-};
+}
+
+export default Home;

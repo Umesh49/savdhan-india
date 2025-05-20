@@ -33,6 +33,7 @@ import SecurityHeadersAudit from "./components/SecurityTools/Tools/SecurityHeade
 import UrlMalwareScanner from "./components/SecurityTools/Tools/UrlMalwareScanner.jsx";
 import ThreatStats from "./components/ThreatStats/ThreatStats.jsx";
 import SecurityNews from "./components/SecurityNews/SecurityNews.jsx";
+import CaseStudies from "./components/CaseStudy/CaseStudy.jsx";
 
 export default function AppRoutes() {
   return (
@@ -55,6 +56,7 @@ export default function AppRoutes() {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/security-news" element={<SecurityNews />} />
         <Route path="/threat-stats" element={<ThreatStats />} />
+        <Route path="/case-study" element={<CaseStudies />} />
         
         {/* Tools */}
         <Route path="/breach-exposure-checker" element={<BreachExposureChecker />} />
