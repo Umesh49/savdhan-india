@@ -309,7 +309,7 @@
   box-shadow: 0 2px 10px rgba(0, 255, 170, 0.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .nav-mobile-header {
     display: flex;
     align-items: center;
