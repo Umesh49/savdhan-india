@@ -438,7 +438,7 @@ const CybersecurityChatbot = () => {
             onClick={resetChat}
             className="chatbot-api-button reset-button"
           >
-            🔄 Reset Chat
+            Reset Chat
           </button>
           <div className="chatbot-api-status">
             {isUsingAI ? "AI Mode: Active ✅" : "AI Mode: Inactive ⚠️"}

@@ -14,11 +14,9 @@ import {
   FaNewspaper,
   FaQuestion,
   FaCommentAlt,
-  FaChartBar
+  FaChartBar,
 } from "react-icons/fa";
-import {
-  RiAlarmWarningLine,
-  RiShieldKeyholeLine} from "react-icons/ri";
+import { RiAlarmWarningLine, RiShieldKeyholeLine } from "react-icons/ri";
 import { GiBiohazard, GiFirewall } from "react-icons/gi";
 import { SiHackaday } from "react-icons/si";
 import { TbBinaryTree } from "react-icons/tb";
@@ -37,39 +35,42 @@ const Home = () => {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: "0px 0px -100px 0px"
+      rootMargin: "0px 0px -100px 0px",
     };
 
     const observerCallback = (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setIsVisible(prev => ({
+          setIsVisible((prev) => ({
             ...prev,
-            [entry.target.id]: true
+            [entry.target.id]: true,
           }));
         }
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
     const sections = [
-      'home-hero-section',
-      'home-threat-dashboard',
-      'home-stats-section',
-      'home-services-section',
-      'home-checklist-section',
-      'home-laws-section',
-      'home-tools-section',
-      'home-quiz-section',
-      'home-tutorials-section',
-      'home-chatbot-section',
-      'home-news-section',
-      'home-cta-section',
-      'home-terminal-section'
+      "home-hero-section",
+      "home-threat-dashboard",
+      "home-stats-section",
+      "home-services-section",
+      "home-checklist-section",
+      "home-laws-section",
+      "home-tools-section",
+      "home-quiz-section",
+      "home-tutorials-section",
+      "home-chatbot-section",
+      "home-news-section",
+      "home-cta-section",
+      "home-terminal-section",
     ];
-    
-    sections.forEach(section => {
+
+    sections.forEach((section) => {
       const element = document.getElementById(section);
       if (element) {
         observer.observe(element);
@@ -78,7 +79,7 @@ const Home = () => {
     });
 
     return () => {
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const element = sectionsRef.current[section];
         if (element) observer.unobserve(element);
       });
@@ -171,7 +172,8 @@ const Home = () => {
     {
       id: 4,
       title: "Security Checklist",
-      description: "Essential cybersecurity practices for personal and corporate security",
+      description:
+        "Essential cybersecurity practices for personal and corporate security",
       icon: <FaClipboardList className="home-feature-icon" />,
       link: "/security-checklist",
       color: "purple",
@@ -187,7 +189,8 @@ const Home = () => {
     {
       id: 6,
       title: "Cyber Quiz",
-      description: "Test your cybersecurity knowledge and learn through challenges",
+      description:
+        "Test your cybersecurity knowledge and learn through challenges",
       icon: <TbBinaryTree className="home-feature-icon" />,
       link: "/quiz",
       color: "indigo",
@@ -248,130 +251,163 @@ const Home = () => {
   };
 
   const terminalLines = [
-    { id: 1, type: "prompt", content: "$ system_scan --target=network --level=deep" },
+    {
+      id: 1,
+      type: "prompt",
+      content: "$ system_scan --target=network --level=deep",
+    },
     { id: 2, type: "output", content: "Initializing scan components..." },
-    { id: 3, type: "output", content: "Checking for anomalies in network traffic patterns" },
-    { id: 4, type: "output", content: "Analyzing packet headers for malicious signatures" },
-    { id: 5, type: "output", content: "Alert: Suspicious connection attempt detected from 192.168.1.35" },
-    { id: 6, type: "output", content: "Blocking origin IP and logging activity details" },
-    { id: 7, type: "output", content: "Scan complete. 1 critical issue detected. Report available at /var/log/security/" },
+    {
+      id: 3,
+      type: "output",
+      content: "Checking for anomalies in network traffic patterns",
+    },
+    {
+      id: 4,
+      type: "output",
+      content: "Analyzing packet headers for malicious signatures",
+    },
+    {
+      id: 5,
+      type: "output",
+      content:
+        "Alert: Suspicious connection attempt detected from 192.168.1.35",
+    },
+    {
+      id: 6,
+      type: "output",
+      content: "Blocking origin IP and logging activity details",
+    },
+    {
+      id: 7,
+      type: "output",
+      content:
+        "Scan complete. 1 critical issue detected. Report available at /var/log/security/",
+    },
     { id: 8, type: "prompt", content: "$ deploy_countermeasures --auto" },
-    { id: 9, type: "output", content: "Deploying reactive protection protocols..." },
-    { id: 10, type: "output", content: "Firewall rules updated. System secured." },
+    {
+      id: 9,
+      type: "output",
+      content: "Deploying reactive protection protocols...",
+    },
+    {
+      id: 10,
+      type: "output",
+      content: "Firewall rules updated. System secured.",
+    },
   ];
 
   const securityChecklistItems = [
     {
       title: "Use Strong Passwords",
-      description: "Create unique passwords with at least 12 characters including numbers, symbols, and mixed case."
+      description:
+        "Create unique passwords with at least 12 characters including numbers, symbols, and mixed case.",
     },
     {
       title: "Enable Two-Factor Authentication",
-      description: "Add an extra layer of security by enabling 2FA on all critical accounts."
+      description:
+        "Add an extra layer of security by enabling 2FA on all critical accounts.",
     },
     {
       title: "Keep Software Updated",
-      description: "Regularly update operating systems and applications to patch security vulnerabilities."
-    }
+      description:
+        "Regularly update operating systems and applications to patch security vulnerabilities.",
+    },
   ];
 
   const indianLaws = [
     {
       title: "Information Technology Act, 2000",
-      description: "Legal framework for electronic governance and cybercrime prevention."
+      description:
+        "Legal framework for electronic governance and cybercrime prevention.",
     },
     {
       title: "IT Amendment Act, 2008",
-      description: "Strengthens the IT Act with provisions for data protection and cybercrime."
+      description:
+        "Strengthens the IT Act with provisions for data protection and cybercrime.",
     },
     {
       title: "CERT-In Guidelines",
-      description: "Mandatory reporting requirements for cyber security incidents."
-    }
+      description:
+        "Mandatory reporting requirements for cyber security incidents.",
+    },
   ];
 
   const securityTools = [
     {
       title: "Network Vulnerability Scanner",
-      description: "Identify vulnerabilities in your network infrastructure."
+      description: "Identify vulnerabilities in your network infrastructure.",
     },
     {
       title: "Password Manager",
-      description: "Securely store and generate strong passwords for all your accounts."
+      description:
+        "Securely store and generate strong passwords for all your accounts.",
     },
     {
       title: "Intrusion Detection System",
-      description: "Monitor network traffic for suspicious activity and policy violations."
-    }
+      description:
+        "Monitor network traffic for suspicious activity and policy violations.",
+    },
   ];
 
   const quizCategories = [
     {
       title: "Network Security",
       questions: 15,
-      difficulty: "Intermediate"
+      difficulty: "Intermediate",
     },
     {
       title: "Social Engineering",
       questions: 10,
-      difficulty: "Beginner"
+      difficulty: "Beginner",
     },
     {
       title: "Cryptography",
       questions: 20,
-      difficulty: "Advanced"
-    }
+      difficulty: "Advanced",
+    },
   ];
 
   const tutorials = [
     {
       title: "Secure Your Home Network",
       duration: "25 mins",
-      level: "Beginner"
+      level: "Beginner",
     },
     {
       title: "Identify Phishing Attempts",
       duration: "15 mins",
-      level: "Beginner"
+      level: "Beginner",
     },
     {
       title: "Setup a Personal VPN",
       duration: "40 mins",
-      level: "Intermediate"
-    }
+      level: "Intermediate",
+    },
   ];
 
   const securityNews = [
     {
       title: "Major Bank Suffers Data Breach",
       date: "2023-05-15",
-      source: "Cyber Security Times"
+      source: "Cyber Security Times",
     },
     {
       title: "New Ransomware Variant Spreading Rapidly",
       date: "2023-05-10",
-      source: "Threat Intelligence Weekly"
+      source: "Threat Intelligence Weekly",
     },
     {
       title: "Critical Vulnerability Found in Popular Software",
       date: "2023-05-05",
-      source: "Security Alerts Daily"
-    }
+      source: "Security Alerts Daily",
+    },
   ];
 
   if (loading) {
     return (
       <div className="home-loading-container">
         <CyberSpinner />
-        <p className="home-loading-text">Establishing secure connection...</p>
-        <div className="home-loading-progress">
-          <div className="home-loading-bar"></div>
-        </div>
-        <div className="home-loading-details">
-          <p>Verifying user credentials...</p>
-          <p>Scanning network perimeter...</p>
-          <p>Encrypting connection...</p>
-        </div>
       </div>
     );
   }
@@ -381,27 +417,46 @@ const Home = () => {
       <div className="home-matrix-background">
         <MatrixBackground speed={1.2} density={1.2} colorVariant="cyber" />
       </div>
-      
+
       <div className="home-cyber-grid-overlay"></div>
 
-      <section id="home-hero-section" className={`home-hero-section ${isVisible['home-hero-section'] ? 'visible' : ''}`}>
+      <section
+        id="home-hero-section"
+        className={`home-hero-section ${
+          isVisible["home-hero-section"] ? "visible" : ""
+        }`}
+      >
         <div className="home-hero-content">
           <div className="home-logo-container">
             <SiHackaday className="home-logo-icon home-pulse" />
             <div className="home-logo-glow"></div>
           </div>
-          <h1 className="home-hero-title home-neon-text home-glitch" data-text="ZeroTrace">ZeroTrace</h1>
+          <h1
+            className="home-hero-title home-neon-text home-glitch"
+            data-text="ZeroTrace"
+          >
+            ZeroTrace
+          </h1>
           <p className="home-hero-subtitle">
-            <span className="home-typing-text">Cybersecurity command center for threat intelligence and digital defense</span>
+            <span className="home-typing-text">
+              Cybersecurity command center for threat intelligence and digital
+              defense
+            </span>
           </p>
           <div className="home-cyber-line"></div>
           <div className="home-hero-buttons">
-            <a href="/complaint-guide" className="home-cyber-button home-primary">
-              <FaExclamationTriangle /> <span>Report Incident</span>
+            <a
+              href="/complaint-guide"
+              className="home-cyber-button home-primary"
+            >
+              <FaExclamationTriangle /> <span>Report Guide</span>
               <div className="home-button-glow"></div>
             </a>
-            <a href="/threat-stats" className="home-cyber-button home-secondary">
-              <FaSatelliteDish /> <span>Threat Intelligence</span>
+            <a
+              href="/threat-stats"
+              className="home-cyber-button home-secondary"
+            >
+              <FaSatelliteDish /> <span>Threat Stats Intelligence</span>
               <div className="home-button-glow"></div>
             </a>
           </div>
@@ -412,11 +467,16 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="home-threat-dashboard" className={`home-threat-dashboard ${isVisible['home-threat-dashboard'] ? 'visible' : ''}`}>
+      <section
+        id="home-threat-dashboard"
+        className={`home-threat-dashboard ${
+          isVisible["home-threat-dashboard"] ? "visible" : ""
+        }`}
+      >
         <div className="home-dashboard-header">
           <div className="home-dashboard-title-container">
             <FaNetworkWired className="home-dashboard-icon" />
-            <h2 className="home-dashboard-title">Threat Intelligence Dashboard</h2>
+            <h2 className="home-dashboard-title">Threat Stats Dashboard</h2>
           </div>
           <div className="home-dashboard-status">
             <div className="home-status-indicator home-active"></div>
@@ -430,52 +490,87 @@ const Home = () => {
           {renderThreatLevelIndicator()}
 
           <div className="home-threat-metrics">
-            <div className="home-metric-item">
+            <div
+              className="home-metric-item"
+              onClick={() => (window.location.href = "/threat-stats")}
+            >
               <FaVirus className="home-metric-icon" />
               <div className="home-metric-content">
-                <span className="home-metric-value">{threatData ? threatData.malwareDetections.toLocaleString() : "-"}</span>
+                <span className="home-metric-value">
+                  {threatData
+                    ? threatData.malwareDetections.toLocaleString()
+                    : "-"}
+                </span>
                 <span className="home-metric-label">Malware Detections</span>
               </div>
               <div className="home-metric-bar">
-                <div className="home-metric-fill" style={{ width: "65%" }}></div>
+                <div
+                  className="home-metric-fill"
+                  style={{ width: "65%" }}
+                ></div>
               </div>
             </div>
 
-            <div className="home-metric-item">
+            <div
+              className="home-metric-item"
+              onClick={() => (window.location.href = "/threat-stats")}
+            >
               <FaUserSecret className="home-metric-icon" />
               <div className="home-metric-content">
-                <span className="home-metric-value">{threatData ? threatData.phishingAttempts.toLocaleString() : "-"}</span>
+                <span className="home-metric-value">
+                  {threatData
+                    ? threatData.phishingAttempts.toLocaleString()
+                    : "-"}
+                </span>
                 <span className="home-metric-label">Phishing Attempts</span>
               </div>
               <div className="home-metric-bar">
-                <div className="home-metric-fill" style={{ width: "78%" }}></div>
+                <div
+                  className="home-metric-fill"
+                  style={{ width: "78%" }}
+                ></div>
               </div>
             </div>
 
-            <div className="home-metric-item">
+            <div
+              className="home-metric-item"
+              onClick={() => (window.location.href = "/threat-stats")}
+            >
               <GiFirewall className="home-metric-icon" />
               <div className="home-metric-content">
-                <span className="home-metric-value">{threatData ? threatData.ddosAttacks.toLocaleString() : "-"}</span>
+                <span className="home-metric-value">
+                  {threatData ? threatData.ddosAttacks.toLocaleString() : "-"}
+                </span>
                 <span className="home-metric-label">DDoS Attacks</span>
               </div>
               <div className="home-metric-bar">
-                <div className="home-metric-fill" style={{ width: "42%" }}></div>
+                <div
+                  className="home-metric-fill"
+                  style={{ width: "42%" }}
+                ></div>
               </div>
             </div>
 
-            <div className="home-metric-item home-alert">
+            <div
+              className="home-metric-item home-alert"
+              onClick={() => (window.location.href = "/threat-stats")}
+            >
               <RiAlarmWarningLine className="home-metric-icon" />
               <div className="home-metric-content">
-                <span className="home-metric-value">{threatData ? threatData.zerodays.toLocaleString() : "-"}</span>
+                <span className="home-metric-value">
+                  {threatData ? threatData.zerodays.toLocaleString() : "-"}
+                </span>
                 <span className="home-metric-label">Zero-day Exploits</span>
               </div>
               <div className="home-metric-bar">
-                <div className="home-metric-fill" style={{ width: "25%" }}></div>
+                <div
+                  className="home-metric-fill"
+                  style={{ width: "25%" }}
+                ></div>
               </div>
             </div>
           </div>
         </div>
-
         <div className="home-dashboard-radar">
           <div className="home-radar-stats">
             <a href="/threat-stats" className="home-view-more-button">
@@ -486,68 +581,14 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="home-stats-section" className={`home-stats-section ${isVisible['home-stats-section'] ? 'visible' : ''}`}>
-        <div className="home-stats-header">
-          <h2 className="home-stats-title">
-            <FaChartBar /> Cybersecurity Statistics
-          </h2>
-          <div className="home-stats-line"></div>
-        </div>
-
-        <div className="home-stats-grid">
-          <div className="home-stat-card home-cyan">
-            <div className="home-stat-icon">
-              <FaClipboardList />
-            </div>
-            <div className="home-stat-number home-counter">
-              {stats ? stats.activeCases.toLocaleString() : "-"}
-            </div>
-            <p className="home-stat-label">Active Cases</p>
-            <div className="home-stat-glow"></div>
-          </div>
-
-          <div className="home-stat-card home-green">
-            <div className="home-stat-icon">
-              <FaShieldAlt />
-            </div>
-            <div className="home-stat-number home-counter">
-              {stats ? stats.resolvedComplaints.toLocaleString() : "-"}
-            </div>
-            <p className="home-stat-label">Resolved Complaints</p>
-            <div className="home-stat-glow"></div>
-          </div>
-
-          <div className="home-stat-card home-purple">
-            <div className="home-stat-icon">
-              <FaServer />
-            </div>
-            <div className="home-stat-number home-counter">
-              {stats ? stats.ongoingInvestigations.toLocaleString() : "-"}
-            </div>
-            <p className="home-stat-label">Ongoing Investigations</p>
-            <div className="home-stat-glow"></div>
-          </div>
-
-          <div className="home-stat-card home-red">
-            <div className="home-stat-icon">
-              <FaExclamationTriangle />
-            </div>
-            <div className="home-stat-number home-counter">
-              {stats ? stats.securityAlerts.toLocaleString() : "-"}
-            </div>
-            <p className="home-stat-label">Security Alerts</p>
-            <div className="home-stat-glow"></div>
-          </div>
-        </div>
-
-        <div className="home-binary-decoration">
-          <FaNetworkWired className="home-binary-icon" />
-        </div>
-      </section>
-
-      <section id="home-services-section" className={`home-services-section ${isVisible['home-services-section'] ? 'visible' : ''}`}>
+      <section
+        id="home-services-section"
+        className={`home-services-section ${
+          isVisible["home-services-section"] ? "visible" : ""
+        }`}
+      >
         <div className="home-section-header">
-          <h2 className="home-section-title">Cybersecurity Services</h2>
+          <h2 className="home-section-title">Cyber Security Toolkit</h2>
           <p className="home-section-subtitle">
             Advanced defense tools and resources for digital warfare
           </p>
@@ -561,7 +602,9 @@ const Home = () => {
               key={service.id}
               className={`home-service-card home-${service.color}`}
             >
-              <div className={`home-service-icon-wrapper home-${service.color}`}>
+              <div
+                className={`home-service-icon-wrapper home-${service.color}`}
+              >
                 {service.icon}
                 <div className="home-service-icon-glow"></div>
               </div>
@@ -572,96 +615,68 @@ const Home = () => {
           ))}
         </div>
       </section>
-
-      <section id="home-laws-section" className={`home-section home-section-alt ${isVisible['home-laws-section'] ? 'visible' : ''}`}>
+      <section
+        id="home-laws-section"
+        className={`home-section home-section-alt ${
+          isVisible["home-laws-section"] ? "visible" : ""
+        }`}
+      >
         <div className="home-section-container">
           <div className="home-section-header">
-            <h2 className="home-section-title"><FaBook /> Indian Cyber Laws</h2>
-            <p className="home-section-subtitle">Understanding the legal framework for cybersecurity in India</p>
+            <h2 className="home-section-title">
+              <FaBook /> Indian Cyber Laws
+            </h2>
+            <p className="home-section-subtitle">
+              Understanding the legal framework for cybersecurity in India
+            </p>
             <div className="home-section-underline"></div>
           </div>
-          
+
           <div className="home-cards-grid">
             {indianLaws.map((law, index) => (
-              <div key={index} className="home-info-card home-info-card-alt">
+              <a
+                href="/indian-laws"
+                key={index}
+                className="home-info-card home-info-card-alt"
+              >
                 <h3 className="home-info-card-title">{law.title}</h3>
                 <p className="home-info-card-description">{law.description}</p>
-              </div>
+              </a>
             ))}
           </div>
-          
+
+          <div className="home-dashboard-radar"></div>
           <div className="home-view-more-container">
-            <a href="/indian-laws" className="home-view-more-button home-view-more-button-alt">
-              <span>View All Cyber Laws</span>
-              <FaBook />
-            </a>
+            <div className="home-radar-stats">
+              <a
+                href="/indian-laws"
+                className="home-view-more-button home-view-more-button-alt"
+              >
+                <span>View All Cyber Laws</span>
+                <FaBook />
+              </a>
+            </div>
           </div>
         </div>
       </section>
-
-      <section id="home-tools-section" className={`home-section ${isVisible['home-tools-section'] ? 'visible' : ''}`}>
+      <section
+        id="home-chatbot-section"
+        className={`home-section home-section-alt ${
+          isVisible["home-chatbot-section"] ? "visible" : ""
+        }`}
+      >
         <div className="home-section-container">
           <div className="home-section-header">
-            <h2 className="home-section-title"><FaTools /> Security Tools</h2>
-            <p className="home-section-subtitle">Essential open-source tools for vulnerability assessment and security monitoring</p>
+            <h2 className="home-section-title">
+              <FaCommentAlt /> Security Assistant
+            </h2>
+            <p className="home-section-subtitle">
+              Get instant answers to your cybersecurity questions with our AI
+              assistant
+            </p>
             <div className="home-section-underline"></div>
           </div>
-          
-          <div className="home-cards-grid">
-            {securityTools.map((tool, index) => (
-              <div key={index} className="home-info-card home-info-card-tool">
-                <h3 className="home-info-card-title">{tool.title}</h3>
-                <p className="home-info-card-description">{tool.description}</p>
-              </div>
-            ))}
-          </div>
-          
-          <div className="home-view-more-container">
-            <a href="/security-tools" className="home-view-more-button">
-              <span>Explore Security Tools</span>
-              <FaTools />
-            </a>
-          </div>
-        </div>
-      </section>
 
-      <section id="home-quiz-section" className={`home-section home-section-alt ${isVisible['home-quiz-section'] ? 'visible' : ''}`}>
-        <div className="home-section-container">
-          <div className="home-section-header">
-            <h2 className="home-section-title"><FaQuestion /> Cyber Security Quiz</h2>
-            <p className="home-section-subtitle">Test your knowledge and learn about cybersecurity best practices</p>
-            <div className="home-section-underline"></div>
-          </div>
-          
-          <div className="home-cards-grid">
-            {quizCategories.map((category, index) => (
-              <div key={index} className="home-info-card home-info-card-alt home-quiz-card">
-                <h3 className="home-info-card-title">{category.title}</h3>
-                <div className="home-quiz-card-stats">
-                  <span className="home-quiz-stat">Questions: {category.questions}</span>
-                  <span className="home-quiz-stat">Difficulty: {category.difficulty}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="home-view-more-container">
-            <a href="/quiz" className="home-view-more-button home-view-more-button-alt">
-              <span>Take a Quiz</span>
-              <FaQuestion />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="home-chatbot-section" className={`home-section home-section-alt ${isVisible['home-chatbot-section'] ? 'visible' : ''}`}>
-        <div className="home-section-container">
-          <div className="home-section-header">
-            <h2 className="home-section-title"><FaCommentAlt /> Security Assistant</h2>
-            <p className="home-section-subtitle">Get instant answers to your cybersecurity questions with our AI assistant</p>
-            <div className="home-section-underline"></div>
-          </div>
-          
           <div className="home-chatbot-preview">
             <div className="home-chatbot-messages">
               <div className="home-chatbot-message home-chatbot-bot">
@@ -671,51 +686,69 @@ const Home = () => {
                 How do I check if my account has been compromised?
               </div>
               <div className="home-chatbot-message home-chatbot-bot">
-                You can check if your email has been involved in a data breach by visiting haveibeenpwned.com and entering your email address.
+                You can check if your email has been involved in a data breach
+                by visiting haveibeenpwned.com and entering your email address.
               </div>
             </div>
-            
+
             <div className="home-chatbot-prompt">
-              <div className="home-chatbot-input">Ask a cybersecurity question...</div>
+              <div className="home-chatbot-input">
+                Ask a cybersecurity question...
+              </div>
               <div className="home-chatbot-icon">
                 <FaCommentAlt />
               </div>
             </div>
           </div>
-          
+
           <div className="home-view-more-container">
-            <a href="/chatbot" className="home-view-more-button home-view-more-button-alt">
+            <a
+              href="/chatbot"
+              className="home-view-more-button home-view-more-button-alt"
+            >
               <span>Talk to Security Assistant</span>
               <FaCommentAlt />
             </a>
           </div>
         </div>
       </section>
-
-      <section id="home-news-section" className={`home-section ${isVisible['home-news-section'] ? 'visible' : ''}`}>
+      <section
+        id="home-news-section"
+        className={`home-section ${
+          isVisible["home-news-section"] ? "visible" : ""
+        }`}
+      >
         <div className="home-section-container">
           <div className="home-section-header">
-            <h2 className="home-section-title"><FaNewspaper /> Security News</h2>
-            <p className="home-section-subtitle">Stay updated with the latest cybersecurity news and threat intelligence</p>
+            <h2 className="home-section-title">
+              <FaNewspaper /> Security News
+            </h2>
+            <p className="home-section-subtitle">
+              Stay updated with the latest cybersecurity news and threat
+              intelligence
+            </p>
             <div className="home-section-underline"></div>
           </div>
-          
+
           <div className="home-news-grid">
             {securityNews.map((news, index) => (
-              <div key={index} className="home-news-card">
+              <a href="/security-news" key={index} className="home-news-card">
                 <div className="home-news-date">{news.date}</div>
                 <h3 className="home-news-title">{news.title}</h3>
                 <div className="home-news-source">Source: {news.source}</div>
-              </div>
+              </a>
             ))}
           </div>
-          
+
           <div className="home-view-more-container">
             <a href="/security-news" className="home-view-more-button">
               <span>Read All Security News</span>
               <FaNewspaper />
             </a>
-            <a href="/threat-stats" className="home-view-more-button home-view-more-button-secondary">
+            <a
+              href="/threat-stats"
+              className="home-view-more-button home-view-more-button-secondary"
+            >
               <span>View Threat Statistics</span>
               <FaChartBar />
             </a>
@@ -724,6 +757,6 @@ const Home = () => {
       </section>
     </div>
   );
-}
+};
 
 export default Home;
