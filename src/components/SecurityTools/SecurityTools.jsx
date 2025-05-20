@@ -405,7 +405,7 @@ const SecurityTools = () => {
         <section className="sec-tm-header">
           <h1 className="sec-tm-title">
             <span className="sec-tm-title-prefix">&gt;</span>
-            Cybersecurity Portal
+            Security Toolkit Portal
           </h1>
           <p className="sec-tm-subtitle">
             Access our interactive security tools to enhance your online

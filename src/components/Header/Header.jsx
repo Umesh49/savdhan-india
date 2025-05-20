@@ -8,13 +8,14 @@ const Navbar = () => {
 
   const terminalText = "ZeroTrace Terminal v0.1";
   const navItems = [
-    { path: "/indian-laws", label: "Indian Cyber Laws" },
+    { path: "/home", label: "Home" },
+    { path: "/indian-laws", label: "Indian Laws" },
     { path: "/complaint-guide", label: "Complaint Guide" },
-    { path: "/quiz", label: "Test Your Knowledge" },
-    { path: "/security-checklist", label: "Security Checklist" },
+    { path: "/quiz", label: "CyberSec Quiz" },
+    { path: "/security-checklist", label: "CyberSec Checklist" },
     { path: "/security-tools", label: "Security Tools" },
+    { path: "/contact", label: "Helplines" },
     { path: "/faq", label: "FAQ" },
-    { path: "/contact", label: "Contact" },
   ];
 
   useEffect(() => {
@@ -64,16 +65,16 @@ const Navbar = () => {
 
         <div className="nav-header-container">
           <div className="nav-header-content">
-            <div className="nav-header-logo">
+            <a href="/home" className="nav-header-logo">
               <div className="nav-logo-box">
-                <img src="../../../logo.svg" alt="ZeroTrace Logo" />
+                <img src="/logo.svg" alt="ZeroTrace Logo" />
                 <div className="nav-logo-pulse"></div>
               </div>
               <div className="nav-title-box">
                 <span className="nav-title">ZeroTrace</span>
                 <span className="nav-cursor">_</span>
               </div>
-            </div>
+            </a>
 
             <nav className="nav-desktop-menu">
               {navItems.map((item, index) => (
@@ -130,10 +131,10 @@ const Navbar = () => {
           </svg>
         </button>
 
-        <div className="nav-mobile-logo">
-          <img src="../../../logo.svg" height="30px" alt="ZeroTrace Logo" />
+        <a href="/home" className="nav-mobile-logo">
+          <img src="/logo.svg" height="30px" alt="ZeroTrace Logo" />
           <span className="nav-app-title">ZeroTrace</span>
-        </div>
+        </a>
       </header>
 
       {isOpen && (

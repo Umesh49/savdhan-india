@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { IoWarning } from "react-icons/io5";
 import { RiRadarLine } from "react-icons/ri";
-import logoUrl from "../../svg/logo.svg";
+import logoUrl from "/logo.svg";
 import "./SplashScreen.css";
 
 const MATRIX_CHARS = "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह१२३४५६७८९०";

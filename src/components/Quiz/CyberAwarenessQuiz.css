@@ -87,19 +87,6 @@
   margin-bottom: 40px;
 }
 
-.quiz-savdhan-icon-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.quiz-savdhan-icon-shield,
-.quiz-savdhan-icon-lock {
-  color: #00ffaa;
-  font-size: 2.5rem;
-  filter: drop-shadow(0 0 4px rgba(0, 255, 170, 0.4));
-}
-
 .quiz-savdhan-title {
   font-size: 2.2rem;
   color: #00ffaa;
@@ -122,7 +109,8 @@
 }
 
 @keyframes com-form-blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -253,7 +241,8 @@
 }
 
 @keyframes cursor-blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -525,11 +514,6 @@
   box-shadow: 0 0 12px rgba(0, 255, 170, 0.3);
 }
 
-.quiz-savdhan-category-card.quiz-savdhan-selected {
-  border: 2px solid #00ffaa;
-  background-color: rgba(0, 255, 170, 0.1);
-}
-
 .quiz-savdhan-category-icon {
   font-size: 2.8rem;
   color: #00ffaa;
@@ -614,6 +598,46 @@
   }
 }
 
+.quiz-savdhan-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(8, 14, 23, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fade-in 0.3s ease-out;
+}
+
+.quiz-savdhan-popup {
+  background-color: #0a1020;
+  border: 2px solid #00ffaa;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 12px rgba(0, 255, 170, 0.3);
+  animation: fade-in 0.3s ease-out;
+}
+
+.quiz-savdhan-popup-title {
+  font-size: 1.5rem;
+  color: #00ffaa;
+  margin-bottom: 20px;
+  text-shadow: 0 0 4px rgba(0, 255, 170, 0.4);
+}
+
+.quiz-savdhan-popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
 @media (max-width: 768px) {
   .quiz-savdhan-container {
     padding: 20px;
@@ -656,6 +680,20 @@
 
   .quiz-savdhan-category-card {
     min-height: 200px;
+  }
+
+  .quiz-savdhan-popup {
+    max-width: 300px;
+    padding: 20px;
+  }
+
+  .quiz-savdhan-popup-title {
+    font-size: 1.3rem;
+  }
+
+  .quiz-savdhan-popup-buttons {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 

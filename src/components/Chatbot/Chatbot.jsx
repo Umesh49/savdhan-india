@@ -10,7 +10,8 @@ const CybersecurityChatbot = () => {
     {
       id: "welcome",
       type: "bot",
-      content: "ZeroBot ONLINE. I am your cybersecurity assistant. How can I help you today?",
+      content:
+        "ZeroBot ONLINE. I am your cybersecurity assistant. How can I help you today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -26,8 +27,21 @@ const CybersecurityChatbot = () => {
   }, []);
 
   useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+    window.scrollTo(0, 0);
+  }, []);
+
+  const resetChat = () => {
+    setMessages([
+      {
+        id: "welcome",
+        type: "bot",
+        content:
+          "ZeroBot ONLINE. I am your cybersecurity assistant. How can I help you today?",
+      },
+    ]);
+    setInput("");
+    setIsTyping(false);
+  };
 
   const generateAIResponse = async (userInput, apiConfig) => {
     try {
@@ -112,64 +126,113 @@ const CybersecurityChatbot = () => {
 
   const enhanceWithFormatting = (text) => {
     let enhancedText = text;
-    enhancedText = enhancedText.replace(/\*\*\*(.*?):/g, '* **$1**:');
-    enhancedText = enhancedText.replace(/(\d+\.)(.*?):/g, '$1 **$2**:');
-    
-    const actionPhrases = [
-      "use", "enable", "keep", "update", "be cautious", "avoid", "don't click", 
-      "consider", "install", "verify", "report", "back up", "encrypt", "protect",
-      "monitor", "secure", "review", "change", "create", "implement", "follow"
-    ];
-    
-    // Format key cybersecurity terms with bold
-    const securityTerms = [
-      "password", "authentication", "MFA", "2FA", "security", "privacy", "malware", 
-      "virus", "phishing", "ransomware", "encryption", "firewall", "VPN", "backup", 
-      "cyber", "attack", "threat", "vulnerability", "data breach", "hacker", "trojan",
-      "spyware", "keylogger", "DDoS", "social engineering", "identity theft", "DPDP Act",
-      "digital rights", "cybercrime", "personal data", "sensitive information"
-    ];
-    
-    // Add italics to action phrases
-    actionPhrases.forEach(phrase => {
-      const regex = new RegExp(`\\b${phrase}\\b`, 'gi');
-      // Don't italicize if it's already in a markdown format
-      enhancedText = enhancedText.replace(regex, (match) => {
-        // Check if it's already part of a markdown formatting
-        if (enhancedText.includes(`*${match}*`) || enhancedText.includes(`**${match}**`)) {
-          return match;
-        }
-        return `*${match}*`;
-      });
+
+    enhancedText = enhancedText.replace(/^([\w\s]+):$/gm, "## $1");
+    enhancedText = enhancedText.replace(/(\d+\.\s)(?!\*\*)/g, "\n$1");
+    enhancedText = enhancedText.replace(/(\d+\.\s)(.*?):/g, "$1**$2**:");
+
+    const lines = enhancedText.split("\n");
+    const formattedLines = lines.map((line) => {
+      if (/^\d+\.\s/.test(line) && !line.includes("**")) {
+        return line.replace(/^(\d+\.\s)(.*)/, "$1**$2**");
+      }
+      return line;
     });
-    
-    // Add bold to security terms
-    securityTerms.forEach(term => {
-      const regex = new RegExp(`\\b${term}\\b`, 'gi');
-      // Don't bold if it's already in a markdown format
+
+    enhancedText = formattedLines.join("\n");
+
+    const securityTerms = [
+      "password",
+      "authentication",
+      "MFA",
+      "2FA",
+      "security",
+      "privacy",
+      "malware",
+      "virus",
+      "phishing",
+      "ransomware",
+      "encryption",
+      "firewall",
+      "VPN",
+      "backup",
+      "cyber attack",
+      "threat",
+      "vulnerability",
+      "data breach",
+      "hacker",
+      "trojan",
+      "spyware",
+      "keylogger",
+      "DDoS",
+      "social engineering",
+      "identity theft",
+      "DPDP Act",
+      "digital rights",
+      "cybercrime",
+      "personal data",
+      "sensitive information",
+    ];
+
+    securityTerms.forEach((term) => {
+      const regex = new RegExp(`\\b${term}\\b`, "gi");
       enhancedText = enhancedText.replace(regex, (match) => {
-        // Check if it's already part of a markdown formatting
-        if (enhancedText.includes(`*${match}*`) || enhancedText.includes(`**${match}**`)) {
+        if (
+          enhancedText.includes(`*${match}*`) ||
+          enhancedText.includes(`**${match}**`)
+        ) {
           return match;
         }
         return `**${match}**`;
       });
     });
-    
-    // Improve list formatting
-    enhancedText = enhancedText.replace(/(\d+\.\s)(?!\*\*)/g, '\n$1');
-    
-    // Make sure headings are properly formatted
-    enhancedText = enhancedText.replace(/^([\w\s]+):$/gm, '## $1');
-    
+
+    const actionPhrases = [
+      "use",
+      "enable",
+      "keep",
+      "update",
+      "be cautious",
+      "avoid",
+      "don't click",
+      "consider",
+      "install",
+      "verify",
+      "report",
+      "back up",
+      "encrypt",
+      "protect",
+      "monitor",
+      "secure",
+      "review",
+      "change",
+      "create",
+      "implement",
+      "follow",
+    ];
+
+    actionPhrases.forEach((phrase) => {
+      const regex = new RegExp(`\\b${phrase}\\b`, "gi");
+      enhancedText = enhancedText.replace(regex, (match) => {
+        if (
+          enhancedText.includes(`*${match}*`) ||
+          enhancedText.includes(`**${match}**`)
+        ) {
+          return match;
+        }
+        return `*${match}*`;
+      });
+    });
+
+    enhancedText = enhancedText.replace(/(\d+\.)\s*\*\*/g, "$1 **");
+
     return enhancedText;
   };
 
   const generateResponse = async (userInput) => {
     const input = userInput.toLowerCase();
-
     let response;
-    
+
     if (isUsingAI) {
       const apiConfigs = [
         { provider: "openai", key: import.meta.env.VITE_OPENAI_API_KEY },
@@ -181,26 +244,30 @@ const CybersecurityChatbot = () => {
         if (config.key) {
           response = await generateAIResponse(userInput, config);
           if (response) {
-            // Apply formatting enhancement to AI responses as well
             return enhanceWithFormatting(response);
           }
-          toast.error(`Failed to get response from ${config.provider.toUpperCase()} API. Trying next API...`, {
-            position: "top-right",
-            autoClose: 3000,
-          });
+          toast.error(
+            `Failed to get response from ${config.provider.toUpperCase()} API. Trying next API...`,
+            {
+              position: "top-right",
+              autoClose: 3000,
+            }
+          );
         }
       }
 
-      toast.error("Unable to connect to any AI service. Using rule-based responses instead.", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      toast.error(
+        "Unable to connect to any AI service. Using rule-based responses instead.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+        }
+      );
       response = generateRuleBasedResponse(input);
     } else {
       response = generateRuleBasedResponse(input);
     }
 
-    // Apply formatting to all responses
     return enhanceWithFormatting(response);
   };
 
@@ -222,25 +289,21 @@ const CybersecurityChatbot = () => {
     try {
       setTimeout(async () => {
         const response = await generateResponse(input);
-
         const botMessage = {
           id: (Date.now() + 1).toString(),
           type: "bot",
           content: response,
         };
-
         setMessages((prev) => [...prev, botMessage]);
         setIsTyping(false);
       }, 800 + Math.random() * 800);
     } catch (error) {
       console.error("Error generating response:", error);
-
       const errorMessage = {
         id: (Date.now() + 1).toString(),
         type: "bot",
         content: "SYSTEM ERROR: Communication failure. Please try again.",
       };
-
       setMessages((prev) => [...prev, errorMessage]);
       setIsTyping(false);
       toast.error("System error occurred. Please try again.", {
@@ -276,14 +339,20 @@ const CybersecurityChatbot = () => {
       import.meta.env.VITE_XAI_API_KEY;
 
     if (!hasAnyApiKey) {
-      showToast("API Key Missing", "Please add at least one API key to the environment variables.", "error");
+      showToast(
+        "API Key Missing",
+        "Please add at least one API key to the environment variables.",
+        "error"
+      );
       return;
     }
 
     setIsUsingAI(!isUsingAI);
     showToast(
       isUsingAI ? "AI Mode Deactivated" : "AI Mode Activated",
-      isUsingAI ? "Using rule-based responses only." : "Now using AI services for responses.",
+      isUsingAI
+        ? "Using rule-based responses only."
+        : "Now using AI services for responses.",
       isUsingAI ? "info" : "success"
     );
   };
@@ -292,8 +361,8 @@ const CybersecurityChatbot = () => {
     <div className="chatbot-container">
       <div className="chatbot-interface">
         <div className="chatbot-header">
+          <img src="/logo.svg" height={30} />
           <div className="chatbot-title">
-            <div className="chatbot-icon">🛡️</div>
             <div>
               <h3>ZEROBOT</h3>
               <div className="chatbot-status">SECURITY ASSISTANT</div>
@@ -305,11 +374,14 @@ const CybersecurityChatbot = () => {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`chatbot-message ${message.type === "user" ? "chatbot-user" : "chatbot-bot"}`}
+              className={`chatbot-message ${
+                message.type === "user" ? "chatbot-user" : "chatbot-bot"
+              }`}
             >
               <div className="chatbot-message-icon">
-                {message.type === "user" ? "👤" : "🛡️"}
+                {message.type === "user" ? "🧑‍💻" : "🤖"}
               </div>
+
               <div className="chatbot-message-content">
                 <div className="chatbot-message-text">
                   {message.type === "bot" ? (
@@ -324,7 +396,9 @@ const CybersecurityChatbot = () => {
 
           {isTyping && (
             <div className="chatbot-message chatbot-bot">
-              <div className="chatbot-message-icon">🛡️</div>
+              <div className="chatbot-message-icon">
+                <img src="/logo.svg" />
+              </div>
               <div className="chatbot-message-content">
                 <div className="chatbot-typing">
                   <span></span>
@@ -351,10 +425,20 @@ const CybersecurityChatbot = () => {
             ➤
           </button>
         </form>
-
         <div className="chatbot-api-key">
-          <button type="button" onClick={toggleAIMode} className="chatbot-api-button">
+          <button
+            type="button"
+            onClick={toggleAIMode}
+            className="chatbot-api-button"
+          >
             {isUsingAI ? "Disable AI Mode" : "Enable AI Mode"}
+          </button>
+          <button
+            type="button"
+            onClick={resetChat}
+            className="chatbot-api-button reset-button"
+          >
+            🔄 Reset Chat
           </button>
           <div className="chatbot-api-status">
             {isUsingAI ? "AI Mode: Active ✅" : "AI Mode: Inactive ⚠️"}

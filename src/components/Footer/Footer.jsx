@@ -21,21 +21,28 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
+    { path: "/home", label: "Home" },
     { path: "/indian-laws", label: "Indian Cyber Laws" },
     { path: "/complaint-guide", label: "Complaint Guide" },
     { path: "/complaint-form", label: "File a Complaint" },
+    { path: "/case-study", label: "Case Studies" },
+    { path: "/chatbot", label: "Chatbot" },
   ];
 
   const resourceLinks = [
+    { path: "/security-checklist", label: "Security Checklist" },
     { path: "/tutorials", label: "Tutorials" },
     { path: "/security-tools", label: "Security Tools" },
     { path: "/quiz", label: "Cybersecurity Quiz" },
-    { path: "/about", label: "About Us" },
+    { path: "/security-news", label: "Security News" },
+    { path: "/threat-stats", label: "Threat Statistics" },
   ];
 
   const policyLinks = [
     { path: "/privacy-policy", label: "Privacy Policy" },
     { path: "/terms-of-service", label: "Terms of Service" },
+    { path: "/about", label: "About Us" },
+    { path: "/faq", label: "FAQ" },
     { path: "/contact", label: "Contact Us" },
   ];
 
@@ -54,7 +61,7 @@ const Footer = () => {
             <div className="foot-footer-section">
               <div className="foot-footer-brand">
                 <div className="foot-logo-box">
-                  <img src="../../../logo.svg" alt="ZeroTrace Logo" />
+                  <img src="/logo.svg" alt="ZeroTrace Logo" />
                   <div className="foot-logo-pulse"></div>
                 </div>
                 <div className="foot-title-box">

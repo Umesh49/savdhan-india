@@ -7,7 +7,8 @@ import "./CyberAwarenessQuiz.css";
 function QuizCategorySelector() {
   const navigate = useNavigate();
   const [hackerEffect, setHackerEffect] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupCategory, setPopupCategory] = useState(null);
 
   useEffect(() => {
     const text = "CYBER SECURITY TRAINING";
@@ -38,14 +39,22 @@ function QuizCategorySelector() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
+  const handleCategoryClick = (category) => {
+    setPopupCategory(category);
+    setShowPopup(true);
   };
 
-  const startQuiz = () => {
-    if (selectedCategory) {
-      navigate(`/quiz/${selectedCategory.id}`);
+  const handlePopupConfirm = () => {
+    if (popupCategory) {
+      navigate(`/quiz/${popupCategory.id}`);
     }
+    setShowPopup(false);
+    setPopupCategory(null);
+  };
+
+  const handlePopupCancel = () => {
+    setShowPopup(false);
+    setPopupCategory(null);
   };
 
   return (
@@ -70,8 +79,8 @@ function QuizCategorySelector() {
                 return (
                   <div
                     key={category.id}
-                    className={`quiz-savdhan-category-card ${selectedCategory?.id === category.id ? "quiz-savdhan-selected quiz-savdhan-shimmer-effect" : ""}`}
-                    onClick={() => handleCategorySelect(category)}
+                    className="quiz-savdhan-category-card"
+                    onClick={() => handleCategoryClick(category)}
                   >
                     <div className="quiz-savdhan-category-icon">
                       <Icon size={30} />
@@ -87,20 +96,29 @@ function QuizCategorySelector() {
               })}
             </div>
 
-            <div className="quiz-savdhan-divider"></div>
-
-            <div className="quiz-savdhan-action-buttons">
-              <div className="quiz-savdhan-selected-info">
-                {selectedCategory && (
-                  <div className="quiz-savdhan-terminal-text">
-                    <span className="quiz-savdhan-prompt"></span> Selected: {selectedCategory.title}
+            {showPopup && (
+              <div className="quiz-savdhan-popup-overlay">
+                <div className="quiz-savdhan-popup">
+                  <h3 className="quiz-savdhan-popup-title">
+                    Do you want to attempt the {popupCategory?.title} quiz?
+                  </h3>
+                  <div className="quiz-savdhan-popup-buttons">
+                    <button
+                      className="quiz-savdhan-btn quiz-savdhan-btn-primary"
+                      onClick={handlePopupConfirm}
+                    >
+                      Yes <FaArrowRight className="quiz-savdhan-ml-2" />
+                    </button>
+                    <button
+                      className="quiz-savdhan-btn quiz-savdhan-btn-outline"
+                      onClick={handlePopupCancel}
+                    >
+                      No
+                    </button>
                   </div>
-                )}
+                </div>
               </div>
-              <button className="quiz-savdhan-btn quiz-savdhan-btn-primary" disabled={!selectedCategory} onClick={startQuiz}>
-                Initialize Security Test <FaArrowRight className="quiz-savdhan-ml-2" />
-              </button>
-            </div>
+            )}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import { FaKey, FaLock, FaTerminal } from "react-icons/fa";
 import { IoWarning } from "react-icons/io5";
-import logoUrl from "../../svg/logo.svg";
+import logoUrl from "/logo.svg";
 import "./SplashScreen.css";
 
 export default function SplashScreenAuth({ onAuthSuccess }) {
@@ -10,7 +10,7 @@ export default function SplashScreenAuth({ onAuthSuccess }) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const matrixRef = useRef(null);
-  const correctPassword = "savdhaan";
+  const correctPassword = "12345678";
 
   const handlePasswordSubmit = useCallback(
     (e) => {

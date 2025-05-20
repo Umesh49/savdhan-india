@@ -188,7 +188,7 @@ a {
   min-height: 100vh;
   text-align: center;
   position: relative;
-  padding: 6rem 2rem;
+  padding: 0 !important;
   background: linear-gradient(to bottom, rgba(8, 11, 18, 0.7), rgba(8, 11, 18, 0.95));
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(0, 195, 255, 0.2);
