@@ -107,7 +107,7 @@
 
 .safeguard-input {
   width: 100%;
-  padding: 0.75rem 5.5rem 0.75rem 2.5rem;
+  padding: 0.75rem 2.5rem 0.75rem 2.5rem !important;
   background-color: rgba(0, 0, 0, 0.6);
   color: var(--terminal-green);
   border: 1px solid var(--primary-dim);
@@ -1372,10 +1372,6 @@
     transform: scale(1.05);
     opacity: 0.8;
   }
-}
-
-.safeguard-faq-item.active {
-  animation: safeguard-pulse 2s infinite;
 }
 
 .safeguard-category-item,

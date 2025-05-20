@@ -363,7 +363,10 @@ const ThreatStats = () => {
   };
 
   if (loading) return (
-    <CyberSpinner/>
+    <div className="threat-map-loading-container">
+      <CyberSpinner />
+      <p className="threat-map-loading-text">Accessing secure threat database...</p>
+    </div>
   );
 
   if (error) return (
